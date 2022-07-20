@@ -1,12 +1,11 @@
-import logo from './logo.svg';
+
 import './App.css';
-import Menubar from './Shared/Menubar';
-import Header from './pages/Home/Header';
+
 import Home from './pages/Home/Home';
 
 function App() {
   return (
-    <div className="">
+    <div className="max-w-7xl mx-auto">
      <Home />
     </div>
   );
