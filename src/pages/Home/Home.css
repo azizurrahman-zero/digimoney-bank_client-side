@@ -3,11 +3,11 @@
 }
 .register-button{
     clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
-   
     padding: 10px 20px;
     font-weight: bold;
 }
 .slide-img{
     min-height: 20vh;
+   
     object-fit: cover;
 }

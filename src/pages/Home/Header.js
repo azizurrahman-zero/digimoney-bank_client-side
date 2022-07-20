@@ -40,13 +40,23 @@ const Header = () => {
                     </div>
             </div>
            <Menubar /> 
-           <div className='grid grid-cols-5'>
-             <div className='col-span-3'>
+           <div className='grid grid-cols-6 mt-2'>
+             <div className='col-span-4'>
 
              <BannerSlider />
              </div>
-             <div>
+             <div className=' col-span-2  border-red-100 flex justify-center items-center'>
 
+                         <div  className='bg-secondary h-[98%] flex justify-center items-center  w-[95%] ml-auto py-10 px-5'>
+                            <form action="">
+
+                            <input type="text" className='input input-primary w-full mb-6'  placeholder='Your Name'/>
+                            <input type="text" className='input input-primary w-full mb-6'  placeholder='Your Email'/>
+                            <input type="text" className='input input-primary w-full mb-6' placeholder='Phone Number'/>
+                            
+                            <button className='btn btn-primary w-full'>Request A Quote</button>
+                            </form>
+                         </div>
              </div>
            </div>
         </header>

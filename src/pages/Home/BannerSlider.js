@@ -19,7 +19,7 @@ const BannerSlider = () => {
     slidesToScroll: 1,
   };
     return (
-      <div className="my-2">
+    
       <Slider {...settings}>
         <div>
           <img
@@ -44,7 +44,7 @@ const BannerSlider = () => {
         </div>
       
       </Slider>
-    </div>
+   
     );
 };
 
