@@ -1,0 +1,9 @@
+.header-top{
+    background:linear-gradient(0deg,rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url("https://thumbs.dreamstime.com/b/young-man-working-laptop-his-bed-background-panoramic-window-overlooking-skyscrapers-freelancer-remote-122331897.jpg");
+}
+.register-button{
+    clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+   
+    padding: 10px 20px;
+    font-weight: bold;
+}
