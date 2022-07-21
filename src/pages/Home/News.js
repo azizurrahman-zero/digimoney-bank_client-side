@@ -17,7 +17,7 @@ const News = ({news}) => {
                         <p class="text-accent text-sm mb-4">
                        {showDetails?news.description:`${news.description.slice(0,250)}...`}
                         </p>
-                        <button onClick={()=>setShowDetails(!showDetails)} type="button" class="   btn btn-primary btn-xs  text-accent rounded-none">Button</button>
+                        <button onClick={()=>setShowDetails(!showDetails)} type="button" class="   btn btn-primary btn-xs  text-accent rounded-none">{showDetails?"See Less":"See More"}</button>
                         </div>
                         <div class="py-3 px-6 border-t border-gray-400 text-gray-400">
                         {news.date} days ago

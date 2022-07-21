@@ -3,7 +3,7 @@ import DownloadImg from '../../assest/images/app-2.png'
 
 const DownloadApp = () => {
     return (
-        <div className='grid grid-cols-2 mt-40 '>
+        <section className='grid grid-cols-2 mt-20 download-section'>
              <div>
                 <img src={DownloadImg} alt="" />
              </div>
@@ -18,7 +18,7 @@ const DownloadApp = () => {
                 </div>
             </div>
              </div>
-        </div>
+        </section>
     );
 };
 
