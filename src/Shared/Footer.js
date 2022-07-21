@@ -50,7 +50,7 @@ const Footer = () => {
             <hr className='bg-black h-[2px]' />
             <div className='flex items-center justify-center'>
 
-                <h5 className='flex items-center font-semibold text-xl'><AiOutlineCopyrightCircle /> 2022 Raxa. All Rights Reserved By <span className='text-primary'>Team Bug Finders</span></h5>
+                <h5 className='flex items-center font-semibold text-xl'><AiOutlineCopyrightCircle /> 2022 DigiMoney. All Rights Reserved By <span className='text-primary'>Team Bug Finders</span></h5>
             </div>
         </footer>
     );
