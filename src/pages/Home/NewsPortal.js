@@ -11,7 +11,7 @@ const NewsPortal = () => {
    },[])
     return (
         <section className='mt-20'>
-            <h1 className='text-4xl uppercase text-center text-primary my-20'>Our Latest News</h1>
+            <h1 className='text-6xl uppercase text-center text-primary my-20'>Our Latest News</h1>
             <div className='grid grid-cols-3 gap-5'>
 
 
