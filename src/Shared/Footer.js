@@ -1,11 +1,11 @@
 import React from 'react';
 import './footer.css'
-import { AiOutlineArrowRight,AiFillFacebook,AiFillTwitterSquare,AiFillLinkedin,AiFillInstagram} from 'react-icons/ai'
+import { AiOutlineArrowRight,AiFillFacebook,AiFillTwitterSquare,AiFillLinkedin,AiFillInstagram,AiOutlineCopyrightCircle} from 'react-icons/ai'
 
 const Footer = () => {
     return (
         <footer className='bg-[#E0E0E0] rounded-xl'>
-            <div className='grid grid-cols-4 py-10 px-4 gap-5'>
+            <div className='grid lg:grid-cols-4 py-10 px-4 gap-5'>
                 <div>
                     <h1 className='text-3xl font-bold text-primary'>Digimoney</h1>
                     <hr />
@@ -46,6 +46,11 @@ const Footer = () => {
                     <input className='input  input-primary text-black w-full mb-2' placeholder='Your Email' />
                     <button className='btn btn-primary w-full font-bold'>Subscribe</button>
                 </div>
+            </div>
+            <hr className='bg-black h-[2px]' />
+            <div className='flex items-center justify-center'>
+
+                <h5 className='flex items-center font-semibold text-xl'><AiOutlineCopyrightCircle /> 2022 Raxa. All Rights Reserved By <span className='text-primary'>Team Bug Finders</span></h5>
             </div>
         </footer>
     );

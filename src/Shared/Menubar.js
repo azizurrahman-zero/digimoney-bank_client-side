@@ -44,7 +44,7 @@ const Menubar = () => {
    <div className='flex items-center  '>
 
    <input type="text" placeholder="Type here" class="input  text-black   rounded-none" />
-   <BsSearch className='border-2 h-auto w-12 text-white bg-[#F20530] p-2  cursor-pointer' />
+   <BsSearch className='border-2 h-auto w-12 text-white bg-primary p-2  cursor-pointer' />
    </div>
   </div>
 </div>

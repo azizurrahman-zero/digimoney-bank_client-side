@@ -53,3 +53,13 @@ box-shadow:  7px 7px 11px #b3b3b3,
 box-shadow:  7px 7px 11px #b3b3b3,
              -7px -7px 11px #ffffff;
 }
+
+
+/* ================================= */
+@media screen and (max-width: 480px) {
+    .register-button{
+        width: fit-content;
+       
+        font-weight: bold;
+    }
+  }

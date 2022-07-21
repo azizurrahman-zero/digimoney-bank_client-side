@@ -11,8 +11,8 @@ const Header = () => {
                          <BsBank className='w-16 text-white h-16' />
                          <h1 className='text-5xl text-white ml-5'>Digimoney Bank</h1>
                     </div>
-                    <div >
-                         <div className='flex  bg-[rgba(0,0,0,0.9)] text-white items-center justify-between'>
+                    <div className=''>
+                         <div className='lg:flex  bg-[rgba(0,0,0,0.9)] py-5 lg:py-0 text-white items-center justify-between'>
                             <h1 className='bg-[#73061A] px-4 text-md register-button'>Regester Here</h1>
                             <p className='text-md px-2'>Make here your online transactions!</p>
                          </div>
@@ -47,7 +47,7 @@ const Header = () => {
              </div>
              <div className=' col-span-2  border-red-100 flex justify-center items-center'>
 
-                         <div  className='bg-secondary h-[98%] flex justify-center items-center  w-[95%] ml-auto py-10 px-5'>
+                         <div  className='bg-secondary h-[98%] flex justify-center items-center  w-[95%] lg:ml-auto py-10 px-5'>
                             <form action="">
 
                             <input type="text" className='input input-primary w-full mb-6'  placeholder='Your Name'/>
