@@ -6,7 +6,7 @@ import BannerSlider from './BannerSlider';
 const Header = () => {
     return (
         <header>
-            <div className='flex justify-between items-center header-top mb-1 p-2'>
+            <div className='lg:flex justify-between items-center header-top mb-1 p-2'>
                     <div className='flex items-center'>
                          <BsBank className='w-16 text-white h-16' />
                          <h1 className='text-5xl text-white ml-5'>Digimoney Bank</h1>
@@ -16,9 +16,9 @@ const Header = () => {
                             <h1 className='bg-[#73061A] px-4 text-md register-button'>Regester Here</h1>
                             <p className='text-md px-2'>Make here your online transactions!</p>
                          </div>
-                         <div className='flex py-8 px-2 rounded  bg-[rgba(0,0,0,0.6)]'>
+                         <div className='lg:flex py-8 px-2 rounded  bg-[rgba(0,0,0,0.6)]'>
                             
-                            <select class="select   rounded-none mr-1">
+                            <select class="select   rounded-none mr-1 mb-2 lg:mb-0">
                                         <option disabled selected>Card Type</option>
                                         <option>Card number one  asdfsaf adfadsf</option>
                                         <option>Marge</option>
@@ -35,12 +35,12 @@ const Header = () => {
                                         <option>Maggie</option>
                             </select>
                             
-                            <button className='btn bg-[#73061A] rounded-none'>Go</button>
+                            <button className='btn bg-[#73061A] block lg:inline-block px-20 lg:px-4 mt-2 lg:mt-0 rounded-none'>Go</button>
                          </div>
                     </div>
             </div>
            <Menubar /> 
-           <div className='grid grid-cols-6 mt-2'>
+           <div className='lg:grid grid-cols-6 mt-2'>
              <div className='col-span-4'>
 
              <BannerSlider />

@@ -15,19 +15,19 @@ const Features = () => {
     {
       id: 1,
       image:Feature2,
-      title: "Create An Account",
+      title: "Attatch Bank Account",
       desc: "Lorem ipsum dolor sit amet dolor alut const slice elit aliquid dolor ametin perfer endis velit sed fuga volup tation sit praising pain.",
     },
     {
       id: 1,
       image:Feature3,
-      title: "Create An Account",
+      title: "Send Money",
       desc: "Lorem ipsum dolor sit amet dolor alut const slice elit aliquid dolor ametin Fperfer endis velit sed fuga volup tation sit praising pain.",
     },
   ];
   return (
     <section className="py-20">
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid lg:grid-cols-3 gap-5">
          {
             Features.map(feature=><Feature feature={feature} />)
          }

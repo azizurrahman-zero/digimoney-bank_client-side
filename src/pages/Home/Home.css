@@ -30,12 +30,12 @@ box-shadow:  7px 7px 11px #b3b3b3,
   
 }
 .feature-card:hover .custom-body{
-    color: white;
+    color: #F2F2F2;
 }
 .overlly{
     height: 0;
     width: 100%;
-    background: rebeccapurple;
+    background: #F24968;
     position: absolute;
     z-index: 2;
     bottom: 0;

@@ -6,7 +6,7 @@ const Feature = ({feature}) => {
           <div class="card-body custom-body">
               <div className="flex">
               <div class="avatar">
-        <div class="w-16 mr-3 rounded">
+        <div class="w-16 mr-3 rounded border-2 border-[#73061A] p-3">
             <img src={feature.image} alt="Tailwind-CSS-Avatar-component" />
         </div>
         </div>
