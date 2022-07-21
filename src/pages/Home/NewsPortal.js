@@ -10,7 +10,7 @@ const NewsPortal = () => {
     .then(data=>setNewsData(data))
    },[])
     return (
-        <section className='mt-20'>
+        <section className='mt-20 px-4 lg:px-0'>
             <h1 className='text-6xl uppercase text-center text-primary my-20'>Our Latest News</h1>
             <div className='grid lg:grid-cols-3 gap-5'>
 
