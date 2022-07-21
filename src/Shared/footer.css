@@ -1,0 +1,23 @@
+footer p{
+    font-size: 16px;
+    line-height: 1.7;
+    text-decoration: underline;
+}
+footer hr{
+    position: relative;
+    margin:25px 0;
+    height: 5px;
+   
+    
+}
+ footer hr::after{
+ content: "";
+ width: 30%;
+ height: 15px;
+ background-color: #5C0515;
+ position: absolute;
+ left: 0;
+ bottom: 0;
+
+ 
+} 
