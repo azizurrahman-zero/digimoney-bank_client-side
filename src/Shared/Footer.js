@@ -48,9 +48,9 @@ const Footer = () => {
                 </div>
             </div>
             <hr className='bg-black h-[2px]' />
-            <div className='flex items-center justify-center'>
+            <div className='flex justify-center items-center'>
 
-                <h5 className='flex items-center font-semibold text-xl'><AiOutlineCopyrightCircle /> 2022 DigiMoney. All Rights Reserved By <span className='text-primary'>Team Bug Finders</span></h5>
+                <h5 className='flex flex-wrap items-center font-semibold text-sm lg:text-xl'><AiOutlineCopyrightCircle /> 2022 DigiMoney. All Rights Reserved By <span className='text-primary'>Team Bug Finders</span></h5>
             </div>
         </footer>
     );

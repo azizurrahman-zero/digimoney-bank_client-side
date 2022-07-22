@@ -8,8 +8,8 @@ const Header = () => {
         <header>
             <div className='lg:flex justify-between items-center header-top mb-1 p-2'>
                     <div className='flex items-center'>
-                         <BsBank className='w-16 text-white h-16' />
-                         <h1 className='text-5xl text-white ml-5'>Digimoney Bank</h1>
+                         <BsBank className='w-16 text-white h-10 lg:h-16' />
+                         <h1 className='lg:text-5xl text-3xl text-white ml-5'>Digimoney Bank</h1>
                     </div>
                     <div className=''>
                          <div className='lg:flex  bg-[rgba(0,0,0,0.9)] py-5 lg:py-0 text-white items-center justify-between'>
