@@ -8,11 +8,11 @@ import NewsPortal from './NewsPortal';
 const Home = () => {
     return (
         <div>
-           
+            <Header />
             <NewsPortal />
             <DownloadApp />
             <Features />
-            
+
         </div>
     );
 };
