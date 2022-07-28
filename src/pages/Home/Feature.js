@@ -1,26 +1,22 @@
-import React from 'react';
+import React from "react";
 
-const Feature = ({feature}) => {
-    return (
-        <div class="card rounded-none feature-card  bg-accent shadow-lg   text-secondary">
-          <div class="card-body custom-body">
-              <div className="flex">
-              <div class="avatar">
-        <div class="w-16 mr-3 rounded border-2 border-[#73061A] p-3">
-            <img src={feature.image} alt="Tailwind-CSS-Avatar-component" />
-        </div>
-        </div>
-            <h2 class="card-title">{feature.title}</h2>
-              </div>
-            <p>{feature.desc}</p>
-            
+const Feature = ({ feature }) => {
+  return (
+    <div class="card rounded-none feature-card  bg-accent shadow-lg   text-secondary">
+      <div class="card-body custom-body">
+        <div className="flex">
+          <div class="avatar">
+            <div class="w-16 mr-3 rounded border-2 border-[#73061A] p-3">
+              <img src={feature.image} alt="Tailwind-CSS-Avatar-component" />
+            </div>
           </div>
-          <div className='overlly'>
-
-          </div>
-        
+          <h2 class="card-title">{feature.title}</h2>
         </div>
-    );
+        <p>{feature.desc}</p>
+      </div>
+      <div className="overlay"></div>
+    </div>
+  );
 };
 
 export default Feature;

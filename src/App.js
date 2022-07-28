@@ -18,6 +18,7 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signUp" element={<SignUp />}></Route>
       </Routes>
+
       <Footer />
      
     </div>
