@@ -6,7 +6,7 @@ const Menubar = () => {
   const menuItem = <>
     <li><a>Home</a></li>
     <li><a>Company</a></li>
-    <li><a>Gallery</a></li>
+    <li><Link to="/cards">Cards</Link></li>
     <li><a>Our Services</a></li>
     <li><a>Portfolio</a></li>
     <li><a>News</a></li>
