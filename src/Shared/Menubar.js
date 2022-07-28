@@ -8,7 +8,7 @@ const Menubar = () => {
     <li><a>Company</a></li>
     <li><Link to="/cards">Cards</Link></li>
     <li><a>Our Services</a></li>
-    <li><a>Portfolio</a></li>
+    <li><Link to="/about">About Us</Link></li>
     <li><a>News</a></li>
     <li><Link to="/login">Login</Link></li>
   </>
