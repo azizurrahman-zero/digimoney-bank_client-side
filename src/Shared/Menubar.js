@@ -7,6 +7,9 @@ const Menubar = () => {
     <li><Link to="/">Home</Link></li>
     <li><a>Company</a></li>
     <li><Link to="/blog">Blog</Link></li>
+    <li><Link to="/home">Home</Link></li>
+    <li><a>Company</a></li>
+    <li><Link to="/cards">Cards</Link></li>
     <li><a>Our Services</a></li>
     <li><a>Portfolio</a></li>
     <li><a>News</a></li>
@@ -36,10 +39,10 @@ const Menubar = () => {
         </div>
 
         <div class="navbar-end">
-          <div className='flex items-center  '>
+          <div className='flex items-center '>
 
             <input type="text" placeholder="Type here" class="input  text-black   rounded-none" />
-            <BsSearch className='border-2 h-auto w-12 text-white bg-primary p-2  cursor-pointer' />
+            <BsSearch className='w-12 h-auto p-2 text-white border-2 cursor-pointer bg-primary' />
           </div>
         </div>
       </div>
