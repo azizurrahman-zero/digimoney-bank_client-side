@@ -25,14 +25,14 @@ box-shadow:  7px 7px 11px #b3b3b3,
   
 }
 
-.feature-card:hover .overlly{
+.feature-card:hover .overlay{
  height: 100%;
   
 }
 .feature-card:hover .custom-body{
     color: #F2F2F2;
 }
-.overlly{
+.overlay{
     height: 0;
     width: 100%;
     background: #F24968;
