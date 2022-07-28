@@ -1,6 +1,12 @@
 import React from "react";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import auth from "../../firebase.init";
+import Loading from "../../Shared/Loading";
 
 const SignUp = () => {
   const {
@@ -8,6 +14,21 @@ const SignUp = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+
+  const [createUserWithEmailAndPassword, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
+
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+  if (loading || updating) {
+    return <Loading></Loading>;
+  }
+
+  const onSubmit = async (data) => {
+    const { name, email, password } = data;
+    await createUserWithEmailAndPassword(email, password);
+    await updateProfile({ displayName: name });
+  };
 
   return (
     <div>
@@ -23,7 +44,7 @@ const SignUp = () => {
                 Log In
               </Link>
             </h3>
-            <form onSubmit={handleSubmit()}>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className="form-control">
                 <input
                   type="text"
@@ -119,40 +140,40 @@ const SignUp = () => {
                   type="submit"
                   value="Sign Up"
                 />
-                {/* <label className="flex justify-center">
-                                    {error && (
-                                        <span className="pt-2 label-text-alt text-error">
-                                            {error.message
-                                                .substring(22)
-                                                .replace(/[()']+/g, "")
-                                                .replace(/[-']+/g, " ")
-                                                .charAt(0)
-                                                .toUpperCase() +
-                                                error.message
-                                                    .substring(22)
-                                                    .replace(/[()']+/g, "")
-                                                    .replace(/[-']+/g, " ")
-                                                    .slice(1)}
-                                        </span>
-                                    )}
-                                </label> */}
-                {/* <label className="flex justify-center">
-                {updateError && (
-                  <span className="pt-2 label-text-alt text-error">
-                    {updateError.message
-                      .substring(22)
-                      .replace(/[()']+/g, "")
-                      .replace(/[-']+/g, " ")
-                      .charAt(0)
-                      .toUpperCase() +
-                      updateError.message
+                <label className="flex justify-center">
+                  {error && (
+                    <span className="pt-2 label-text-alt text-error">
+                      {error.message
                         .substring(22)
                         .replace(/[()']+/g, "")
                         .replace(/[-']+/g, " ")
-                        .slice(1)}
-                  </span>
-                )}
-              </label> */}
+                        .charAt(0)
+                        .toUpperCase() +
+                        error.message
+                          .substring(22)
+                          .replace(/[()']+/g, "")
+                          .replace(/[-']+/g, " ")
+                          .slice(1)}
+                    </span>
+                  )}
+                </label>
+                <label className="flex justify-center">
+                  {updateError && (
+                    <span className="pt-2 label-text-alt text-error">
+                      {updateError.message
+                        .substring(22)
+                        .replace(/[()']+/g, "")
+                        .replace(/[-']+/g, " ")
+                        .charAt(0)
+                        .toUpperCase() +
+                        updateError.message
+                          .substring(22)
+                          .replace(/[()']+/g, "")
+                          .replace(/[-']+/g, " ")
+                          .slice(1)}
+                    </span>
+                  )}
+                </label>
               </div>
             </form>
             <div className="divider">OR</div>

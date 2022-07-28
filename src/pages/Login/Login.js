@@ -1,7 +1,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import auth from "../../firebase.init";
 import "./Login.css";
+import Loading from "../../Shared/Loading";
 
 const Login = () => {
   const {
@@ -9,6 +12,18 @@ const Login = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+
+  const [signInWithEmailAndPassword, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+
+  if (loading) {
+    return <Loading></Loading>;
+  }
+
+  const onSubmit = (data) => {
+    const { email, password } = data;
+    signInWithEmailAndPassword(email, password);
+  };
 
   return (
     <div className="bg-[#f3f3fa] flex items-center justify-center lg:py-20">
@@ -23,7 +38,7 @@ const Login = () => {
               Sign Up
             </Link>
           </h3>
-          <form onSubmit={handleSubmit()}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control">
               <input
                 type="email"
@@ -79,23 +94,23 @@ const Login = () => {
                 type="submit"
                 value="Log In"
               />
-              {/* <label className="flex justify-center">
-                                {error && (
-                                    <span className="pt-2 label-text-alt text-error">
-                                        {error.message
-                                            .substring(22)
-                                            .replace(/[()']+/g, "")
-                                            .replace(/[-']+/g, " ")
-                                            .charAt(0)
-                                            .toUpperCase() +
-                                            error.message
-                                                .substring(22)
-                                                .replace(/[()']+/g, "")
-                                                .replace(/[-']+/g, " ")
-                                                .slice(1)}
-                                    </span>
-                                )}
-                            </label> */}
+              <label className="flex justify-center">
+                {error && (
+                  <span className="pt-2 label-text-alt text-error">
+                    {error.message
+                      .substring(22)
+                      .replace(/[()']+/g, "")
+                      .replace(/[-']+/g, " ")
+                      .charAt(0)
+                      .toUpperCase() +
+                      error.message
+                        .substring(22)
+                        .replace(/[()']+/g, "")
+                        .replace(/[-']+/g, " ")
+                        .slice(1)}
+                  </span>
+                )}
+              </label>
             </div>
           </form>
           <div className="divider">OR</div>
