@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom';
 
 const Menubar = () => {
   const menuItem = <>
+    <li><Link to="/">Home</Link></li>
+    <li><a>Company</a></li>
+    <li><Link to="/blog">Blog</Link></li>
     <li><Link to="/home">Home</Link></li>
     <li><a>Company</a></li>
-    <li><a>Gallery</a></li>
+    <li><Link to="/cards">Cards</Link></li>
     <li><a>Our Services</a></li>
     <li><a>Portfolio</a></li>
     <li><a>News</a></li>
