@@ -5,7 +5,7 @@ import Blog from "./pages/Blog/Blog";
 
 import Cards from "./pages/Cards/Cards";
 
-import Header from "./pages/Home/Header";
+import AboutUs from "./pages/About/AboutUs";
 
 
 import Home from "./pages/Home/Home";
@@ -25,10 +25,11 @@ function App() {
         <Route path="/signUp" element={<SignUp />}></Route>
         <Route path="/blog" element={<Blog />}></Route>
         <Route path="/cards" element={<Cards />}></Route>
+        <Route path="/about" element={<AboutUs />}></Route>
       </Routes>
 
       <Footer />
-     
+
     </div>
   );
 }
