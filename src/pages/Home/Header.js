@@ -48,7 +48,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <Menubar />
+    
       <div className="lg:grid grid-cols-6 mt-2">
         <div className="col-span-4">
           <BannerSlider />
