@@ -13,6 +13,7 @@ const Menubar = () => {
     <li><Link to="/service">Services</Link></li>
     <li><Link to="/service">Portfolio</Link></li>
     <li><Link to="/service">News</Link></li>
+    <li><Link to="/dashboard">Dashboard</Link></li>
     <li><Link to="/login">Login</Link></li>
   </>
   return (
