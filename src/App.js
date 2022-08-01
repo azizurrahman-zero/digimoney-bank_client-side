@@ -11,6 +11,7 @@ import Footer from "./Shared/Footer";
 import Menubar from "./Shared/Menubar";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import WelcomePage from "./pages/Dashboard/WelcomePage";
+import Profile from "./pages/Dashboard/Profile";
 
 
 function App() {
@@ -28,6 +29,8 @@ function App() {
         <Route path="/about" element={<AboutUs />}></Route>
         <Route path="/dashboard" element={<Dashboard/>}>
         <Route index element={<WelcomePage />} />
+        <Route path="dashboard" element={<WelcomePage />} />
+        <Route path="profile" element={<Profile />} />
         </Route>
        
 

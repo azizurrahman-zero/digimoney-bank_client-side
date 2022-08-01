@@ -19,3 +19,11 @@ code {
 .custom-sidebar{
   overflow: initial !important;
 }
+.robin{
+  scrollbar-width: 0 !important;
+  overflow-y: scroll !important;
+  
+}
+.custom-scroll::-webkit-scrollbar{
+  display: none;
+}

@@ -55,6 +55,7 @@ const Login = () => {
                   },
                 })}
               />
+          
               <label className="label pt-0">
                 {errors.email?.type === "required" && (
                   <span className="label-text-alt text-error">
