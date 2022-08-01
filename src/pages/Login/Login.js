@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
-import auth from "../../firebase.init";
+import auth from '../../firebase.init'
 import "./Login.css";
 import Loading from "../../Shared/Loading";
 
@@ -13,7 +13,7 @@ const Login = () => {
     handleSubmit,
   } = useForm();
 
-  const [signInWithEmailAndPassword, loading, error] =
+  const [signInWithEmailAndPassword,user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
   if (loading) {
