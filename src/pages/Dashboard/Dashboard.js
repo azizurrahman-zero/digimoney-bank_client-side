@@ -1,0 +1,81 @@
+
+import React, { useState } from 'react';
+import {Link} from 'react-router-dom'
+ import {BsArrowLeftCircle} from 'react-icons/bs'
+ import {RiBarChartHorizontalLine} from 'react-icons/ri'
+ import {AiOutlineUsergroupAdd,AiFillEdit,AiFillHome} from 'react-icons/ai'
+ import {FiSettings,FiLogOut} from 'react-icons/fi'
+ import {FaMoneyCheck} from 'react-icons/fa'
+ import {MdRateReview,MdDashboard} from 'react-icons/md'
+ import {ImProfile} from 'react-icons/im'
+ import {Outlet} from 'react-router-dom'
+import DashboardMenu from './DashboardMenu';
+
+
+const Dashboard = () => {
+    const [open,setOpen]=useState(true)
+        const Menus=[
+        {title:"Go To Home",path:"/",src:<AiFillHome className='h-5 w-5' />},
+        {title:"Dashboard",path:"/dashboard", src:<MdDashboard className='h-5 w-5' />},
+        {title:"Profile",path:"/dashboard/profile", src:<ImProfile className='h-5 w-5' />},
+        {title:"Review",path:"/", src:<MdRateReview className='h-5 w-5'/>},
+        {title:"Make Admin" ,path:"/",src:<AiFillEdit className='h-5 w-5' />,gap:true},
+        {title:"Transection",path:"/", src:<FaMoneyCheck className='h-5 w-5' />},
+        {title:"All User",path:"/", src:<AiOutlineUsergroupAdd className='h-5 w-5'  />},
+        {title:"Setting",path:"/", src:<FiSettings className='h-5 w-5' />,setting:true},
+      
+    ]
+    return (
+
+      <div class="drawer drawer-mobile      rounded-3xl ">
+      <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+      <div class="drawer-content custom-scroll">
+     
+        <label for="my-drawer-2" class="block mx-8 mt-3   drawer-button lg:hidden">
+        < RiBarChartHorizontalLine
+              for="my-drawer-2"
+           
+              className={` cursor-pointer block ml-auto
+              w-8 h-8 text-black     rounded-full ${!open && 'rotate-180'}
+             `}  />
+        </label>
+        <div className='px-5 pt-5 bg-white min-h-screen'>
+
+        <DashboardMenu />
+        <Outlet />
+        </div>
+
+      
+      </div> 
+      <div class="drawer-side  custom-sidebar">
+        <label for="my-drawer-2" class="drawer-overlay "></label> 
+      
+           <ul className={`pt-6  ${!open?"w-20":"w-52"} p-5 bg-[#2366B5] `}>
+           < BsArrowLeftCircle
+              onClick={()=>setOpen(!open)}
+              className={`absolute cursor-pointer
+             -right-3  top-3 w-8 h-8 bg-black text-white    rounded-full ${!open && 'rotate-180'}
+             `} />
+             <div className='mt-8'>
+
+                   {
+                     Menus.map((menu,i)=>(
+                       <Link to={menu?.path}> <li className={`text-gray-300 ${!open&&"justify-center"} ${menu.gap?"mt-9":"mt-2"} ${menu.setting&& "mt-60"}  rounded-md text-sm flex items-center gap-x-4 p-2 cursor-pointer hover:bg-slate-500`} key={i}>
+                          {menu.src} <span className={`${!open&&"hidden"} origin-left duration-200 text-md font-bold`}>{menu.title}</span> 
+                        </li>
+                       </Link> 
+                    ))
+                  }
+                         <li className={` text-white font-bold ${!open&&"justify-center"}   rounded-md text-sm flex items-center gap-x-4 p-2 cursor-pointer hover:bg-red-700`}>
+                            <FiLogOut className='w-5 h-5' />
+                            <span className={`${!open&&"hidden"} origin-left duration-200 text-md font-semibold`}>Logout</span>
+                        </li>
+                  </div>
+             </ul> 
+      
+      </div>
+    </div>
+    );
+};
+
+export default Dashboard;

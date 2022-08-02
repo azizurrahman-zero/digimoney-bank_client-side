@@ -15,7 +15,7 @@ const SignUp = () => {
     handleSubmit,
   } = useForm();
 
-  const [createUserWithEmailAndPassword, loading, error] =
+  const [createUserWithEmailAndPassword,user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
 
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
@@ -23,6 +23,10 @@ const SignUp = () => {
   if (loading || updating) {
     return <Loading></Loading>;
   }
+  if(user){
+    console.log(user)
+  }
+
 
   const onSubmit = async (data) => {
     const { name, email, password } = data;
