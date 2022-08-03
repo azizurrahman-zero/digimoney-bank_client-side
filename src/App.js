@@ -16,6 +16,7 @@ import Review from "./pages/Dashboard/Review";
 import Service from "./pages/Service/Service";
 
 
+
 function App() {
  const {pathname}=   useLocation()
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route index element={<WelcomePage />} />
         <Route path="dashboard" element={<WelcomePage />} />
         <Route path="profile" element={<Profile />} />
+        
         <Route path="review" element={<Review />} />
         </Route>
        
