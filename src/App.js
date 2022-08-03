@@ -14,6 +14,7 @@ import WelcomePage from "./pages/Dashboard/WelcomePage";
 import Profile from "./pages/Dashboard/Profile";
 
 
+
 function App() {
  const {pathname}=   useLocation()
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route index element={<WelcomePage />} />
         <Route path="dashboard" element={<WelcomePage />} />
         <Route path="profile" element={<Profile />} />
+        
         </Route>
        
 
