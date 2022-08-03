@@ -13,6 +13,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import WelcomePage from "./pages/Dashboard/WelcomePage";
 import Profile from "./pages/Dashboard/Profile";
 import Review from "./pages/Dashboard/Review";
+import Service from "./pages/Service/Service";
 
 
 function App() {
@@ -23,7 +24,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/home" element={<Home />}></Route>
-         <Route path="/login" element={<Login />}></Route> 
+        <Route path="/services" element={<Service />}></Route>
+        <Route path="/login" element={<Login />}></Route> 
         <Route path="/signUp" element={<SignUp />}></Route>
         <Route path="/blog" element={<Blog />}></Route>
         <Route path="/cards" element={<Cards />}></Route>
