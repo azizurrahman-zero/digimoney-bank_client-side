@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
@@ -150,7 +150,6 @@ const SignUp = () => {
                     <option value="Checking Account">Checking Account</option>
                     <option value="Savings Accounts">Savings Account</option>
                   </select>
-                  
                 </div>
                 <div className="w-full max-w-xs form-control">
                   <input
@@ -188,7 +187,7 @@ const SignUp = () => {
                     <span className="mx-2">Female</span>
                   </label>
                 </div>
-               
+
                 <div className="w-full max-w-xs form-control">
                   <input
                     type="email"

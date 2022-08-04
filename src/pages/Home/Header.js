@@ -1,5 +1,4 @@
 import React from "react";
-import Menubar from "../../Shared/Menubar";
 import { BsBank } from "react-icons/bs";
 import BannerSlider from "./BannerSlider";
 
@@ -48,7 +47,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-    
+
       <div className="lg:grid grid-cols-6 mt-2">
         <div className="col-span-4">
           <BannerSlider />
