@@ -7,52 +7,52 @@ const Service = () => {
   const serviceDAta = [
     {
       id: 1,
-      title: "Create Account",
+      title: "SEND MONEY",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
       image: image1,
     },
     {
       id: 1,
-      title: "Create Account",
+      title: "CASH IN",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
       image: image1,
     },
     {
       id: 1,
-      title: "Create Account",
+      title: "BILL PAY",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
       image: image1,
     },
     {
       id: 1,
-      title: "Create Account",
+      title: "RECHARGE",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
       image: image1,
     },
     {
       id: 1,
-      title: "Create Account",
+      title: "GAS BILL",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
       image: image1,
     },
     {
       id: 1,
-      title: "Create Account",
+      title: "PAYMENT",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
       image: image1,
     },
     {
       id: 1,
-      title: "Create Account",
+      title: "CALL US",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
       image: image1,
     },
-    {
-      id: 1,
-      title: "Create Account",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
-      image: image1,
-    },
+    // {
+    //   id: 1,
+    //   title: "Create Account",
+    //   desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
+    //   image: image1,
+    // },
   ];
   const services = !showall ? serviceDAta.slice(0, 6) : serviceDAta;
   return (
@@ -60,7 +60,7 @@ const Service = () => {
       <h1 className="text-5xl text-center mt-20 mb-20 text-primary">Our Services</h1>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {services.map((service) => (
-          <div className="service-card text-white">
+          <div className="service-card text-white cursor-pointer">
             <div className="service-card-wraper ">
               <div className="  mx-auto   ">
                 <figure className="px-10 pt-10">
@@ -73,9 +73,9 @@ const Service = () => {
                 <div className="card-body  ">
                   <h2 className="card-title">{service.title}</h2>
                   <p>{service.desc}</p>
-                  <div className="card-actions my-4">
+                  {/* <div className="card-actions my-4">
                     <button className="btn btn-accent block ml-auto">Buy Now</button>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

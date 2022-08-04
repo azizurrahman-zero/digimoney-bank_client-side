@@ -32,7 +32,7 @@
 .overlay {
   height: 0;
   width: 100%;
-  background: #f24968;
+  background: #630717;
   position: absolute;
   z-index: 2;
   bottom: 0;
@@ -48,6 +48,14 @@
 .download-section {
   background: #e0e0e0;
   box-shadow: 7px 7px 11px #b3b3b3, -7px -7px 11px #ffffff;
+}
+
+.news-card{
+  border-radius: 10px;
+  background: #e0e0e0;
+  box-shadow:  20px 20px 40px #bebebe,
+               -20px -20px 40px #ffffff;
+   transform: scale(.9);            
 }
 
 /* ================================= */
