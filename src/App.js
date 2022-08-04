@@ -14,6 +14,9 @@ import WelcomePage from "./pages/Dashboard/WelcomePage";
 import Profile from "./pages/Dashboard/Profile";
 import Review from "./pages/Dashboard/Review";
 import Service from "./pages/Service/Service";
+import UserRequest from "./pages/Dashboard/Maneger/UserRequest";
+
+
 import Team from "./pages/Company/Team";
 
 function App() {
@@ -35,6 +38,13 @@ function App() {
         <Route path="/blog" element={<Blog />}></Route>
         <Route path="/cards" element={<Cards />}></Route>
         <Route path="/about" element={<AboutUs />}></Route>
+        <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route index element={<WelcomePage />} />
+        <Route path="dashboard" element={<WelcomePage />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="user-request" element={<UserRequest />} />
+        
+        <Route path="review" element={<Review />} />
         <Route path="/dashboard" element={<Dashboard />}>
           <Route index element={<WelcomePage />} />
           <Route path="dashboard" element={<WelcomePage />} />
