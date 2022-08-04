@@ -36,26 +36,44 @@ const SignUp = () => {
     await createUserWithEmailAndPassword(email, password);
     await updateProfile({ displayName: name });
 
-    const currentUser = {
-      displayName: name,
-      email: email,
-      contact: phone,
-      accountType: event.target.accountType.value,
-      address: address,
-      amount: amount,
-      gender: event.target.gender.value,
-    };
-
-    fetch(`http://localhost:4000/user/${email}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(currentUser),
+    // upload image
+    const imageStorageKey = "6fe6eceade1c589e0923d835ad57b39d";
+    const image = data.image[0];
+    const formData = new FormData();
+    formData.append("image", image);
+    const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+    fetch(url, {
+      method: "POST",
+      body: formData,
     })
       .then((res) => res.json())
-      .then((data) => {
-        console.log("data success", data);
+      .then((result) => {
+        if (result.success) {
+          const img = result.data.url;
+
+          const currentUser = {
+            displayName: name,
+            email: email,
+            contact: phone,
+            accountType: event.target.accountType.value,
+            address: address,
+            amount: amount,
+            gender: event.target.gender.value,
+            img: img,
+          };
+
+          fetch(`http://localhost:4000/user/${email}`, {
+            method: "PUT",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(currentUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log("data success", data);
+            });
+        }
       });
   };
 
@@ -258,6 +276,25 @@ const SignUp = () => {
                     )}
                   </label>
                 </div>
+                {/* upload file */}
+                <label className="pt-0 label">
+                  <span className="lebel-text">
+                    Upload Your National Identity Card
+                  </span>
+                </label>
+                <div className="w-full max-w-xs form-control">
+                  <input
+                    type="file"
+                    placeholder=" &#xf0e0; Upload Your NID"
+                    className="w-full max-w-xs mb-1 text-base input input-bordered input-icon"
+                    {...register("image", {
+                      required: {
+                        value: true,
+                        message: "NID is required",
+                      },
+                    })}
+                  />
+                </div>
               </div>
               <div className="flex items-center justify-center mt-6">
                 <input
@@ -302,7 +339,7 @@ const SignUp = () => {
                 </label>
               </div>
             </form>
-            <div className="divider">OR</div>
+            {/* <div className="divider">OR</div> */}
             {/* <SocialLogin
             signInWithGoogle={signInWithGoogle}
             googleError={googleError}

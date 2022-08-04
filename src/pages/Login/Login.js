@@ -114,7 +114,7 @@ const Login = () => {
               </label>
             </div>
           </form>
-          <div className="divider">OR</div>
+          {/* <div className="divider">OR</div> */}
           {/* <SocialLogin
               signInWithGoogle={signInWithGoogle}
               googleError={googleError}
