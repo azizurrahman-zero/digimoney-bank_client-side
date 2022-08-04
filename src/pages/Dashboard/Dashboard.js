@@ -22,6 +22,7 @@ const Dashboard = () => {
         
         {title:"Review",path:"/", src:<MdRateReview className='w-5 h-5'/>},
         {title:"Make Admin" ,path:"/",src:<AiFillEdit className='w-5 h-5' />,gap:true},
+        {title:"User Request" ,path:"/dashboard/user-request",src:<AiFillEdit className='w-5 h-5' />,gap:true},
         {title:"Transection",path:"/", src:<FaMoneyCheck className='w-5 h-5' />},
         {title:"All User",path:"/", src:<AiOutlineUsergroupAdd className='w-5 h-5'  />},
         {title:"Setting",path:"/", src:<FiSettings className='w-5 h-5' />,setting:true},

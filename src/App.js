@@ -14,6 +14,7 @@ import WelcomePage from "./pages/Dashboard/WelcomePage";
 import Profile from "./pages/Dashboard/Profile";
 import Review from "./pages/Dashboard/Review";
 import Service from "./pages/Service/Service";
+import UserRequest from "./pages/Dashboard/Maneger/UserRequest";
 
 
 
@@ -35,6 +36,7 @@ function App() {
         <Route index element={<WelcomePage />} />
         <Route path="dashboard" element={<WelcomePage />} />
         <Route path="profile" element={<Profile />} />
+        <Route path="user-request" element={<UserRequest />} />
         
         <Route path="review" element={<Review />} />
         </Route>
