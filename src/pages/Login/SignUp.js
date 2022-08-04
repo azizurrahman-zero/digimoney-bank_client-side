@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
@@ -37,17 +37,17 @@ const SignUp = () => {
     await updateProfile({ displayName: name });
 
     // upload image
-    const imageStorageKey = "6fe6eceade1c589e0923d835ad57b39d"
-    const image = data.image[0]
+    const imageStorageKey = "6fe6eceade1c589e0923d835ad57b39d";
+    const image = data.image[0];
     const formData = new FormData();
-    formData.append('image', image)
-    const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`
+    formData.append("image", image);
+    const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
     fetch(url, {
-      method: 'POST',
-      body: formData
+      method: "POST",
+      body: formData,
     })
-      .then(res => res.json())
-      .then(result => {
+      .then((res) => res.json())
+      .then((result) => {
         if (result.success) {
           const img = result.data.url;
 
@@ -59,8 +59,7 @@ const SignUp = () => {
             address: address,
             amount: amount,
             gender: event.target.gender.value,
-            img: img
-
+            img: img,
           };
 
           fetch(`http://localhost:4000/user/${email}`, {
@@ -75,11 +74,7 @@ const SignUp = () => {
               console.log("data success", data);
             });
         }
-
-
-      })
-
-
+      });
   };
 
   return (
@@ -173,7 +168,6 @@ const SignUp = () => {
                     <option value="Checking Account">Checking Account</option>
                     <option value="Savings Accounts">Savings Account</option>
                   </select>
-
                 </div>
                 <div className="w-full max-w-xs form-control">
                   <input
@@ -284,7 +278,9 @@ const SignUp = () => {
                 </div>
                 {/* upload file */}
                 <label className="pt-0 label">
-                  <span className="lebel-text">Upload Your National Identity Card</span>
+                  <span className="lebel-text">
+                    Upload Your National Identity Card
+                  </span>
                 </label>
                 <div className="w-full max-w-xs form-control">
                   <input
