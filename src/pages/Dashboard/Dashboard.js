@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import {Link} from 'react-router-dom'
+import {Link, useLocation} from 'react-router-dom'
  import {BsArrowLeftCircle} from 'react-icons/bs'
  import {RiBarChartHorizontalLine} from 'react-icons/ri'
  import {AiOutlineUsergroupAdd,AiFillEdit,AiFillHome} from 'react-icons/ai'
@@ -13,16 +13,26 @@ import DashboardMenu from './DashboardMenu';
 
 
 const Dashboard = () => {
+  const {pathname}=useLocation()
     const [open,setOpen]=useState(true)
         const Menus=[
-        {title:"Go To Home",path:"/",src:<AiFillHome className='h-5 w-5' />},
-        {title:"Dashboard",path:"/dashboard", src:<MdDashboard className='h-5 w-5' />},
-        {title:"Profile",path:"/dashboard/profile", src:<ImProfile className='h-5 w-5' />},
-        {title:"Review",path:"/", src:<MdRateReview className='h-5 w-5'/>},
-        {title:"Make Admin" ,path:"/",src:<AiFillEdit className='h-5 w-5' />,gap:true},
-        {title:"Transection",path:"/", src:<FaMoneyCheck className='h-5 w-5' />},
-        {title:"All User",path:"/", src:<AiOutlineUsergroupAdd className='h-5 w-5'  />},
-        {title:"Setting",path:"/", src:<FiSettings className='h-5 w-5' />,setting:true},
+        {title:"Go To Home",path:"/",src:<AiFillHome className='w-5 h-5' />},
+        {title:"Dashboard",path:"/dashboard", src:<MdDashboard className='w-5 h-5' />},
+        {title:"Profile",path:"/dashboard/profile", src:<ImProfile className='w-5 h-5' />},
+        
+        {title:"Review",path:"/", src:<MdRateReview className='w-5 h-5'/>},
+        {title:"Make Admin" ,path:"/",src:<AiFillEdit className='w-5 h-5' />,gap:true},
+        {title:"Transection",path:"/", src:<FaMoneyCheck className='w-5 h-5' />},
+        {title:"All User",path:"/", src:<AiOutlineUsergroupAdd className='w-5 h-5'  />},
+        {title:"Setting",path:"/", src:<FiSettings className='w-5 h-5' />,setting:true},
+        {title:"Go To Home",path:"/",src:<AiFillHome className='w-5 h-5' />},
+        {title:"Dashboard",path:"/dashboard", src:<MdDashboard className='w-5 h-5' />},
+        {title:"Profile",path:"/dashboard/profile", src:<ImProfile className='w-5 h-5' />},
+        {title:"Review",path:"/dashboard/review", src:<MdRateReview className='w-5 h-5'/>},
+        {title:"Make Admin" ,path:"/",src:<AiFillEdit className='w-5 h-5' />,gap:true},
+        {title:"Transection",path:"/", src:<FaMoneyCheck className='w-5 h-5' />},
+        {title:"All User",path:"/", src:<AiOutlineUsergroupAdd className='w-5 h-5'  />},
+        {title:"Setting",path:"/", src:<FiSettings className='w-5 h-5' />,setting:true},
       
     ]
     return (
@@ -39,9 +49,10 @@ const Dashboard = () => {
               w-8 h-8 text-black     rounded-full ${!open && 'rotate-180'}
              `}  />
         </label>
-        <div className='px-5 pt-5 bg-white min-h-screen'>
+        <div className='min-h-screen px-5 pt-5 bg-white'>
+        <div className='min-h-screen px-5 pt-5 pl-16 bg-white'>
 
-        <DashboardMenu />
+        {!pathname.includes("dashboard/")&&<DashboardMenu />}
         <Outlet />
         </div>
 
@@ -74,6 +85,7 @@ const Dashboard = () => {
              </ul> 
       
       </div>
+    </div>
     </div>
     );
 };

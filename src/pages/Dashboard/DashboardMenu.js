@@ -4,7 +4,7 @@ import {AiOutlineArrowDown} from 'react-icons/ai'
 const DashboardMenu = () => {
     return (
         
-        <div class="navbar bg-base-100">
+        <div class="navbar bg-base-100 m-0 p-0">
   <div class="flex-1">
   <input type="text" placeholder="Search..." class="input  outline-none border-b-4 focus:outline-none  border-[#2366B5] input-primary w-full max-w-xs" />
   </div>

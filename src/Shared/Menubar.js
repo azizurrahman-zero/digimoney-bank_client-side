@@ -10,7 +10,7 @@ const Menubar = () => {
     
     <li><Link to="/company">Company</Link></li>
     <li><Link to="/cards">Cards</Link></li>
-    <li><Link to="/service">Services</Link></li>
+    <li><Link to="/services">Services</Link></li>
     <li><Link to="/service">Portfolio</Link></li>
     <li><Link to="/service">News</Link></li>
     <li><Link to="/dashboard">Dashboard</Link></li>
@@ -18,7 +18,7 @@ const Menubar = () => {
   </>
   return (
     <div>
-      <div class="navbar bg-[#0D0D0D] text-[#F2F2F2]">
+      <div class="navbar bg-primary text-[#F2F2F2]">
         <div class="navbar-start">
           <div class="dropdown">
             <label tabindex="0" class="btn btn-ghost lg:hidden">
