@@ -3,11 +3,7 @@ import { useLocation } from "react-router-dom";
 import "./App.css";
 import Blog from "./pages/Blog/Blog";
 import Cards from "./pages/Cards/Cards";
-<<<<<<< HEAD
-import Blog from "./pages/Blog/Blog";
-=======
 import AboutUs from "./pages/About/AboutUs";
->>>>>>> f4c4003370f950e4919b2cea2deb289fdd4e6e61
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import SignUp from "./pages/Login/SignUp";
@@ -45,12 +41,7 @@ function App() {
           <Route path="review" element={<Review />} />
         </Route>
       </Routes>
-<<<<<<< HEAD
-
-      <Footer />
-=======
       {!pathname.includes("dashboard") && <Footer></Footer>}
->>>>>>> f4c4003370f950e4919b2cea2deb289fdd4e6e61
     </div>
   );
 }
