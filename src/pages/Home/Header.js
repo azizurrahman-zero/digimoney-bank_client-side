@@ -1,5 +1,4 @@
 import React from "react";
-import Menubar from "../../Shared/Menubar";
 import { BsBank } from "react-icons/bs";
 import BannerSlider from "./BannerSlider";
 
@@ -21,7 +20,7 @@ const Header = () => {
             <p className="text-md px-2">Make here your online transactions!</p>
           </div>
           <div className="lg:flex py-8 px-2 rounded  bg-[rgba(0,0,0,0.6)]">
-            <select class="select   rounded-none mr-1 mb-2 lg:mb-0">
+            <select className="select   rounded-none mr-1 mb-2 lg:mb-0">
               <option disabled selected>
                 Card Type
               </option>
@@ -31,7 +30,7 @@ const Header = () => {
               <option>Lisa</option>
               <option>Maggie</option>
             </select>
-            <select class="select   rounded-none mr-1">
+            <select className="select   rounded-none mr-1">
               <option disabled selected>
                 Number of Document
               </option>
@@ -48,7 +47,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <Menubar />
+
       <div className="lg:grid grid-cols-6 mt-2">
         <div className="col-span-4">
           <BannerSlider />
