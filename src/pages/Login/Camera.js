@@ -24,20 +24,30 @@ const Camera = () => {
 
     // taking picture 
     const takePicture = () => {
-        let photo = photoRef.current
+        const width = 200
+        const height = 150
+
         let video = videoRef.current
 
-        let ctx = photo.getContext('2d')
-        ctx.drawImage(video)
-    }
+        let photo = photoRef.current
 
+        photo.width = width
+
+        photo.height = height
+
+        let ctx = photo.getContext('2d')
+
+        ctx.drawImage(video, 0, 0, width, height)
+
+    }
 
     // clear image 
     const clearImage = () => {
         let photo = photoRef.current
+
         let ctx = photo.getContext('2d')
 
-        ctx.clearRect(photo)
+        ctx.clearRect(0, 0, photo.width, photo.height)
     }
 
     useEffect(() => {
