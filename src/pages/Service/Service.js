@@ -62,19 +62,19 @@ const Service = () => {
         {services.map((service) => (
           <div className="service-card text-white">
             <div className="service-card-wraper ">
-              <div class="  mx-auto   ">
-                <figure class="px-10 pt-10">
+              <div className="  mx-auto   ">
+                <figure className="px-10 pt-10">
                   <img
                     src="https://placeimg.com/400/225/arch"
                     alt="Shoes"
-                    class="rounded-xl"
+                    className="rounded-xl"
                   />
                 </figure>
-                <div class="card-body  ">
-                  <h2 class="card-title">{service.title}</h2>
+                <div className="card-body  ">
+                  <h2 className="card-title">{service.title}</h2>
                   <p>{service.desc}</p>
-                  <div class="card-actions my-4">
-                    <button class="btn btn-accent block ml-auto">Buy Now</button>
+                  <div className="card-actions my-4">
+                    <button className="btn btn-accent block ml-auto">Buy Now</button>
                   </div>
                 </div>
               </div>
