@@ -1,65 +1,60 @@
-.header-top{
-    background:linear-gradient(0deg,rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url("https://thumbs.dreamstime.com/b/young-man-working-laptop-his-bed-background-panoramic-window-overlooking-skyscrapers-freelancer-remote-122331897.jpg");
+.header-top {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("https://thumbs.dreamstime.com/b/young-man-working-laptop-his-bed-background-panoramic-window-overlooking-skyscrapers-freelancer-remote-122331897.jpg");
 }
-.register-button{
-    clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
-    padding: 10px 20px;
-    font-weight: bold;
+.register-button {
+  clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+  padding: 10px 20px;
+  font-weight: bold;
 }
 /* Slider image default size  */
-.slide-img{
-    min-height: 20vh;
-   
-    object-fit: cover;
+.slide-img {
+  min-height: 20vh;
+
+  object-fit: cover;
 }
 /* Feature card hover effect  */
-.feature-card{
-    transition: .4s ease;
-    position:relative;
-    cursor: pointer;
-    border-radius: 0px;
-background: #e0e0e0;
-box-shadow:  7px 7px 11px #b3b3b3,
-             -7px -7px 11px #ffffff;
-
-  
+.feature-card {
+  transition: 0.4s ease;
+  position: relative;
+  cursor: pointer;
+  border-radius: 0px;
+  background: #e0e0e0;
+  box-shadow: 7px 7px 11px #b3b3b3, -7px -7px 11px #ffffff;
 }
 
-.feature-card:hover .overlay{
- height: 100%;
-  
+.feature-card:hover .overlay {
+  height: 100%;
 }
-.feature-card:hover .custom-body{
-    color: #F2F2F2;
+.feature-card:hover .custom-body {
+  color: #f2f2f2;
 }
-.overlay{
-    height: 0;
-    width: 100%;
-    background: #F24968;
-    position: absolute;
-    z-index: 2;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    transition: .5s ease;
+.overlay {
+  height: 0;
+  width: 100%;
+  background: #f24968;
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: 0.5s ease;
 }
-.custom-body{
-    z-index: 50;
+.custom-body {
+  z-index: 50;
 }
 
 /* Download app section  */
-.download-section{
-    background: #e0e0e0;
-box-shadow:  7px 7px 11px #b3b3b3,
-             -7px -7px 11px #ffffff;
+.download-section {
+  background: #e0e0e0;
+  box-shadow: 7px 7px 11px #b3b3b3, -7px -7px 11px #ffffff;
 }
-
 
 /* ================================= */
 @media screen and (max-width: 480px) {
-    .register-button{
-        width: fit-content;
-       
-        font-weight: bold;
-    }
+  .register-button {
+    width: fit-content;
+
+    font-weight: bold;
   }
+}
