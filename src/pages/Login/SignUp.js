@@ -295,6 +295,15 @@ const SignUp = () => {
                     })}
                   />
                 </div>
+
+              </div>
+              <div className="flex items-center justify-center mt-6">
+                <button className="w-full max-w-xs text-white form-control btn btn-accent">
+                  <Link className="link link-secondary" to="/camera">
+                    Capture Your Live Photo
+                  </Link>
+                </button>
+
               </div>
               <div className="flex items-center justify-center mt-6">
                 <input
