@@ -4,12 +4,12 @@ const News = ({ news }) => {
   const [showDetails, setShowDetails] = useState(false);
   return (
     <article>
-      <div className="block rounded-lg shadow-lg bg-secondary text-accent  ">
+      <div className="block card rounded-lg news-card  text-secondary  ">
         <div className="py-3 px-6 border-b border-gray-400">
           <h1 className="text-xl">{news.headline}</h1>
         </div>
         <div className="p-6">
-          <p className="text-accent text-sm mb-4">
+          <p className=" text-sm mb-4">
             {showDetails
               ? news.description
               : `${news.description.slice(0, 250)}...`}
@@ -17,7 +17,7 @@ const News = ({ news }) => {
           <button
             onClick={() => setShowDetails(!showDetails)}
             type="button"
-            className="   btn btn-primary btn-xs  text-accent rounded-none"
+            className="    btn btn-primary  hover:bg-primary hover:text-white btn-xs  font-bold rounded-none"
           >
             {showDetails ? "See Less" : "See More"}
           </button>
