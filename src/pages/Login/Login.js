@@ -13,7 +13,7 @@ const Login = () => {
     handleSubmit,
   } = useForm();
 
-  const [signInWithEmailAndPassword,user, loading, error] =
+  const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
   if (loading) {
@@ -55,7 +55,7 @@ const Login = () => {
                   },
                 })}
               />
-          
+
               <label className="label pt-0">
                 {errors.email?.type === "required" && (
                   <span className="label-text-alt text-error">
@@ -114,7 +114,7 @@ const Login = () => {
               </label>
             </div>
           </form>
-          <div className="divider">OR</div>
+          {/* <div className="divider">OR</div> */}
           {/* <SocialLogin
               signInWithGoogle={signInWithGoogle}
               googleError={googleError}
