@@ -14,6 +14,7 @@ import WelcomePage from "./pages/Dashboard/WelcomePage";
 import Profile from "./pages/Dashboard/Profile";
 import Review from "./pages/Dashboard/Review";
 import Service from "./pages/Service/Service";
+import Team from "./pages/Company/Team";
 
 function App() {
   const { pathname } = useLocation();
@@ -28,6 +29,7 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/home" element={<Home />}></Route>
         <Route path="/services" element={<Service />}></Route>
+        <Route path="/team" element={<Team />} />
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signUp" element={<SignUp />}></Route>
         <Route path="/blog" element={<Blog />}></Route>
