@@ -59,7 +59,7 @@ const SignUp = () => {
             address: address,
             amount: amount,
             gender: event.target.gender.value,
-            img: img,
+            img: img
 
           };
 
