@@ -1,12 +1,16 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
-import auth from '../../firebase.init'
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import auth from "../../firebase.init";
 import "./Login.css";
 import Loading from "../../Shared/Loading";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+  
   const {
     register,
     formState: { errors },
@@ -18,6 +22,9 @@ const Login = () => {
 
   if (loading) {
     return <Loading></Loading>;
+  }
+  if(user){
+    navigate(from, { replace: true });
   }
 
   const onSubmit = (data) => {
@@ -55,7 +62,7 @@ const Login = () => {
                   },
                 })}
               />
-          
+
               <label className="label pt-0">
                 {errors.email?.type === "required" && (
                   <span className="label-text-alt text-error">
@@ -114,7 +121,7 @@ const Login = () => {
               </label>
             </div>
           </form>
-          <div className="divider">OR</div>
+          {/* <div className="divider">OR</div> */}
           {/* <SocialLogin
               signInWithGoogle={signInWithGoogle}
               googleError={googleError}

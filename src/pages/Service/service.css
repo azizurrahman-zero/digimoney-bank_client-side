@@ -26,13 +26,11 @@
 }
 .service-card:hover{
  
-    z-index: 50;
+    
 }
 .service-card:hover::after{
     transform: rotate(10deg);
-    z-index: -50;
-    
-  
+ 
 }
 .service-card-wraper{
     height: 100%;
