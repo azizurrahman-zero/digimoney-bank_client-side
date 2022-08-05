@@ -15,14 +15,15 @@ import Profile from "./pages/Dashboard/Profile";
 import Review from "./pages/Dashboard/Review";
 import Service from "./pages/Service/Service";
 import Camera from "./pages/Login/Camera";
-
+import SendMoney from "./pages/Dashboard/SendMoney";
 
 function App() {
   const { pathname } = useLocation();
   return (
     <div
-      className={`mx-auto max-w-7xl ${pathname.includes("dashboard") && "py-2"
-        }`}
+      className={`mx-auto max-w-7xl ${
+        pathname.includes("dashboard") && "py-2"
+      }`}
     >
       {!pathname.includes("dashboard") && <Menubar></Menubar>}
       <Routes>
@@ -39,6 +40,8 @@ function App() {
           <Route index element={<WelcomePage />} />
           <Route path="dashboard" element={<WelcomePage />} />
           <Route path="profile" element={<Profile />} />
+
+          <Route path="send-money" element={<SendMoney />} />
 
           <Route path="review" element={<Review />} />
         </Route>
