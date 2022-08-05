@@ -1,8 +1,19 @@
+import { signOut } from "firebase/auth";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { BsSearch } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import auth from "../firebase.init";
 
 const Menubar = () => {
+  const [user] = useAuthState(auth);
+  
+
+  const logout = () => {
+    signOut(auth);
+    
+  };
+
 
   const menuItem = <>
     <li><Link to="/">Home</Link></li>
@@ -23,9 +34,22 @@ const Menubar = () => {
     <li><Link to="/cards">Cards</Link></li>
     <li><Link to="/services">Services</Link></li>
     {/* <li><Link to="/service">Portfolio</Link></li> */}
+    {user && (
+        <li>
+          <li><Link to="/dashboard">Dashboard</Link></li>
+        </li>
+      )}
     
-    <li><Link to="/dashboard">Dashboard</Link></li>
-    <li><Link to="/login">Login</Link></li>
+    
+    <li className="justify-center items-center">
+        {user ? (
+          <button onClick={logout} className="btn btn-ghost capitalize">
+            Sign Out
+          </button>
+        ) : (
+          <Link to="/login">Login</Link>
+        )}
+      </li>
   </>
 
 

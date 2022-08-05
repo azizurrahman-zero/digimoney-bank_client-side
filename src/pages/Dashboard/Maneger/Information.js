@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Information = ({ user, index, setInformation }) => {
+  const [deleteusers, setDeleteusers] = useState([]);
+  const handleDelete = (id) => {
+    const proceed = window.confirm("Are you sure?");
+    if (proceed) {
+      const url = `http://localhost:4000/user/${id}`;
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          const remaining = deleteusers.filter((product) => product._id !== id);
+          setDeleteusers(remaining);
+        });
+    }
+  };
   return (
     <tr>
       <th>{index + 1}</th>
@@ -26,7 +42,7 @@ const Information = ({ user, index, setInformation }) => {
           Check
         </label>
 
-        <button class="btn btn-xs btn-error">Cancel</button>
+        <button onClick={() => handleDelete(user._id)} class="btn btn-xs btn-error">Cancel</button>
       </td>
     </tr>
   );
