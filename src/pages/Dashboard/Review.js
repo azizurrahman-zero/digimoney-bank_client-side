@@ -14,7 +14,7 @@ const Review = () => {
             </div>
             <div className='mt-5'>
 
-            <textarea class="textarea textarea-primary pl-10 pt-8 border-[#2366B5] focus:outline-none w-full" rows={"8"} placeholder="Description..."></textarea>
+            <textarea className="textarea textarea-primary pl-10 pt-8 border-[#2366B5] focus:outline-none w-full" rows={"8"} placeholder="Description..."></textarea>
             </div>
             <button className='block ml-auto btn btn-primary w-full lg:w-5/12 mt-5 bg-[#2366B5] hover:bg-[#0e2e54] border-none text-white'>Submit</button>
             </form>

@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
-import auth from '../../firebase.init'
+import auth from "../../firebase.init";
 import "./Login.css";
 import Loading from "../../Shared/Loading";
 
@@ -13,7 +13,7 @@ const Login = () => {
     handleSubmit,
   } = useForm();
 
-  const [signInWithEmailAndPassword,user, loading, error] =
+  const [signInWithEmailAndPassword, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
   if (loading) {
@@ -55,7 +55,7 @@ const Login = () => {
                   },
                 })}
               />
-          
+
               <label className="label pt-0">
                 {errors.email?.type === "required" && (
                   <span className="label-text-alt text-error">
@@ -114,7 +114,7 @@ const Login = () => {
               </label>
             </div>
           </form>
-          <div className="divider">OR</div>
+          {/* <div className="divider">OR</div> */}
           {/* <SocialLogin
               signInWithGoogle={signInWithGoogle}
               googleError={googleError}

@@ -20,8 +20,9 @@ const Dashboard = () => {
         {title:"Dashboard",path:"/dashboard", src:<MdDashboard className='w-5 h-5' />},
         {title:"Profile",path:"/dashboard/profile", src:<ImProfile className='w-5 h-5' />},
         
-        {title:"Review",path:"/", src:<MdRateReview className='w-5 h-5'/>},
+        {title:"Review",path:"/dashboard/review", src:<MdRateReview className='w-5 h-5'/>},
         {title:"Make Admin" ,path:"/",src:<AiFillEdit className='w-5 h-5' />,gap:true},
+        {title:"User Request" ,path:"/dashboard/user-request",src:<AiFillEdit className='w-5 h-5' />,gap:true},
         {title:"Transection",path:"/", src:<FaMoneyCheck className='w-5 h-5' />},
         {title:"All User",path:"/", src:<AiOutlineUsergroupAdd className='w-5 h-5'  />},
         {title:"Setting",path:"/", src:<FiSettings className='w-5 h-5' />,setting:true},
@@ -32,16 +33,15 @@ const Dashboard = () => {
         {title:"Make Admin" ,path:"/",src:<AiFillEdit className='w-5 h-5' />,gap:true},
         {title:"Transection",path:"/", src:<FaMoneyCheck className='w-5 h-5' />},
         {title:"All User",path:"/", src:<AiOutlineUsergroupAdd className='w-5 h-5'  />},
-        {title:"Setting",path:"/", src:<FiSettings className='w-5 h-5' />,setting:true},
-      
+        {title:"Setting",path:"/", src:<FiSettings className='w-5 h-5' />,setting:true},      
     ]
     return (
 
-      <div class="drawer drawer-mobile      rounded-3xl ">
-      <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-      <div class="drawer-content custom-scroll">
+      <div className="drawer drawer-mobile      rounded-3xl ">
+      <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+      <div className="drawer-content custom-scroll">
      
-        <label for="my-drawer-2" class="block mx-8 mt-3   drawer-button lg:hidden">
+        <label for="my-drawer-2" className="block mx-8 mt-3   drawer-button lg:hidden">
         < RiBarChartHorizontalLine
               for="my-drawer-2"
            
@@ -49,8 +49,7 @@ const Dashboard = () => {
               w-8 h-8 text-black     rounded-full ${!open && 'rotate-180'}
              `}  />
         </label>
-        <div className='min-h-screen px-5 pt-5 bg-white'>
-        <div className='min-h-screen px-5 pt-5 pl-16 bg-white'>
+        <div className='px-5 pl-16 pt-5 bg-white min-h-screen'>
 
         {!pathname.includes("dashboard/")&&<DashboardMenu />}
         <Outlet />
@@ -58,8 +57,8 @@ const Dashboard = () => {
 
       
       </div> 
-      <div class="drawer-side  custom-sidebar">
-        <label for="my-drawer-2" class="drawer-overlay "></label> 
+      <div className="drawer-side  custom-sidebar">
+        <label for="my-drawer-2" className="drawer-overlay "></label> 
       
            <ul className={`pt-6  ${!open?"w-20":"w-52"} p-5 bg-[#2366B5] `}>
            < BsArrowLeftCircle
@@ -85,7 +84,6 @@ const Dashboard = () => {
              </ul> 
       
       </div>
-    </div>
     </div>
     );
 };
