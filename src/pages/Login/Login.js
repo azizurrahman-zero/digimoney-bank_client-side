@@ -1,23 +1,30 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import "./Login.css";
 import Loading from "../../Shared/Loading";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+  
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
 
-  const [signInWithEmailAndPassword, loading, error] =
+  const [signInWithEmailAndPassword,user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
   if (loading) {
     return <Loading></Loading>;
+  }
+  if(user){
+    navigate(from, { replace: true });
   }
 
   const onSubmit = (data) => {
