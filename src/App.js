@@ -18,9 +18,6 @@ import Camera from "./pages/Login/Camera";
 
 import UserRequest from "./pages/Dashboard/Maneger/UserRequest";
 
-
-import Team from "./pages/Company/Team";
-
 function App() {
   const { pathname } = useLocation();
   return (
