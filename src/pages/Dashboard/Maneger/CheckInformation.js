@@ -2,6 +2,7 @@ import React from "react";
 
 const CheckInformation = ({ information }) => {
   const {
+    _id,
     displayName,
     email,
     contact,
@@ -11,6 +12,39 @@ const CheckInformation = ({ information }) => {
     amount,
     accountType,
   } = information;
+
+  const approved = (id, { information }) => {
+    fetch('http://localhost:4000/approvedUsers', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(information)
+
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+      })
+
+
+    // delete task 
+    // const url = `http://localhost:4000/users${id}`;
+    // fetch(url, {
+    //   method: 'DELETE'
+    // })
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     if (data.deletedCount > 0) {
+    //       const remaining = tasks.filter(todo => todo._id !== id)
+    //       setTask(remaining);
+    //     }
+    //   })
+
+
+  }
+
+
   return (
     <>
       <input type="checkbox" id="check-information" class="modal-toggle" />
@@ -75,7 +109,7 @@ const CheckInformation = ({ information }) => {
           </div>
 
           <div class="modal-action">
-            <label for="check-information" class="btn btn-active btn-accent">
+            <label onClick={() => approved(_id, { information })} for="check-information" class="btn btn-active btn-accent">
               Approved
             </label>
           </div>

@@ -15,11 +15,10 @@ import Profile from "./pages/Dashboard/Profile";
 import Review from "./pages/Dashboard/Review";
 import Service from "./pages/Service/Service";
 import Camera from "./pages/Login/Camera";
+import Team from "./pages/Company/Team";
 
 import UserRequest from "./pages/Dashboard/Maneger/UserRequest";
-
-
-import Team from "./pages/Company/Team";
+import AllUsers from "./pages/Dashboard/AllUsers";
 
 function App() {
   const { pathname } = useLocation();
@@ -40,15 +39,16 @@ function App() {
         <Route path="/cards" element={<Cards />}></Route>
         <Route path="/about" element={<AboutUs />}></Route>
         <Route path="/team" element={<Team />}></Route>
-        
-        
-        
+
+
+
         <Route path="review" element={<Review />} />
         <Route path="/dashboard" element={<Dashboard />}>
           <Route index element={<WelcomePage />} />
           <Route path="dashboard" element={<WelcomePage />} />
           <Route path="profile" element={<Profile />} />
           <Route path="user-request" element={<UserRequest />} />
+          <Route path="allusers" element={<AllUsers />} />
           <Route path="review" element={<Review />} />
         </Route>
       </Routes>
