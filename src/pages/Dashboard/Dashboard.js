@@ -4,7 +4,7 @@ import { BsArrowLeftCircle } from "react-icons/bs";
 import { RiBarChartHorizontalLine } from "react-icons/ri";
 import { AiOutlineUsergroupAdd, AiFillEdit, AiFillHome } from "react-icons/ai";
 import { FiSettings, FiLogOut } from "react-icons/fi";
-import { FaMoneyBill, FaMoneyCheck } from "react-icons/fa";
+import { FaMoneyCheck } from "react-icons/fa";
 import { MdRateReview, MdDashboard } from "react-icons/md";
 import { ImProfile } from "react-icons/im";
 import { Outlet } from "react-router-dom";
@@ -27,11 +27,6 @@ const Dashboard = () => {
     },
 
     {
-      title: "Send Money",
-      path: "/dashboard/send-money",
-      src: <FaMoneyBill className="w-5 h-5" />,
-    },
-    {
       title: "Review",
       path: "/dashboard/review",
       src: <MdRateReview className="w-5 h-5" />,
@@ -39,6 +34,12 @@ const Dashboard = () => {
     {
       title: "Make Admin",
       path: "/",
+      src: <AiFillEdit className="w-5 h-5" />,
+      gap: true,
+    },
+    {
+      title: "User Request",
+      path: "/dashboard/user-request",
       src: <AiFillEdit className="w-5 h-5" />,
       gap: true,
     },
@@ -87,7 +88,7 @@ const Dashboard = () => {
     },
     {
       title: "All User",
-      path: "/",
+      path: "/dashboard/allusers",
       src: <AiOutlineUsergroupAdd className="w-5 h-5" />,
     },
     {
