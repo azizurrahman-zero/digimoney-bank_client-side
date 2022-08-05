@@ -1,13 +1,27 @@
+import { signOut } from "firebase/auth";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { BsSearch } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import auth from "../firebase.init";
 
 const Menubar = () => {
+<<<<<<< HEAD
   const menuItem = (
     <>
       <li>
         <Link to="/">Home</Link>
       </li>
+=======
+  const [user] = useAuthState(auth);
+  
+
+  const logout = () => {
+    signOut(auth);
+    
+  };
+
+>>>>>>> 1c552a3136332aa1a2958dc4f7b00a2f5acde1b6
 
       <li>
         <Link to="/blog">Blog</Link>
@@ -62,6 +76,26 @@ const Menubar = () => {
       <Link to="/services">Services</Link>
     </li>
     {/* <li><Link to="/service">Portfolio</Link></li> */}
+<<<<<<< HEAD
+=======
+    {user && (
+        <li>
+          <li><Link to="/dashboard">Dashboard</Link></li>
+        </li>
+      )}
+    
+    
+    <li className="justify-center items-center">
+        {user ? (
+          <button onClick={logout} className="btn btn-ghost capitalize">
+            Sign Out
+          </button>
+        ) : (
+          <Link to="/login">Login</Link>
+        )}
+      </li>
+  </>
+>>>>>>> 1c552a3136332aa1a2958dc4f7b00a2f5acde1b6
 
     <li>
       <Link to="/dashboard">Dashboard</Link>

@@ -64,12 +64,18 @@ const CheckInformation = ({ information }) => {
                   <td>Deposit Amount</td>
                   <td>{amount}</td>
                 </tr>
+                <tr>
+                  <td>Amount Number</td>
+                  <td>
+                    <input type="number" name="" id="" />
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>
 
           <div class="modal-action">
-            <label for="check-information" class="btn">
+            <label for="check-information" class="btn btn-active btn-accent">
               Approved
             </label>
           </div>

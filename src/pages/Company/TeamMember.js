@@ -14,7 +14,7 @@ const TeamMember = ({team}) => {
         </figure>
         <div  class="card-body   gap-0 items-center text-center">
           <h2 class="card-title">{team.name}</h2>
-          <p className='text-[#A8A8A8] text-sx'><small>Web designer</small></p>
+          <p className='text-[#A8A8A8] text-sx'><small>Web Developer</small></p>
           <p className='mt-5 text-[#A8A8A8] text-sx'>{team.desc.length>200?`${team.desc.slice(0,150)}...`:team.desc}</p>
           <div class="card-actions mt-8">
                 <div className='flex gap-x-7'>

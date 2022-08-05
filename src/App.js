@@ -41,15 +41,24 @@ function App() {
         <Route path="/cards" element={<Cards />}></Route>
         <Route path="/about" element={<AboutUs />}></Route>
         <Route path="/team" element={<Team />}></Route>
+<<<<<<< HEAD
 
+=======
+        
+        
+        
+>>>>>>> 1c552a3136332aa1a2958dc4f7b00a2f5acde1b6
         <Route path="review" element={<Review />} />
         <Route path="/dashboard" element={<Dashboard />}>
           <Route index element={<WelcomePage />} />
           <Route path="dashboard" element={<WelcomePage />} />
           <Route path="profile" element={<Profile />} />
           <Route path="user-request" element={<UserRequest />} />
+<<<<<<< HEAD
 
           <Route path="send-money" element={<SendMoney />} />
+=======
+>>>>>>> 1c552a3136332aa1a2958dc4f7b00a2f5acde1b6
           <Route path="review" element={<Review />} />
         </Route>
       </Routes>
