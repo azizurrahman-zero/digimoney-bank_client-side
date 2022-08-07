@@ -14,7 +14,6 @@ const UserRequest = () => {
 
 
   return (
-
     <div>
       <h2 className="text-2xl text-center">All Request: {users.length}</h2>
       <div className="mt-5 overflow-x-auto">
@@ -37,6 +36,8 @@ const UserRequest = () => {
                 key={user._id}
                 user={user}
                 index={index}
+                users={users}
+                setUsers={setUsers}
                 setInformation={setInformation}
               ></Information>
             ))}
