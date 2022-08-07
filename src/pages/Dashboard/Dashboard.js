@@ -30,8 +30,10 @@ const Dashboard = () => {
     { title: "Dashboard", path: "/dashboard", src: <MdDashboard className='w-5 h-5' /> },
     { title: "Profile", path: "/dashboard/profile", src: <ImProfile className='w-5 h-5' /> },
     { title: "Review", path: "/dashboard/review", src: <MdRateReview className='w-5 h-5' /> },
+    { title: "Send Money", path: "/dashboard/sendmoney", src: <FaMoneyCheck className='w-5 h-5' /> },
     { title: "Make Admin", path: "/", src: <AiFillEdit className='w-5 h-5' />, gap: true },
     { title: "Transection", path: "/", src: <FaMoneyCheck className='w-5 h-5' /> },
+
     // { title: "All User", path: "/dashboard/allusers", src: <AiOutlineUsergroupAdd className='w-5 h-5' /> },
     { title: "Setting", path: "/", src: <FiSettings className='w-5 h-5' />, setting: true },
   ]

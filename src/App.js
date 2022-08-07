@@ -19,6 +19,7 @@ import Team from "./pages/Company/Team";
 
 import UserRequest from "./pages/Dashboard/Maneger/UserRequest";
 import AllUsers from "./pages/Dashboard/AllUsers";
+import SendMoney from "./pages/Dashboard/SendMoney";
 
 function App() {
   const { pathname } = useLocation();
@@ -49,6 +50,7 @@ function App() {
           <Route path="profile" element={<Profile />} />
           <Route path="user-request" element={<UserRequest />} />
           <Route path="allusers" element={<AllUsers />} />
+          <Route path="sendmoney" element={<SendMoney />} />
           <Route path="review" element={<Review />} />
         </Route>
       </Routes>

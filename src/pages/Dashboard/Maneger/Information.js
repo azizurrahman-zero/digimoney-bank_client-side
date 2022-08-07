@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Information = ({ user, index,users, setInformation }) => {
+const Information = ({ user, index,users, setUsers,setInformation }) => {
   // const [deleteusers, setDeleteusers] = useState([]);
 
   const handleDelete = (id) => {
@@ -12,9 +12,12 @@ const Information = ({ user, index,users, setInformation }) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
-          const remaining = users.filter((product) => product._id !== id);
-          setInformation(remaining);
+          if (data.deletedCount > 0) {
+  
+            const remaining = users.filter(user => user._id !== id)
+            setUsers(remaining);
+  
+          }
         });
     }
   };
