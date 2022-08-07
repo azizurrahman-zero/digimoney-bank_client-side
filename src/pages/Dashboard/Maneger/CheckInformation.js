@@ -29,17 +29,17 @@ const CheckInformation = ({ information }) => {
 
 
     // delete task 
-    // const url = `http://localhost:4000/users${id}`;
-    // fetch(url, {
-    //   method: 'DELETE'
-    // })
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     if (data.deletedCount > 0) {
-    //       const remaining = tasks.filter(todo => todo._id !== id)
-    //       setTask(remaining);
-    //     }
-    //   })
+    const url = `http://localhost:4000/users${id}`;
+    fetch(url, {
+      method: 'DELETE'
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.deletedCount > 0) {
+          const remaining = tasks.filter(todo => todo._id !== id)
+          setTask(remaining);
+        }
+      })
 
 
   }

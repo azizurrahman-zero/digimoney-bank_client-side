@@ -37,6 +37,7 @@ const UserRequest = () => {
                   key={user._id}
                   user={user}
                   index={index}
+                  users={users}
                   setInformation={setInformation}
                 ></Information>
               ))}
