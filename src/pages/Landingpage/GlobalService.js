@@ -1,8 +1,23 @@
-import React from 'react';
+
+import React,{useEffect} from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+
+   
+
+
+
+
+
 
 const GlobalService = ({serviceTitle,serviceDescription}) => {
+    
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
     return (
-        <div class="mb-6 rounded-lg cursor-pointer min-h-[160px] global-card    bg-base-100 shadow-xl px-6 py-6 h-auto">
+        <div data-aos="fade-in" class="mb-6 rounded-lg cursor-pointer min-h-[160px] global-card    bg-base-100 shadow-xl px-6 py-6 h-auto">
          <div className='relative z-50'>
 
           <h2 class="text-xl font-bold text-[#010C27] custom-hover">{serviceTitle}</h2>

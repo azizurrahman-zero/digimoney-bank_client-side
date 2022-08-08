@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+
+   
+
+
 
 const Mission = ({title}) => {
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
   return (
-    <div className="mission-card p-12 rounded-xl">
+    <div data-aos="fade-in" className="mission-card p-12 rounded-xl">
       <button className="btn mb-8 border-none  btn-primary font-bold text-[rgb(7,58,66)] bg-[#F8BF88]">
         Petal 1
       </button>

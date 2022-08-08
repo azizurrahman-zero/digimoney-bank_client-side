@@ -1,8 +1,19 @@
-import React from "react";
+import React,{useEffect} from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+
+   
+
+
+
 
 const ExchangeRates = () => {
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
   return (
-    <section className="lg:my-32 bg-[#073A42] my-12 lg:px-28 px-4  p-20 relative exchange-container">
+    <section data-aos="fade-in" className="lg:my-32 bg-[#073A42] my-12 lg:px-28 px-4  p-20 relative exchange-container">
         
       <div className='exchange-ball'>
 

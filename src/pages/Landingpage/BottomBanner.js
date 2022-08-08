@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const BottomBanner = () => {
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
   return (
-    <section className="bg-[#F8BF8A] lg:pt-28 pt-12 px-2 lg:px-0 lg:pb-36 pb-1 ">
-      <div className="mx-auto border-[#0C444B] px-2 lg:px-0 py-16 lg:px-16 lg:w-8/12 border-2">
+    <section data-aos="fade-in" className="bg-[#F8BF8A] lg:pt-28 pt-12 px-2 lg:px-0 lg:pb-36 pb-1 ">
+      <div className="mx-auto border-[#0C444B] px-2  py-16 lg:px-16 lg:w-8/12 border-2">
         <div className=" grid lg:grid-cols-2 ">
         <div>
           <h1 className="text-5xl font-bold lg:mt-8 text-[#114C54]">

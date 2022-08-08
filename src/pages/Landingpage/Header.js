@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Menubar from "../../Shared/Menubar";
 import BankAdvantage from "./BankAdvantage";
 import { FiChevronRight } from "react-icons/fi";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Header = () => {
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
   return (
     <header className="bg-[rgb(7,58,66)] min-h-screen lg:px-20 px-4 pt-10">
       <div className="walpaper">
@@ -15,8 +20,8 @@ const Header = () => {
         </div>
       </div>
       <Menubar />
-      <div className="grid md:grid-cols-2 relative z-50 mt-4 lg:mt-40">
-        <div className=" ">
+      <div className="grid md:grid-cols-2 relative z-50    mt-4 lg:mt-10">
+        <div data-aos="zoom-in" className=" ">
           <h1 className="text-white text-4xl lg:text-8xl font-bold">
             Your Next <br /> Online Bank.
           </h1>
@@ -45,7 +50,7 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div className="header-left my-20 lg:my-0">
+        <div data-aos="zoom-in" className="header-left my-20 lg:my-0">
           <div className="bg-white banking   w-[330px] py-6 mx-auto">
             <div className="px-6">
               <p className="text-md">Log in to Internet Banking</p>
@@ -90,7 +95,10 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-3 lg:mt-96 pb-20 lg:pb-0 mt-52">
+      <div
+        data-aos="zoom-in"
+        className="grid md:grid-cols-3 lg:mt-96 pb-20 lg:pb-0 mt-52"
+      >
         <div className="banner-bottom">
           <img
             className=" mx-auto"
