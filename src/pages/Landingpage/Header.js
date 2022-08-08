@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Menubar from '../../Shared/Menubar';
 import BankAdvantage from './BankAdvantage';
 import {FiChevronRight} from 'react-icons/fi'
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Header = () => {
+    useEffect(() => {
+        AOS.init({ duration: 1000 });
+      }, []);
     return (
-        <header className='bg-[rgb(7,58,66)] min-h-screen lg:px-28  px-4'>
+        <header  className='bg-[rgb(7,58,66)] min-h-screen lg:px-28  px-4'>
             <div className='walpaper'>
 
             <div><span className='dot'></span> </div>
@@ -14,7 +19,7 @@ const Header = () => {
             </div>
             <Menubar />
             <div className='grid md:grid-cols-2 relative z-50    mt-4 lg:mt-10'>
-                 <div className=' '>
+                 <div data-aos="zoom-in" className=' '>
                     <h1 className='text-white text-4xl lg:text-8xl font-bold'>Your Next <br /> Online Bank.</h1>
                     <hr className='h-[3px] w-[80%] my-10 bg-white' />
                     <div className='grid grid-cols-3 lg:w-[95%]'>
@@ -30,7 +35,7 @@ const Header = () => {
                     </div>
                     </div>
                  </div>
-                 <div className='header-left my-20 lg:my-0'>
+                 <div data-aos="zoom-in" className='header-left my-20 lg:my-0'>
                      <div className='bg-white banking   w-[330px] py-6 mx-auto'>
                         <div className='px-6'>
                         <p className='text-md'>Log in to Internet Banking</p>
@@ -58,8 +63,8 @@ const Header = () => {
             </div>
 
 
-            <div className='grid md:grid-cols-3 lg:mt-96 pb-20 lg:pb-0 mt-52'>
-                <div className='banner-bottom'>
+            <div data-aos="zoom-in" className='grid md:grid-cols-3 lg:mt-96 pb-20 lg:pb-0 mt-52'>
+                <div  className='banner-bottom'>
                   <img className=' mx-auto' src="https://www.thecentralamericangroup.com/wp-content/uploads/2018/10/Man-Transparent.png" alt="" />
                 </div>
                 <div className='flex justify-center items-center'>

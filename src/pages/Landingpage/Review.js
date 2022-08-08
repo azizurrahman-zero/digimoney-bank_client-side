@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+
+   
 
 const Review = ({review}) => {
+    useEffect(() => {
+        AOS.init({ duration: 1000 });
+      }, []);
     return (
-        <div className='shadow-lg py-16 rounded-xl bg-white'>
+        <div data-aos="fade-in" className='shadow-lg py-16 rounded-xl bg-white'>
             <div className='px-12'>
 
             <h1 className='text-2xl  font-bold'>{review.title}</h1>

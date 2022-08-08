@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './footer.css'
 
 import { AiOutlineArrowRight} from 'react-icons/ai'
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+
 
 const Footer = () => {
+    
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
     return (
-        <footer className='bg-[rgb(7,58,66)] mt-4 lg:px-28 px-4 py-16'>
+        <footer data-aos="fade-in" className='bg-[rgb(7,58,66)] mt-4 lg:px-28 px-4 py-16'>
 
             <div className='grid lg:grid-cols-3'>
                 <div>
