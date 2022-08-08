@@ -3,12 +3,13 @@ import creditcard from '../../../src/assets/images/creditcard.jpg'
 import visacard from '../../../src/assets/images/visacard.png'
 import visacardmastercard from '../../../src/assets/images/visamastercardclassic.jpg'
 import applepay from '../../../src/assets/images/applepay.png'
+import Menubar from '../../Shared/Menubar';
 
 
 const Cards = () => {
     return (
         <div>
-            {/* banner */}
+           <Menubar />
             <div className="carousel w-full p-4 space-x-4">
                 <div id="slide1" className="carousel-item relative w-full rounded-box shadow-xl">
                     <img src={creditcard} className="w-full" />

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import image1 from "../../assets/images/bank-img-1.jpg";
+import Menubar from "../../Shared/Menubar";
 import "./service.css";
 
 const Service = () => {
@@ -47,15 +48,12 @@ const Service = () => {
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
       image: image1,
     },
-    // {
-    //   id: 1,
-    //   title: "Create Account",
-    //   desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
-    //   image: image1,
-    // },
+ 
   ];
   const services = !showall ? serviceDAta.slice(0, 6) : serviceDAta;
   return (
+    <>
+    <Menubar />
     <main className="mb-32">
       <h1 className="text-5xl text-center mt-20 mb-20 text-primary">Our Services</h1>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -88,10 +86,11 @@ const Service = () => {
       <button
         onClick={() => setShowAll(!showall)}
         className="btn btn-primary bg-white hover:bg-[#005C53] hover:text-white  text-[#005C53] border-[#005C53] mx-auto block mt-16"
-      >
+        >
         Learn More
       </button>
     </main>
+        </>
   );
 };
 
