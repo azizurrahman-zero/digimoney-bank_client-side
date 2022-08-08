@@ -1,7 +1,25 @@
-.slick-arrow,.slick-next,.slick-dots{
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&family=Roboto:wght@400;700&display=swap");
+
+/* custom fonts */
+.font-barlow {
+  font-family: "Barlow", sans-serif;
+}
+
+.font-roboto {
+  font-family: "Roboto", sans-serif;
+}
+
+.slick-arrow,
+.slick-next,
+.slick-dots {
   display: none !important;
 }
-.slick-slider{
-  margin-bottom: 0 !important;
 
+/* menubar */
+.slick-slider {
+  margin-bottom: 0 !important;
+}
+
+.logo:hover {
+  background-color: transparent;
 }
