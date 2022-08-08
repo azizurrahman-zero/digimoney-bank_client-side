@@ -8,7 +8,6 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import SignUp from "./pages/Login/SignUp";
 import Footer from "./Shared/Footer";
-import Menubar from "./Shared/Menubar";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import WelcomePage from "./pages/Dashboard/WelcomePage";
 import Profile from "./pages/Dashboard/Profile";
@@ -19,7 +18,11 @@ import Team from "./pages/Company/Team";
 
 import UserRequest from "./pages/Dashboard/Maneger/UserRequest";
 import AllUsers from "./pages/Dashboard/AllUsers";
+
 import Landingpage from "./pages/Landingpage/Landingpage";
+
+import SendMoney from "./pages/Dashboard/SendMoney";
+
 
 function App() {
   const { pathname } = useLocation();
@@ -51,6 +54,7 @@ function App() {
           <Route path="profile" element={<Profile />} />
           <Route path="user-request" element={<UserRequest />} />
           <Route path="allusers" element={<AllUsers />} />
+          <Route path="sendmoney" element={<SendMoney />} />
           <Route path="review" element={<Review />} />
         </Route>
       </Routes>

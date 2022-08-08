@@ -1,19 +1,23 @@
 import React, { useState } from "react";
 
-const Information = ({ user, index, setInformation }) => {
-  const [deleteusers, setDeleteusers] = useState([]);
+const Information = ({ user, index,users, setUsers,setInformation }) => {
+  // const [deleteusers, setDeleteusers] = useState([]);
+
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      const url = `http://localhost:4000/user/${id}`;
+      const url = `http://localhost:4000/users/${id}`;
       fetch(url, {
         method: "DELETE",
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
-          const remaining = deleteusers.filter((product) => product._id !== id);
-          setDeleteusers(remaining);
+          if (data.deletedCount > 0) {
+  
+            const remaining = users.filter(user => user._id !== id)
+            setUsers(remaining);
+  
+          }
         });
     }
   };
@@ -42,7 +46,7 @@ const Information = ({ user, index, setInformation }) => {
           Check
         </label>
 
-        <button onClick={() => handleDelete(user._id)} class="btn btn-xs btn-error">Cancel</button>
+        <button onClick={() => handleDelete(user._id)} class="btn btn-xs btn-error">Delete</button>
       </td>
     </tr>
   );
