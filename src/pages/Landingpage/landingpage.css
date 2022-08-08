@@ -1,0 +1,183 @@
+.walpaper{
+    z-index: 50;
+}
+.walpaper div{
+    height: 60px;
+    width: 60px;
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 50px;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    animation: 2s linear infinite;
+ 
+}
+.dot{
+    height: 10px;
+    width: 10px;
+    border-radius: 50px;
+    background: rgba(255,255,255,0.5);
+    position: absolute;
+    top: 20%;
+    right: 20%;
+}
+.walpaper div:nth-child(1){
+    background: #E9866E;
+    top: 22%;
+    left: 38%;
+    height: 50px;
+    width: 50px;
+   
+}
+
+.walpaper div:nth-child(2){
+    top: 86%;
+    left: 45%;
+    background: #E5CB83;
+    height: 50px;
+    width: 50px;
+ 
+    
+}
+
+.wraper div{
+    height: 60px;
+    width: 60px;
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 50px;
+    position: absolute;
+    animation: 4s linear infinite;
+}
+.header-left{
+    position: relative;
+}
+.wraper div:nth-child(1){
+  
+    background-color: #E5CB83;
+    height: 130px;
+    width: 130px;
+    border-radius: 50%;
+    left: 15%;
+    top: -15%;
+
+}
+.wraper div:nth-child(2){
+  
+    background-color: #E9866E;
+    height: 130px;
+    width: 130px;
+    border-radius: 50%;
+    right: 14%;
+    bottom: -3%;
+  
+}
+.banking{
+    position: relative;
+    z-index: 5;
+}
+.banner-bottom{
+ height: 200px;
+ background-color: #E5CB83;
+ position: relative;
+ border-radius: 10px 10px 0 0;
+}
+.banner-bottom img{
+height: 100%;
+transform: scale(1.9);
+
+ margin-top: -90px;
+}
+
+
+/* mission section */
+
+.mission-decription {
+    list-style: none;
+    color: gray;
+  }
+.mission-decription li::before {
+    content: "\2022";
+    color: #4B8B97;
+    font-weight: bold;
+    display: inline-block; 
+    width: 1em;
+    margin-left: -1em;
+  }
+  .mission-card{
+    border-radius: 14px;
+    background: white;
+    box-shadow:  13px 13px 43px #c5c5c5,
+                 -13px -13px 43px #fbfbfb;
+  }
+
+  .global-card{
+    position: relative;
+    transition: .4s ease;
+   
+  }
+  .overlaytwo{
+    height: 0%;
+    width: 100%;
+    background: #073A42;
+    border-radius: 8px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  
+    transition: 0.5s ease;
+  }
+  .global-card:hover .overlaytwo{
+    height: 100%;
+  }
+  .global-card:hover .custom-hover{
+    color: rgb(241, 227, 227);
+  }
+
+  /* exchange section */
+  .exchange-ball{
+    z-index: 50;
+}
+.exchange-ball div{
+    height: 60px;
+    width: 60px;
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 50px;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    animation: 2s linear infinite;
+ 
+}
+.exchange-ball div:nth-child(1){
+  background: #E9866E;
+  top: 20%;
+  left: 48%;
+  height: 50px;
+  width: 50px;
+  z-index: 3;
+ 
+}
+
+.exchange-ball div:nth-child(2){
+  top: 80%;
+  left: 85%;
+  background: #E5CB83;
+  height: 30px;
+  width: 30px;
+  z-index: 3;
+
+  
+}
+
+  
+.dot2{
+    height: 10px;
+    width: 10px;
+    border-radius: 50px;
+    background: rgba(255,255,255,0.5);
+    position: absolute;
+    top: 20%;
+    right: 20%;
+  }
+ 

@@ -19,18 +19,20 @@ import Team from "./pages/Company/Team";
 
 import UserRequest from "./pages/Dashboard/Maneger/UserRequest";
 import AllUsers from "./pages/Dashboard/AllUsers";
+import Landingpage from "./pages/Landingpage/Landingpage";
 
 function App() {
   const { pathname } = useLocation();
   return (
     <div
-      className={`mx-auto max-w-7xl ${pathname.includes("dashboard") && "py-2"
+      className={` ${pathname.includes("dashboard") && "py-2"
         }`}
     >
-      {!pathname.includes("dashboard") && <Menubar></Menubar>}
+      {/* {!pathname.includes("dashboard") && <Menubar></Menubar>} */}
       <Routes>
-        <Route path="/" element={<Home></Home>}></Route>
-        <Route path="/home" element={<Home />}></Route>
+        {/* <Route path="/" element={<Home></Home>}></Route> */}
+        <Route path="/" element={<Landingpage />} ></Route>
+         <Route path="/home" element={<Home />}></Route> 
         <Route path="/services" element={<Service />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signUp" element={<SignUp />}></Route>
@@ -52,7 +54,7 @@ function App() {
           <Route path="review" element={<Review />} />
         </Route>
       </Routes>
-      {!pathname.includes("dashboard") && <Footer></Footer>}
+       {!pathname.includes("dashboard") && <Footer></Footer>} 
     </div>
   );
 }
