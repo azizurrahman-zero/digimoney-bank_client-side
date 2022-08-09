@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 
-const CheckInformation = ({ information }) => {
+const CheckInformation = ({ information, users, setUsers }) => {
   const {
     _id,
     displayName,
@@ -14,6 +14,7 @@ const CheckInformation = ({ information }) => {
   } = information;
 
   const approved = (id, { information }) => {
+
     fetch('http://localhost:4000/approvedUsers', {
       method: 'POST',
       headers: {
@@ -29,17 +30,23 @@ const CheckInformation = ({ information }) => {
 
 
     // delete task 
-    // const url = `http://localhost:4000/users${id}`;
-    // fetch(url, {
-    //   method: 'DELETE'
-    // })
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     if (data.deletedCount > 0) {
-    //       const remaining = tasks.filter(todo => todo._id !== id)
-    //       setTask(remaining);
-    //     }
-    //   })
+
+    
+
+    const url = `http://localhost:4000/users/${id}`;
+
+    fetch(url, {
+      method: 'DELETE'
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.deletedCount > 0) {
+
+          const remaining = users.filter(user => user._id !== id)
+          setUsers(remaining);
+
+        }
+      })
 
 
   }

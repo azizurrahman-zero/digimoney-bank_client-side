@@ -8,7 +8,6 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import SignUp from "./pages/Login/SignUp";
 import Footer from "./Shared/Footer";
-import Menubar from "./Shared/Menubar";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import WelcomePage from "./pages/Dashboard/WelcomePage";
 import Profile from "./pages/Dashboard/Profile";
@@ -20,17 +19,24 @@ import Team from "./pages/Company/Team";
 import UserRequest from "./pages/Dashboard/Maneger/UserRequest";
 import AllUsers from "./pages/Dashboard/AllUsers";
 
+import Landingpage from "./pages/Landingpage/Landingpage";
+
+import SendMoney from "./pages/Dashboard/SendMoney";
+import Menubar from "./Shared/Menubar";
+
+
 function App() {
   const { pathname } = useLocation();
   return (
     <div
-      className={`mx-auto max-w-7xl ${pathname.includes("dashboard") && "py-2"
+      className={` ${pathname.includes("dashboard") && "py-2"
         }`}
     >
-      {!pathname.includes("dashboard") && <Menubar></Menubar>}
+      {/* {!pathname.includes("dashboard") && <Menubar></Menubar>} */}
       <Routes>
-        <Route path="/" element={<Home></Home>}></Route>
-        <Route path="/home" element={<Home />}></Route>
+        {/* <Route path="/" element={<Home></Home>}></Route> */}
+        <Route path="/" element={<Landingpage />} ></Route>
+         <Route path="/home" element={<Home />}></Route> 
         <Route path="/services" element={<Service />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signUp" element={<SignUp />}></Route>
@@ -49,10 +55,11 @@ function App() {
           <Route path="profile" element={<Profile />} />
           <Route path="user-request" element={<UserRequest />} />
           <Route path="allusers" element={<AllUsers />} />
+          <Route path="sendmoney" element={<SendMoney />} />
           <Route path="review" element={<Review />} />
         </Route>
       </Routes>
-      {!pathname.includes("dashboard") && <Footer></Footer>}
+       {!pathname.includes("dashboard") && <Footer></Footer>} 
     </div>
   );
 }
