@@ -22,6 +22,7 @@ import AllUsers from "./pages/Dashboard/AllUsers";
 import Landingpage from "./pages/Landingpage/Landingpage";
 
 import SendMoney from "./pages/Dashboard/SendMoney";
+import Menubar from "./Shared/Menubar";
 
 
 function App() {

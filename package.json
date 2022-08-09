@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
+    "aos": "^2.3.4",
     "daisyui": "^2.19.0",
     "firebase": "^9.9.1",
     "force": "^0.0.3",
@@ -19,6 +20,7 @@
     "react-scripts": "^5.0.1",
     "react-slick": "^0.29.0",
     "react-spinners": "^0.13.3",
+    "recharts": "^2.1.13",
     "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.0"
   },
