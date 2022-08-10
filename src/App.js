@@ -23,7 +23,9 @@ import Landingpage from "./pages/Landingpage/Landingpage";
 
 import SendMoney from "./pages/Dashboard/SendMoney";
 import Menubar from "./Shared/Menubar";
+
 import Transection from "./pages/Dashboard/Transection";
+
 
 
 function App() {
