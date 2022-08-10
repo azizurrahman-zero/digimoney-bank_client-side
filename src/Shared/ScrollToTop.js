@@ -28,7 +28,7 @@ const ScrollToTop = () => {
     
 
     return (
-        <div className={` bottom-[2%] right-[8%] z-[1000] ${visiable?"fixed":"hidden"}`}>
+        <div className={` bottom-[12%] right-[56px] z-[1000] ${visiable?"fixed":"hidden"}`}>
            <BsFillArrowUpCircleFill onClick={scrollToTop} className='h-14 cursor-pointer w-14 text-green-500' />
         </div>
     );
