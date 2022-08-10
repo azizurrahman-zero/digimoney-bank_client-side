@@ -4,11 +4,7 @@ import './footer.css'
 import { AiOutlineArrowRight} from 'react-icons/ai'
 import AOS from "aos";
 import "aos/dist/aos.css";
-
-
-
-const Footer = () => {
-    
+const Footer = () => { 
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
