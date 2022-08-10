@@ -1,19 +1,16 @@
 import React from "react";
 import {
   LineChart,
-  ResponsiveContainer,
+ 
   Line,
-  BarChart,
-  Bar,
-  PieChart,
-  Pie,
-  CartesianGrid,
-  Tooltip,
+
 } from "recharts";
 import { FaPlay } from "react-icons/fa";
 import { ImUpload, ImDownload } from "react-icons/im";
 import useTransection from "../../hooks/useTransection";
 import TransectionRow from "./TransectionRow";
+import Piechart from "./Piechart";
+import Barchart from "./Barchart";
 
 const WelcomePage = () => {
   const data = [
@@ -89,7 +86,7 @@ const WelcomePage = () => {
   const [transection] = useTransection();
   console.log(transection);
   return (
-    <section className="">
+    <section className="mt-8">
       <div className="grid lg:grid-cols-3 gap-12">
         {/* Balance Cart start */}
         <div class="card balance-card  bg-[#6160DC] text-gray-200">
@@ -188,62 +185,16 @@ const WelcomePage = () => {
 
       <div className="grid lg:grid-cols-2 gap-x-16 mt-12">
         {/* Bar Chart Start Start */}
-        <div className="h-[45vh] shadow-2xl py-10 px-4 rounded-xl">
-          <h1 className="text-3xl font-bold text-black ">Overview</h1>
-
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart
-              width={500}
-              height={300}
-              data={data}
-              margin={{
-                top: 5,
-                right: 30,
-                left: 20,
-                bottom: 10,
-              }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-
-              <Tooltip />
-
-              <Bar dataKey="pv" fill="#8884d8" />
-              <Bar dataKey="uv" fill="#82ca9d" />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
+        <Barchart />
         {/* Bar Chart end */}
         {/* Pie Chart Start */}
-        <div className="h-[45vh] shadow-2xl rounded-xl px-4 py-12">
-          <h1 className="text-3xl font-bold text-black">OutComes Categories</h1>
-          <ResponsiveContainer width="100%" height="100%">
-            <PieChart width={600} height={600}>
-              <Pie
-                data={data01}
-                dataKey="value"
-                cx="50%"
-                cy="50%"
-                outerRadius={60}
-                fill="#8884d8"
-              />
-              <Pie
-                data={data01}
-                dataKey="value"
-                cx="50%"
-                cy="50%"
-                innerRadius={70}
-                outerRadius={90}
-                fill="#82ca9d"
-                label
-              />
-            </PieChart>
-          </ResponsiveContainer>
-        </div>
+        
+        <Piechart />
         {/* Pie chart end */}
       </div>
       {/* Transection table start  */}
       <section className="mt-12 shadow-2xl rounded-2xl">
-        <h1 className="text-3xl font-bold my-5">Lastest Transaction</h1>
+        <h1 className="text-3xl font-bold my-8 ml-2">Lastest Transaction</h1>
         <div class="overflow-x-auto">
           <table class="table table-zebra w-full">
             <tbody>
