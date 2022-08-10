@@ -13,10 +13,10 @@ const Mission = ({title}) => {
   }, []);
   return (
     <div data-aos="fade-in" className="mission-card p-12 rounded-xl">
-      <button className="btn mb-8 border-none  btn-primary font-bold text-[rgb(7,58,66)] bg-[#F8BF88]">
+      <button className="btn mb-8   btn-secondary font-bold text-primary ">
         Petal 1
       </button>
-      <h1 className="lg:text-3xl text-lg lg:w-[60%] font-bold text-[#010C27]">
+      <h1 className="lg:text-3xl text-lg lg:w-[60%] font-bold text-accent">
     {title}
       </h1>
       <ul className="mission-decription ml-12  lg:text-lg">
@@ -25,7 +25,7 @@ const Mission = ({title}) => {
         <li className="mt-5 ">AORs 19.99%-29.49%</li>
         <li className="mt-5 ">2%-10% cash back at select merchants</li>
       </ul>
-      <button  className="btn mt-8 border-none  btn-primary font-bold text-[rgb(7,58,66)] bg-[#F8BF88]">
+      <button  className="btn mt-8   btn-secondary font-bold text-primary ">
         Learned More
       </button>
 

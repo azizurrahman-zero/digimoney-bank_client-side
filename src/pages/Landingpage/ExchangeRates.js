@@ -95,7 +95,7 @@ const ExchangeRates = () => {
           <div className="grid lg:grid-cols-2 lg:w-8/12 mx-auto">
             <p className="text-lg text-[#ABC3C6]">Purchase foreign currency with Paywise Online and get your cash at a bank branch</p>
             <div className="">
-            <button className='btn mx-auto block btn-primary px-20 mt-5 lg:mt-0 rounded  py-3 h-auto text-[#073A42] bg-[#F8BF88] border-none font-bold'>Exchange Now</button>
+            <button className='btn mx-auto block btn-secondary px-20 mt-5 lg:mt-0    text-[#073A42]  font-bold'>Exchange Now</button>
             </div>
           </div>
      
