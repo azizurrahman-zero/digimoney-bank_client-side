@@ -4,7 +4,7 @@ import {BsFacebook,BsLinkedin,BsTwitter} from 'react-icons/bs'
 const TeamMember = ({team}) => {
    
     return (
-        <div  class="card team-card duration-500 cursor-pointer w-96 bg-base-100 shadow-xl">
+        <div  class="card team-card duration-500 cursor-pointer w-96 mx-auto bg-base-100 shadow-xl">
         <figure class="px-10 pt-10">
         <div class="avatar online">
         <div class="w-24 rounded-full">
