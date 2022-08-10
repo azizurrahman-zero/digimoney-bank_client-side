@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Menubar from '../../Shared/Menubar';
+
 import BankAdvantage from './BankAdvantage';
 import {FiChevronRight} from 'react-icons/fi'
 import AOS from "aos";
@@ -17,8 +17,8 @@ const Header = () => {
             <div><span className='dot'></span> </div>
           
             </div>
-            <Menubar />
-            <div className='grid md:grid-cols-2 relative z-50    mt-4 lg:mt-10'>
+          
+            <div className='grid md:grid-cols-2 relative z-50    pt-16 '>
                  <div data-aos="zoom-in" className=' '>
                     <h1 className='text-white text-4xl lg:text-8xl font-bold'>Your Next <br /> Online Bank.</h1>
                     <hr className='h-[3px] w-[80%] my-10 bg-white' />

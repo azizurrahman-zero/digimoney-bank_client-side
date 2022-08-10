@@ -1,7 +1,11 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import {AiOutlineArrowDown} from 'react-icons/ai'
+import auth from '../../firebase.init';
 
 const DashboardMenu = () => {
+  const [user]=useAuthState(auth)
     return (
         
         <div className="navbar bg-base-100 m-0 p-0">
@@ -13,7 +17,7 @@ const DashboardMenu = () => {
     <div className="dropdown dropdown-end ">
      <div className='flex items-center g-x-2 px-2 bg-[#2366B5] text-white font-semibold border-2 rounded-full'>
      <AiOutlineArrowDown />
-     <p className='text-sm'>Istiak Hasan</p>
+     <p className='text-sm'>{user?.displayName}</p>
       <label tabindex="0" className="btn btn-ghost btn-circle avatar flex">
         
         <div className="w-8 rounded-full">
@@ -30,7 +34,7 @@ const DashboardMenu = () => {
           </a>
         </li>
         <li><a>Settings</a></li>
-        <li><a>Logout</a></li>
+        <li onClick={()=>signOut(auth)}><a>Logout</a></li>
       </ul>
     </div>
   </div>

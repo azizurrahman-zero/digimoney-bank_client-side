@@ -24,6 +24,9 @@ import Landingpage from "./pages/Landingpage/Landingpage";
 import SendMoney from "./pages/Dashboard/SendMoney";
 import Menubar from "./Shared/Menubar";
 
+import Transection from "./pages/Dashboard/Transection";
+
+
 
 function App() {
   const { pathname } = useLocation();
@@ -32,7 +35,8 @@ function App() {
       className={` ${pathname.includes("dashboard") && "py-2"
         }`}
     >
-      {/* {!pathname.includes("dashboard") && <Menubar></Menubar>} */}
+       
+       {!pathname.includes("dashboard") && <Menubar></Menubar>} 
       <Routes>
         {/* <Route path="/" element={<Home></Home>}></Route> */}
         <Route path="/" element={<Landingpage />} ></Route>
@@ -57,9 +61,12 @@ function App() {
           <Route path="allusers" element={<AllUsers />} />
           <Route path="sendmoney" element={<SendMoney />} />
           <Route path="review" element={<Review />} />
+          <Route path="transection" element={<Transection />} />
         </Route>
       </Routes>
-       {!pathname.includes("dashboard") && <Footer></Footer>} 
+       {/* {!pathname.includes("dashboard") && <Footer></Footer>}  */}
+       {!pathname.includes("login") && !pathname.includes("dashboard") && <Footer></Footer>} 
+      
     </div>
   );
 }

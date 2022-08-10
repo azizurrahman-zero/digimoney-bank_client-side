@@ -1,5 +1,5 @@
 import { signOut } from "firebase/auth";
-import React from "react";
+import React,{useState} from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Logo from '../assets/images/logo/logo.png'
 
@@ -8,6 +8,16 @@ import auth from "../firebase.init";
 
 const Menubar = () => {
   const [user] = useAuthState(auth);
+  const [show,setIsShow]=useState(false)
+  const bgColorChange=()=>{
+    
+    if(window.scrollY >=5){
+      setIsShow(true)
+    }else{
+      setIsShow(false)
+    }
+  }
+  window.addEventListener('scroll',bgColorChange)
   
 
   const logout = () => {
@@ -17,24 +27,24 @@ const Menubar = () => {
 
 
   const menuItem = <>
-    <li><Link to="/home"><img className="h-6" src={Logo} alt="" /></Link></li>
-    <li><Link to="/">Home</Link></li>
+    <li className="mr-8 "><Link to="/home"><span className="text-4xl font-mono">DigiMoney</span> </Link></li>
+    <li className="mr-8"><Link to="/">Home</Link></li>
     
-    <li><Link to="/blog">Blog</Link></li>
+    <li className="mr-8"><Link to="/blog">Blog</Link></li>
     
-    <li className=' z-50' tabindex="0">
+    <li className='mr-8 z-50' tabindex="0">
         <a>
           Company
           <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
         </a>
-        <ul className="p-2 ">
+        <ul className="p-2 bg-[#234044] ">
           <li><Link to="/about">About Us</Link></li>
           <li><Link to="/team">Team</Link></li>
         </ul>
       </li>
 
-    <li><Link to="/cards">Cards</Link></li>
-    <li><Link to="/services">Services</Link></li>
+    <li  className="mr-8"><Link to="/cards">Cards</Link></li>
+    <li  className="mr-8"><Link to="/services">Services</Link></li>
     
     {user && (
         <li>
@@ -48,8 +58,8 @@ const Menubar = () => {
 
 
   return (
-    <div>
-      <div className="navbar bg-[#073A42]  text-[#F2F2F2]">
+  
+      <div className={`navbar m-0 p-0 duration-500 ${show?"bg-[#234044]":"bg-[#073A42]"} z-[1000]  sticky top-0    text-[#F2F2F2]`}>
         <div className="navbar-start ">
           <div className="dropdown">
             <label tabindex="0" className="btn btn-ghost lg:hidden">
@@ -101,7 +111,7 @@ const Menubar = () => {
 
         </div>
       </div>
-    </div>
+ 
   );
 };
 
