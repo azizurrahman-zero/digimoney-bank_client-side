@@ -9,7 +9,6 @@ import {
   Pie,
   CartesianGrid,
   Tooltip,
-
 } from "recharts";
 import { FaPlay } from "react-icons/fa";
 import { ImUpload, ImDownload } from "react-icons/im";
@@ -87,11 +86,12 @@ const WelcomePage = () => {
       value: 189,
     },
   ];
-  const [transection]=useTransection();
-  console.log(transection)
+  const [transection] = useTransection();
+  console.log(transection);
   return (
     <section className="">
       <div className="grid lg:grid-cols-3 gap-12">
+        {/* Balance Cart start */}
         <div class="card balance-card  bg-[#6160DC] text-gray-200">
           <div class=" p-5">
             <p className="text-xl">
@@ -113,6 +113,9 @@ const WelcomePage = () => {
             </div>
           </div>
         </div>
+        {/* Balance CArd End */}
+
+        {/* Income Card Chart start */}
         <div class="card   shadow-2xl  text-gray-200">
           <div class=" p-5">
             <div className="flex items-center mb-8 gap-x-8">
@@ -145,6 +148,9 @@ const WelcomePage = () => {
             </LineChart>
           </div>
         </div>
+        {/* Income Card Chart end */}
+
+        {/* Expense Card Start */}
         <div class="card   shadow-2xl  text-gray-200">
           <div class=" p-5">
             <div className="flex items-center mb-8 gap-x-8">
@@ -177,9 +183,11 @@ const WelcomePage = () => {
             </LineChart>
           </div>
         </div>
+        {/* Expense Card End */}
       </div>
 
       <div className="grid lg:grid-cols-2 gap-x-16 mt-12">
+        {/* Bar Chart Start Start */}
         <div className="h-[45vh] shadow-2xl py-10 px-4 rounded-xl">
           <h1 className="text-3xl font-bold text-black ">Overview</h1>
 
@@ -204,6 +212,8 @@ const WelcomePage = () => {
             </BarChart>
           </ResponsiveContainer>
         </div>
+        {/* Bar Chart end */}
+        {/* Pie Chart Start */}
         <div className="h-[45vh] shadow-2xl rounded-xl px-4 py-12">
           <h1 className="text-3xl font-bold text-black">OutComes Categories</h1>
           <ResponsiveContainer width="100%" height="100%">
@@ -229,30 +239,22 @@ const WelcomePage = () => {
             </PieChart>
           </ResponsiveContainer>
         </div>
+        {/* Pie chart end */}
       </div>
+      {/* Transection table start  */}
       <section className="mt-12 shadow-2xl rounded-2xl">
         <h1 className="text-3xl font-bold my-5">Lastest Transaction</h1>
-      <div class="overflow-x-auto">
-  <table class="table table-zebra w-full">
-
-  
-    <tbody>
-    
-   {
-    transection.slice(0,6).map(rowdata=>(
-          <TransectionRow rowdata={rowdata} />
-    ))
-   }
-
-     
-   
-   
-     
-    
-    </tbody>
-  </table>
-</div>
+        <div class="overflow-x-auto">
+          <table class="table table-zebra w-full">
+            <tbody>
+              {transection.slice(0, 6).map((rowdata) => (
+                <TransectionRow rowdata={rowdata} />
+              ))}
+            </tbody>
+          </table>
+        </div>
       </section>
+      {/* Transection table end */}
     </section>
   );
 };
