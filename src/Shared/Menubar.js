@@ -99,7 +99,7 @@ const Menubar = () => {
              
 <li className="justify-center items-center">
         {user ? (
-          <button onClick={logout} className="btn btn-ghost capitalize">
+          <button onClick={logout} className="btn btn-error bg-red-500 text-white capitalize">
             Sign Out
           </button>
         ) : (
