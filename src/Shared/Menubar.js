@@ -119,7 +119,7 @@ const Menubar = () => {
                 </button>
               ) : (
                 <Link
-                  className="btn btn-primary px-14 border-none rounded-md bg-[#F8BF88] hover:bg-[#f8be88c1] text-[#073A42] font-bold font-roboto"
+                  className="btn btn-neutral px-14 border-none rounded-md text-[#073A42] font-bold font-roboto"
                   to="/login"
                 >
                   Log In
