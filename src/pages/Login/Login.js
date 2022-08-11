@@ -1,12 +1,17 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useSendPasswordResetEmail,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import "./Login.css";
 import Loading from "../../Shared/Loading";
 import loginBanner from "../../assets/images/login-banner.svg";
 import { GiCancel } from "react-icons/gi";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -22,7 +27,9 @@ const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
-  if (loading) {
+  const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+
+  if (loading || sending) {
     return <Loading></Loading>;
   }
   if (user) {
@@ -32,6 +39,17 @@ const Login = () => {
   const onSubmit = (data) => {
     const { email, password } = data;
     signInWithEmailAndPassword(email, password);
+  };
+
+  const resetPassword = async (data) => {
+    const email = data.email;
+
+    if (email) {
+      await sendPasswordResetEmail(email);
+      toast.success(`Email Sent to ${email}!`);
+    } else {
+      toast.error("Please, Enter a Email Address.");
+    }
   };
 
   return (
@@ -143,17 +161,17 @@ const Login = () => {
             <label for="reset-pass-modal" class="absolute right-4 top-4">
               <GiCancel className="text-2xl" />
             </label>
-            <h3 class="font-bold text-lg">
-              Congratulations random Internet user!
-            </h3>
-            <p class="py-4">
-              You've been selected for a chance to get one year of subscription
-              to use Wikipedia for free!
-            </p>
-            <div class="modal-action">
-              <label for="my-modal-6" class="btn">
-                Yay!
-              </label>
+            <h3 class="font-bold text-lg">Reset Password</h3>
+            <div className="form-control">
+              <input
+                required
+                type="email"
+                placeholder=" &#xf0e0;  Email Address"
+                className="input input-bordered input-icon text-base mb-1 focus:outline-none mt-4"
+              />
+            </div>
+            <div className="form-control">
+              <button className="btn btn-neutral text-white">Reset</button>
             </div>
           </div>
         </div>
