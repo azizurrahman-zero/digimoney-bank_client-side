@@ -5,25 +5,27 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import "./Login.css";
 import Loading from "../../Shared/Loading";
+import loginBanner from "../../assets/images/login-banner.svg";
+import { GiCancel } from "react-icons/gi";
 
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
-  
+
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
 
-  const [signInWithEmailAndPassword,user, loading, error] =
+  const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
   if (loading) {
     return <Loading></Loading>;
   }
-  if(user){
+  if (user) {
     navigate(from, { replace: true });
   }
 
@@ -33,16 +35,18 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-[#f3f3fa] flex min-h-screen items-center justify-center lg:py-20">
-      <div className=""></div>
-      <div className="card  flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mt-5 mb-16 lg:m-0">
+    <div className="bg-[#E5CB83] flex gap-20 min-h-screen items-center justify-center">
+      <div className="w-5/12">
+        <img className="w-full" src={loginBanner} alt="login" />
+      </div>
+      <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mt-5 mb-16 lg:m-0">
         <div className="card-body">
-          <h2 className="mb-1 font-bold text-neutral text-center text-3xl">
+          <h2 className="mb-1 font-bold text-info text-center text-3xl">
             Log In
           </h2>
-          <h3 className="text-center text-info mb-4">
+          <h3 className="text-center mb-4">
             Don't have an account?{" "}
-            <Link className="link link-secondary" to="/signUp">
+            <Link className="link link-primary font-semibold" to="/signUp">
               Sign Up
             </Link>
           </h3>
@@ -89,7 +93,7 @@ const Login = () => {
                   },
                 })}
               />
-              <label className="label pt-0">
+              <label className="label p-0">
                 {errors.password?.type === "required" && (
                   <span className="label-text-alt text-error">
                     {errors.password.message}
@@ -97,9 +101,17 @@ const Login = () => {
                 )}
               </label>
             </div>
+            <div className="flex justify-end">
+              <label
+                for="reset-pass-modal"
+                className="btn text-xs modal-button capitalize btn-link btn-xs p-0"
+              >
+                Reset Password
+              </label>
+            </div>
             <div className="form-control mt-6">
               <input
-                className="btn btn-accent text-white"
+                className="btn btn-neutral text-white"
                 type="submit"
                 value="Log In"
               />
@@ -122,13 +134,30 @@ const Login = () => {
               </label>
             </div>
           </form>
-          {/* <div className="divider">OR</div> */}
-          {/* <SocialLogin
-              signInWithGoogle={signInWithGoogle}
-              googleError={googleError}
-            ></SocialLogin> */}
         </div>
       </div>
+      <>
+        <input type="checkbox" id="reset-pass-modal" class="modal-toggle" />
+        <div class="modal modal-bottom sm:modal-middle">
+          <div class="modal-box relative">
+            <label for="reset-pass-modal" class="absolute right-4 top-4">
+              <GiCancel className="text-2xl" />
+            </label>
+            <h3 class="font-bold text-lg">
+              Congratulations random Internet user!
+            </h3>
+            <p class="py-4">
+              You've been selected for a chance to get one year of subscription
+              to use Wikipedia for free!
+            </p>
+            <div class="modal-action">
+              <label for="my-modal-6" class="btn">
+                Yay!
+              </label>
+            </div>
+          </div>
+        </div>
+      </>
     </div>
   );
 };
