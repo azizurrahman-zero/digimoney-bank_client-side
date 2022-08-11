@@ -15,6 +15,7 @@ const CheckInformation = ({ information, users, setUsers }) => {
 
   const approved = (id, { information }) => {
 
+
     fetch('http://localhost:4000/approvedUsers', {
       method: 'POST',
       headers: {
@@ -30,9 +31,6 @@ const CheckInformation = ({ information, users, setUsers }) => {
 
 
     // delete task 
-
-    
-
     const url = `http://localhost:4000/users/${id}`;
 
     fetch(url, {
@@ -108,7 +106,7 @@ const CheckInformation = ({ information, users, setUsers }) => {
                 <tr>
                   <td>Amount Number</td>
                   <td>
-                    <input type="number" name="" id="" />
+                    <input type="number" placeholder="Provide new account number" name="" id="" />
                   </td>
                 </tr>
               </tbody>

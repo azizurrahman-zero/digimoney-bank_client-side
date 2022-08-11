@@ -25,6 +25,7 @@ import Menubar from "./Shared/Menubar";
 
 import Transection from "./pages/Dashboard/Transection";
 import ScrollToTop from "./Shared/ScrollToTop";
+import Balance from "./pages/Dashboard/Balance";
 
 function App() {
   const { pathname } = useLocation();
@@ -49,6 +50,7 @@ function App() {
           <Route index element={<WelcomePage />} />
           <Route path="dashboard" element={<WelcomePage />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="balance" element={<Balance/>} />
           <Route path="user-request" element={<UserRequest />} />
           <Route path="allusers" element={<AllUsers />} />
           <Route path="sendmoney" element={<SendMoney />} />
