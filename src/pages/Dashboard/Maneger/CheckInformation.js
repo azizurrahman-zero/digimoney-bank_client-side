@@ -25,7 +25,7 @@ const CheckInformation = ({ information, users, setUsers }) => {
 
   const approved = (id, { information }) => {
 
-    fetch('http://localhost:4000/approvedUser', {
+    fetch('http://localhost:4000/approvedUsers', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
