@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
 import {
   useSendPasswordResetEmail,
@@ -12,11 +12,14 @@ import loginBanner from "../../assets/images/login-banner.svg";
 import { GiCancel } from "react-icons/gi";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { async } from "@firebase/util";
 
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
   let from = location.state?.from?.pathname || "/";
+  const emailRef=useRef()
 
   const {
     register,
@@ -28,6 +31,7 @@ const Login = () => {
     useSignInWithEmailAndPassword(auth);
 
   const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+ 
 
   if (loading || sending) {
     return <Loading></Loading>;
@@ -51,6 +55,12 @@ const Login = () => {
       toast.error("Please, Enter a Email Address.");
     }
   };
+
+  const handleReset=async ()=>{
+      const email=emailRef.current.value
+      await sendPasswordResetEmail(email)
+      alert('Sent email')
+  }
 
   return (
     <div className="bg-[#E5CB83] flex gap-20 min-h-screen items-center justify-center">
@@ -166,12 +176,13 @@ const Login = () => {
               <input
                 required
                 type="email"
+                ref={emailRef}
                 placeholder=" &#xf0e0;  Email Address"
                 className="input input-bordered input-icon text-base mb-1 focus:outline-none mt-4"
               />
             </div>
             <div className="form-control">
-              <button className="btn btn-neutral text-white">Reset</button>
+              <button onClick={handleReset} className="btn btn-neutral text-white">Reset</button>
             </div>
           </div>
         </div>
