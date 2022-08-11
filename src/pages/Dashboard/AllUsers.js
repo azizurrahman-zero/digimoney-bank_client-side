@@ -66,11 +66,7 @@ const AllUsers = () => {
                             }
                         </tbody>
                     </table>
-                    {/* {information && <CheckInformation
-          information={information}
-          
-
-          />} */}
+                   
                 </div>
             </div>
         </div>

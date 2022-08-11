@@ -40,14 +40,14 @@ const AllUser = ({ user, index }) => {
       <td>{user.email}</td>
       <td>{user.contact}</td>
       <td>
-      <Link to={`/dashboard/information/${_id}`} className="btn btn-xs">
+      <Link to={`/dashboard/information/${_id}`} className="btn btn-outline btn-primary btn-xs ">
       Deities
           </Link>
         
       </td>
       <td>
         {role !== "admin" && (
-          <button onClick={makeAdmin} className="btn btn-xs">
+          <button onClick={makeAdmin} className="btn btn-outline btn-accent btn-xs">
             Make Admin
           </button>
          
@@ -57,7 +57,7 @@ const AllUser = ({ user, index }) => {
       </td>
       <td>
         
-        <button className="btn btn-xs">Remove</button>
+        <button className="btn btn-outline btn-error btn-xs">Remove</button>
       </td>
 
       {/* <td>
