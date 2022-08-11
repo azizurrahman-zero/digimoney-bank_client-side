@@ -61,9 +61,10 @@ const SignUp = () => {
             gender: event.target.gender.value,
             img: img,
           };
+          console.log(currentUser)
 
-          fetch(`http://localhost:4000/user/${email}`, {
-            method: "PUT",
+          fetch(`http://localhost:4000/adduser`, {
+            method: "POST",
             headers: {
               "content-type": "application/json",
             },
