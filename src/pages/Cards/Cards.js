@@ -9,7 +9,7 @@ import Menubar from '../../Shared/Menubar';
 const Cards = () => {
     return (
         <div>
-           <Menubar />
+          
             <div className="carousel w-full p-4 space-x-4">
                 <div id="slide1" className="carousel-item relative w-full rounded-box shadow-xl">
                     <img src={creditcard} className="w-full" />

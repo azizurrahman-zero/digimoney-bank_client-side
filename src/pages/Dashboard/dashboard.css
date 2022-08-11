@@ -1,0 +1,26 @@
+.balance-card{
+    position: relative;
+    z-index: 50;
+}
+.balance-card::after{
+content: "";
+height: 80%;
+width: 20%;
+position: absolute;
+background-color: #54C5EB;
+bottom: 0;
+right: 0;
+border-radius: 50% 50% 0 0;
+z-index: -49;
+}
+.balance-card::before{
+content: "";
+height: 70%;
+width: 20%;
+position: absolute;
+background-color: #5B92E3;
+bottom: 0;
+right: 10%;
+border-radius: 50% 50% 0 0;
+z-index: -50;
+}

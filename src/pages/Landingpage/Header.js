@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Menubar from '../../Shared/Menubar';
+
 import BankAdvantage from './BankAdvantage';
 import {FiChevronRight} from 'react-icons/fi'
 import AOS from "aos";
@@ -10,15 +10,15 @@ const Header = () => {
         AOS.init({ duration: 1000 });
       }, []);
     return (
-        <header  className='bg-[rgb(7,58,66)] min-h-screen lg:px-28  px-4'>
+        <header  className='bg-primary min-h-screen lg:px-28  px-4'>
             <div className='walpaper'>
 
             <div><span className='dot'></span> </div>
             <div><span className='dot'></span> </div>
           
             </div>
-            <Menubar />
-            <div className='grid md:grid-cols-2 relative z-50    mt-4 lg:mt-10'>
+          
+            <div className='grid md:grid-cols-2 relative z-50    pt-16 '>
                  <div data-aos="zoom-in" className=' '>
                     <h1 className='text-white text-4xl lg:text-8xl font-bold'>Your Next <br /> Online Bank.</h1>
                     <hr className='h-[3px] w-[80%] my-10 bg-white' />
@@ -28,7 +28,7 @@ const Header = () => {
                         <BankAdvantage advantage="Faster finance transaction" score="3M+" />
                     </div>
                     <div className='mt-16 flex relative z-50 items-center gap-x-3 lg:gap-x-10'>
-                    <button className='btn btn-primary  py-3 rounded-none h-auto text-[#073A42] bg-[#F8BF88] border-none font-bold'>Download Now</button>
+                    <button className='btn btn-secondary text-primary font-bold'>Download Now</button>
                     <div className='flex items-center gap-x-3 '>
                        <img className='h-14' src="https://cdn.picpng.com/icon/play-icon-free-wallpaper-vector-65968.png" alt="" />
                        <span className='text-white font-semibold text-lg'>How its work</span>
@@ -40,8 +40,8 @@ const Header = () => {
                         <div className='px-6'>
                         <p className='text-md'>Log in to Internet Banking</p>
                         <div className='flex gap-x-3 my-3'>
-                            <button className='btn btn-primary px-8 py-3 h-auto text-[#073A42] bg-[#F8BF88] border-none font-bold'>Personal</button>
-                            <button className='btn btn-primary px-8 py-5 h-auto bg-[#FF9F88] border-none text-[#073A42] font-bold'>Business</button>
+                            <button className='btn btn-secondary text-primary font-bold px-8'>Personal</button>
+                            <button className='btn btn-neutral px-8 text-primary font-bold'>Business</button>
                         </div>
                         </div>
                    

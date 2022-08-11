@@ -10,6 +10,7 @@ import { MdRateReview, MdDashboard } from 'react-icons/md'
 import { ImProfile } from 'react-icons/im'
 import { Outlet } from 'react-router-dom'
 import DashboardMenu from './DashboardMenu';
+import './dashboard.css'
 
 
 const Dashboard = () => {
@@ -23,7 +24,7 @@ const Dashboard = () => {
     { title: "Review", path: "/dashboard/review", src: <MdRateReview className='w-5 h-5' /> },
     { title: "Make Admin", path: "/", src: <AiFillEdit className='w-5 h-5' />, gap: true },
     { title: "User Request", path: "/dashboard/user-request", src: <AiFillEdit className='w-5 h-5' />, gap: true },
-    { title: "Transection", path: "/", src: <FaMoneyCheck className='w-5 h-5' /> },
+    { title: "Transection", path: "/dashboard/transection", src: <FaMoneyCheck className='w-5 h-5' /> },
     { title: "All User", path: "/dashboard/allusers", src: <AiOutlineUsergroupAdd className='w-5 h-5' /> },
     { title: "Setting", path: "/", src: <FiSettings className='w-5 h-5' />, setting: true },
     { title: "Go To Home", path: "/", src: <AiFillHome className='w-5 h-5' /> },
@@ -51,7 +52,7 @@ const Dashboard = () => {
               w-8 h-8 text-black     rounded-full ${!open && 'rotate-180'}
              `} />
         </label>
-        <div className='px-5 pl-16 pt-5 bg-white min-h-screen'>
+        <div className='lg:px-5 lg:pl-16 pt-5 bg-white min-h-screen'>
 
           {!pathname.includes("dashboard/") && <DashboardMenu />}
           <Outlet />
@@ -62,7 +63,7 @@ const Dashboard = () => {
       <div className="drawer-side  custom-sidebar">
         <label for="my-drawer-2" className="drawer-overlay "></label>
 
-        <ul className={`pt-6  ${!open ? "w-20" : "w-52"} p-5 bg-[#2366B5] `}>
+        <ul className={`pt-6  ${!open ? "w-20" : "w-52"} p-5 bg-[#6160DC] `}>
           < BsArrowLeftCircle
             onClick={() => setOpen(!open)}
             className={`absolute cursor-pointer
