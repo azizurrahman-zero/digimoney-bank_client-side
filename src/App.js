@@ -29,7 +29,7 @@ import Menubar from "./Shared/Menubar";
 
 import Transection from "./pages/Dashboard/Transection";
 import ScrollToTop from "./Shared/ScrollToTop";
-import UserInformation from "./pages/Dashboard/UserInformation";
+import UserInformation from "./pages/Dashboard/UserInformation/UserInformation";
 
 function App() {
   const { pathname } = useLocation();
