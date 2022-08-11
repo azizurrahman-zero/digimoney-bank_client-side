@@ -21,6 +21,9 @@ const AllUsers = () => {
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Contact</th>
+                                
+                                <th>Address</th>
+                                <th>Address</th>
                                 <th>Address</th>
                             </tr>
                         </thead>
@@ -30,6 +33,7 @@ const AllUsers = () => {
                                     key={user._id}
                                     user={user}
                                     index={index}
+                                    setUsers={setUsers}
                                 >
 
                                 </AllUser>

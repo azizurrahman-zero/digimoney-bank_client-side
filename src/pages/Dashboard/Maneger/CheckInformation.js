@@ -1,6 +1,12 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 
 const CheckInformation = ({ information, users, setUsers }) => {
+  const {
+    register,
+    formState: { errors },
+ 
+  } = useForm();
   const {
     _id,
     displayName,
@@ -11,11 +17,12 @@ const CheckInformation = ({ information, users, setUsers }) => {
     gender,
     amount,
     accountType,
+    accountNumber,
   } = information;
 
   const approved = (id, { information }) => {
 
-    fetch('http://localhost:4000/approvedUsers', {
+    fetch('http://localhost:4000/approvedUser', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -108,9 +115,27 @@ const CheckInformation = ({ information, users, setUsers }) => {
                 <tr>
                   <td>Amount Number</td>
                   <td>
-                    <input type="number" name="" id="" />
+                  <input
+                    type="number"
+                    placeholder="   Account Number"
+                    
+                    {...register("accountNumber", {
+                      required: {
+                        value: true,
+                        message: "*Enter Account Number",
+                      },
+                    })}
+                  />
+                  <label className="pt-0 label">
+                    {errors.name?.type === "required" && (
+                      <span className="label-text-alt text-error">
+                        {errors.accountNumber.message}
+                      </span>
+                    )}
+                  </label>
                   </td>
                 </tr>
+                
               </tbody>
             </table>
           </div>
