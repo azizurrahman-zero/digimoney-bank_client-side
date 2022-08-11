@@ -23,6 +23,8 @@
     "react-toastify": "^9.0.8",
     "recharts": "^2.1.13",
     "slick-carousel": "^1.8.1",
+    "spinner": "^0.3.4",
+    "spinners": "^1.2.2",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
