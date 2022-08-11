@@ -7,7 +7,7 @@ import BlogFeature from './BlogFeature';
 const Blog = () => {
     return (
         <>
-        <Menubar />
+        
         <div className='blog-container  h-auto mt-2'>
            <header className='z-50 w-full lg:h-[50vh] h-[60vh] flex justify-center items-center text-accent'>
            <div>

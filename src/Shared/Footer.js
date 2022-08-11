@@ -4,11 +4,7 @@ import './footer.css'
 import { AiOutlineArrowRight} from 'react-icons/ai'
 import AOS from "aos";
 import "aos/dist/aos.css";
-
-
-
-const Footer = () => {
-    
+const Footer = () => { 
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
@@ -22,7 +18,7 @@ const Footer = () => {
                     <p className='text-md text-gray-400 mt-10'>Subscribe to keep up with <br />the latest news</p>
                     <div className='flex items-center my-4 gap-x-2 '>
                         <input className='input border-none focus:outline-none w-7/12 input-primary rounded-none' type="text" placeholder='Enter your email here' />
-                        <AiOutlineArrowRight className='text-white bg-[#F8BF8A] w-12 h-[100%] ' />
+                        <AiOutlineArrowRight className='text-white bg-secondary  w-12 h-[100%] ' />
                     </div>
                     <p className='text-gray-400'>By submitting this form , you acknwledge that <br />
                     you have the terms of our privacy statement</p>
