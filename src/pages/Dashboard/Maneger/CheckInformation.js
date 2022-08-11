@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+
+import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
+
 
 const CheckInformation = ({ information, users, setUsers }) => {
   const {
@@ -32,7 +35,23 @@ const CheckInformation = ({ information, users, setUsers }) => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+         if(data.insertedId){
+          const url = `http://localhost:4000/users/${id}`;
+
+          fetch(url, {
+            method: 'DELETE'
+          })
+            .then(res => res.json())
+            .then(data => {
+              if (data.deletedCount > 0) {
+               toast.success("User request approved successfully")
+                const remaining = users.filter(user => user._id !== id)
+                setUsers(remaining);
+      
+              }
+              console.log(data)
+            })
+         }
       })
 
 
@@ -40,20 +59,7 @@ const CheckInformation = ({ information, users, setUsers }) => {
 
     
 
-    const url = `http://localhost:4000/users/${id}`;
-
-    fetch(url, {
-      method: 'DELETE'
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.deletedCount > 0) {
-
-          const remaining = users.filter(user => user._id !== id)
-          setUsers(remaining);
-
-        }
-      })
+   
 
 
   }
