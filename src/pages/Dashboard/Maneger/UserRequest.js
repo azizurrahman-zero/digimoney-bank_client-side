@@ -5,7 +5,7 @@ import Information from "./Information";
 const UserRequest = () => {
   const [users, setUsers] = useState([]);
   const [information, setInformation] = useState(null);
-  const [deleteusers, setDeleteusers] = useState([]);
+  
   useEffect(() => {
     fetch("http://localhost:4000/users")
       .then((res) => res.json())
