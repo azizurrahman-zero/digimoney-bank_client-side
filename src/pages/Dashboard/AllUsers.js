@@ -47,6 +47,7 @@ const AllUsers = () => {
                                 <AllUser
                                     key={user._id}
                                     user={user}
+                                    users={users}
                                     index={index}
                                     setUsers={setUsers}
                                 >
