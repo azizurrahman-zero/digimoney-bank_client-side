@@ -1,5 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import "./App.css";
 import Blog from "./pages/Blog/Blog";
 import Cards from "./pages/Cards/Cards";
@@ -27,6 +31,9 @@ import Transection from "./pages/Dashboard/Transection";
 import ScrollToTop from "./Shared/ScrollToTop";
 import Balance from "./pages/Dashboard/Balance";
 
+import UserInformation from "./pages/Dashboard/UserInformation";
+
+
 function App() {
   const { pathname } = useLocation();
   return (
@@ -50,9 +57,10 @@ function App() {
           <Route index element={<WelcomePage />} />
           <Route path="dashboard" element={<WelcomePage />} />
           <Route path="profile" element={<Profile />} />
-          <Route path="balance" element={<Balance/>} />
+          <Route path="balance" element={<Balance />} />
           <Route path="user-request" element={<UserRequest />} />
           <Route path="allusers" element={<AllUsers />} />
+          <Route path="information/:id" element={<UserInformation />} />
           <Route path="sendmoney" element={<SendMoney />} />
           <Route path="review" element={<Review />} />
           <Route path="transection" element={<Transection />} />
@@ -63,6 +71,7 @@ function App() {
       {!pathname.includes("login") && !pathname.includes("dashboard") && (
         <Footer></Footer>
       )}
+      <ToastContainer />
     </div>
   );
 }

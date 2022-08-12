@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 
+import { toast } from "react-toastify";
+import { useForm } from "react-hook-form";
+
+
 const CheckInformation = ({ information, users, setUsers }) => {
   const {
     _id,
@@ -11,7 +15,31 @@ const CheckInformation = ({ information, users, setUsers }) => {
     gender,
     amount,
     accountType,
+    accountNumber,
   } = information;
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+ 
+  } = useForm();
+
+  const onSubmit = data => {
+    console.log(data);
+    const url=`http://localhost:4000/accountNumber/${_id}`;
+    fetch(url,{ 
+         method:'PATCH',
+          headers:{
+              'content-type':'application/json'
+          },
+          body:JSON.stringify(data)
+      })
+      .then(res=>res.json())
+      .then(result=>{console.log(result);})
+
+  };
+console.log({information});
 
   const approved = (id, { information }) => {
 
@@ -26,25 +54,41 @@ const CheckInformation = ({ information, users, setUsers }) => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+         if(data.insertedId){
+          const url = `http://localhost:4000/users/${id}`;
+
+          fetch(url, {
+            method: 'DELETE'
+          })
+            .then(res => res.json())
+            .then(data => {
+              if (data.deletedCount > 0) {
+               toast.success("User request approved successfully")
+                const remaining = users.filter(user => user._id !== id)
+                setUsers(remaining);
+      
+              }
+              console.log(data)
+            })
+         }
       })
 
 
     // delete task 
-    const url = `http://localhost:4000/users/${id}`;
+    // const url = `http://localhost:4000/users/${id}`;
 
-    fetch(url, {
-      method: 'DELETE'
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.deletedCount > 0) {
+    // fetch(url, {
+    //   method: 'DELETE'
+    // })
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     if (data.deletedCount > 0) {
+    //       toast.success("User request approved successfully")
+    //       const remaining = users.filter(user => user._id !== id)
+    //       setUsers(remaining);
 
-          const remaining = users.filter(user => user._id !== id)
-          setUsers(remaining);
-
-        }
-      })
+    //     }
+    //   })
 
 
   }
@@ -104,11 +148,32 @@ const CheckInformation = ({ information, users, setUsers }) => {
                   <td>{amount}</td>
                 </tr>
                 <tr>
-                  <td>Amount Number</td>
+                  <td>Account Number</td>
                   <td>
-                    <input type="number" placeholder="Provide new account number" name="" id="" />
+                  <form onSubmit={handleSubmit(onSubmit)}>
+                  <input
+                    type="number"
+                    placeholder="   Account Number"
+                    
+                    {...register("accountNumber", {
+                      required: {
+                        value: true,
+                        message: "*Enter Account Number",
+                      },
+                    })}
+                  />
+                  <label className="pt-0 label">
+                    {errors.name?.type === "required" && (
+                      <span className="label-text-alt text-error">
+                        {errors.accountNumber.message}
+                      </span>
+                    )}
+                  </label>
+                  <input class="btn btn-primary btn-xs ml-4"  type="submit" />
+                  </form>
                   </td>
                 </tr>
+                
               </tbody>
             </table>
           </div>

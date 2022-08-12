@@ -3,14 +3,14 @@ import AllUser from './AllUser';
 
 const AllUsers = () => {
     const [users, setUsers] = useState([]);
-    const [search, setSearch] = useState("");
+    const [search, setSearch] = useState([]);
     // handle search user option
-    const handleSearch= (event)=>{
-        let key=event.target.value;
-        const match=users.filter(u=>u.email.includes(key))
+    const handleSearch = (event) => {
+        let key = event.target.value;
+        const match = users.filter(u => u.email.includes(key))
         setSearch(match);
 
-      
+
     }
     useEffect(() => {
         fetch("http://localhost:4000/approvedUsers")
@@ -33,32 +33,36 @@ const AllUsers = () => {
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Contact</th>
+
+                                <th>Address</th>
+                                <th>Address</th>
                                 <th>Address</th>
                             </tr>
                         </thead>
                         <tbody>
-                        {
-                            search.length>0?
+                            {
+                                search.length > 0 ?
 
-                            search.map((user, index) => (
-                                <AllUser
-                                    key={user._id}
-                                    user={user}
-                                    index={index}
-                                >
+                                    search.map((user, index) => (
+                                        <AllUser
+                                            key={user._id}
+                                            user={user}
+                                            index={index}
+                                            setUsers={setUsers}
+                                        >
 
-                                </AllUser>
-                            ))
-                            :
-                            users.map((user, index) => (
-                                <AllUser
-                                    key={user._id}
-                                    user={user}
-                                    index={index}
-                                >
+                                        </AllUser>
+                                    ))
+                                    :
+                                    users.map((user, index) => (
+                                        <AllUser
+                                            key={user._id}
+                                            user={user}
+                                            index={index}
+                                        >
 
-                                </AllUser>
-                            ))
+                                        </AllUser>
+                                    ))
                             }
                         </tbody>
                     </table>

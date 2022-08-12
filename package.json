@@ -16,6 +16,7 @@
     "react-hook-form": "^7.33.1",
     "react-icons": "^4.4.0",
     "react-messenger-customer-chat": "^0.8.0",
+    "react-query": "^4.0.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.1",
     "react-slick": "^0.29.0",
@@ -23,6 +24,8 @@
     "react-toastify": "^9.0.8",
     "recharts": "^2.1.13",
     "slick-carousel": "^1.8.1",
+    "spinner": "^0.3.4",
+    "spinners": "^1.2.2",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
