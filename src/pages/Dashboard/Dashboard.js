@@ -20,7 +20,7 @@ const Dashboard = () => {
     { title: "Go To Home", path: "/", src: <AiFillHome className='w-5 h-5' /> },
     { title: "Dashboard", path: "/dashboard", src: <MdDashboard className='w-5 h-5' /> },
     { title: "Profile", path: "/dashboard/profile", src: <ImProfile className='w-5 h-5' /> },
-
+    { title: "Balance", path: "/dashboard/balance", src: <MdRateReview className='w-5 h-5' /> },
     { title: "Review", path: "/dashboard/review", src: <MdRateReview className='w-5 h-5' /> },
     { title: "Make Admin", path: "/", src: <AiFillEdit className='w-5 h-5' />, gap: true },
     { title: "User Request", path: "/dashboard/user-request", src: <AiFillEdit className='w-5 h-5' />, gap: true },
