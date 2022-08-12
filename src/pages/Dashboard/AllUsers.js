@@ -47,6 +47,7 @@ const AllUsers = () => {
                                 <AllUser
                                     key={user._id}
                                     user={user}
+                                    users={users}
                                     index={index}
                                     setUsers={setUsers}
                                 >
@@ -58,6 +59,7 @@ const AllUsers = () => {
                                 <AllUser
                                     key={user._id}
                                     user={user}
+                                    users={users}
                                     index={index}
                                 >
 
@@ -66,11 +68,7 @@ const AllUsers = () => {
                             }
                         </tbody>
                     </table>
-                    {/* {information && <CheckInformation
-          information={information}
-          
-
-          />} */}
+                   
                 </div>
             </div>
         </div>
