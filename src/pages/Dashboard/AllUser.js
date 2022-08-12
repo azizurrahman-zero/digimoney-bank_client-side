@@ -1,10 +1,10 @@
 import React from "react";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-const AllUser = ({ user, index }) => {
-  const { email, role, _id} = user;
+const AllUser = ({ user, users, index,refetch }) => {
+  
+  const { email, role, _id } = user;
   const makeAdmin = () => {
-   
     
 
     fetch(`http://localhost:4000/approvedUser/admin/${email}`, {
@@ -16,15 +16,36 @@ const AllUser = ({ user, index }) => {
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
-          
+          refetch()
           toast.success(`Successfully made an admin`, {
             position: "top-center",
           });
         }
       });
-      
   };
-  
+  const handleDelete = (id) => {
+
+   
+    const proceed = window.confirm("Are you sure?");
+    if (proceed) {
+      const url = `http://localhost:4000/approvedUser/${id}`;
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+             refetch()
+             toast.success("Removed user successfully")
+           
+          }
+        
+        });
+       
+    }
+    
+  };
+  console.log(user,users)
   return (
     <tr>
       <th>{index + 1}</th>
@@ -40,37 +61,34 @@ const AllUser = ({ user, index }) => {
       <td>{user.email}</td>
       <td>{user.contact}</td>
       <td>
-      <Link to={`/dashboard/information/${_id}`} className="btn btn-xs">
-      Deities
-          </Link>
-        
+        <Link
+          to={`/dashboard/information/${_id}`}
+          className="btn btn-outline btn-primary btn-xs "
+        >
+          Deities
+        </Link>
       </td>
       <td>
         {role !== "admin" && (
-          <button onClick={makeAdmin} className="btn btn-xs">
+          <button
+            onClick={makeAdmin}
+            className="btn btn-outline btn-accent btn-xs"
+          >
             Make Admin
           </button>
-         
         )}
-       {role === "admin" && <span className="text-success">Admin</span>}
-       
+        {role === "admin" && <span className="text-success">Admin</span>}
       </td>
       <td>
-        
-        <button className="btn btn-xs">Remove</button>
+        <button
+          onClick={() => handleDelete(user._id)}
+          className="btn btn-outline btn-error btn-xs"
+        >
+          Remove
+        </button>
       </td>
 
-      {/* <td>
-        <label
-          htmlFor="check-information"
-          onClick={() => setInformation(user)}
-          className="mx-2 btn btn-xs btn-success"
-        >
-          Check
-        </label>
-
-        <button onClick={() => handleDelete(user._id)} class="btn btn-xs btn-error">Cancel</button>
-      </td> */}
+     
     </tr>
   );
 };

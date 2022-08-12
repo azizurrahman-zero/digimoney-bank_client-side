@@ -80,6 +80,7 @@ const Balance = () => {
           </div>
       </div>
   </div>
+
     );
 };
 

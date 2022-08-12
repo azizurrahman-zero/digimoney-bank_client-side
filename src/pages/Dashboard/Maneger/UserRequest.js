@@ -47,8 +47,6 @@ const UserRequest = () => {
           information={information}
           users={users}
           setUsers={setUsers}
-
-
         />}
       </div>
     </div>

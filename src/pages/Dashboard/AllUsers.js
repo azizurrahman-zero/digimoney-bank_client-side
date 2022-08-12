@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React, { useState } from 'react';
+
 import AllUser from './AllUser';
 
 const AllUsers = () => {
-    const [users, setUsers] = useState([]);
-    const [search, setSearch] = useState([]);
+  
+    const [search, setSearch] = useState("");
     // handle search user option
     const handleSearch = (event) => {
         let key = event.target.value;
@@ -12,15 +14,23 @@ const AllUsers = () => {
 
 
     }
-    useEffect(() => {
-        fetch("http://localhost:4000/approvedUsers")
-            .then((res) => res.json())
-            .then((data) => setUsers(data));
-    }, []);
+
+
+    const { isLoading, error, data:users,refetch } = useQuery(['approvedusers'], () =>
+    fetch('http://localhost:4000/approvedUsers').then(res =>
+      res.json()
+    )
+  )
+ 
+    console.log(users)
+
+  if (isLoading || error) {
+    return;
+  }
     return (
         <div>
             <div>
-                <h2 className="text-2xl text-center">Users: {users.length}</h2>
+                <h2 className="text-2xl text-center">Users: {users?.length}</h2>
                 <div className='grid justify-items-end mr-9'>
                     <input type="text" onChange={handleSearch} placeholder="Enter Email" class="input input-bordered w-full max-w-xs" />
                 </div>
@@ -42,35 +52,34 @@ const AllUsers = () => {
                         <tbody>
                             {
                                 search.length > 0 ?
+                            search.map((user, index) => (
+                                <AllUser
+                                    key={user._id}
+                                    user={user}
+                                    users={users}
+                                    index={index}
+                                    refetch={refetch}
+                                    
+                                >
 
-                                    search.map((user, index) => (
-                                        <AllUser
-                                            key={user._id}
-                                            user={user}
-                                            index={index}
-                                            setUsers={setUsers}
-                                        >
-
-                                        </AllUser>
-                                    ))
-                                    :
-                                    users.map((user, index) => (
-                                        <AllUser
-                                            key={user._id}
-                                            user={user}
-                                            index={index}
-                                        >
+                                </AllUser>
+                            ))
+                            :
+                            users.map((user, index) => (
+                                <AllUser
+                                    key={user._id}
+                                    user={user}
+                                    users={users}
+                                    refetch={refetch}
+                                    index={index}
+                                >
 
                                         </AllUser>
                                     ))
                             }
                         </tbody>
                     </table>
-                    {/* {information && <CheckInformation
-          information={information}
-          
-
-          />} */}
+                   
                 </div>
             </div>
         </div>
