@@ -6,11 +6,6 @@ import { useForm } from "react-hook-form";
 
 const CheckInformation = ({ information, users, setUsers }) => {
   const {
-    register,
-    formState: { errors },
- 
-  } = useForm();
-  const {
     _id,
     displayName,
     email,
@@ -23,9 +18,32 @@ const CheckInformation = ({ information, users, setUsers }) => {
     accountNumber,
   } = information;
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+ 
+  } = useForm();
+
+  const onSubmit = data => {
+    console.log(data);
+    const url=`http://localhost:4000/accountNumber/${_id}`;
+    fetch(url,{ 
+         method:'PATCH',
+          headers:{
+              'content-type':'application/json'
+          },
+          body:JSON.stringify(data)
+      })
+      .then(res=>res.json())
+      .then(result=>{console.log(result);})
+
+  };
+console.log({information});
+
   const approved = (id, { information }) => {
 
-    fetch('http://localhost:4000/approvedUser', {
+    fetch('http://localhost:4000/approvedUsers', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -56,10 +74,20 @@ const CheckInformation = ({ information, users, setUsers }) => {
 
 
     // delete task 
+    // const url = `http://localhost:4000/users/${id}`;
 
-    
+    // fetch(url, {
+    //   method: 'DELETE'
+    // })
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     if (data.deletedCount > 0) {
+    //       toast.success("User request approved successfully")
+    //       const remaining = users.filter(user => user._id !== id)
+    //       setUsers(remaining);
 
-   
+    //     }
+    //   })
 
 
   }
@@ -119,8 +147,9 @@ const CheckInformation = ({ information, users, setUsers }) => {
                   <td>{amount}</td>
                 </tr>
                 <tr>
-                  <td>Amount Number</td>
+                  <td>Account Number</td>
                   <td>
+                  <form onSubmit={handleSubmit(onSubmit)}>
                   <input
                     type="number"
                     placeholder="   Account Number"
@@ -139,6 +168,8 @@ const CheckInformation = ({ information, users, setUsers }) => {
                       </span>
                     )}
                   </label>
+                  <input class="btn btn-primary btn-xs ml-4"  type="submit" />
+                  </form>
                   </td>
                 </tr>
                 

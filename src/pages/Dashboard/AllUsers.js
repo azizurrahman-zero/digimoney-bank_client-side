@@ -7,12 +7,12 @@ const AllUsers = () => {
   
     const [search, setSearch] = useState("");
     // handle search user option
-    const handleSearch= (event)=>{
-        let key=event.target.value;
-        const match=users.filter(u=>u.email.includes(key))
+    const handleSearch = (event) => {
+        let key = event.target.value;
+        const match = users.filter(u => u.email.includes(key))
         setSearch(match);
 
-      
+
     }
 
 
@@ -43,16 +43,15 @@ const AllUsers = () => {
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Contact</th>
-                                
+
                                 <th>Address</th>
                                 <th>Address</th>
                                 <th>Address</th>
                             </tr>
                         </thead>
                         <tbody>
-                        {
-                            search.length>0?
-
+                            {
+                                search.length > 0 ?
                             search.map((user, index) => (
                                 <AllUser
                                     key={user._id}
@@ -75,8 +74,8 @@ const AllUsers = () => {
                                     index={index}
                                 >
 
-                                </AllUser>
-                            ))
+                                        </AllUser>
+                                    ))
                             }
                         </tbody>
                     </table>

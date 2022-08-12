@@ -5,8 +5,8 @@ const ScrollToTop = () => {
     const [visiable,setVisible]=useState(false)
     // Show or visible button 
     const toggleVisible = () => {
-        const scrolled = document.documentElement.scrollTop;
-        console.log(scrolled)
+        // const scrolled = document.documentElement.scrollTop;
+        // // console.log(scrolled)
         if ( window.scrollY> 300){
         setVisible(true)
         }
