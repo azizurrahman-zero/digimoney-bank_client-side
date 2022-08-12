@@ -1,36 +1,96 @@
-import React from 'react';
+import React from "react";
+import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
+const AllUser = ({ user, users, index,refetch }) => {
+  
+  const { email, role, _id } = user;
+  const makeAdmin = () => {
+    
 
-const AllUser = ({ user, index }) => {
-    return (
+    fetch(`https://tranquil-lake-95777.herokuapp.com/approvedUser/admin/${email}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          refetch()
+          toast.success(`Successfully made an admin`, {
+            position: "top-center",
+          });
+        }
+      });
+  };
+  const handleDelete = (id) => {
 
-        <tr>
-            <th>{index + 1}</th>
-            <td>
-                <div class="avatar">
-                    <div class="w-16 rounded-full">
-                        <img src={user.img} alt="" />
-                    </div>
-                </div>
-            </td>
+   
+    const proceed = window.confirm("Are you sure?");
+    if (proceed) {
+      const url = `https://tranquil-lake-95777.herokuapp.com/approvedUser/${id}`;
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+             refetch()
+             toast.success("Removed user successfully")
+           
+          }
+        
+        });
+       
+    }
+    
+  };
+  console.log(user,users)
+  return (
+    <tr>
+      <th>{index + 1}</th>
+      <td>
+        <div class="avatar">
+          <div class="w-16 rounded-full">
+            <img src={user.img} alt="" />
+          </div>
+        </div>
+      </td>
 
-            <td>{user.displayName}</td>
-            <td>{user.email}</td>
-            <td>{user.contact}</td>
-            <td>{user.address}</td>
-
-            {/* <td>
-        <label
-          htmlFor="check-information"
-          onClick={() => setInformation(user)}
-          className="mx-2 btn btn-xs btn-success"
+      <td>{user.displayName}</td>
+      <td>{user.email}</td>
+      <td>{user.contact}</td>
+      <td>
+        <Link
+          to={`/dashboard/information/${_id}`}
+          className="btn btn-outline btn-primary btn-xs "
         >
-          Check
-        </label>
+          Deities
+        </Link>
+      </td>
+      <td>
+        {role !== "admin" && (
+          <button
+            onClick={makeAdmin}
+            className="btn btn-outline btn-accent btn-xs"
+          >
+            Make Admin
+          </button>
+        )}
+        {role === "admin" && <span className="text-success">Admin</span>}
+      </td>
+      <td>
+        <button
+          onClick={() => handleDelete(user._id)}
+          className="btn btn-outline btn-error btn-xs"
+        >
+          Remove
+        </button>
+      </td>
 
-        <button onClick={() => handleDelete(user._id)} class="btn btn-xs btn-error">Cancel</button>
-      </td> */}
-        </tr>
-    );
+     
+    </tr>
+  );
 };
 
 export default AllUser;

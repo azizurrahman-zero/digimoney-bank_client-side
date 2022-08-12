@@ -11,6 +11,7 @@ import useTransection from "../../hooks/useTransection";
 import TransectionRow from "./TransectionRow";
 import Piechart from "./Piechart";
 import Barchart from "./Barchart";
+import BalanceCard from "./BalanceCard";
 
 const WelcomePage = () => {
   const data = [
@@ -89,27 +90,7 @@ const WelcomePage = () => {
     <section className="mt-8">
       <div className="grid lg:grid-cols-3 gap-12">
         {/* Balance Cart start */}
-        <div class="card balance-card  bg-[#6160DC] text-gray-200">
-          <div class=" p-5">
-            <p className="text-xl">
-              <small>My Balance</small>
-            </p>
-
-            <h2 class="card-title text-3xl mb-5">$12,345,789</h2>
-            <p className="text-end font-bold">6589 2157 6325 2564</p>
-
-            <div class="card-actions gap-x-10 mt-5">
-              <div>
-                <p className="text-xs font-[500]">Card Holder</p>
-                <h1 className="text-lg font-bold">Rara Avis</h1>
-              </div>
-              <div>
-                <p className="text-xs font-[500]">Valid Thru</p>
-                <h1 className="text-lg font-bold">03/21</h1>
-              </div>
-            </div>
-          </div>
-        </div>
+         <BalanceCard />
         {/* Balance CArd End */}
 
         {/* Income Card Chart start */}

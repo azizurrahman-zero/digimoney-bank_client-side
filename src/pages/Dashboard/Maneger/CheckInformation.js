@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
+
+import { toast } from "react-toastify";
+import { useForm } from "react-hook-form";
+
 
 const CheckInformation = ({ information, users, setUsers }) => {
+  const accountRef=useRef()
   const {
     _id,
     displayName,
@@ -11,11 +16,37 @@ const CheckInformation = ({ information, users, setUsers }) => {
     gender,
     amount,
     accountType,
+    accountNumber,
   } = information;
 
-  const approved = (id, { information }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+ 
+  } = useForm();
 
-    fetch('http://localhost:4000/approvedUsers', {
+  const onSubmit = data => {
+    console.log(data);
+    const url=`https://tranquil-lake-95777.herokuapp.com/accountNumber/${_id}`;
+    fetch(url,{ 
+         method:'PATCH',
+          headers:{
+              'content-type':'application/json'
+          },
+          body:JSON.stringify(data)
+      })
+      .then(res=>res.json())
+      .then(result=>{console.log(result);})
+
+  };
+console.log({information});
+
+  const approved = (id, { information },e) => {
+    console.log(information,"this is information ")
+     information["accountNumber"]=accountRef.current.value
+    
+    fetch('https://tranquil-lake-95777.herokuapp.com/approvedUsers', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -25,28 +56,41 @@ const CheckInformation = ({ information, users, setUsers }) => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+         if(data.insertedId){
+          const url = `https://tranquil-lake-95777.herokuapp.com/users/${id}`;
+
+          fetch(url, {
+            method: 'DELETE'
+          })
+            .then(res => res.json())
+            .then(data => {
+              if (data.deletedCount > 0) {
+               toast.success("User request approved successfully")
+                const remaining = users.filter(user => user._id !== id)
+                setUsers(remaining);
+      
+              }
+              console.log(data)
+            })
+         }
       })
 
 
     // delete task 
+    // const url = `https://tranquil-lake-95777.herokuapp.com/users/${id}`;
 
-    
+    // fetch(url, {
+    //   method: 'DELETE'
+    // })
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     if (data.deletedCount > 0) {
+    //       toast.success("User request approved successfully")
+    //       const remaining = users.filter(user => user._id !== id)
+    //       setUsers(remaining);
 
-    const url = `http://localhost:4000/users/${id}`;
-
-    fetch(url, {
-      method: 'DELETE'
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.deletedCount > 0) {
-
-          const remaining = users.filter(user => user._id !== id)
-          setUsers(remaining);
-
-        }
-      })
+    //     }
+    //   })
 
 
   }
@@ -106,11 +150,33 @@ const CheckInformation = ({ information, users, setUsers }) => {
                   <td>{amount}</td>
                 </tr>
                 <tr>
-                  <td>Amount Number</td>
+                  <td>Account Number</td>
                   <td>
-                    <input type="number" name="" id="" />
+                  {/* <form onSubmit={handleSubmit(onSubmit)}>
+                  <input
+                    type="number"
+                    placeholder="   Account Number"
+                    
+                    {...register("accountNumber", {
+                      required: {
+                        value: true,
+                        message: "*Enter Account Number",
+                      },
+                    })}
+                  />
+                  <label className="pt-0 label">
+                    {errors.name?.type === "required" && (
+                      <span className="label-text-alt text-error">
+                        {errors.accountNumber.message}
+                      </span>
+                    )}
+                  </label>
+                  <input class="btn btn-primary btn-xs ml-4"  type="submit" />
+                  </form> */}
+                  <input ref={accountRef} type="text" className="input input-primary" placeholder="account-number" />
                   </td>
                 </tr>
+                
               </tbody>
             </table>
           </div>

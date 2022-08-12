@@ -1,22 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 
-const Information = ({ user, index,users, setUsers,setInformation }) => {
-  // const [deleteusers, setDeleteusers] = useState([]);
-
+const Information = ({ user, index, users, setUsers, setInformation }) => {
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      const url = `http://localhost:4000/users/${id}`;
+      const url = `https://tranquil-lake-95777.herokuapp.com/users/${id}`;
       fetch(url, {
         method: "DELETE",
       })
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount > 0) {
-  
-            const remaining = users.filter(user => user._id !== id)
+            const remaining = users.filter((user) => user._id !== id);
             setUsers(remaining);
-  
           }
         });
     }
@@ -25,11 +21,11 @@ const Information = ({ user, index,users, setUsers,setInformation }) => {
     <tr>
       <th>{index + 1}</th>
       <td>
-      <div class="avatar">
-  <div class="w-16 rounded-full">
-    <img src={user.img} alt=""/>
-  </div>
-</div>
+        <div class="avatar">
+          <div class="w-16 rounded-full">
+            <img src={user.img} alt="" />
+          </div>
+        </div>
       </td>
 
       <td>{user.displayName}</td>
@@ -46,7 +42,12 @@ const Information = ({ user, index,users, setUsers,setInformation }) => {
           Check
         </label>
 
-        <button onClick={() => handleDelete(user._id)} class="btn btn-xs btn-error">Delete</button>
+        <button
+          onClick={() => handleDelete(user._id)}
+          class="btn btn-xs btn-error"
+        >
+          Delete
+        </button>
       </td>
     </tr>
   );

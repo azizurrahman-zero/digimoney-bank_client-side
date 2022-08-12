@@ -5,9 +5,9 @@ import Information from "./Information";
 const UserRequest = () => {
   const [users, setUsers] = useState([]);
   const [information, setInformation] = useState(null);
-  const [deleteusers, setDeleteusers] = useState([]);
+  
   useEffect(() => {
-    fetch("http://localhost:4000/users")
+    fetch("https://tranquil-lake-95777.herokuapp.com/users")
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);
@@ -47,8 +47,6 @@ const UserRequest = () => {
           information={information}
           users={users}
           setUsers={setUsers}
-
-
         />}
       </div>
     </div>
