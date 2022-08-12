@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
@@ -25,7 +25,7 @@ const CheckInformation = ({ information, users, setUsers }) => {
 
   const approved = (id, { information }) => {
 
-    fetch('http://localhost:4000/approvedUsers', {
+    fetch('http://localhost:4000/approvedUser', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
