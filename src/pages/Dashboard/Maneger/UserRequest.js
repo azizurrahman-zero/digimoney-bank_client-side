@@ -7,7 +7,7 @@ const UserRequest = () => {
   const [information, setInformation] = useState(null);
   
   useEffect(() => {
-    fetch("http://localhost:4000/users")
+    fetch("https://tranquil-lake-95777.herokuapp.com/users")
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);

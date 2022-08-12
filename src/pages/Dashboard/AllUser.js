@@ -7,7 +7,7 @@ const AllUser = ({ user, users, index,refetch }) => {
   const makeAdmin = () => {
     
 
-    fetch(`http://localhost:4000/approvedUser/admin/${email}`, {
+    fetch(`https://tranquil-lake-95777.herokuapp.com/approvedUser/admin/${email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -28,7 +28,7 @@ const AllUser = ({ user, users, index,refetch }) => {
    
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      const url = `http://localhost:4000/approvedUser/${id}`;
+      const url = `https://tranquil-lake-95777.herokuapp.com/approvedUser/${id}`;
       fetch(url, {
         method: "DELETE",
       })

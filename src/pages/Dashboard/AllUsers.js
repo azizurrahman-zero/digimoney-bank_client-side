@@ -17,7 +17,7 @@ const AllUsers = () => {
 
 
     const { isLoading, error, data:users,refetch } = useQuery(['approvedusers'], () =>
-    fetch('http://localhost:4000/approvedUsers').then(res =>
+    fetch('https://tranquil-lake-95777.herokuapp.com/approvedUsers').then(res =>
       res.json()
     )
   )

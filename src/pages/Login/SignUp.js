@@ -63,7 +63,7 @@ const SignUp = () => {
           };
           console.log(currentUser)
 
-          fetch(`http://localhost:4000/adduser`, {
+          fetch(`https://tranquil-lake-95777.herokuapp.com/adduser`, {
             method: "POST",
             headers: {
               "content-type": "application/json",

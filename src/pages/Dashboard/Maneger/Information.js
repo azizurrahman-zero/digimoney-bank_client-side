@@ -4,7 +4,7 @@ const Information = ({ user, index, users, setUsers, setInformation }) => {
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      const url = `http://localhost:4000/users/${id}`;
+      const url = `https://tranquil-lake-95777.herokuapp.com/users/${id}`;
       fetch(url, {
         method: "DELETE",
       })
