@@ -9,7 +9,7 @@ const UserInformation = () => {
   const [information, setInformation] = useState(null);
   const { id } = useParams();
   useEffect(() => {
-    const url = `http://localhost:4000/approvedUser/${id}`;
+    const url = `https://tranquil-lake-95777.herokuapp.com/approvedUser/${id}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setUserInfo(data));

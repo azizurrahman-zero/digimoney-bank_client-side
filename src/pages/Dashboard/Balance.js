@@ -11,7 +11,7 @@ const Balance = () => {
     const [user]=useAuthState(auth)
     useEffect(()=>{
         if (user) {
-            fetch(`http://localhost:4000/finduser?email=${user.email}`)
+            fetch(`https://tranquil-lake-95777.herokuapp.com/finduser?email=${user.email}`)
         .then(res=>res.json())
         .then(data=>setUserEmail(data))
         }
@@ -23,7 +23,7 @@ const Balance = () => {
         if (userEmail.amount>data.withdrawAmount) {
            const newAmount = userEmail.amount-data.withdrawAmount;
            const updatedAmount={amount:newAmount}
-           const url=`http://localhost:4000/approvedUsers/${userEmail._id}`;
+           const url=`https://tranquil-lake-95777.herokuapp.com/approvedUsers/${userEmail._id}`;
           fetch(url,{ 
                method:'PATCH',
                 headers:{
