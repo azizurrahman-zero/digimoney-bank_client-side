@@ -16,7 +16,7 @@ const AllUsers = () => {
         fetch("http://localhost:4000/approvedUsers")
             .then((res) => res.json())
             .then((data) => setUsers(data));
-    }, []);
+    }, [users]);
     return (
         <div>
             <div>

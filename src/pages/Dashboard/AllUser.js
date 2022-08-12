@@ -23,6 +23,8 @@ const AllUser = ({ user, users, index, setUsers }) => {
       });
   };
   const handleDelete = (id) => {
+
+   
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
       const url = `http://localhost:4000/approvedUser/${id}`;
@@ -42,6 +44,7 @@ const AllUser = ({ user, users, index, setUsers }) => {
     }
     
   };
+  console.log(user,users)
   return (
     <tr>
       <th>{index + 1}</th>
