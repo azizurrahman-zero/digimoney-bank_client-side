@@ -1,7 +1,7 @@
 import React from "react";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-const AllUser = ({ user, users, index, setUsers }) => {
+const AllUser = ({ user, users, index,refetch }) => {
   
   const { email, role, _id } = user;
   const makeAdmin = () => {
@@ -16,6 +16,7 @@ const AllUser = ({ user, users, index, setUsers }) => {
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
+          refetch()
           toast.success(`Successfully made an admin`, {
             position: "top-center",
           });
@@ -34,11 +35,11 @@ const AllUser = ({ user, users, index, setUsers }) => {
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount > 0) {
-            const remaining = users.filter((user) => user._id !== _id);
-            setUsers(remaining);
-            console.log(remaining)
+             refetch()
+             toast.success("Removed user successfully")
+           
           }
-          console.log(data)
+        
         });
        
     }

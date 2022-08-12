@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React, { useState } from 'react';
+
 import AllUser from './AllUser';
 
 const AllUsers = () => {
-    const [users, setUsers] = useState([]);
+  
     const [search, setSearch] = useState("");
     // handle search user option
     const handleSearch= (event)=>{
@@ -12,15 +14,23 @@ const AllUsers = () => {
 
       
     }
-    useEffect(() => {
-        fetch("http://localhost:4000/approvedUsers")
-            .then((res) => res.json())
-            .then((data) => setUsers(data));
-    }, [users]);
+
+
+    const { isLoading, error, data:users,refetch } = useQuery(['approvedusers'], () =>
+    fetch('http://localhost:4000/approvedUsers').then(res =>
+      res.json()
+    )
+  )
+ 
+    console.log(users)
+
+  if (isLoading || error) {
+    return;
+  }
     return (
         <div>
             <div>
-                <h2 className="text-2xl text-center">Users: {users.length}</h2>
+                <h2 className="text-2xl text-center">Users: {users?.length}</h2>
                 <div className='grid justify-items-end mr-9'>
                     <input type="text" onChange={handleSearch} placeholder="Enter Email" class="input input-bordered w-full max-w-xs" />
                 </div>
@@ -49,7 +59,8 @@ const AllUsers = () => {
                                     user={user}
                                     users={users}
                                     index={index}
-                                    setUsers={setUsers}
+                                    refetch={refetch}
+                                    
                                 >
 
                                 </AllUser>
@@ -60,6 +71,7 @@ const AllUsers = () => {
                                     key={user._id}
                                     user={user}
                                     users={users}
+                                    refetch={refetch}
                                     index={index}
                                 >
 
