@@ -1,6 +1,8 @@
-import React from 'react';
+import React from "react";
+import { FaArrowRight } from 'react-icons/fa';
 
-const FoundTransfer = () => {
+const FoundTransfer = ({userInfo}) => {
+  const { amount, accountNumber } = userInfo;
   return (
     <>
       <input type="checkbox" id="found-transfer" class="modal-toggle" />
@@ -12,18 +14,67 @@ const FoundTransfer = () => {
           >
             ✕
           </label>
-          <h3 class="font-bold text-lg">
-            Congratulations random Internet user!
-          </h3>
-          <p class="py-4">
-            You've been selected for a chance to get one year of subscription to
-            use Wikipedia for free!
-          </p>
-          <div class="modal-action">
-            <label for="found-transfer" class="btn">
-              Yay!
-            </label>
-          </div>
+          <h3 class="font-bold text-2xl px-12">Found Transfer!</h3>
+          <form action="">
+            <div class="flex w-full my-5">
+              <div class="grid h-20 flex-grow ">
+              <label htmlFor="accountNumber">ACCOUNT NUMBER</label>
+                <input
+                  id="account-number"
+                  name="accountNumber"
+                  
+                  value={accountNumber}
+                  type="number"
+                  disabled
+                />
+                 <label htmlFor="accountNumber">CURRENT BALANCE</label>
+                <input
+                  id="account-number"
+                  name="accountNumber"
+                  className="px-2"
+                  value={amount}
+                  type="number"
+                  disabled
+                />
+                <label htmlFor="accountNumber">CURRENT BALANCE</label>
+                <input
+                  id="account-number"
+                  name="accountNumber"
+                  
+                  value=""
+                  type="number"
+                 
+                />
+              </div>
+              <div class="divider divider-horizontal"><FaArrowRight className="font-bold text-7xl"/></div>
+              <div class="grid h-20 flex-grow ">
+              <label htmlFor="accountNumber">ACCOUNT NUMBER</label>
+                <input
+                  id="account-number"
+                  name="accountNumber"
+                 
+                  value=""
+                  type="number"
+                  
+                />
+                <label htmlFor="accountNumber">CURRENT BALANCE</label>
+                <input
+                  id="account-number"
+                  name="accountNumber"
+                  className="px-2"
+                  value={amount}
+                  type="number"
+                  disabled
+                />
+               
+              </div>
+            </div>
+            <div class="text-center mt-20">
+              <label for="found-transfer" class="btn btn-primary">
+                Found Transfer now
+              </label>
+            </div>
+          </form>
         </div>
       </div>
     </>

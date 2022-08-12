@@ -1,7 +1,7 @@
 import React from "react";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-const AllUser = ({ user,users, index, setUsers }) => {
+const AllUser = ({ user, users, index, setUsers }) => {
   
   const { email, role, _id } = user;
   const makeAdmin = () => {
@@ -32,11 +32,15 @@ const AllUser = ({ user,users, index, setUsers }) => {
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount > 0) {
-            const remaining = users.filter((user) => user._id !== id);
+            const remaining = users.filter((user) => user._id !== _id);
             setUsers(remaining);
+            console.log(remaining)
           }
+          console.log(data)
         });
+       
     }
+    
   };
   return (
     <tr>
