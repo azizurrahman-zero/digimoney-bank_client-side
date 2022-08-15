@@ -2,16 +2,16 @@ import React from 'react';
 
 const BalanceCard = () => {
     return (
-        <div class="card balance-card  bg-[#6160DC] text-gray-200">
-          <div class=" p-5">
+        <div className="card balance-card  bg-[#6160DC] text-gray-200">
+          <div className=" p-5">
             <p className="text-xl">
               <small>My Balance</small>
             </p>
 
-            <h2 class="card-title text-3xl mb-5">$12,345,789</h2>
+            <h2 className="card-title text-3xl mb-5">$12,345,789</h2>
             <p className="text-end font-bold">6589 2157 6325 2564</p>
 
-            <div class="card-actions gap-x-10 mt-5">
+            <div className="card-actions gap-x-10 mt-5">
               <div>
                 <p className="text-xs font-[500]">Card Holder</p>
                 <h1 className="text-lg font-bold">Rara Avis</h1>

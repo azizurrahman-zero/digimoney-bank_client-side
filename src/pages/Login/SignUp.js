@@ -80,8 +80,8 @@ const SignUp = () => {
 
   return (
     <div>
-      <div className="bg-[#f3f3fa] flex items-center justify-center lg:py-20">
-        <div className="flex-shrink-0 w-full max-w-2xl mb-16 shadow-2xl mmt-5 card bg-base-100 lg:m-0">
+      <div className="bg-[#f3f3fa] flex items-center justify-center lg:py-10">
+        <div className="flex-shrink-0 w-full max-w-2xl  shadow-2xl mmt-5 card bg-base-100 lg:m-0">
           <div className="card-body">
             <h2 className="mb-1 text-3xl font-bold text-center text-neutral">
               Sign Up

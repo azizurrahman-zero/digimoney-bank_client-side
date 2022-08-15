@@ -16,16 +16,16 @@ const UserInformation = () => {
   }, [id]);
   return (
     <>
-      <div class="hero main-h-screen bg-base-100">
+      <div className="hero main-h-screen bg-base-100">
         <div>
-          <div class="hero-content flex-col lg:flex-row">
+          <div className="hero-content flex-col lg:flex-row">
             <img src={userInfo.img} className="lg:w-96 sm:w-72" alt="" />
 
             <div>
-              <table class="table">
+              <table className="table">
                 <tbody>
                   <tr>
-                    <td class="active">Account Number</td>
+                    <td className="active">Account Number</td>
                     <td>{userInfo.accountNumber}</td>
                   </tr>
                   <tr>

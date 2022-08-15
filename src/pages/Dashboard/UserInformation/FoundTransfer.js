@@ -5,19 +5,19 @@ const FoundTransfer = ({userInfo}) => {
   const { amount, accountNumber } = userInfo;
   return (
     <>
-      <input type="checkbox" id="found-transfer" class="modal-toggle" />
-      <div class="modal modal-bottom sm:modal-middle">
-        <div class="modal-box">
+      <input type="checkbox" id="found-transfer" className="modal-toggle" />
+      <div className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box">
           <label
             htmlFor="found-transfer"
             className="absolute btn btn-sm btn-circle right-2 top-2"
           >
             ✕
           </label>
-          <h3 class="font-bold text-2xl px-12">Found Transfer!</h3>
+          <h3 className="font-bold text-2xl px-12">Found Transfer!</h3>
           <form action="">
-            <div class="flex w-full my-5">
-              <div class="grid h-20 flex-grow ">
+            <div className="flex w-full my-5">
+              <div className="grid h-20 flex-grow ">
               <label htmlFor="accountNumber">ACCOUNT NUMBER</label>
                 <input
                   id="account-number"
@@ -46,8 +46,8 @@ const FoundTransfer = ({userInfo}) => {
                  
                 />
               </div>
-              <div class="divider divider-horizontal"><FaArrowRight className="font-bold text-7xl"/></div>
-              <div class="grid h-20 flex-grow ">
+              <div className="divider divider-horizontal"><FaArrowRight className="font-bold text-7xl"/></div>
+              <div className="grid h-20 flex-grow ">
               <label htmlFor="accountNumber">ACCOUNT NUMBER</label>
                 <input
                   id="account-number"
@@ -69,8 +69,8 @@ const FoundTransfer = ({userInfo}) => {
                
               </div>
             </div>
-            <div class="text-center mt-20">
-              <label for="found-transfer" class="btn btn-primary">
+            <div className="text-center mt-20">
+              <label for="found-transfer" className="btn btn-primary">
                 Found Transfer now
               </label>
             </div>

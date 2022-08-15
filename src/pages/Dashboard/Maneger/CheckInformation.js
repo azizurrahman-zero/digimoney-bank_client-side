@@ -70,27 +70,13 @@ console.log({information});
                 setUsers(remaining);
       
               }
-              console.log(data)
+            
             })
          }
       })
 
 
-    // delete task 
-    // const url = `https://tranquil-lake-95777.herokuapp.com/users/${id}`;
-
-    // fetch(url, {
-    //   method: 'DELETE'
-    // })
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     if (data.deletedCount > 0) {
-    //       toast.success("User request approved successfully")
-    //       const remaining = users.filter(user => user._id !== id)
-    //       setUsers(remaining);
-
-    //     }
-    //   })
+   
 
 
   }
@@ -98,9 +84,9 @@ console.log({information});
 
   return (
     <>
-      <input type="checkbox" id="check-information" class="modal-toggle" />
-      <div class="modal modal-bottom sm:modal-middle">
-        <div class="modal-box">
+      <input type="checkbox" id="check-information" className="modal-toggle" />
+      <div className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box">
           <label
             htmlFor="check-information"
             className="absolute btn btn-sm btn-circle right-2 top-2"
@@ -108,23 +94,23 @@ console.log({information});
             ✕
           </label>
 
-          <div class="overflow-x-auto mt-10">
-            <div class="avatar mx-auto justify-center items-center flex gap-4">
-              <div class="w-65">
+          <div className="overflow-x-auto mt-10">
+            <div className="avatar mx-auto justify-center items-center flex gap-4">
+              <div className="w-65">
                 <img src={img} alt="" />
               </div>
-              <div class="w-65">
+              <div className="w-65">
                 <img src={img} alt="" />
               </div>
             </div>
-            <table class="table w-full my-10">
+            <table className="table w-full my-10">
               <tbody>
                 <tr>
                   <td>Name</td>
                   <td>{displayName}</td>
                 </tr>
 
-                <tr class="active">
+                <tr className="active">
                   <td>Email</td>
                   <td>{email}</td>
                 </tr>
@@ -171,7 +157,7 @@ console.log({information});
                       </span>
                     )}
                   </label>
-                  <input class="btn btn-primary btn-xs ml-4"  type="submit" />
+                  <input className="btn btn-primary btn-xs ml-4"  type="submit" />
                   </form> */}
                   <input ref={accountRef} type="text" className="input input-primary" placeholder="account-number" />
                   </td>
@@ -181,8 +167,8 @@ console.log({information});
             </table>
           </div>
 
-          <div class="modal-action">
-            <label onClick={() => approved(_id, { information })} for="check-information" class="btn btn-active btn-accent">
+          <div className="modal-action">
+            <label onClick={() => approved(_id, { information })} for="check-information" className="btn btn-active btn-accent">
               Approved
             </label>
           </div>
