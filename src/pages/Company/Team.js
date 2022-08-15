@@ -1,5 +1,4 @@
 import React from 'react';
-import Menubar from '../../Shared/Menubar';
 import './team.css'
 import TeamMember from './TeamMember';
 
@@ -23,7 +22,7 @@ const Team = () => {
 
              <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-5'>
                     {
-                        teamData.map(team=><TeamMember team={team} />)
+                        teamData.map(team=><TeamMember key={team.id} team={team} />)
                     }
              </div>
         </main>

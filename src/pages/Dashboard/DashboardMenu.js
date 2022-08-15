@@ -18,7 +18,7 @@ const DashboardMenu = () => {
      <div className='flex items-center g-x-2 px-2 bg-[#2366B5] text-white font-semibold border-2 rounded-full'>
      <AiOutlineArrowDown />
      <p className='text-sm'>{user?.displayName}</p>
-      <label tabindex="0" className="btn btn-ghost btn-circle avatar flex">
+      <label tabIndex="0" className="btn btn-ghost btn-circle avatar flex">
         
         <div className="w-8 rounded-full">
        
@@ -26,7 +26,7 @@ const DashboardMenu = () => {
         </div>
       </label>
      </div>
-      <ul tabindex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+      <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
         <li>
           <a className="justify-between">
             Profile

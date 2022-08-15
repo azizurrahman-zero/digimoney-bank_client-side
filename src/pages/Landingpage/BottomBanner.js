@@ -22,22 +22,22 @@ const BottomBanner = () => {
 
         <div >
              <div className="flex mt-4 lg:mt-0 lg:gap-x-5 gap-x-2">
-             <div class="form-control w-full max-w-xs">
-            <label class="label">
-              <span class="label-text text-lg">Enter Your Email</span>
+             <div className="form-control w-full max-w-xs">
+            <label className="label">
+              <span className="label-text text-lg">Enter Your Email</span>
             </label>
             <input
               type="text"
-              class="input bg-[#F8BF8A] focus:outline-none text-[#114C54] text-xl input-bordered w-full max-w-xs"
+              className="input bg-[#F8BF8A] focus:outline-none text-[#114C54] text-xl input-bordered w-full max-w-xs"
             />
           </div>
-          <div class="form-control lg:w-6/12 max-w-xs">
-            <label class="label">
-              <span class="label-text text-lg">ZIP Code</span>
+          <div className="form-control lg:w-6/12 max-w-xs">
+            <label className="label">
+              <span className="label-text text-lg">ZIP Code</span>
             </label>
             <input
               type="text"
-              class="input bg-[#F8BF8A] focus:outline-none text-[#114C54] text-xl input-bordered w-full max-w-xs"
+              className="input bg-[#F8BF8A] focus:outline-none text-[#114C54] text-xl input-bordered w-full max-w-xs"
             />
           </div>
              </div>

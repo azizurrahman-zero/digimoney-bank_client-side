@@ -12,7 +12,8 @@ import loginBanner from "../../assets/images/login-banner.svg";
 import { GiCancel } from "react-icons/gi";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { async } from "@firebase/util";
+
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ const Login = () => {
 
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+ 
 
   const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
  

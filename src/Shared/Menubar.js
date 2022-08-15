@@ -1,8 +1,6 @@
 import { signOut } from "firebase/auth";
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import Logo from "../assets/images/logo/logo.png";
-
 import { Link } from "react-router-dom";
 import auth from "../firebase.init";
 
@@ -37,7 +35,7 @@ const Menubar = () => {
         <Link to="/blog">Blog</Link>
       </li>
 
-      <li className="mr-8 z-50" tabindex="0">
+      <li className="mr-8 z-50" tabIndex="0">
         <a>
           Company
           <svg
@@ -69,9 +67,9 @@ const Menubar = () => {
 
       {user && (
         <li>
-          <li>
+          
             <Link to="/dashboard">Dashboard</Link>
-          </li>
+          
         </li>
       )}
     </>
@@ -85,7 +83,7 @@ const Menubar = () => {
     >
       <div className="navbar-start ">
         <div className="dropdown">
-          <label tabindex="0" className="btn btn-ghost lg:hidden">
+          <label tabIndex="0" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -94,15 +92,15 @@ const Menubar = () => {
               stroke="currentColor"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M4 6h16M4 12h8m-8 6h16"
               />
             </svg>
           </label>
           <ul
-            tabindex="0"
+            tabIndex="0"
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-primary text-accent rounded-box w-52"
           >
             {menuItem}
@@ -114,7 +112,7 @@ const Menubar = () => {
 
       <div className="navbar-end">
         <ul
-          tabindex="0"
+          tabIndex="0"
           className="menu menu-compact dropdown-content mt-3 p-2 shadow  text-accent rounded-box w-52"
         >
           <li className="justify-center items-center">

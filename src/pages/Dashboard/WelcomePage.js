@@ -58,34 +58,9 @@ const WelcomePage = () => {
       amt: 2100,
     },
   ];
-  const data01 = [
-    {
-      name: "Group A",
-      value: 400,
-    },
-    {
-      name: "Group B",
-      value: 300,
-    },
-    {
-      name: "Group C",
-      value: 300,
-    },
-    {
-      name: "Group D",
-      value: 200,
-    },
-    {
-      name: "Group E",
-      value: 278,
-    },
-    {
-      name: "Group F",
-      value: 189,
-    },
-  ];
+ 
   const [transection] = useTransection();
-  console.log(transection);
+  
   return (
     <section className="mt-8">
       <div className="grid lg:grid-cols-3 gap-12">
@@ -94,8 +69,8 @@ const WelcomePage = () => {
         {/* Balance CArd End */}
 
         {/* Income Card Chart start */}
-        <div class="card   shadow-2xl  text-gray-200">
-          <div class=" p-5">
+        <div className="card   shadow-2xl  text-gray-200">
+          <div className=" p-5">
             <div className="flex items-center mb-8 gap-x-8">
               <span>
                 <ImDownload className="h-12 w-12 bg-[#6160DC] p-2 rounded-full" />
@@ -129,8 +104,8 @@ const WelcomePage = () => {
         {/* Income Card Chart end */}
 
         {/* Expense Card Start */}
-        <div class="card   shadow-2xl  text-gray-200">
-          <div class=" p-5">
+        <div className="card   shadow-2xl  text-gray-200">
+          <div className=" p-5">
             <div className="flex items-center mb-8 gap-x-8">
               <span>
                 <ImUpload className="h-12 w-12 bg-[#54C5EB] p-2 rounded-full" />
@@ -176,11 +151,11 @@ const WelcomePage = () => {
       {/* Transection table start  */}
       <section className="mt-12 shadow-2xl rounded-2xl">
         <h1 className="text-3xl font-bold my-8 ml-2">Lastest Transaction</h1>
-        <div class="overflow-x-auto">
-          <table class="table table-zebra w-full">
+        <div className="overflow-x-auto">
+          <table className="table table-zebra w-full">
             <tbody>
-              {transection.slice(0, 6).map((rowdata) => (
-                <TransectionRow rowdata={rowdata} />
+              {transection.slice(0, 6).map((rowdata,i) => (
+                <TransectionRow key={i} rowdata={rowdata} />
               ))}
             </tbody>
           </table>

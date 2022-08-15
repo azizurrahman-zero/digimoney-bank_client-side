@@ -45,13 +45,13 @@ const AllUser = ({ user, users, index,refetch }) => {
     }
     
   };
-  console.log(user,users)
+ 
   return (
     <tr>
       <th>{index + 1}</th>
       <td>
-        <div class="avatar">
-          <div class="w-16 rounded-full">
+        <div className="avatar">
+          <div className="w-16 rounded-full">
             <img src={user.img} alt="" />
           </div>
         </div>
