@@ -4,9 +4,9 @@ const Withdraw = ({ userInfo }) => {
   const { amount, accountNumber } = userInfo;
   return (
     <div>
-      <input type="checkbox" id="withdraw" class="modal-toggle" />
-      <div class="modal modal-bottom sm:modal-middle">
-        <div class="modal-box">
+      <input type="checkbox" id="withdraw" className="modal-toggle" />
+      <div className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box">
           <label
             htmlFor="withdraw"
             className="absolute btn btn-sm btn-circle right-2 top-2"
@@ -15,7 +15,7 @@ const Withdraw = ({ userInfo }) => {
           </label>
           <form>
             <div className="px-12">
-              <h3 class="font-bold text-2xl">Withdraw!</h3>
+              <h3 className="font-bold text-2xl">Withdraw!</h3>
 
               <div className="w-full max-w-full my-4 form-control">
                 <label htmlFor="accountNumber">ACCOUNT NUMBER</label>
@@ -51,8 +51,8 @@ const Withdraw = ({ userInfo }) => {
                   placeholder="Enter Your Amount"
                 />
               </div>
-              <div class="text-center">
-                <label for="withdraw" class="btn btn-secondary">
+              <div className="text-center">
+                <label for="withdraw" className="btn btn-secondary">
                   Withdraw now
                 </label>
               </div>

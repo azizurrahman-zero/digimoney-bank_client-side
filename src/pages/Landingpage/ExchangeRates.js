@@ -35,18 +35,26 @@ const ExchangeRates = () => {
 
     
         
-          <div class="overflow-x-auto mt-12 relative z-50">
+          <div className="overflow-x-auto mt-12 relative z-50">
         
             <table className="text-[#ABC3C6] lg:w-8/12 mx-auto ">
+              <thead>
+
               <tr>
                 <th className="lg:w-3/12"></th>
                 <th className="text-start text-sm lg:w-3/12">Your Sell</th>
                 <th className="text-start text-sm lg:w-3/12">Your Buy</th>
               </tr>
-              <tr className="">
+              </thead>
+              <tbody>
+
+                 <tr>
+
                 <td className="lg:text-2xl font-bold">USD</td>
                 <td>71,35</td>
                 <td>74,35</td>
+              
+
                 <td className="pb-5">
                   <span className="block text-[#ABC3C6] ">
                     I'd like to sell
@@ -54,20 +62,22 @@ const ExchangeRates = () => {
                   <span className="border-2 border-[#ABC3C6] rounded grid grid-cols-2 w-9/12">
                     <input
                       className="bg-[#073A42] text-lg font-semibold pl-4 "
+                      readOnly
                       type="text"
                       value="1000"
-                    />
-                    <select class="select  select-bordered  bg-[#073A42] text-white">
-                      <option className="bg-none" selected>
+                      />
+                    <select  defaultValue={"DEFAULT"}  className="select  select-bordered  bg-[#073A42] text-white">
+                      <option value="DEFAULT" className="bg-none" >
                         RUB
                       </option>
-                      <option className="bg-none">USD</option>
-                      <option className="bg-none">TAKA</option>
+                      <option value="1" className="bg-none">USD</option>
+                      <option value="2" className="bg-none">TAKA</option>
                     </select>
                   </span>
                 </td>
-              </tr>
-              <tr>
+                 </tr>
+                    
+                <tr>
                 <td className="lg:text-2xl font-bold">EUR</td>
                 <td>84,98</td>
                 <td>87,97</td>
@@ -77,18 +87,22 @@ const ExchangeRates = () => {
                     <input
                       className="bg-[#073A42] text-lg font-semibold pl-4 "
                       type="text"
+                      readOnly
                       value="1000"
-                    />
-                    <select class="select  select-bordered  bg-[#073A42] text-white">
-                      <option className="bg-none" selected>
+                      />
+                    <select defaultValue={'DEFAULT'} className="select  select-bordered  bg-[#073A42] text-white">
+                      <option value="DEFAULT" className="bg-none" >
                         RUB
                       </option>
-                      <option className="bg-none">USD</option>
-                      <option className="bg-none">TAKA</option>
+                      <option value="1" className="bg-none">USD</option>
+                      <option value="2" className="bg-none">TAKA</option>
                     </select>
                   </span>
                 </td>
               </tr>
+         
+              
+                      </tbody>
             </table>
           </div>
           <hr className="w-full h-[1px] bg-[#ABC3C6] my-12" />

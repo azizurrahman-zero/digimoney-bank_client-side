@@ -17,8 +17,8 @@ const Review = ({review}) => {
             <p className='text-lg my-8 text-gray-500'>{review.comment}</p>
             </div>
             <div className='flex gap-x-8 lg:ml-[-45px] px-12 lg:px-0 mt-12 items-center'>
-                   <div class="avatar">
-                       <div class="w-24 rounded">
+                   <div className="avatar">
+                       <div className="w-24 rounded">
                            <img className='border-[#073A42] border' src={review.src} alt="" />
                         </div>
                     </div>

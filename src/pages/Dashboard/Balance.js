@@ -1,29 +1,26 @@
 import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import auth from '../../firebase.init';
+import {useQuery} from '@tanstack/react-query'
+import useUserInfo from '../../hooks/useUserInfo';
 
 const Balance = () => {
-
-    const [userEmail,setUserEmail]=useState({});
     const [user]=useAuthState(auth)
-    useEffect(()=>{
-        if (user) {
-            fetch(`https://tranquil-lake-95777.herokuapp.com/finduser?email=${user.email}`)
-        .then(res=>res.json())
-        .then(data=>setUserEmail(data))
-        }
-    },[user])
-    console.log(userEmail);
+    // const url=`https://tranquil-lake-95777.herokuapp.com/finduser?email=${user?.email}`
+    // const {data:userEmail,isLoading,refetch}=useQuery([`singleuserdata${user?.email}`],()=>fetch(url).then(res=>res.json()))
+    const {userInfo,refetch,isLoading}=useUserInfo(user)
+    
 
-    const { register, handleSubmit } = useForm();
-    const onSubmit = data => {
-        if (userEmail.amount>data.withdrawAmount) {
-           const newAmount = userEmail.amount-data.withdrawAmount;
+    const { register, handleSubmit,reset } = useForm();
+    const onSubmit = (data) => {
+        console.log(data,"data")
+        console.log(userInfo.amount,"amount")
+        const withdrawAmount=parseFloat(data.withdrawAmount)
+        if (userInfo.amount>withdrawAmount) {
+           const newAmount = userInfo.amount-withdrawAmount;
            const updatedAmount={amount:newAmount}
-           const url=`https://tranquil-lake-95777.herokuapp.com/approvedUsers/${userEmail._id}`;
+           const url=`https://tranquil-lake-95777.herokuapp.com/approvedUsers/${userInfo._id}`;
           fetch(url,{ 
                method:'PATCH',
                 headers:{
@@ -32,30 +29,38 @@ const Balance = () => {
                 body:JSON.stringify(updatedAmount)
             })
             .then(res=>res.json())
-            .then(result=>{console.log(result);})
+            .then(result=>{
+                console.log(result,"this is result")
+               refetch()
+               reset()
+            })
         }
         else{
             console.log('You cannot withdraw');
         }
     };
+ 
+  if(isLoading){
+    return ;
+  }
       
 
     return (
       <div>
       {/* balance card  */}
-      <div class="card balance-card  bg-[#6160DC] text-gray-200">
-          <div class=" p-5">
+      <div className="card balance-card  bg-[#6160DC] text-gray-200">
+          <div className=" p-5">
               <p className="text-xl">
                   <small>My Balance</small>
               </p>
 
-              <h2 class="card-title text-3xl mb-5">{userEmail.amount}</h2>
-              <p className="text-end font-bold">{userEmail.amount}</p>
+              <h2 className="card-title text-3xl mb-5">{userInfo.amount}</h2>
+              <p className="text-end font-bold">{userInfo.amount}</p>
 
-              <div class="card-actions gap-x-10 mt-5">
+              <div className="card-actions gap-x-10 mt-5">
                   <div>
                       <p className="text-xs font-[500]">Card Holder</p>
-                      <h1 className="text-lg font-bold">{userEmail.displayName}</h1>
+                      <h1 className="text-lg font-bold">{userInfo.displayName}</h1>
                   </div>
                   <div>
                       <p className="text-xs font-[500]">Valid Thru</p>
@@ -65,16 +70,16 @@ const Balance = () => {
           </div>
       </div>
       {/* withdraw card */}
-      <div class="card card-side bg-base-100 shadow-xl mt-10">
-          <div class="card-body">
-              <h2 class="card-title">Withdraw</h2>
+      <div className="card card-side bg-base-100 shadow-xl mt-10">
+          <div className="card-body">
+              <h2 className="card-title">Withdraw</h2>
 
               <form onSubmit={handleSubmit(onSubmit)}>
-                  <label class="label">
-                      <span class="label-text">Amount to withdraw</span>
+                  <label className="label">
+                      <span className="label-text">Amount to withdraw</span>
                   </label>
-                  <input type="number" placeholder="Provide Amount" class="input input-bordered w-full max-w-xs" {...register("withdrawAmount")} />
-                  <input class="btn btn-primary ml-4"  type="submit" />
+                  <input type="number" placeholder="Provide Amount" className="input input-bordered w-full max-w-xs" {...register("withdrawAmount")} />
+                  <input className="btn btn-primary ml-4"  type="submit" />
               </form>
 
           </div>

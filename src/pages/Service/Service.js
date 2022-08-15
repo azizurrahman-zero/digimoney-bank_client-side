@@ -13,37 +13,37 @@ const Service = () => {
       image: image1,
     },
     {
-      id: 1,
+      id:2,
       title: "CASH IN",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
       image: image1,
     },
     {
-      id: 1,
+      id: 3,
       title: "BILL PAY",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
       image: image1,
     },
     {
-      id: 1,
+      id: 4,
       title: "RECHARGE",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
       image: image1,
     },
     {
-      id: 1,
+      id: 5,
       title: "GAS BILL",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
       image: image1,
     },
     {
-      id: 1,
+      id: 6,
       title: "PAYMENT",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
       image: image1,
     },
     {
-      id: 1,
+      id: 7,
       title: "CALL US",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
       image: image1,
@@ -58,7 +58,7 @@ const Service = () => {
       <h1 className="text-5xl text-center mt-20 mb-20 text-primary">Our Services</h1>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {services.map((service) => (
-          <div className="service-card text-white cursor-pointer">
+          <div key={service.id} className="service-card text-white cursor-pointer">
             <div className="service-card-wraper ">
               <div className="  mx-auto   ">
                 <figure className="px-10 pt-10">
@@ -71,9 +71,7 @@ const Service = () => {
                 <div className="card-body  ">
                   <h2 className="card-title">{service.title}</h2>
                   <p>{service.desc}</p>
-                  {/* <div className="card-actions my-4">
-                    <button className="btn btn-accent block ml-auto">Buy Now</button>
-                  </div> */}
+                
                 </div>
               </div>
             </div>

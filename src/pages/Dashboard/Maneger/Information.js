@@ -21,8 +21,8 @@ const Information = ({ user, index, users, setUsers, setInformation }) => {
     <tr>
       <th>{index + 1}</th>
       <td>
-        <div class="avatar">
-          <div class="w-16 rounded-full">
+        <div className="avatar">
+          <div className="w-16 rounded-full">
             <img src={user.img} alt="" />
           </div>
         </div>
@@ -44,7 +44,7 @@ const Information = ({ user, index, users, setUsers, setInformation }) => {
 
         <button
           onClick={() => handleDelete(user._id)}
-          class="btn btn-xs btn-error"
+          className="btn btn-xs btn-error"
         >
           Delete
         </button>

@@ -1,5 +1,4 @@
 import React from 'react';
-import Menubar from '../../Shared/Menubar';
 import Articles from './Articles';
 import './Blog.css'
 import BlogFeature from './BlogFeature';

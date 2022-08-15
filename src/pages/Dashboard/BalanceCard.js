@@ -1,20 +1,29 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import useUserInfo from '../../hooks/useUserInfo';
 
 const BalanceCard = () => {
+  const [user]=useAuthState(auth)
+  const {userInfo,isLoading} =useUserInfo(user)
+  console.log(userInfo,"hi")
+  if(isLoading){
+    return ;
+  }
     return (
-        <div class="card balance-card  bg-[#6160DC] text-gray-200">
-          <div class=" p-5">
+        <div className="card balance-card  bg-[#6160DC] text-gray-200">
+          <div className=" p-5">
             <p className="text-xl">
               <small>My Balance</small>
             </p>
 
-            <h2 class="card-title text-3xl mb-5">$12,345,789</h2>
-            <p className="text-end font-bold">6589 2157 6325 2564</p>
+            <h2 className="card-title text-3xl mb-5">${userInfo.amount}</h2>
+            <p className="text-end font-bold">{userInfo.accountNumber}</p>
 
-            <div class="card-actions gap-x-10 mt-5">
+            <div className="card-actions gap-x-10 mt-5">
               <div>
                 <p className="text-xs font-[500]">Card Holder</p>
-                <h1 className="text-lg font-bold">Rara Avis</h1>
+                <h1 className="text-lg font-bold">{userInfo.displayName}</h1>
               </div>
               <div>
                 <p className="text-xs font-[500]">Valid Thru</p>

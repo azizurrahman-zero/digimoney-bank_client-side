@@ -4,16 +4,16 @@ const Deposit = ({ userInfo }) => {
   const { amount, accountNumber } = userInfo;
   return (
     <>
-      <input type="checkbox" id="deposit" class="modal-toggle" />
-      <div class="modal modal-bottom sm:modal-middle">
-        <div class="modal-box">
+      <input type="checkbox" id="deposit" className="modal-toggle" />
+      <div className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box">
           <label
             htmlFor="deposit"
             className="absolute btn btn-sm btn-circle right-2 top-2"
           >
             ✕
           </label>
-          <h3 class="font-bold text-2xl px-12">Deposit!</h3>
+          <h3 className="font-bold text-2xl px-12">Deposit!</h3>
           <form action="">
             <div className="px-12">
               <div className="w-full max-w-full my-4 form-control">
@@ -51,8 +51,8 @@ const Deposit = ({ userInfo }) => {
                 />
               </div>
             </div>
-            <div class="text-center">
-              <label for="deposit" class="btn btn-accent ">
+            <div className="text-center">
+              <label for="deposit" className="btn btn-accent ">
                 Deposit now
               </label>
             </div>
