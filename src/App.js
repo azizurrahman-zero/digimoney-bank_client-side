@@ -35,6 +35,8 @@ import ScrollToTop from "./Shared/ScrollToTop";
 import Balance from "./pages/Dashboard/Balance";
 
 import UserInformation from "./pages/Dashboard/UserInformation/UserInformation";
+import PrivateRute from "./pages/Login/PrivateRute";
+import PrivateadminRoute from "./pages/Login/PrivateAdminRoute";
 
 
 
@@ -42,7 +44,7 @@ function App() {
   const { pathname } = useLocation();
   return (
     <div className={` ${pathname.includes("dashboard") && "py-2"}`}>
-      {!pathname.includes("dashboard") && <Menubar></Menubar>}
+      {!pathname.includes("dashboard")  && !pathname.includes("signUp") && <Menubar></Menubar>}
       <Routes>
         {/* <Route path="/" element={<Home></Home>}></Route> */}
         <Route path="/" element={<Landingpage />}></Route>
@@ -57,13 +59,13 @@ function App() {
         <Route path="/team" element={<Team />}></Route>
 
         <Route path="review" element={<Review />} />
-        <Route path="/dashboard" element={<Dashboard />}>
+        <Route path="/dashboard" element={<PrivateRute><Dashboard /></PrivateRute>}>
           <Route index element={<WelcomePage />} />
           <Route path="dashboard" element={<WelcomePage />} />
           <Route path="profile" element={<Profile />} />
           <Route path="balance" element={<Balance />} />
           <Route path="user-request" element={<UserRequest />} />
-          <Route path="allusers" element={<AllUsers />} />
+          <Route path="allusers" element={<PrivateadminRoute><AllUsers /></PrivateadminRoute>} />
           <Route path="information/:id" element={<UserInformation />} />
           <Route path="sendmoney" element={<SendMoney />} />
           <Route path="review" element={<Review />} />
@@ -73,7 +75,7 @@ function App() {
       </Routes>
       <ScrollToTop />
       {/* {!pathname.includes("dashboard") && <Footer></Footer>}  */}
-      {!pathname.includes("login") && !pathname.includes("dashboard") && (
+      {!pathname.includes("login") && !pathname.includes("dashboard") &&!pathname.includes("signUp") && (
         <Footer></Footer>
       )}
       <ToastContainer />

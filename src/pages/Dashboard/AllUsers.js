@@ -22,7 +22,7 @@ const AllUsers = () => {
     )
   )
  
-    console.log(users)
+   
 
   if (isLoading || error) {
     return;
@@ -32,7 +32,7 @@ const AllUsers = () => {
             <div>
                 <h2 className="text-2xl text-center">Users: {users?.length}</h2>
                 <div className='grid justify-items-end mr-9'>
-                    <input type="text" onChange={handleSearch} placeholder="Enter Email" class="input input-bordered w-full max-w-xs" />
+                    <input type="text" onChange={handleSearch} placeholder="Enter Email" className="input input-bordered w-full max-w-xs" />
                 </div>
                 <div className="mt-5 overflow-x-auto">
                     <table className="table w-full text-center">

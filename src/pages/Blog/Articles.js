@@ -58,14 +58,14 @@ const Articles = () => {
       <div className="grid lg:grid-cols-2 grid-flow-row-dense lg:w-[80%] mx-auto  ">
         <div>
           {articles.slice(0, articles.length / 2).map((article, i) => (
-            <Article article={article} />
+            <Article key={i} article={article} />
           ))}
         </div>
         <div className="mt-20">
           {articles
             .slice(articles.length / 2, articles.length)
             .map((article, i) => (
-              <Article article={article} />
+              <Article key={i} article={article} />
             ))}
         </div>
       </div>
