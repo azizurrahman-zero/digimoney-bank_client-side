@@ -11,7 +11,7 @@ import { ImProfile } from 'react-icons/im'
 import { Outlet } from 'react-router-dom'
 import DashboardMenu from './DashboardMenu';
 import './dashboard.css'
-import { isAdmin } from '@firebase/util';
+
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import useAdmin from '../../hooks/useAdmin';
@@ -25,7 +25,7 @@ const Dashboard = () => {
   const [open, setOpen] = useState(true)
   const Menus = [
     {isAdmin:true,dualUser:true, title: "Go To Home", path: "/", src: <AiFillHome className='w-5 h-5' /> },
-    {isAdmin:true, title: "Dashboard", path: "/dashboard", src: <MdDashboard className='w-5 h-5' /> },
+    {isAdmin:true,dualUser:true, title: "Dashboard", path: "/dashboard", src: <MdDashboard className='w-5 h-5' /> },
     {isAdmin:true, title: "Profile", path: "/dashboard/profile", src: <ImProfile className='w-5 h-5' /> },
     {isAdmin:false, title: "Balance", path: "/dashboard/balance", src: <FaMoneyBill className='w-5 h-5' /> },
     {isAdmin:false, title: "Review", path: "/dashboard/review", src: <MdRateReview className='w-5 h-5' /> },

@@ -7,10 +7,10 @@ import { signOut } from 'firebase/auth';
 
 const PrivateadminRoute = ({children}) => {
     const [user,loading,error]=useAuthState(auth);
-    const {admin}=useAdmin(user)
+    const {admin,loadingAdmin}=useAdmin(user)
     const location=useLocation();
    
-     if(loading){
+     if(loading || loadingAdmin){
         return ;
      }
 

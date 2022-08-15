@@ -3,22 +3,24 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import auth from '../../firebase.init';
 import {useQuery} from '@tanstack/react-query'
+import useUserInfo from '../../hooks/useUserInfo';
 
 const Balance = () => {
     const [user]=useAuthState(auth)
-    const url=`https://tranquil-lake-95777.herokuapp.com/finduser?email=${user?.email}`
-    const {data:userEmail,isLoading,refetch}=useQuery([`singleuserdata${user?.email}`],()=>fetch(url).then(res=>res.json()))
+    // const url=`https://tranquil-lake-95777.herokuapp.com/finduser?email=${user?.email}`
+    // const {data:userEmail,isLoading,refetch}=useQuery([`singleuserdata${user?.email}`],()=>fetch(url).then(res=>res.json()))
+    const {userInfo,refetch,isLoading}=useUserInfo(user)
     
 
     const { register, handleSubmit,reset } = useForm();
     const onSubmit = (data) => {
         console.log(data,"data")
-        console.log(userEmail.amount,"amount")
+        console.log(userInfo.amount,"amount")
         const withdrawAmount=parseFloat(data.withdrawAmount)
-        if (userEmail.amount>withdrawAmount) {
-           const newAmount = userEmail.amount-withdrawAmount;
+        if (userInfo.amount>withdrawAmount) {
+           const newAmount = userInfo.amount-withdrawAmount;
            const updatedAmount={amount:newAmount}
-           const url=`https://tranquil-lake-95777.herokuapp.com/approvedUsers/${userEmail._id}`;
+           const url=`https://tranquil-lake-95777.herokuapp.com/approvedUsers/${userInfo._id}`;
           fetch(url,{ 
                method:'PATCH',
                 headers:{
@@ -52,13 +54,13 @@ const Balance = () => {
                   <small>My Balance</small>
               </p>
 
-              <h2 className="card-title text-3xl mb-5">{userEmail.amount}</h2>
-              <p className="text-end font-bold">{userEmail.amount}</p>
+              <h2 className="card-title text-3xl mb-5">{userInfo.amount}</h2>
+              <p className="text-end font-bold">{userInfo.amount}</p>
 
               <div className="card-actions gap-x-10 mt-5">
                   <div>
                       <p className="text-xs font-[500]">Card Holder</p>
-                      <h1 className="text-lg font-bold">{userEmail.displayName}</h1>
+                      <h1 className="text-lg font-bold">{userInfo.displayName}</h1>
                   </div>
                   <div>
                       <p className="text-xs font-[500]">Valid Thru</p>
