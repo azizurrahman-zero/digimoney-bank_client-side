@@ -20,7 +20,7 @@ const WelcomePage = () => {
   
  
   const transection=userInfo?.transection
-  console.log(transection,"robin")
+
  
   const data = [
     {
@@ -174,7 +174,7 @@ const WelcomePage = () => {
         <div className="overflow-x-auto">
           <table className="table table-zebra w-full">
             <tbody>
-              {transection?.length>0 && sortedTransection?.map((rowdata,i) => (
+              {transection?.length>0 && sortedTransection?.slice(0,6).map((rowdata,i) => (
                 <TransectionRow key={i} userInfo={userInfo} rowdata={rowdata} />
               ))}
             </tbody>
