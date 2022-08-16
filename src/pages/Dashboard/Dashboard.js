@@ -26,7 +26,7 @@ const Dashboard = () => {
   const Menus = [
     {isAdmin:true,dualUser:true, title: "Go To Home", path: "/", src: <AiFillHome className='w-5 h-5' /> },
     {isAdmin:true,dualUser:true, title: "Dashboard", path: "/dashboard", src: <MdDashboard className='w-5 h-5' /> },
-    {isAdmin:true, title: "Profile", path: "/dashboard/profile", src: <ImProfile className='w-5 h-5' /> },
+    {isAdmin:true,dualUser:true, title: "Profile", path: "/dashboard/profile", src: <ImProfile className='w-5 h-5' /> },
     {isAdmin:false, title: "Balance", path: "/dashboard/balance", src: <FaMoneyBill className='w-5 h-5' /> },
     {isAdmin:false, title: "Review", path: "/dashboard/review", src: <MdRateReview className='w-5 h-5' /> },
     {isAdmin:true, title: "Make Admin", path: "/", src: <AiFillEdit className='w-5 h-5' />, gap: true },
