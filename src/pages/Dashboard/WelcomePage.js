@@ -71,7 +71,11 @@ const WelcomePage = () => {
 
 
   // 👇️ sort by Numeric property ASCENDING (1 - 100)
-  const sortedTransection = [...transection].sort((a,b) => new moment(a.date).format('YYYYMMDD') - new moment(b.date).format('YYYYMMDD'));
+  let sortedTransection=[];
+  if(transection?.length>0){
+
+    sortedTransection = [...transection].sort((a,b) =>new moment(a.date).format('YYYYMMDD') - new moment(b.date).format('YYYYMMDD'))
+  }
 
   console.log(sortedTransection.reverse());
 
@@ -170,7 +174,7 @@ const WelcomePage = () => {
         <div className="overflow-x-auto">
           <table className="table table-zebra w-full">
             <tbody>
-              {sortedTransection?.map((rowdata,i) => (
+              {transection?.length>0 && sortedTransection?.map((rowdata,i) => (
                 <TransectionRow key={i} userInfo={userInfo} rowdata={rowdata} />
               ))}
             </tbody>
