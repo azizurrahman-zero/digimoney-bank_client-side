@@ -7,20 +7,13 @@ const TransectionRow = ({rowdata,userInfo}) => {
 
     let day=moment(asiaDhaka).format('ll');
     let time=  moment(asiaDhaka).format('LT');
-     console.log(time,"robin")
-    //  let month=asiaDhaka.toLocaleString('default', { month: 'long' });
-// console.log(month);
+    
 
- 
-//     let today = new Date(asiaDhaka);
-//     let date=today.getDate()
-//     let month=today.getMonth()
-//    console.log(date,"dhaka")
     return (
         <tr>
         <th>
             {
-                rowdata.staus==="complete"?<BsArrowUpRightCircleFill className='h-8 w-8 text-[#00A389]' />:<BsArrowDownLeftCircleFill className='h-8 w-8 text-[#FF4A55]' />
+                rowdata.statustwo==="incomming"?<BsArrowDownLeftCircleFill className='h-8 w-8 text-[#25AC76]' />:<BsArrowUpRightCircleFill className='h-8 w-8 text-[#EDBA56]' />
             }
         </th>
         <td>
@@ -32,7 +25,7 @@ const TransectionRow = ({rowdata,userInfo}) => {
             <p className='font-bold text-md'>{day} </p>
             <p className=' text-xs text-gray-600'>{time}</p>
         </td>
-        <td className={`font-bold ${rowdata.status==="Cancel"&&"text-[#FF4A55]"} ${rowdata.status==="pending"&&"text-gray-500"} ${rowdata.staus==="complete"&&"text-[#04A48B]"}`}>{rowdata.staus}</td>
+        <td className={`font-bold  ${rowdata.statustwo==="outgoing"&&"text-[#EDBA56]"} ${rowdata.statustwo==="incomming"&&"text-[#04A48B]"}`}>{rowdata.statustwo}</td>
         <td className='font-bold text-xl cursor-pointer text-gray-600'>...</td>
       </tr>
     );
