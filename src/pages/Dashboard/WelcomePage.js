@@ -1,19 +1,27 @@
 import React from "react";
 import {
   LineChart,
- 
   Line,
-
 } from "recharts";
 import { FaPlay } from "react-icons/fa";
 import { ImUpload, ImDownload } from "react-icons/im";
-import useTransection from "../../hooks/useTransection";
+import moment from "moment";
 import TransectionRow from "./TransectionRow";
 import Piechart from "./Piechart";
 import Barchart from "./Barchart";
 import BalanceCard from "./BalanceCard";
+import useUserInfo from "../../hooks/useUserInfo";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
 
 const WelcomePage = () => {
+  const [user]=useAuthState(auth)
+  const {userInfo,isLoading}=useUserInfo(user)
+  
+ 
+  const transection=userInfo?.transection
+  console.log(transection,"robin")
+ 
   const data = [
     {
       name: "Page A",
@@ -59,7 +67,19 @@ const WelcomePage = () => {
     },
   ];
  
-  const [transection] = useTransection();
+  // ====================short transection array===============//
+
+
+  // 👇️ sort by Numeric property ASCENDING (1 - 100)
+  let sortedTransection=[];
+  if(transection?.length>0){
+
+    sortedTransection = [...transection].sort((a,b) =>new moment(a.date).format('YYYYMMDD') - new moment(b.date).format('YYYYMMDD'))
+  }
+
+  console.log(sortedTransection.reverse());
+
+ 
   
   return (
     <section className="mt-8">
@@ -154,8 +174,8 @@ const WelcomePage = () => {
         <div className="overflow-x-auto">
           <table className="table table-zebra w-full">
             <tbody>
-              {transection.slice(0, 6).map((rowdata,i) => (
-                <TransectionRow key={i} rowdata={rowdata} />
+              {transection?.length>0 && sortedTransection?.map((rowdata,i) => (
+                <TransectionRow key={i} userInfo={userInfo} rowdata={rowdata} />
               ))}
             </tbody>
           </table>
