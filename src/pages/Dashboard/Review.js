@@ -30,7 +30,7 @@ const Review = () => {
         if (result.success) {
           const img = result.data.url;
           data["src"]=img 
-          fetch("http://localhost:4000/review",{
+          fetch("https://tranquil-lake-95777.herokuapp.com/review",{
             method:"POST",
             headers:{
               "content-type":"application/json"

@@ -8,7 +8,7 @@ import { useQuery } from '@tanstack/react-query';
 
 
 const CustomerReview = () => {
-   const {data:reviewData,isLoading,error}=useQuery(['review'],()=>fetch("http://localhost:4000/review").then(res=>res.json())) 
+   const {data:reviewData,isLoading,error}=useQuery(['review'],()=>fetch("https://tranquil-lake-95777.herokuapp.com/review").then(res=>res.json())) 
   
   useEffect(() => {
     AOS.init({ duration: 1000 });
