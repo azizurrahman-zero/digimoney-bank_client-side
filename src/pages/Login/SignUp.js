@@ -61,7 +61,7 @@ const SignUp = () => {
             gender: event.target.gender.value,
             img: img,
           };
-          console.log(currentUser)
+        
 
           fetch(`https://tranquil-lake-95777.herokuapp.com/adduser`, {
             method: "POST",

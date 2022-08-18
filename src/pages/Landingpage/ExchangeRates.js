@@ -8,7 +8,7 @@ const ExchangeRates = () => {
     AOS.init({ duration: 1000 });
   }, []);
   return (
-    <section data-aos="fade-in" className="lg:my-32 bg-[#073A42] my-12 lg:px-28 px-4  p-20 relative exchange-container">
+    <section data-aos="fade-in" className="lg:my-32 bg-primary my-12 lg:px-28 px-4  p-20 relative exchange-container">
         
       <div className='exchange-ball'>
 
@@ -104,7 +104,7 @@ const ExchangeRates = () => {
           <div className="grid lg:grid-cols-2 lg:w-8/12 mx-auto">
             <p className="text-lg text-[#ABC3C6]">Purchase foreign currency with Paywise Online and get your cash at a bank branch</p>
             <div className="">
-            <button className='btn mx-auto block btn-secondary px-20 mt-5 lg:mt-0    text-[#073A42]  font-bold'>Exchange Now</button>
+            <button className='btn mx-auto block btn-secondary px-20 mt-5 lg:mt-0    text-base-300  font-bold'>Exchange Now</button>
             </div>
           </div>
      

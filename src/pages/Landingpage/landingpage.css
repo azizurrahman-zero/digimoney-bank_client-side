@@ -105,9 +105,7 @@ transform: scale(1.9);
   }
   .mission-card{
     border-radius: 14px;
-    background: white;
-    box-shadow:  13px 13px 43px #c5c5c5,
-                 -13px -13px 43px #fbfbfb;
+   
   }
 
   .global-card{

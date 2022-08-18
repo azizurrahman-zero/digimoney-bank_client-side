@@ -4,7 +4,7 @@ import {BsArrowUpRightCircleFill,BsArrowDownLeftCircleFill} from 'react-icons/bs
 
 const TransectionRow = ({rowdata,userInfo}) => {
      let asiaDhaka = new Date(rowdata.data).toLocaleString([], { timeZone: "Asia/Dhaka" });
-
+    
     let day=moment(asiaDhaka).format('ll');
     let time=  moment(asiaDhaka).format('LT');
     
@@ -17,8 +17,9 @@ const TransectionRow = ({rowdata,userInfo}) => {
             }
         </th>
         <td>
-            <p className='text-md font-bold'>{userInfo.displayName}</p>
-            <p className='text-xs text-gray-600'>Transfer</p>
+            <p className='text-md font-bold'>{rowdata.statustwo==="incomming"? rowdata.senderName : rowdata.reveiverName}</p>
+            <p className='text-xs text-gray-600'>{rowdata.statustwo==="incomming"?rowdata.senderAccountNumber
+:rowdata.receiverAccountnumber}</p>
             </td>
         <td className='font-bold text-md'>${rowdata.amount}</td>
         <td>
