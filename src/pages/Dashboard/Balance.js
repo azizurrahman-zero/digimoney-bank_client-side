@@ -2,20 +2,17 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import auth from '../../firebase.init';
-import {useQuery} from '@tanstack/react-query'
 import useUserInfo from '../../hooks/useUserInfo';
+import BalanceCard from './BalanceCard';
 
 const Balance = () => {
     const [user]=useAuthState(auth)
-    // const url=`https://tranquil-lake-95777.herokuapp.com/finduser?email=${user?.email}`
-    // const {data:userEmail,isLoading,refetch}=useQuery([`singleuserdata${user?.email}`],()=>fetch(url).then(res=>res.json()))
     const {userInfo,refetch,isLoading}=useUserInfo(user)
     
 
     const { register, handleSubmit,reset } = useForm();
     const onSubmit = (data) => {
-        console.log(data,"data")
-        console.log(userInfo.amount,"amount")
+     
         const withdrawAmount=parseFloat(data.withdrawAmount)
         if (userInfo.amount>withdrawAmount) {
            const newAmount = userInfo.amount-withdrawAmount;
@@ -30,7 +27,7 @@ const Balance = () => {
             })
             .then(res=>res.json())
             .then(result=>{
-                console.log(result,"this is result")
+                
                refetch()
                reset()
             })
@@ -48,27 +45,7 @@ const Balance = () => {
     return (
       <div>
       {/* balance card  */}
-      <div className="card balance-card  bg-[#6160DC] text-gray-200">
-          <div className=" p-5">
-              <p className="text-xl">
-                  <small>My Balance</small>
-              </p>
-
-              <h2 className="card-title text-3xl mb-5">{userInfo.amount}</h2>
-              <p className="text-end font-bold">{userInfo.amount}</p>
-
-              <div className="card-actions gap-x-10 mt-5">
-                  <div>
-                      <p className="text-xs font-[500]">Card Holder</p>
-                      <h1 className="text-lg font-bold">{userInfo.displayName}</h1>
-                  </div>
-                  <div>
-                      <p className="text-xs font-[500]">Valid Thru</p>
-                      <h1 className="text-lg font-bold">03/21</h1>
-                  </div>
-              </div>
-          </div>
-      </div>
+     <BalanceCard></BalanceCard>
       {/* withdraw card */}
       <div className="card card-side bg-base-100 shadow-xl mt-10">
           <div className="card-body">

@@ -4,7 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "../firebase.init";
 
-const Menubar = () => {
+const Menubar = ({setDarkMood}) => {
   const [user] = useAuthState(auth);
   const [show, setIsShow] = useState(false);
   const bgColorChange = () => {
@@ -19,6 +19,10 @@ const Menubar = () => {
   const logout = () => {
     signOut(auth);
   };
+
+
+  // =============================================darkmood====================================//
+
 
   const menuItem = (
     <>
@@ -72,13 +76,20 @@ const Menubar = () => {
           
         </li>
       )}
+    
+        <li className="flex items-center justify-center ml-14">
+          
+        <input onChange={(e)=>setDarkMood(e.target.checked)} name="dark"  type="checkbox" class="toggle toggle-lg mr-14"  />
+          
+        </li>
+      
     </>
   );
 
   return (
     <div
       className={`navbar m-0 p-0 duration-500 ${
-        show ? "bg-[#234044]" : "bg-[#073A42]"
+        show ? "bg-base-content" : "bg-primary"
       } z-[1000]  sticky top-0    text-[#F2F2F2]`}
     >
       <div className="navbar-start ">
@@ -110,16 +121,21 @@ const Menubar = () => {
         <ul className="menu hidden lg:flex menu-horizontal p-0">{menuItem}</ul>
       </div>
 
-      <div className="navbar-end">
+      <div className="navbar-end ">
         <ul
           tabIndex="0"
-          className="menu menu-compact dropdown-content mt-3 p-2 shadow  text-accent rounded-box w-52"
+          className="menu menu-compact flex-row items-center dropdown-content mt-3 p-2 shadow  text-accent rounded-box w-52"
         >
-          <li className="justify-center items-center">
+         
+
+          
+          
+          
+          <li className="justify-center   items-center">
             {user ? (
               <button
                 onClick={logout}
-                className="btn btn-error bg-red-500 text-white capitalize"
+                className="btn btn-secondary text-base-300 capitalize"
               >
                 Sign Out
               </button>
