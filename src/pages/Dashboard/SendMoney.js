@@ -22,7 +22,7 @@ const SendMoney = () => {
       amount,
     };
 
-    const url = `http://localhost:4000/transfer?email=${user?.email}`;
+    const url = `https://tranquil-lake-95777.herokuapp.com/transfer?email=${user?.email}`;
  
     fetch(url, {
       method: "PATCH",
