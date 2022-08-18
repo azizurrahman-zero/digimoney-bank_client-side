@@ -1,23 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TransectionRow from './TransectionRow';
 import useUserInfo from "../../hooks/useUserInfo";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
-import moment from "moment";
+import useFindTransection from '../../hooks/useFindTransection';
+import { useEffect } from 'react';
+import useTransection from '../../hooks/useTransection';
 
 const Transection = () => {
     const [user]=useAuthState(auth)
     const {userInfo,isLoading}=useUserInfo(user)
-    
    
-    const transection=userInfo?.transection
-    let sortedTransection=[];
-    if(transection?.length>0){
+    const [page,setPage]=useState(1)
+    const {pageCount,setPageCount}=useFindTransection(userInfo)
+   
+    const {transection}=useTransection(userInfo,page)
+   
+    
   
-      sortedTransection = [...transection].sort((a,b) =>new moment(a.date).format('YYYYMMDD') - new moment(b.date).format('YYYYMMDD'))
-    }
-  
-    console.log(sortedTransection.reverse());
+ 
     return (
         <div>
             <h1 className='text-3xl font-bold text-black'>Total Transection</h1>
@@ -26,11 +27,29 @@ const Transection = () => {
         <div className="overflow-x-auto">
           <table className="table table-zebra w-full">
             <tbody>
-              {transection?.length>0 && sortedTransection?.map((rowdata,i) => (
+              {transection?.map((rowdata,i) => (
                 <TransectionRow key={i} userInfo={userInfo} rowdata={rowdata} />
               ))}
             </tbody>
           </table>
+          {/* pagenation div  */}
+          <div className="text-center my-8">
+             {
+              [...Array(pageCount).keys()].map(number=>(
+                <button
+                
+                key={number}
+                className={page===number+1?'bg-[#6160DC] text-white  w-8 h-8 mr-2':'border-[#6160DC] border-2 w-8 h-8 mr-2'} 
+                onClick={()=>setPage(number+1)}
+                >
+                  {number+1}
+                </button>
+              ))
+            } 
+
+           
+            </div>
+          {/* pagenation div  */}
         </div>
       </section>
         </div>

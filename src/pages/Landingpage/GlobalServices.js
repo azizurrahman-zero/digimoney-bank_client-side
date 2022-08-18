@@ -10,7 +10,7 @@ const GlobalServices = () => {
  }, []);
     return (
         <section data-aos="fade-in" className=' px-4 lg:px-28'>
-           <h1 className='lg:text-5xl text-3xl font-bold text-center mb-3 '>Our Global Services</h1>
+           <h1 className='lg:text-5xl text-3xl text-base-300 font-bold text-center mb-3 '>Our Global Services</h1>
             <p className='text-gray-400  text-lg lg:w-[34%] text-center mx-auto'>We are providing our clients two cards for their one  mission and finance.</p>
               <div className='grid md:grid-cols-3 lg:grid-cols-3  lg:gap-x-40 gap-12 lg:mt-28'>
 
