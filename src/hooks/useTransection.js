@@ -8,7 +8,7 @@ const useTransection=(userInfo,page)=>{
 
        
        useEffect(()=>{
-           fetch(`http://localhost:4000/transection/${userInfo?.accountNumber}?page=${page}`)
+           fetch(`https://tranquil-lake-95777.herokuapp.com/transection/${userInfo?.accountNumber}?page=${page}`)
            .then(res=>res.json())
            .then(data=>setTransection(data))
         },[page,userInfo?.accountNumber])
