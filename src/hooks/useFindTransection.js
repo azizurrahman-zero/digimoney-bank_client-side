@@ -3,7 +3,7 @@ import { useState } from "react"
 
 const useFindTransection=(userInfo)=>{
     const [pageCount,setPageCount]=useState(0)
-    const url=`http://localhost:4000/transectionCount/${userInfo?.accountNumber}`
+    const url=`https://tranquil-lake-95777.herokuapp.com/${userInfo?.accountNumber}`
     useEffect(()=>{
 
         fetch(url)
