@@ -1,116 +1,85 @@
-import React,{useEffect} from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
-
+import React,{useState,useEffect} from 'react';
+import Axios from 'axios';
+import Dropdown from 'react-dropdown';
+import { HiSwitchHorizontal } from 'react-icons/hi';
+import 'react-dropdown/style.css';
+import './ExchangeRates.css';
 
 const ExchangeRates = () => {
+
+  // Initializing all the state variables 
+  const [info, setInfo] = useState([]);
+  const [input, setInput] = useState(0);
+  const [from, setFrom] = useState("usd");
+  const [to, setTo] = useState("bdt");
+  const [options, setOptions] = useState([]);
+  const [output, setOutput] = useState(0);
+  
+  // Calling the api whenever the dependency changes
   useEffect(() => {
-    AOS.init({ duration: 1000 });
-  }, []);
+    Axios.get(
+`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${from}.json`)
+   .then((res) => {
+      setInfo(res.data[from]);
+    })
+  }, [from]);
+  
+  // Calling the convert function whenever
+  // a user switches the currency
+  useEffect(() => {
+    setOptions(Object.keys(info));
+    convert();
+  }, [info])
+    
+  // Function to convert the currency
+  function convert() {
+    var rate = info[to];
+    setOutput(input * rate);
+  }
+  
+  // Function to switch between two currency
+  function flip() {
+    var temp = from;
+    setFrom(to);
+    setTo(temp);
+  }
+
   return (
-    <section data-aos="fade-in" className="lg:my-32 bg-[#073A42] my-12 lg:px-28 px-4  p-20 relative exchange-container">
-        
-      <div className='exchange-ball'>
-
-<div><span className='dot2'></span> </div>
-<div><span className='dot2'></span> </div>
-
-</div>
-     <div className="relative z-50">
-
-      <h1 className="lg:text-5xl text-3xl font-bold text-white">
-        Our Online And ATM <br /> Exchange Rates{" "}
-      </h1>
-      <p className="text-gray-400 mt-4 lg:w-5/12 text-lg">
-        Rate valide as of 12:19 PM, Auguest 5,2021 Currency exchange rates with
-        Paywise Online Better then in Branches. All rates
-      </p>
-     </div>
-     
-
-    
-        
-          <div className="overflow-x-auto mt-12 relative z-50">
-        
-            <table className="text-[#ABC3C6] lg:w-8/12 mx-auto ">
-              <thead>
-
-              <tr>
-                <th className="lg:w-3/12"></th>
-                <th className="text-start text-sm lg:w-3/12">Your Sell</th>
-                <th className="text-start text-sm lg:w-3/12">Your Buy</th>
-              </tr>
-              </thead>
-              <tbody>
-
-                 <tr>
-
-                <td className="lg:text-2xl font-bold">USD</td>
-                <td>71,35</td>
-                <td>74,35</td>
-              
-
-                <td className="pb-5">
-                  <span className="block text-[#ABC3C6] ">
-                    I'd like to sell
-                  </span>
-                  <span className="border-2 border-[#ABC3C6] rounded grid grid-cols-2 w-9/12">
-                    <input
-                      className="bg-[#073A42] text-lg font-semibold pl-4 "
-                      readOnly
-                      type="text"
-                      value="1000"
-                      />
-                    <select  defaultValue={"DEFAULT"}  className="select  select-bordered  bg-[#073A42] text-white">
-                      <option value="DEFAULT" className="bg-none" >
-                        RUB
-                      </option>
-                      <option value="1" className="bg-none">USD</option>
-                      <option value="2" className="bg-none">TAKA</option>
-                    </select>
-                  </span>
-                </td>
-                 </tr>
-                    
-                <tr>
-                <td className="lg:text-2xl font-bold">EUR</td>
-                <td>84,98</td>
-                <td>87,97</td>
-                <td>
-                  <span className="block text-[#ABC3C6]">I'll get</span>
-                  <span className="border-2 border-[#ABC3C6] rounded grid grid-cols-2 w-9/12">
-                    <input
-                      className="bg-[#073A42] text-lg font-semibold pl-4 "
-                      type="text"
-                      readOnly
-                      value="1000"
-                      />
-                    <select defaultValue={'DEFAULT'} className="select  select-bordered  bg-[#073A42] text-white">
-                      <option value="DEFAULT" className="bg-none" >
-                        RUB
-                      </option>
-                      <option value="1" className="bg-none">USD</option>
-                      <option value="2" className="bg-none">TAKA</option>
-                    </select>
-                  </span>
-                </td>
-              </tr>
-         
-              
-                      </tbody>
-            </table>
-          </div>
-          <hr className="w-full h-[1px] bg-[#ABC3C6] my-12" />
-          <div className="grid lg:grid-cols-2 lg:w-8/12 mx-auto">
-            <p className="text-lg text-[#ABC3C6]">Purchase foreign currency with Paywise Online and get your cash at a bank branch</p>
-            <div className="">
-            <button className='btn mx-auto block btn-secondary px-20 mt-5 lg:mt-0    text-[#073A42]  font-bold'>Exchange Now</button>
-            </div>
-          </div>
-     
-       
-    
-    </section>
+    <div className="App">
+      <div className="heading">
+        <h1>Exchange Your Currecncy</h1>
+      </div>
+      <div className="container">
+        <div className="left">
+          <h3>Amount</h3>
+          <input type="text" 
+             placeholder="Enter the amount" 
+             onChange={(e) => setInput(e.target.value)} />
+        </div>
+        <div className="middle">
+          <h3>From</h3>
+          <Dropdown options={options} 
+                    onChange={(e) => { setFrom(e.value) }}
+          value={from} placeholder="From" />
+        </div>
+        <div className="switch">
+          <HiSwitchHorizontal size="30px" 
+                        onClick={() => { flip()}}/>
+        </div>
+        <div className="right">
+          <h3>To</h3>
+          <Dropdown options={options} 
+                    onChange={(e) => {setTo(e.value)}} 
+          value={to} placeholder="To" />
+        </div>
+      </div>
+      <div className="result">
+        <button className='' onClick={()=>{convert()}}>Convert</button>
+        <h2>Converted Amount:</h2>
+        <p>{input+" "+from+" = "+output.toFixed(2) + " " + to}</p>
+  
+      </div>
+    </div>
   );
 };
 
