@@ -6,7 +6,7 @@ import useUserInfo from '../../hooks/useUserInfo';
 const BalanceCard = () => {
   const [user]=useAuthState(auth)
   const {userInfo,isLoading} =useUserInfo(user)
-  console.log(userInfo,"hi")
+
   if(isLoading){
     return ;
   }

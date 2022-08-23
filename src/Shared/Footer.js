@@ -9,7 +9,7 @@ const Footer = () => {
     AOS.init({ duration: 1000 });
   }, []);
     return (
-        <footer data-aos="fade-in" className='bg-[rgb(7,58,66)] mt-4 lg:px-28 px-4 py-16'>
+        <footer data-aos="fade-in" className='bg-primary mt-4 lg:px-28 px-4 py-16'>
 
             <div className='grid lg:grid-cols-3'>
                 <div>

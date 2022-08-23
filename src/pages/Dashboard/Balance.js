@@ -12,8 +12,7 @@ const Balance = () => {
 
     const { register, handleSubmit,reset } = useForm();
     const onSubmit = (data) => {
-        console.log(data,"data")
-        console.log(userInfo.amount,"amount")
+     
         const withdrawAmount=parseFloat(data.withdrawAmount)
         if (userInfo.amount>withdrawAmount) {
            const newAmount = userInfo.amount-withdrawAmount;
@@ -28,7 +27,7 @@ const Balance = () => {
             })
             .then(res=>res.json())
             .then(result=>{
-                console.log(result,"this is result")
+                
                refetch()
                reset()
             })

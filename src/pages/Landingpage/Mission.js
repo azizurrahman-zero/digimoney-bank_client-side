@@ -12,11 +12,11 @@ const Mission = ({title}) => {
     AOS.init({ duration: 1000 });
   }, []);
   return (
-    <div data-aos="fade-in" className="mission-card p-12 rounded-xl">
-      <button className="btn mb-8   btn-secondary font-bold text-primary ">
+    <div data-aos="fade-in" className="mission-card bg-base-200 p-12 rounded-xl">
+      <button className="btn mb-8   btn-secondary font-bold text-base-300 ">
         Petal 1
       </button>
-      <h1 className="lg:text-3xl text-lg lg:w-[60%] font-bold text-accent">
+      <h1 className="lg:text-3xl text-lg lg:w-[60%] font-bold text-[#010C28]">
     {title}
       </h1>
       <ul className="mission-decription ml-12  lg:text-lg">
@@ -25,7 +25,7 @@ const Mission = ({title}) => {
         <li className="mt-5 ">AORs 19.99%-29.49%</li>
         <li className="mt-5 ">2%-10% cash back at select merchants</li>
       </ul>
-      <button  className="btn mt-8   btn-secondary font-bold text-primary ">
+      <button  className="btn mt-8   btn-secondary font-bold text-base-300 ">
         Learned More
       </button>
 

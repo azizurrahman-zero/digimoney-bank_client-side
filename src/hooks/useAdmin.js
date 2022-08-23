@@ -7,9 +7,8 @@ const useAdmin=(user)=>{
     
     useEffect(()=>{
          const email=user?.email
-         console.log(email,"email from hook page ")
          if(email){
-            fetch(`http://localhost:4000/admin?email=${email}`)
+            fetch(`https://tranquil-lake-95777.herokuapp.com/admin?email=${email}`)
             .then(res=>res.json())
             .then(data=>{
                 

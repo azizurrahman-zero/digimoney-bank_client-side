@@ -28,7 +28,7 @@ const Header = () => {
                         <BankAdvantage advantage="Faster finance transaction" score="3M+" />
                     </div>
                     <div className='mt-16 flex relative z-50 items-center gap-x-3 lg:gap-x-10'>
-                    <button className='btn btn-secondary text-primary font-bold'>Download Now</button>
+                    <button className='btn btn-secondary text-base-300 font-bold'>Download Now</button>
                     <div className='flex items-center gap-x-3 '>
                        <img className='h-14' src="https://cdn.picpng.com/icon/play-icon-free-wallpaper-vector-65968.png" alt="" />
                        <span className='text-white font-semibold text-lg'>How its work</span>
@@ -36,12 +36,12 @@ const Header = () => {
                     </div>
                  </div>
                  <div data-aos="zoom-in" className='header-left my-20 lg:my-0'>
-                     <div className='bg-white banking   w-[330px] py-6 mx-auto'>
+                     <div className='bg-white banking text-black   w-[330px] py-6 mx-auto'>
                         <div className='px-6'>
                         <p className='text-md'>Log in to Internet Banking</p>
                         <div className='flex gap-x-3 my-3'>
-                            <button className='btn btn-secondary text-primary font-bold px-8'>Personal</button>
-                            <button className='btn btn-neutral px-8 text-primary font-bold'>Business</button>
+                            <button className='btn btn-secondary text-base-300 font-bold px-8'>Personal</button>
+                            <button className='btn btn-secondary px-8 text-base-300 font-bold'>Business</button>
                         </div>
                         </div>
                    
