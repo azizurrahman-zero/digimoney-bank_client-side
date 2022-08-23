@@ -24,27 +24,6 @@ const AllUser = ({ user, users, index,refetch }) => {
       });
   };
 
-
-   
-    const proceed = window.confirm("Are you sure?");
-    if (proceed) {
-      const url = `https://tranquil-lake-95777.herokuapp.com/approvedUser/${id}`;
-      fetch(url, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.deletedCount > 0) {
-             refetch()
-             toast.error("Removed user successfully")
-           
-          }
-        
-        });
-       
-    }
-    
-
   // delete user
   const handleDelete = (id) => {
     confirmAlert({
@@ -62,7 +41,7 @@ const AllUser = ({ user, users, index,refetch }) => {
             .then((data) => {
               if (data.deletedCount > 0) {
               refetch()
-              toast.success("Removed user successfully")
+              toast.error("Removed user successfully")
             }
             });
           },
@@ -75,7 +54,6 @@ const AllUser = ({ user, users, index,refetch }) => {
         },
       ],
     });
-
   };
  
   return (
