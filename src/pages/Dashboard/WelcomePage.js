@@ -1,19 +1,22 @@
 import React from "react";
-import {
-  LineChart,
- 
-  Line,
-
-} from "recharts";
+import { LineChart, Line } from "recharts";
 import { FaPlay } from "react-icons/fa";
 import { ImUpload, ImDownload } from "react-icons/im";
-import useTransection from "../../hooks/useTransection";
+import moment from "moment";
 import TransectionRow from "./TransectionRow";
 import Piechart from "./Piechart";
 import Barchart from "./Barchart";
 import BalanceCard from "./BalanceCard";
+import useUserInfo from "../../hooks/useUserInfo";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
+import useTransection from "../../hooks/useTransection";
 
 const WelcomePage = () => {
+  const [user] = useAuthState(auth);
+  const { userInfo, isLoading } = useUserInfo(user);
+  const { transection } = useTransection(userInfo, 1);
+
   const data = [
     {
       name: "Page A",
@@ -58,14 +61,21 @@ const WelcomePage = () => {
       amt: 2100,
     },
   ];
- 
-  const [transection] = useTransection();
-  
+
+  // ====================short transection array===============//
+
+  // 👇️ sort by Numeric property ASCENDING (1 - 100)
+  // let sortedTransection=[];
+  // if(transection?.length>0){
+
+  //   sortedTransection = [...transection].sort((a,b) =>new moment(a.date).format('YYYYMMDD') - new moment(b.date).format('YYYYMMDD'))
+  // }
+
   return (
     <section className="mt-8">
       <div className="grid lg:grid-cols-3 gap-12">
         {/* Balance Cart start */}
-         <BalanceCard />
+        <BalanceCard />
         {/* Balance CArd End */}
 
         {/* Income Card Chart start */}
@@ -144,7 +154,7 @@ const WelcomePage = () => {
         <Barchart />
         {/* Bar Chart end */}
         {/* Pie Chart Start */}
-        
+
         <Piechart />
         {/* Pie chart end */}
       </div>
@@ -154,8 +164,8 @@ const WelcomePage = () => {
         <div className="overflow-x-auto">
           <table className="table table-zebra w-full">
             <tbody>
-              {transection.slice(0, 6).map((rowdata,i) => (
-                <TransectionRow key={i} rowdata={rowdata} />
+              {transection.slice(0, 6).map((rowdata, i) => (
+                <TransectionRow key={i} userInfo={userInfo} rowdata={rowdata} />
               ))}
             </tbody>
           </table>

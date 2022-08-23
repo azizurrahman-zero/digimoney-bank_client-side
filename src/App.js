@@ -29,22 +29,20 @@ import Menubar from "./Shared/Menubar";
 
 import Transection from "./pages/Dashboard/Transection";
 import ScrollToTop from "./Shared/ScrollToTop";
-
-
-
 import Balance from "./pages/Dashboard/Balance";
 
 import UserInformation from "./pages/Dashboard/UserInformation/UserInformation";
 import PrivateRute from "./pages/Login/PrivateRute";
 import PrivateadminRoute from "./pages/Login/PrivateAdminRoute";
-
-
-
+import { useState } from "react";
 function App() {
   const { pathname } = useLocation();
+  const [darkMood,setDarkMood]=useState(false)
+  console.log(darkMood)
+
   return (
-    <div className={` ${pathname.includes("dashboard") && "py-2"}`}>
-      {!pathname.includes("dashboard")  && !pathname.includes("signUp") && <Menubar></Menubar>}
+    <div data-theme={darkMood?"dark":"mytheme"} className={` ${pathname.includes("dashboard") && "py-2"} bg-base-100`}>
+      {!pathname.includes("dashboard")  && !pathname.includes("signUp") && <Menubar setDarkMood={setDarkMood}></Menubar>}
       <Routes>
         {/* <Route path="/" element={<Home></Home>}></Route> */}
         <Route path="/" element={<Landingpage />}></Route>

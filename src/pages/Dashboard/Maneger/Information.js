@@ -1,21 +1,37 @@
 import React from "react";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 const Information = ({ user, index, users, setUsers, setInformation }) => {
   const handleDelete = (id) => {
-    const proceed = window.confirm("Are you sure?");
-    if (proceed) {
-      const url = `https://tranquil-lake-95777.herokuapp.com/users/${id}`;
-      fetch(url, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.deletedCount > 0) {
-            const remaining = users.filter((user) => user._id !== id);
-            setUsers(remaining);
-          }
-        });
-    }
+    confirmAlert({
+      message: "Are you sure you want to delete?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => {
+            // send updated data to server
+            const url = `https://tranquil-lake-95777.herokuapp.com/users/${id}`;
+            fetch(url, {
+              method: "DELETE",
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.deletedCount > 0) {
+                  const remaining = users.filter((user) => user._id !== id);
+                  setUsers(remaining);
+                }
+              });
+          },
+        },
+        {
+          label: "No",
+          onClick: () => {
+            return;
+          },
+        },
+      ],
+    });
   };
   return (
     <tr>

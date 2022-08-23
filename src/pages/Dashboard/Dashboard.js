@@ -42,11 +42,11 @@ const Dashboard = () => {
   ]
   return (
 
-    <div className="drawer drawer-mobile      rounded-3xl ">
+    <div className="drawer drawer-mobile rounded-3xl ">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content custom-scroll">
 
-        <label htmlFor="my-drawer-2" className="block mx-8 mt-3   drawer-button lg:hidden">
+        <label htmlFor="my-drawer-2" className="block mx-8 mt-3 drawer-button lg:hidden">
           < RiBarChartHorizontalLine
             htmlFor="my-drawer-2"
 
@@ -54,7 +54,7 @@ const Dashboard = () => {
               w-8 h-8 text-black     rounded-full ${!open && 'rotate-180'}
              `} />
         </label>
-        <div className='lg:px-5 lg:pl-16 pt-5 bg-white min-h-screen'>
+        <div className='min-h-screen pt-5 bg-white lg:px-5 lg:pl-16'>
 
           {!pathname.includes("dashboard/") && <DashboardMenu />}
           <Outlet />
@@ -62,7 +62,7 @@ const Dashboard = () => {
 
 
       </div>
-      <div className="drawer-side duration-100 custom-sidebar ">
+      <div className="duration-100 drawer-side custom-sidebar ">
         <label htmlFor="my-drawer-2" className="drawer-overlay "></label>
 
         <ul className={`pt-6   ${!open ? "w-20" : "w-52"} duration-75    p-5 bg-[#6160DC] `}>
