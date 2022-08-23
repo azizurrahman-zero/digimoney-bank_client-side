@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom'
 import { BsArrowLeftCircle } from 'react-icons/bs'
 import { RiBarChartHorizontalLine } from 'react-icons/ri'
-import { AiOutlineUsergroupAdd, AiFillEdit, AiFillHome } from 'react-icons/ai'
+import { AiOutlineUsergroupAdd, AiFillHome } from 'react-icons/ai'
 import { FiSettings, FiLogOut } from 'react-icons/fi'
-import { FaMoneyCheck,FaMoneyBill } from 'react-icons/fa'
-import { MdRateReview, MdDashboard } from 'react-icons/md'
+import { FaMoneyCheck,FaMoneyBill, FaUsers } from 'react-icons/fa'
+import { MdRateReview, MdDashboard, MdAdminPanelSettings } from 'react-icons/md'
 import { ImProfile } from 'react-icons/im'
 import { Outlet } from 'react-router-dom'
 import DashboardMenu from './DashboardMenu';
@@ -15,9 +15,13 @@ import './dashboard.css'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import useAdmin from '../../hooks/useAdmin';
+import { signOut } from 'firebase/auth';
 
 
 const Dashboard = () => {
+  const logout = () => {
+    signOut(auth);
+  };
   const { pathname } = useLocation()
   const [user]=useAuthState(auth)
   const {admin}=useAdmin(user)
@@ -26,14 +30,14 @@ const Dashboard = () => {
   const Menus = [
     {isAdmin:true,dualUser:true, title: "Go To Home", path: "/", src: <AiFillHome className='w-5 h-5' /> },
     {isAdmin:true,dualUser:true, title: "Dashboard", path: "/dashboard", src: <MdDashboard className='w-5 h-5' /> },
-    {isAdmin:true, title: "Profile", path: "/dashboard/profile", src: <ImProfile className='w-5 h-5' /> },
+    {isAdmin:true, title: "User Request", path: "/dashboard/user-request", src: <AiOutlineUsergroupAdd className='w-5 h-5' />, gap: true },
     {isAdmin:false, title: "Balance", path: "/dashboard/balance", src: <FaMoneyBill className='w-5 h-5' /> },
     {isAdmin:false, title: "Review", path: "/dashboard/review", src: <MdRateReview className='w-5 h-5' /> },
-    {isAdmin:true, title: "Make Admin", path: "/", src: <AiFillEdit className='w-5 h-5' />, gap: true },
-    {isAdmin:true, title: "User Request", path: "/dashboard/user-request", src: <AiFillEdit className='w-5 h-5' />, gap: true },
     {isAdmin:false, title: "Transection", path: "/dashboard/transection", src: <FaMoneyCheck className='w-5 h-5' /> },
-    {isAdmin:true, title: "All User", path: "/dashboard/allusers", src: <AiOutlineUsergroupAdd className='w-5 h-5' /> },
+    {isAdmin:true, title: "All User", path: "/dashboard/allusers", src: <FaUsers className='w-5 h-5' /> },
+    {isAdmin:true, title: "All Admin", path: "/", src: <MdAdminPanelSettings className='w-5 h-5' />, gap: true },
     {isAdmin:false, title: "Send Money", path: "/dashboard/sendmoney", src: <FaMoneyCheck className='w-5 h-5' /> },
+    {isAdmin:true, title: "Profile", path: "/dashboard/profile", src: <ImProfile className='w-5 h-5' /> },
     {isAdmin:true, title: "Setting", path: "/", src: <FiSettings className='w-5 h-5' />, setting: true },
   ]
   return (
@@ -85,7 +89,7 @@ const Dashboard = () => {
             }
             <li className={` text-white font-bold ${!open && "justify-center"}   rounded-md text-sm flex items-center gap-x-4 p-2 cursor-pointer hover:bg-red-700`}>
               <FiLogOut className='w-5 h-5' />
-              <span className={`${!open && "hidden"} origin-left duration-200 text-md font-semibold`}>Logout</span>
+              <span onClick={logout} className={`${!open && "hidden"} origin-left duration-200 text-md font-semibold`}>Logout</span>
             </li>
           </div>
         </ul>

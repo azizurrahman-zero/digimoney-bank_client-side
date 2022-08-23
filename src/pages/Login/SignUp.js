@@ -32,7 +32,7 @@ const SignUp = () => {
   const onSubmit = async (data, event) => {
     event.preventDefault();
 
-    const { name, email, password, phone, address, amount } = data;
+    const { name, email, password, phone, address, amount,fatherName,motherName } = data;
     await createUserWithEmailAndPassword(email, password);
     await updateProfile({ displayName: name });
 
@@ -53,6 +53,8 @@ const SignUp = () => {
 
           const currentUser = {
             displayName: name,
+            fatherName: fatherName,
+            motherName: motherName,
             email: email,
             contact: phone,
             accountType: event.target.accountType.value,
@@ -110,6 +112,46 @@ const SignUp = () => {
                     {errors.name?.type === "required" && (
                       <span className="label-text-alt text-error">
                         {errors.name.message}
+                      </span>
+                    )}
+                  </label>
+                </div>
+                <div className="w-full max-w-xs form-control">
+                  <input
+                    type="text"
+                    placeholder=" &#xf007;  Your Father's Name"
+                    className="mb-1 text-base input input-bordered input-icon"
+                    {...register("fatherName", {
+                      required: {
+                        value: true,
+                        message: "*Enter your father's name",
+                      },
+                    })}
+                  />
+                  <label className="pt-0 label">
+                    {errors.name?.type === "required" && (
+                      <span className="label-text-alt text-error">
+                        {errors.fatherName.message}
+                      </span>
+                    )}
+                  </label>
+                </div>
+                <div className="w-full max-w-xs form-control">
+                  <input
+                    type="text"
+                    placeholder=" &#xf007;  Your Mother's Name"
+                    className="mb-1 text-base input input-bordered input-icon"
+                    {...register("motherName", {
+                      required: {
+                        value: true,
+                        message: "*Enter your mother's name",
+                      },
+                    })}
+                  />
+                  <label className="pt-0 label">
+                    {errors.name?.type === "required" && (
+                      <span className="label-text-alt text-error">
+                        {errors.motherName.message}
                       </span>
                     )}
                   </label>

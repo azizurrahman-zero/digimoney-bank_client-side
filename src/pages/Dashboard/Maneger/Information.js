@@ -29,6 +29,7 @@ const Information = ({ user, index, users, setUsers, setInformation }) => {
       </td>
 
       <td>{user.displayName}</td>
+     
       <td>{user.email}</td>
       <td>{user.contact}</td>
       <td>{user.address}</td>
