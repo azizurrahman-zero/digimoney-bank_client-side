@@ -3,12 +3,13 @@ import React, { useRef } from "react";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 
-
 const CheckInformation = ({ information, users, setUsers }) => {
-  const accountRef=useRef()
+  const accountRef = useRef();
   const {
     _id,
     displayName,
+    fatherName,
+    motherName,
     email,
     contact,
     address,
@@ -16,71 +17,61 @@ const CheckInformation = ({ information, users, setUsers }) => {
     gender,
     amount,
     accountType,
-    accountNumber,
   } = information;
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
- 
-  } = useForm();
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   formState: { errors },
+  // } = useForm();
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     console.log(data);
-    const url=`https://tranquil-lake-95777.herokuapp.com/accountNumber/${_id}`;
-    fetch(url,{ 
-         method:'PATCH',
-          headers:{
-              'content-type':'application/json'
-          },
-          body:JSON.stringify(data)
-      })
-      .then(res=>res.json())
-      .then(result=>{console.log(result);})
-
-  };
-console.log({information});
-
-  const approved = (id, { information },e) => {
-    console.log(information,"this is information ")
-     information["accountNumber"]=accountRef.current.value
-    
-    fetch('https://tranquil-lake-95777.herokuapp.com/approvedUsers', {
-      method: 'POST',
+    const url = `https://tranquil-lake-95777.herokuapp.com/accountNumber/${_id}`;
+    fetch(url, {
+      method: "PATCH",
       headers: {
-        'content-type': 'application/json'
+        "content-type": "application/json",
       },
-      body: JSON.stringify(information)
-
+      body: JSON.stringify(data),
     })
-      .then(res => res.json())
-      .then(data => {
-         if(data.insertedId){
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+      });
+  };
+  console.log({ information });
+
+  const approved = (id, { information }, e) => {
+    console.log(information, "this is information ");
+    information["accountNumber"] = accountRef.current.value;
+
+    fetch("https://tranquil-lake-95777.herokuapp.com/approvedUsers", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(information),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
           const url = `https://tranquil-lake-95777.herokuapp.com/users/${id}`;
 
           fetch(url, {
-            method: 'DELETE'
+            method: "DELETE",
           })
-            .then(res => res.json())
-            .then(data => {
+            .then((res) => res.json())
+            .then((data) => {
               if (data.deletedCount > 0) {
-               toast.success("User request approved successfully")
-                const remaining = users.filter(user => user._id !== id)
+                toast.success("User request approved successfully");
+                const remaining = users.filter((user) => user._id !== id);
                 setUsers(remaining);
-      
               }
-            
-            })
-         }
-      })
-
-
-   
-
-
-  }
-
+            });
+        }
+      });
+  };
 
   return (
     <>
@@ -94,8 +85,8 @@ console.log({information});
             ✕
           </label>
 
-          <div className="overflow-x-auto mt-10">
-            <div className="avatar mx-auto justify-center items-center flex gap-4">
+          <div className="mt-10 overflow-x-auto">
+            <div className="flex items-center justify-center gap-4 mx-auto avatar">
               <div className="w-65">
                 <img src={img} alt="" />
               </div>
@@ -108,6 +99,14 @@ console.log({information});
                 <tr>
                   <td>Name</td>
                   <td>{displayName}</td>
+                </tr>
+                <tr>
+                  <td>Father's Name</td>
+                  <td>{fatherName}</td>
+                </tr>
+                <tr>
+                  <td>Mother's Name</td>
+                  <td>{motherName}</td>
                 </tr>
 
                 <tr className="active">
@@ -138,7 +137,7 @@ console.log({information});
                 <tr>
                   <td>Account Number</td>
                   <td>
-                  {/* <form onSubmit={handleSubmit(onSubmit)}>
+                    {/* <form onSubmit={handleSubmit(onSubmit)}>
                   <input
                     type="number"
                     placeholder="   Account Number"
@@ -157,18 +156,27 @@ console.log({information});
                       </span>
                     )}
                   </label>
-                  <input className="btn btn-primary btn-xs ml-4"  type="submit" />
+                  <input className="ml-4 btn btn-primary btn-xs"  type="submit" />
                   </form> */}
-                  <input ref={accountRef} type="text" className="input input-primary" placeholder="account-number" />
+                    <input
+                      ref={accountRef}
+                      type="text"
+                      className="input input-primary"
+                      placeholder="Account-number"
+                      required
+                    />
                   </td>
                 </tr>
-                
               </tbody>
             </table>
           </div>
 
           <div className="modal-action">
-            <label onClick={() => approved(_id, { information })} for="check-information" className="btn btn-active btn-accent">
+            <label
+              onClick={() => approved(_id, { information })}
+              for="check-information"
+              className="btn btn-active btn-accent"
+            >
               Approved
             </label>
           </div>

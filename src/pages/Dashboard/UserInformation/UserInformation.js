@@ -20,7 +20,7 @@ const UserInformation = () => {
         <div>
           <div className="hero-content flex-col lg:flex-row">
             <img src={userInfo.img} className="lg:w-96 sm:w-72" alt="" />
-
+           
             <div>
               <table className="table">
                 <tbody>
@@ -31,6 +31,14 @@ const UserInformation = () => {
                   <tr>
                     <td>Name</td>
                     <td>{userInfo.displayName}</td>
+                  </tr>
+                  <tr>
+                    <td>Father's Name</td>
+                    <td>{userInfo.fatherName}</td>
+                  </tr>
+                  <tr>
+                    <td>Mother's Name</td>
+                    <td>{userInfo.motherName}</td>
                   </tr>
 
                   <tr>
