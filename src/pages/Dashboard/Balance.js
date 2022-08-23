@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form';
 import auth from '../../firebase.init';
 import useUserInfo from '../../hooks/useUserInfo';
 import BalanceCard from './BalanceCard';
+import { toast } from "react-toastify";
+
 
 const Balance = () => {
     const [user]=useAuthState(auth)
@@ -27,13 +29,12 @@ const Balance = () => {
             })
             .then(res=>res.json())
             .then(result=>{
-                
                refetch()
                reset()
             })
         }
         else{
-            console.log('You cannot withdraw');
+            toast.error('Insufficient Balance');
         }
     };
  
