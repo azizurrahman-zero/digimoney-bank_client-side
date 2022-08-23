@@ -76,7 +76,7 @@ const ExchangeRates = () => {
       <div className="result">
         <button className='' onClick={()=>{convert()}}>Convert</button>
         <h2>Converted Amount:</h2>
-        <p>{input+" "+from+" = "+output.toFixed(2) + " " + to}</p>
+        <p className='inputP'>{input+" "+from+" = "+output.toFixed(2) + " " + to}</p>
   
       </div>
     </div>
