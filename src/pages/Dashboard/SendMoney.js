@@ -1,8 +1,7 @@
 import React from "react";
-
-
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
+import { toast } from "react-toastify";
 
 
 const SendMoney = () => {
@@ -14,7 +13,7 @@ const SendMoney = () => {
     const confirmAmount = e.target.confirmAmount.value;
 
     if (amount !== confirmAmount) {
-      console.log("amount don't match");
+      toast.error("Please, check amount again!");
       return;
     }
     const transferData = {
@@ -35,7 +34,7 @@ const SendMoney = () => {
     .then(data=>{
         if(data?.finalResult?.modifiedCount>0 && data?.insertTransection?.modifiedCount>0 && data?.insertTransectionDataToReceiver?.modifiedCount>0){
            e.target.reset()
-           console.log(data,"send data")
+           toast.success("Money sent successfully!")
         }
     })
   };
