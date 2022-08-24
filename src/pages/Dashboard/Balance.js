@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import auth from '../../firebase.init';
@@ -7,6 +8,7 @@ import BalanceCard from './BalanceCard';
 
 const Balance = () => {
     const [user]=useAuthState(auth)
+    const [error,setError]=useState("")
     const {userInfo,refetch,isLoading}=useUserInfo(user)
     
 
@@ -14,6 +16,10 @@ const Balance = () => {
     const onSubmit = (data) => {
      
         const withdrawAmount=parseFloat(data.withdrawAmount)
+        if(withdrawAmount<=0){
+            setError("Please provide a posetive number or bigger then zero")
+            return
+        }
         if (userInfo.amount>withdrawAmount) {
            const newAmount = userInfo.amount-withdrawAmount;
            const updatedAmount={amount:newAmount}
@@ -33,7 +39,9 @@ const Balance = () => {
             })
         }
         else{
-            console.log('You cannot withdraw');
+
+           setError('Withdraw balance should be smaller than amount');
+       
         }
     };
  
@@ -56,7 +64,13 @@ const Balance = () => {
                       <span className="label-text">Amount to withdraw</span>
                   </label>
                   <input type="number" placeholder="Provide Amount" className="input input-bordered w-full max-w-xs" {...register("withdrawAmount")} />
+       
                   <input className="btn btn-primary ml-4"  type="submit" />
+                  <div className="">
+
+<label className="text-xs font-bold mx-auto block text-red-600">{error}</label>
+
+</div>
               </form>
 
           </div>
