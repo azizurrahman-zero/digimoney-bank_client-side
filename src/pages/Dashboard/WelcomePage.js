@@ -1,8 +1,7 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { LineChart, Line } from "recharts";
 import { FaPlay } from "react-icons/fa";
 import { ImUpload, ImDownload } from "react-icons/im";
-import moment from "moment";
 import TransectionRow from "./TransectionRow";
 import Piechart from "./Piechart";
 import Barchart from "./Barchart";
@@ -10,12 +9,17 @@ import BalanceCard from "./BalanceCard";
 import useUserInfo from "../../hooks/useUserInfo";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
-import useTransection from "../../hooks/useTransection";
+import {useDispatch,useSelector} from 'react-redux'
+import { fetchTransection } from "../../redux/reducers/TransectionReducer";
 
 const WelcomePage = () => {
   const [user] = useAuthState(auth);
-  const { userInfo, isLoading } = useUserInfo(user);
-  const { transection } = useTransection(userInfo, 1);
+  const { userInfo } = useUserInfo(user);
+  const {transection}=useSelector(state=>state.transection)
+  const dispatch=useDispatch()
+  useEffect(()=>{
+  dispatch(fetchTransection({accountNumber:userInfo?.accountNumber,page:0}))
+  },[dispatch,userInfo])
 
   const data = [
     {
@@ -62,14 +66,8 @@ const WelcomePage = () => {
     },
   ];
 
-  // ====================short transection array===============//
 
-  // 👇️ sort by Numeric property ASCENDING (1 - 100)
-  // let sortedTransection=[];
-  // if(transection?.length>0){
 
-  //   sortedTransection = [...transection].sort((a,b) =>new moment(a.date).format('YYYYMMDD') - new moment(b.date).format('YYYYMMDD'))
-  // }
 
   return (
     <section className="mt-8">
@@ -104,10 +102,10 @@ const WelcomePage = () => {
             <LineChart
               width={350}
               height={80}
-              data={data}
+              data={transection}
               margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
             >
-              <Line type="monotone" dataKey="pv" stroke="#8884d8" />
+              <Line type="monotone" dataKey="amount" stroke="#8884d8" />
             </LineChart>
           </div>
         </div>
@@ -138,11 +136,11 @@ const WelcomePage = () => {
             </div>
             <LineChart
               width={350}
-              height={80}
-              data={data}
-              margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+              height={40}
+              data={transection}
+              margin={{ top: 15, right: 30, left: 20, bottom: 5 }}
             >
-              <Line type="monotone" dataKey="pv" stroke="#8884d8" />
+              <Line type="monotone" dataKey="amount" stroke="#8884d8" />
             </LineChart>
           </div>
         </div>
@@ -151,11 +149,11 @@ const WelcomePage = () => {
 
       <div className="grid lg:grid-cols-2 gap-x-16 mt-12">
         {/* Bar Chart Start Start */}
-        <Barchart />
+        <Barchart transection={transection} />
         {/* Bar Chart end */}
         {/* Pie Chart Start */}
 
-        <Piechart />
+        <Piechart transection={transection} />
         {/* Pie chart end */}
       </div>
       {/* Transection table start  */}
