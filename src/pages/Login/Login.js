@@ -11,9 +11,6 @@ import Loading from "../../Shared/Loading";
 import loginBanner from "../../assets/images/login-banner.svg";
 import { GiCancel } from "react-icons/gi";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
-
 
 const Login = () => {
   const navigate = useNavigate();
@@ -47,29 +44,24 @@ const Login = () => {
     signInWithEmailAndPassword(email, password);
   };
 
-  const resetPassword = async (data) => {
-    const email = data.email;
-
-    if (email) {
-      await sendPasswordResetEmail(email);
-      toast.success(`Email Sent to ${email}!`);
-    } else {
-      toast.error("Please, Enter a Email Address.");
-    }
-  };
-
+  // Reset Password
   const handleReset=async ()=>{
       const email=emailRef.current.value
-      await sendPasswordResetEmail(email)
-      alert('Sent email')
+      if (email) {
+        await sendPasswordResetEmail(email)
+        toast.success(`Email Sent to ${email}!`);
+      }
+      else {
+        toast.error("Please, Enter a Email Address.");
+      }
   }
 
   return (
-    <div className="bg-[#E5CB83] flex gap-20 min-h-screen items-center justify-center">
-      <div className="w-5/12">
+    <div className="bg-[#E5CB83] flex md:gap-20 h-[calc(100vh-76px)] items-center justify-center">
+      <div className="w-5/12 hidden md:block">
         <img className="w-full" src={loginBanner} alt="login" />
       </div>
-      <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mt-5 mb-16 lg:m-0">
+      <div className="card flex-shrink-0 md:w-full max-w-sm shadow-2xl bg-base-100 md:mt-5 md:mb-16 lg:m-0">
         <div className="card-body">
           <h2 className="mb-1 font-bold text-info text-center text-3xl">
             Log In
@@ -167,13 +159,13 @@ const Login = () => {
         </div>
       </div>
       <>
-        <input type="checkbox" id="reset-pass-modal" class="modal-toggle" />
-        <div class="modal modal-bottom sm:modal-middle">
-          <div class="modal-box relative">
-            <label for="reset-pass-modal" class="absolute right-4 top-4">
+        <input type="checkbox" id="reset-pass-modal" className="modal-toggle" />
+        <div className="modal modal-bottom sm:modal-middle">
+          <div className="modal-box relative">
+            <label for="reset-pass-modal" className="absolute right-4 top-4">
               <GiCancel className="text-2xl" />
             </label>
-            <h3 class="font-bold text-lg">Reset Password</h3>
+            <h3 className="font-bold text-lg">Reset Password</h3>
             <div className="form-control">
               <input
                 required

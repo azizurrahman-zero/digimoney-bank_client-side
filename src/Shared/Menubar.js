@@ -79,7 +79,7 @@ const Menubar = ({setDarkMood}) => {
     
         <li className="flex items-center justify-center ml-14">
           
-        <input onChange={(e)=>setDarkMood(e.target.checked)} name="dark"  type="checkbox" class="toggle toggle-lg mr-14"  />
+        <input onChange={(e)=>setDarkMood(e.target.checked)} name="dark"  type="checkbox" className="toggle toggle-lg mr-14"  />
           
         </li>
       
@@ -124,7 +124,10 @@ const Menubar = ({setDarkMood}) => {
       <div className="navbar-end ">
         <ul
           tabIndex="0"
+
           className="menu menu-compact   dropdown-content mt-3 p-2 shadow  text-accent rounded-box w-52"
+
+    
         >
          
 
