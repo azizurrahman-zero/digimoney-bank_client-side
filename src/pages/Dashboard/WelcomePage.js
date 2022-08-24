@@ -1,5 +1,5 @@
 import React,{useEffect} from "react";
-import { LineChart, Line } from "recharts";
+import { LineChart, Line, ResponsiveContainer, AreaChart, CartesianGrid, XAxis, YAxis, Tooltip, Area, ComposedChart, Legend, Bar } from "recharts";
 import { FaPlay } from "react-icons/fa";
 import { ImUpload, ImDownload } from "react-icons/im";
 import TransectionRow from "./TransectionRow";
@@ -20,50 +20,55 @@ const WelcomePage = () => {
   useEffect(()=>{
   dispatch(fetchTransection({accountNumber:userInfo?.accountNumber,page:0}))
   },[dispatch,userInfo])
+  let totalSendMoney=0;
+  transection.map(money=> totalSendMoney+=parseFloat(money.send_money))
+  let totalReceiveMoney=0;
+  transection.map(money=> totalReceiveMoney+=parseFloat(money.reveive_money))
+  let robin=[]
+transection.forEach(element => {
+ const kashem=  element.send_money
+ const tashem=Number(kashem)
+ 
+ const newArray={...element,send_money:tashem}
+
+robin.push(newArray)
+
+ });
+ console.log(robin)
+
 
   const data = [
     {
       name: "Page A",
-      uv: 4000,
+      uv: 22,
       pv: 2400,
       amt: 2400,
     },
     {
       name: "Page B",
-      uv: 3000,
+      uv: 22,
       pv: 1398,
       amt: 2210,
     },
     {
       name: "Page C",
-      uv: 2000,
+      uv: 1000,
       pv: 9800,
       amt: 2290,
     },
     {
       name: "Page D",
-      uv: 2780,
+      uv: 250,
       pv: 3908,
       amt: 2000,
     },
     {
       name: "Page E",
-      uv: 1890,
+      uv: 200,
       pv: 4800,
       amt: 2181,
-    },
-    {
-      name: "Page F",
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
-    },
-    {
-      name: "Page G",
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
-    },
+    }
+   
   ];
 
 
@@ -79,13 +84,13 @@ const WelcomePage = () => {
         {/* Income Card Chart start */}
         <div className="card   shadow-2xl  text-gray-200">
           <div className=" p-5">
-            <div className="flex items-center mb-8 gap-x-8">
+            <div className="flex items-center justify-between mb-8 gap-x-8">
               <span>
                 <ImDownload className="h-12 w-12 bg-[#6160DC] p-2 rounded-full" />
               </span>
               <div>
-                <p className="text-gray-400">Income</p>
-                <h1 className="text-4xl font-bold text-black">$45,741</h1>
+                <p className="text-gray-400">Reveive Money</p>
+                <h1 className="text-xl font-bold text-black">${totalReceiveMoney?totalReceiveMoney:0}</h1>
               </div>
               <div>
                 <p className="flex justify-end ">
@@ -99,14 +104,20 @@ const WelcomePage = () => {
                 <span className="text-gray-500">last month</span>
               </div>
             </div>
-            <LineChart
-              width={350}
-              height={80}
-              data={transection}
-              margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-            >
-              <Line type="monotone" dataKey="amount" stroke="#8884d8" />
-            </LineChart>
+            <div className="h-[120px]">
+
+            <ResponsiveContainer width="100%" height="100%">
+        <LineChart width={500} height={300} data={robin}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="reveive_money" padding={{ left: 30, right: 30 }} />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Line type="monotone" dataKey="receive_money" stroke="#8884d8" activeDot={{ r: 8 }} />
+          <Line type="monotone" dataKey="send_money" stroke="#82ca9d" />
+        </LineChart>
+      </ResponsiveContainer>
+            </div>
           </div>
         </div>
         {/* Income Card Chart end */}
@@ -114,13 +125,13 @@ const WelcomePage = () => {
         {/* Expense Card Start */}
         <div className="card   shadow-2xl  text-gray-200">
           <div className=" p-5">
-            <div className="flex items-center mb-8 gap-x-8">
+            <div className="flex items-center justify-between mb-8 gap-x-8">
               <span>
                 <ImUpload className="h-12 w-12 bg-[#54C5EB] p-2 rounded-full" />
               </span>
               <div>
-                <p className="text-gray-400">Expense</p>
-                <h1 className="text-4xl font-bold text-black">$45,741</h1>
+                <p className="text-gray-400">Send Money</p>
+                <h1 className="text-xl font-bold text-black">${totalSendMoney}</h1>
               </div>
               <div>
                 <p className="flex justify-end ">
@@ -134,14 +145,28 @@ const WelcomePage = () => {
                 <span className="text-gray-500">last month</span>
               </div>
             </div>
-            <LineChart
+            <div className="h-[120px]">
+
+<ResponsiveContainer width="100%" height="100%">
+<LineChart width={500} height={300} data={robin}>
+<CartesianGrid strokeDasharray="3 3" />
+<XAxis dataKey="reveive_money" padding={{ left: 30, right: 30 }} />
+<YAxis />
+<Tooltip />
+<Legend />
+<Line type="monotone" dataKey="send_money" stroke="#8884d8" activeDot={{ r: 8 }} />
+<Line type="monotone" dataKey="reveive_money" stroke="#82ca9d" />
+</LineChart>
+</ResponsiveContainer>
+</div>
+            {/* <LineChart
               width={350}
-              height={40}
+              height={60}
               data={transection}
-              margin={{ top: 15, right: 30, left: 20, bottom: 5 }}
+              margin={{ top: 15, right: 30, left: 20, bottom: 0 }}
             >
-              <Line type="monotone" dataKey="amount" stroke="#8884d8" />
-            </LineChart>
+              <Line type="monotone" dataKey="send_money" stroke="#8884d8" />
+            </LineChart> */}
           </div>
         </div>
         {/* Expense Card End */}
@@ -149,11 +174,11 @@ const WelcomePage = () => {
 
       <div className="grid lg:grid-cols-2 gap-x-16 mt-12">
         {/* Bar Chart Start Start */}
-        {/* <Barchart transection={transection} /> */}
+         <Barchart transection={robin} /> 
         {/* Bar Chart end */}
         {/* Pie Chart Start */}
 
-        {/* <Piechart transection={transection} /> */}
+         <Piechart transection={robin} /> 
         {/* Pie chart end */}
       </div>
       {/* Transection table start  */}

@@ -10,6 +10,7 @@ const Balance = () => {
     const [user]=useAuthState(auth)
     const [error,setError]=useState("")
     const {userInfo,refetch,isLoading}=useUserInfo(user)
+    console.log(userInfo)
     
 
     const { register, handleSubmit,reset } = useForm();
@@ -23,7 +24,7 @@ const Balance = () => {
         if (userInfo.amount>withdrawAmount) {
            const newAmount = userInfo.amount-withdrawAmount;
            const updatedAmount={amount:newAmount}
-           const url=`https://tranquil-lake-95777.herokuapp.com/approvedUsers/${userInfo._id}`;
+           const url=`http://localhost:4000/approvedUsers/${userInfo.accountNumber}`;
           fetch(url,{ 
                method:'PATCH',
                 headers:{

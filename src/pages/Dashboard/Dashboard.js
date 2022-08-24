@@ -36,10 +36,10 @@ const Dashboard = () => {
     {isAdmin:false, title: "Review", path: "/dashboard/review", src: <MdRateReview className='w-5 h-5' /> },
     {isAdmin:false, title: "Transection", path: "/dashboard/transection", src: <FaMoneyCheck className='w-5 h-5' /> },
     {isAdmin:true, title: "All User", path: "/dashboard/allusers", src: <FaUsers className='w-5 h-5' /> },
-    {isAdmin:true, title: "All Admin", path: "/", src: <MdAdminPanelSettings className='w-5 h-5' />, gap: true },
+    // {isAdmin:true, title: "All Admin", path: "/", src: <MdAdminPanelSettings className='w-5 h-5' />, gap: true },
     {isAdmin:false, title: "Send Money", path: "/dashboard/sendmoney", src: <FaMoneyCheck className='w-5 h-5' /> },
     {isAdmin:true, title: "Profile", path: "/dashboard/profile", src: <ImProfile className='w-5 h-5' /> },
-    {isAdmin:true, title: "Setting", path: "/", src: <FiSettings className='w-5 h-5' />, setting: true },
+    // {isAdmin:true, title: "Setting", path: "/", src: <FiSettings className='w-5 h-5' />, setting: true },
 
   ]
   return (
