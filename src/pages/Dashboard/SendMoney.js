@@ -1,28 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 
 
 import { useAuthState } from "react-firebase-hooks/auth";
+import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 
 
 const SendMoney = () => {
   const [user] = useAuthState(auth);
+  const [error,setError]=useState({
+    lengthError:"",
+    notMatchError:"",
+
+  })
+const [notMatch,setNotMatch]=useState("")
  
   const handleSubmit = (e) => {
     e.preventDefault();
+    setError({})
+    setNotMatch("")
     const amount = e.target.amount.value;
     const confirmAmount = e.target.confirmAmount.value;
-
+    const accountNumber=e.target.accountNumber.value 
+    if(accountNumber.length<12){
+      setError({lengthError:"account number should be 12 cherachter"})
+      return
+    }
+    setError({})
     if (amount !== confirmAmount) {
-      console.log("amount don't match");
+       setNotMatch("Amount did not match");
       return;
     }
     const transferData = {
-      accountNumber: e.target.accountNumber.value,
+      accountNumber,
       amount,
     };
+  
 
-    const url = `https://tranquil-lake-95777.herokuapp.com/transfer?email=${user?.email}`;
+    const url = `http://localhost:4000/transfer?email=${user?.email}`;
  
     fetch(url, {
       method: "PATCH",
@@ -33,9 +48,15 @@ const SendMoney = () => {
     })
     .then(res=>res.json())
     .then(data=>{
+        if(data.message){
+        setError({notMatchError:"Account number did not match"})
+      return
+        }
         if(data?.finalResult?.modifiedCount>0 && data?.insertTransection?.modifiedCount>0 && data?.insertTransectionDataToReceiver?.modifiedCount>0){
            e.target.reset()
-           console.log(data,"send data")
+           toast.success("Transfer Balance Successfully",{
+            position:"top-center"
+           })
         }
     })
   };
@@ -46,7 +67,7 @@ const SendMoney = () => {
       </h1>
       <div className="flex justify-center items-center min-h-[60vh]">
         <form onSubmit={handleSubmit}>
-          <div className="flex items-center gap-x-4 mt-8">
+          <div className="flex items-center  gap-x-4 mt-8">
             <label className="w-[250px] text-xl">Account Number</label>
             <input
               name="accountNumber"
@@ -55,6 +76,11 @@ const SendMoney = () => {
               type="text"
               placeholder="***"
             />
+          </div>
+          <div className="text-end">
+
+            <label className="text-xs font-bold mx-auto block text-red-600">{error?.notMatchError}</label>
+            <label className="text-xs font-bold mx-auto block text-red-600">{error?.lengthError}</label>
           </div>
           <div className="flex items-center gap-x-4 mt-8">
             <label className="w-[250px] text-xl">Amount </label>
@@ -66,6 +92,11 @@ const SendMoney = () => {
               placeholder="$"
             />
           </div>
+          <div className="text-end">
+
+<label className="text-xs font-bold mx-auto block text-red-600">{notMatch}</label>
+
+</div>
           <div className="flex items-center gap-x-4 mt-8">
             <label className="w-[250px] text-xl">Confirm Amount </label>
             <input
@@ -76,6 +107,11 @@ const SendMoney = () => {
               placeholder="$"
             />
           </div>
+          <div className="text-end">
+
+<label className="text-xs font-bold mx-auto block text-red-600">{notMatch}</label>
+
+</div>
           <div className="flex items-center gap-x-4 mt-8">
             <label className="w-[250px] text-xl"> </label>
 

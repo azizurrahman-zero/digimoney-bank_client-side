@@ -25,7 +25,7 @@ const Dashboard = () => {
   const { pathname } = useLocation()
   const [user]=useAuthState(auth)
   const {admin}=useAdmin(user)
-  console.log(admin,"check admin from dashboard")
+
   const [open, setOpen] = useState(true)
   const Menus = [
 

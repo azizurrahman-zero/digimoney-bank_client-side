@@ -149,11 +149,11 @@ const WelcomePage = () => {
 
       <div className="grid lg:grid-cols-2 gap-x-16 mt-12">
         {/* Bar Chart Start Start */}
-        <Barchart transection={transection} />
+        {/* <Barchart transection={transection} /> */}
         {/* Bar Chart end */}
         {/* Pie Chart Start */}
 
-        <Piechart transection={transection} />
+        {/* <Piechart transection={transection} /> */}
         {/* Pie chart end */}
       </div>
       {/* Transection table start  */}
