@@ -1,7 +1,7 @@
 import React from 'react';
 import { BarChart, CartesianGrid, XAxis, YAxis,ResponsiveContainer, Tooltip, Legend, Bar } from 'recharts';
 
-const Barchart = () => {
+const Barchart = ({transection}) => {
     const data = [
         {
             "name": "Page A",
@@ -48,9 +48,9 @@ const Barchart = () => {
             <BarChart
               width={500}
               height={300}
-              data={data}
+              data={transection}
               margin={{
-                top: 5,
+                top: 25,
                 right: 30,
                 left: 20,
                 bottom: 60,
@@ -60,8 +60,8 @@ const Barchart = () => {
 
               <Tooltip />
 
-              <Bar dataKey="pv" fill="#8884d8" />
-              <Bar dataKey="uv" fill="#82ca9d" />
+              <Bar dataKey="amount" fill="#8884d8" />
+               <Bar dataKey="amount" fill="#82ca9d" /> 
             </BarChart>
           </ResponsiveContainer>
         </div>

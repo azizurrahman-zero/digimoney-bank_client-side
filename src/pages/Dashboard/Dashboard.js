@@ -23,17 +23,17 @@ const Dashboard = () => {
   const {admin}=useAdmin(user)
   const [open, setOpen] = useState(true)
   const Menus = [
-    {isAdmin:true,dualUser:true, title: "Go To Home", path: "/", src: <AiFillHome className='w-5 h-5' /> },
-    {isAdmin:true,dualUser:true, title: "Dashboard", path: "/dashboard", src: <MdDashboard className='w-5 h-5' /> },
-    {isAdmin:true,dualUser:true, title: "Profile", path: "/dashboard/profile", src: <ImProfile className='w-5 h-5' /> },
-    {isAdmin:false, title: "Balance", path: "/dashboard/balance", src: <FaMoneyBill className='w-5 h-5' /> },
-    {isAdmin:false, title: "Review", path: "/dashboard/review", src: <MdRateReview className='w-5 h-5' /> },
-    {isAdmin:true, title: "Make Admin", path: "/", src: <AiFillEdit className='w-5 h-5' />, gap: true },
-    {isAdmin:true, title: "User Request", path: "/dashboard/user-request", src: <AiFillEdit className='w-5 h-5' />, gap: true },
-    {isAdmin:false, title: "Transection", path: "/dashboard/transection", src: <FaMoneyCheck className='w-5 h-5' /> },
-    {isAdmin:true, title: "All User", path: "/dashboard/allusers", src: <AiOutlineUsergroupAdd className='w-5 h-5' /> },
-    {isAdmin:false, title: "Send Money", path: "/dashboard/sendmoney", src: <FaMoneyCheck className='w-5 h-5' /> },
-    {isAdmin:true, title: "Setting", path: "/", src: <FiSettings className='w-5 h-5' />, setting: true },
+    {id:1,isAdmin:true,dualUser:true, title: "Go To Home", path: "/", src: <AiFillHome className='w-5 h-5' /> },
+    {id:2,isAdmin:true,dualUser:true, title: "Dashboard", path: "/dashboard", src: <MdDashboard className='w-5 h-5' /> },
+    {id:3,isAdmin:true,dualUser:true, title: "Profile", path: "/dashboard/profile", src: <ImProfile className='w-5 h-5' /> },
+    {id:4,isAdmin:false, title: "Balance", path: "/dashboard/balance", src: <FaMoneyBill className='w-5 h-5' /> },
+    {id:6,isAdmin:false, title: "Review", path: "/dashboard/review", src: <MdRateReview className='w-5 h-5' /> },
+    {id:5,isAdmin:true, title: "Make Admin", path: "/", src: <AiFillEdit className='w-5 h-5' />, gap: true },
+    {id:7,isAdmin:true, title: "User Request", path: "/dashboard/user-request", src: <AiFillEdit className='w-5 h-5' />, gap: true },
+    {id:8,isAdmin:false, title: "Transection", path: "/dashboard/transection", src: <FaMoneyCheck className='w-5 h-5' /> },
+    {id:9,isAdmin:true, title: "All User", path: "/dashboard/allusers", src: <AiOutlineUsergroupAdd className='w-5 h-5' /> },
+    {id:10,isAdmin:false, title: "Send Money", path: "/dashboard/sendmoney", src: <FaMoneyCheck className='w-5 h-5' /> },
+    {id:11,isAdmin:true, title: "Setting", path: "/", src: <FiSettings className='w-5 h-5' />, setting: true },
   ]
   return (
 
@@ -69,10 +69,10 @@ const Dashboard = () => {
           <div className='mt-8 duration-300'>
 
             {
-              Menus.map((menu, i) => (
+              Menus.map((menu,i) => (
                <>
                {(admin === menu?.isAdmin || menu.dualUser )&&
-                 <Link key={i} to={menu?.path}> <li className={`text-gray-300 ${!open && "justify-center"}    rounded-md text-sm flex items-center gap-x-4 p-2 cursor-pointer hover:bg-slate-500`} key={i}>
+                 <Link key={menu.id} to={menu?.path}> <li  className={`text-gray-300 ${!open && "justify-center"}    rounded-md text-sm flex items-center gap-x-4 p-2 cursor-pointer hover:bg-slate-500`} key={i}>
                  {menu.src} <span className={`${!open && "hidden"} origin-left  text-md font-bold`}>{menu.title}</span>
                </li>
                </Link>
