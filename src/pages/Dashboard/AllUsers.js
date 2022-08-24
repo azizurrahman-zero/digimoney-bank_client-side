@@ -41,12 +41,13 @@ const AllUsers = () => {
                                 <th></th>
                                 <th>Photo</th>
                                 <th>Name</th>
+                                <th>Account Number</th>
                                 <th>Email</th>
                                 <th>Contact</th>
 
-                                <th>Address</th>
-                                <th>Address</th>
-                                <th>Address</th>
+                                <th>Details</th>
+                                <th>Status</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -41,7 +41,7 @@ const AllUser = ({ user, users, index,refetch }) => {
             .then((data) => {
               if (data.deletedCount > 0) {
               refetch()
-              toast.success("Removed user successfully")
+              toast.error("Removed user successfully")
             }
             });
           },
@@ -68,6 +68,7 @@ const AllUser = ({ user, users, index,refetch }) => {
       </td>
 
       <td>{user.displayName}</td>
+      <td>{user.accountNumber}</td>
       <td>{user.email}</td>
       <td>{user.contact}</td>
       <td>
@@ -75,7 +76,7 @@ const AllUser = ({ user, users, index,refetch }) => {
           to={`/dashboard/information/${_id}`}
           className="btn btn-outline btn-primary btn-xs "
         >
-          Deities
+          View
         </Link>
       </td>
       <td>
@@ -97,6 +98,7 @@ const AllUser = ({ user, users, index,refetch }) => {
           Remove
         </button>
       </td>
+      
 
      
     </tr>
