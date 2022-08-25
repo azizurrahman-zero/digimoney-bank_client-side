@@ -1,7 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
+import { useForm } from 'react-hook-form';
 
-const Deposit = ({ userInfo }) => {
+const Deposit = ({ userInfo,setInformation,refetch }) => {
   const { amount, accountNumber } = userInfo;
+  const [error,setError]=useState("")
+  const { register, handleSubmit,reset } = useForm();
+  const onSubmit = (data) => {
+    console.log(data)
+   
+       const depositeAmount=parseFloat(data.depositeamount)
+       if(depositeAmount<=0){
+           setError("Please provide a posetive number or bigger then zero")
+           return
+       }
+      
+         const newAmount = userInfo.amount+depositeAmount;
+    
+         const updatedAmount={amount:newAmount}
+         const url=`http://localhost:4000/deposite/${accountNumber}`;
+        fetch(url,{ 
+             method:'PATCH',
+              headers:{
+                  'content-type':'application/json'
+              },
+              body:JSON.stringify(updatedAmount)
+          })
+          .then(res=>res.json())
+          .then(result=>{
+              if(result){
+
+                refetch()
+                reset()
+                setInformation(null)
+              }
+          })
+      }
+     
+  
+
   return (
     <>
       <input type="checkbox" id="deposit" className="modal-toggle" />
@@ -14,7 +50,7 @@ const Deposit = ({ userInfo }) => {
             ✕
           </label>
           <h3 className="font-bold text-2xl px-12">Deposit!</h3>
-          <form action="">
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="px-12">
               <div className="w-full max-w-full my-4 form-control">
                 <label htmlFor="accountNumber">ACCOUNT NUMBER</label>
@@ -48,13 +84,14 @@ const Deposit = ({ userInfo }) => {
                   name=""
                   id=""
                   placeholder="Enter Your Amount"
+                  {...register("depositeamount")}
                 />
               </div>
             </div>
             <div className="text-center">
-              <label for="deposit" className="btn btn-accent ">
+              <button  className="btn btn-accent ">
                 Deposit now
-              </label>
+              </button>
             </div>
           </form>
         </div>

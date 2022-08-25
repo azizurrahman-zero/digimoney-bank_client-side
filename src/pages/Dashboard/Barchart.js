@@ -60,8 +60,8 @@ const Barchart = ({transection}) => {
 
               <Tooltip />
 
-              <Bar dataKey="amount" fill="#8884d8" />
-               <Bar dataKey="amount" fill="#82ca9d" /> 
+              <Bar dataKey="send_money" fill="#8884d8" />
+               <Bar dataKey="reveive_money" fill="#82ca9d" /> 
             </BarChart>
           </ResponsiveContainer>
         </div>
