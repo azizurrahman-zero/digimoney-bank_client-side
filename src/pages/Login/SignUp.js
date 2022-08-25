@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useRef, useState } from "react";
 import {
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
@@ -6,6 +6,7 @@ import {
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
+import Webcam from "react-webcam";
 
 import Loading from "../../Shared/Loading";
 
@@ -21,6 +22,22 @@ const SignUp = () => {
 
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
   const navigate = useNavigate();
+
+  const [displayCam, setDisplayCam] = useState('hidden');
+  const [displayPhoto, setDisplayPhoto] = useState('hidden');
+
+  // live capture -->
+  const [imageSource, setImageSource] = useState();
+  const webcamRef = useRef(null);
+  const capture = useCallback(
+      () => {
+          const imageSrc = webcamRef.current.getScreenshot();
+          setImageSource(imageSrc)
+          setDisplayPhoto('block')
+      }, [webcamRef]
+  );
+
+  // <---------------
 
   if (loading || updating) {
     return <Loading></Loading>;
@@ -62,6 +79,7 @@ const SignUp = () => {
             amount: amount,
             gender: event.target.gender.value,
             img: img,
+            capturedPhoto: imageSource
           };
         
 
@@ -80,17 +98,24 @@ const SignUp = () => {
       });
   };
 
+  // live capture
+  const videoConstraints = {
+    width: 1280,
+    height: 720,
+    facingMode: "user"
+  };
+
   return (
     <div>
       <div className="bg-[#f3f3fa] flex items-center justify-center lg:py-10">
         <div className="flex-shrink-0 w-full max-w-2xl shadow-2xl mmt-5 card bg-base-100 lg:m-0">
           <div className="card-body">
-            <h2 className="mb-1 text-3xl font-bold text-center text-neutral">
-              Sign Up
+            <h2 className="mb-1 text-3xl font-bold text-center text-natural">
+              Create a New Account
             </h2>
-            <h3 className="mb-4 text-center text-info">
+            <h3 className="text-center text-natural">
               Have an account?{" "}
-              <Link className="link link-secondary" to="/login">
+              <Link className="link link-accent" to="/login">
                 Log In
               </Link>
             </h3>
@@ -108,7 +133,7 @@ const SignUp = () => {
                       },
                     })}
                   />
-                  <label className="pt-0 label">
+                  <label className="py-0 label">
                     {errors.name?.type === "required" && (
                       <span className="label-text-alt text-error">
                         {errors.name.message}
@@ -128,7 +153,7 @@ const SignUp = () => {
                       },
                     })}
                   />
-                  <label className="pt-0 label">
+                  <label className="py-0 label">
                     {errors.name?.type === "required" && (
                       <span className="label-text-alt text-error">
                         {errors.fatherName.message}
@@ -148,7 +173,7 @@ const SignUp = () => {
                       },
                     })}
                   />
-                  <label className="pt-0 label">
+                  <label className="py-0 label">
                     {errors.name?.type === "required" && (
                       <span className="label-text-alt text-error">
                         {errors.motherName.message}
@@ -159,7 +184,7 @@ const SignUp = () => {
                 <div className="w-full max-w-xs form-control">
                   <input
                     type="number"
-                    placeholder=" &#xf007;  Phone Number"
+                    placeholder=" &#xf095;  Phone Number"
                     className="mb-1 text-base input input-bordered input-icon"
                     {...register("phone", {
                       required: {
@@ -168,7 +193,7 @@ const SignUp = () => {
                       },
                     })}
                   />
-                  <label className="pt-0 label">
+                  <label className="py-0 label">
                     {errors.name?.type === "required" && (
                       <span className="label-text-alt text-error">
                         {errors.phone.message}
@@ -179,7 +204,7 @@ const SignUp = () => {
                 <div className="w-full max-w-xs form-control">
                   <input
                     type="text"
-                    placeholder=" &#xf007;  Your Address"
+                    placeholder=" &#xf041;  Your Address"
                     className="mb-1 text-base input input-bordered input-icon"
                     {...register("address", {
                       required: {
@@ -188,7 +213,7 @@ const SignUp = () => {
                       },
                     })}
                   />
-                  <label className="pt-0 label">
+                  <label className="py-0 label">
                     {errors.name?.type === "required" && (
                       <span className="label-text-alt text-error">
                         {errors.address.message}
@@ -208,14 +233,14 @@ const SignUp = () => {
                     })}
                   >
                     <option value=" ">--Account Type--</option>
-                    <option value="Checking Account">Checking Account</option>
                     <option value="Savings Accounts">Savings Account</option>
+                    <option value="Checking Account">Salary Account</option>
                   </select>
                 </div>
                 <div className="w-full max-w-xs form-control">
                   <input
                     type="text"
-                    placeholder=" &#xf0e0;  Amount Deposited"
+                    placeholder=" &#xf0d6;  Amount Deposited"
                     className="w-full max-w-xs mb-1 text-base input input-bordered input-icon"
                     {...register("amount", {
                       required: {
@@ -224,7 +249,7 @@ const SignUp = () => {
                       },
                     })}
                   />
-                  <label className="pt-0 label">
+                  <label className="py-0 label">
                     {errors.email?.type === "required" && (
                       <span className="label-text-alt text-error">
                         {errors.amount.message}
@@ -265,7 +290,7 @@ const SignUp = () => {
                       },
                     })}
                   />
-                  <label className="pt-0 label">
+                  <label className="py-0 label">
                     {errors.email?.type === "required" && (
                       <span className="label-text-alt text-error">
                         {errors.email.message}
@@ -301,7 +326,7 @@ const SignUp = () => {
                       },
                     })}
                   />
-                  <label className="pt-0 label">
+                  <label className="py-0 label">
                     {errors.password?.type === "required" && (
                       <span className="label-text-alt text-error">
                         {errors.password.message}
@@ -320,7 +345,7 @@ const SignUp = () => {
                   </label>
                 </div>
                 {/* upload file */}
-                <label className="pt-0 label">
+                <label className="py-0 label">
                   <span className="lebel-text">
                     Upload Your National Identity Card
                   </span>
@@ -329,7 +354,7 @@ const SignUp = () => {
                   <input
                     type="file"
                     placeholder=" &#xf0e0; Upload Your NID"
-                    className="w-full max-w-xs mb-1 text-base input input-bordered input-icon"
+                    className="w-full max-w-xs mb-1 text-base input input-bordered input-icon pt-2"
                     {...register("image", {
                       required: {
                         value: true,
@@ -341,13 +366,51 @@ const SignUp = () => {
 
               </div>
               <div className="flex items-center justify-center mt-6">
-                <button className="w-full max-w-xs text-white form-control btn btn-accent">
-                  <Link className="link link-secondary" to="/camera">
-                    Capture Your Live Photo
-                  </Link>
-                </button>
+                <input
+                  type="button"
+                  onClick={() => setDisplayCam('block')}
+                  className="w-full max-w-xs text-white form-control btn btn-accent"
+                  value="Capture Your Live Photo"
+                />
+              </div>
+
+              <div className={displayCam}>
+
+              {/* live capture --> */}
+              <div className='flex justify-center'>
+                <div className="card card-side bg-base-100 shadow-xl">
+                    <div className="card-body">
+                        <Webcam
+                            audio={false}
+                            height={720}
+                            ref={webcamRef}
+                            screenshotFormat="image/jpeg"
+                            width={1280}
+                            videoConstraints={videoConstraints}
+                        />
+                        <div className="card-actions justify-end">
+                            <input type="button" onClick={capture} className="btn btn-primary" value="Snap"/>
+                        </div>
+                    </div>
+                </div>
+              </div>
+
+            {/* captured photo */}
+            <div className={displayPhoto}>
+            <div className="flex justify-center mt-5">
+                <div className="card card-side bg-base-100 shadow-xl">
+                    <div className="card-body">
+                        <img src={imageSource} alt="captured" />
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            {/* <--------------------- */}
 
               </div>
+
+
               <div className="flex items-center justify-center mt-6">
                 <input
                   className="w-full max-w-xs text-white form-control btn btn-accent"
@@ -391,11 +454,6 @@ const SignUp = () => {
                 </label>
               </div>
             </form>
-            {/* <div className="divider">OR</div> */}
-            {/* <SocialLogin
-            signInWithGoogle={signInWithGoogle}
-            googleError={googleError}
-          ></SocialLogin> */}
           </div>
         </div>
       </div>
