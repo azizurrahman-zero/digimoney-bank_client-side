@@ -40,7 +40,7 @@ const [notMatch,setNotMatch]=useState("")
     };
   
 
-    const url = `http://localhost:4000/transfer?email=${user?.email}`;
+    const url = `https://tranquil-lake-95777.herokuapp.com/transfer?email=${user?.email}`;
  
     fetch(url, {
       method: "PATCH",
@@ -66,13 +66,13 @@ const [notMatch,setNotMatch]=useState("")
     })
   };
   return (
-    <div>
+    <div className=" mx-6 lg:mx-0">
       <h1 className="text-[#2366B5] text-3xl font-bold mb-5 underline">
         Send Money
       </h1>
       <div className="flex justify-center items-center min-h-[60vh]">
-        <form onSubmit={handleSubmit}>
-          <div className="flex items-center  gap-x-4 mt-8">
+        <form onSubmit={handleSubmit} className="w-full lg:w-auto">
+          <div className="flex flex-col lg:flex-row lg:items-center  lg:gap-x-4 mt-8">
             <label className="w-[250px] text-xl">Account Number</label>
             <input
               name="accountNumber"
@@ -87,7 +87,7 @@ const [notMatch,setNotMatch]=useState("")
             <label className="text-xs font-bold mx-auto block text-red-600">{error?.notMatchError}</label>
             <label className="text-xs font-bold mx-auto block text-red-600">{error?.lengthError}</label>
           </div>
-          <div className="flex items-center gap-x-4 mt-8">
+          <div className="flex flex-col lg:flex-row lg:items-center gap-x-4 mt-8">
             <label className="w-[250px] text-xl">Amount </label>
             <input
               name="amount"
@@ -102,7 +102,7 @@ const [notMatch,setNotMatch]=useState("")
 <label className="text-xs font-bold mx-auto block text-red-600">{notMatch}</label>
 
 </div>
-          <div className="flex items-center gap-x-4 mt-8">
+          <div className="flex flex-col lg:flex-row lg:items-center gap-x-4 mt-8">
             <label className="w-[250px] text-xl">Confirm Amount </label>
             <input
               name="confirmAmount"
@@ -117,11 +117,11 @@ const [notMatch,setNotMatch]=useState("")
 <label className="text-xs font-bold mx-auto block text-red-600">{notMatch}</label>
 
 </div>
-          <div className="flex items-center gap-x-4 mt-8">
+          <div className="flex lg:items-center lg:gap-x-4 mt-8">
             <label className="w-[250px] text-xl"> </label>
 
           
-            <button   className="btn btn-primary block w-[300px] bg-[#2366B5] border-none text-white font-bold  hover:bg-[#2366B5]  ">Send</button>
+            <button   className="btn btn-primary block w-full lg:w-[300px] bg-[#2366B5] border-none text-white font-bold  hover:bg-[#2366B5]  ">Send</button>
           </div>
        {/* {isTrue &&  <SendMoneyModal setIsture={setIsture} handleSubmit={handleSubmit} />} */}
         </form>

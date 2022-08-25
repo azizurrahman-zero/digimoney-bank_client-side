@@ -53,8 +53,8 @@ const Review = () => {
   };
   return (
     <div className="">
-      <form onSubmit={handleSubmit(onSubmit)} className="w-8/12" action="">
-        <div className="mt-32 grid grid-cols-2 gap-x-2">
+      <form onSubmit={handleSubmit(onSubmit)} className="lg:w-8/12 mx-4 lg:mx-0 " action="">
+        <div className="mt-32 grid lg:grid-cols-2 gap-x-2">
           <div>
             <input
               className="input input-primary w-full p-8 focus:outline-none pl-10 border-[#2366B5]"
@@ -144,7 +144,7 @@ const Review = () => {
         
         
             <input
-              className="input input-primary  focus:outline-none  border-[#2366B5]"
+              className="input input-primary w-full lg:w-5/12  focus:outline-none  border-[#2366B5]"
               type="file"
               placeholder="Title"
               {...register("image", {

@@ -8,7 +8,7 @@ import Menubar from '../../Shared/Menubar';
 
 const Cards = () => {
     return (
-        <div>
+        <div className='container mx-auto'>
           
             <div className="carousel w-full p-4 space-x-4">
                 <div id="slide1" className="carousel-item relative w-full rounded-box shadow-xl">
@@ -17,7 +17,7 @@ const Cards = () => {
                 </div>
             </div>
             {/* hero */}
-            <div className="hero min-h-screen">
+            <div className="hero lg:min-h-screen">
                 <div className="hero-content flex-col lg:flex-row gap-26">
                     <img src={visacard} className="rounded-lg " />
                     <div>
@@ -33,7 +33,7 @@ const Cards = () => {
             {/* hero2 */}
             <div className="hero pb-44 ">
                 <div className="hero-content flex-col lg:flex-row-reverse gap-26">
-                    <img src={visacardmastercard} className="max-w-md rounded-lg " />
+                    <img src={visacardmastercard} className="lg:max-w-md w-sm rounded-lg " />
                     <div>
                         <h1 className="text-5xl font-bold">Visa Classic and MasterCard Standard Cards</h1>
                         <p className="py-6">Account currency: USD, EUR

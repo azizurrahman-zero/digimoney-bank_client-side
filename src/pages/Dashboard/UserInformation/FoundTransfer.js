@@ -30,7 +30,7 @@ const [notMatch,setNotMatch]=useState("")
     
   
 
-    const url = `http://localhost:4000/transfer?email=${email}`;
+    const url = `https://tranquil-lake-95777.herokuapp.com/transfer?email=${email}`;
  
     fetch(url, {
       method: "PATCH",

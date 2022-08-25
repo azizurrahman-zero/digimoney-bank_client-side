@@ -13,7 +13,7 @@ const useToken=(user)=>{
     const signInUser={email:email}
     
     if(email){
-        fetch(`http://localhost:4000/user/${email}`,{
+        fetch(`https://tranquil-lake-95777.herokuapp.com/user/${email}`,{
             method:"PUT",
             headers:{
                 'content-type':'application/json'

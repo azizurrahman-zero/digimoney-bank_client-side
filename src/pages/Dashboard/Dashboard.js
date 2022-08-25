@@ -73,7 +73,7 @@ const Dashboard = () => {
               w-8 h-8 text-black     rounded-full ${!open && 'rotate-180'}
              `} />
         </label>
-        <div className='min-h-screen pt-5 bg-white lg:px-5 lg:pl-16'>
+        <div className='min-h-screen lg:pt-5 bg-white lg:px-5 lg:pl-16'>
 
           {!pathname.includes("dashboard/") && <DashboardMenu />}
           <Outlet />
