@@ -116,12 +116,14 @@ const UserInformation = () => {
       {information && <FoundTransfer
           information={information}
           userInfo={userInfo}
+          refetch={refetch}
           // setUserInfo={setUserInfo}
           setInformation={setInformation}
         />}
       {information && <Deposit
           information={information}
           userInfo={userInfo}
+          refetch={refetch}
           // setUserInfo={setUserInfo}
           setInformation={setInformation}
         />}
