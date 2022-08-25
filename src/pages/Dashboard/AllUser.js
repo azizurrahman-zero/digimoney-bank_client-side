@@ -10,8 +10,9 @@ const AllUser = ({ user, users, index,refetch }) => {
     fetch(`https://tranquil-lake-95777.herokuapp.com/approvedUser/admin/${email}`, {
       method: "PUT",
       headers: {
-        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
+      
     })
       .then((res) => res.json())
       .then((data) => {
