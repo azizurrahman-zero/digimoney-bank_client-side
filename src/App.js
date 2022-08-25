@@ -34,7 +34,7 @@ import { useState } from "react";
 function App() {
   const { pathname } = useLocation();
   const [darkMood,setDarkMood]=useState(false)
-  
+
 
   return (
     <div data-theme={darkMood?"dark":"mytheme"} className={` ${pathname.includes("dashboard") && "py-2"} bg-base-100`}>
