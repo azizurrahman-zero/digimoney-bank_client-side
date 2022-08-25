@@ -17,6 +17,7 @@ const CheckInformation = ({ information, users, setUsers }) => {
     gender,
     amount,
     accountType,
+    capturedPhoto
   } = information;
 
   // const {
@@ -90,8 +91,8 @@ const CheckInformation = ({ information, users, setUsers }) => {
               <div className="w-65">
                 <img src={img} alt="" />
               </div>
-              <div className="w-65">
-                <img src={img} alt="" />
+              <div className="w-full">
+                <img src={capturedPhoto} alt="" />
               </div>
             </div>
             <table className="table w-full my-10">
