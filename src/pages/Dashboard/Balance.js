@@ -36,8 +36,11 @@ const Balance = () => {
             })
             .then(res=>res.json())
             .then(result=>{
-               refetch()
-               reset()
+                if(result){
+                    toast.success("withdraw money successfully")
+                    refetch()
+                    reset()
+                }
             })
         }
         else{
