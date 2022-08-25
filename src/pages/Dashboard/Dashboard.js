@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom'
 import { BsArrowLeftCircle } from 'react-icons/bs'
 import { RiBarChartHorizontalLine } from 'react-icons/ri'
@@ -16,15 +16,25 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import useAdmin from '../../hooks/useAdmin';
 import { signOut } from 'firebase/auth';
+import { useDispatch,useSelector } from 'react-redux';
+import { fetchApprovedUser } from '../../redux/reducers/ApprovedUsersReducers';
+import AccountUnderVerication from './AccountUnderVerication';
 
 
 const Dashboard = () => {
+  const [user]=useAuthState(auth)
+  //check if approved user
+  const dispatch=useDispatch()
+  const check =useSelector(state=>state.checkUser)
+  useEffect(()=>{
+    dispatch(fetchApprovedUser({email:user?.email}))
+    },[dispatch,user?.email])
+ const isUserExist= check.checkUser.userexist
   const logout = () => {
     signOut(auth);
   };
   const { pathname } = useLocation()
-  const [user]=useAuthState(auth)
-  const {admin}=useAdmin(user)
+  const {admin,loadingAdmin}=useAdmin(user)
 
   const [open, setOpen] = useState(true)
   const Menus = [
@@ -36,12 +46,19 @@ const Dashboard = () => {
     {isAdmin:false, title: "Review", path: "/dashboard/review", src: <MdRateReview className='w-5 h-5' /> },
     {isAdmin:false, title: "Transection", path: "/dashboard/transection", src: <FaMoneyCheck className='w-5 h-5' /> },
     {isAdmin:true, title: "All User", path: "/dashboard/allusers", src: <FaUsers className='w-5 h-5' /> },
-    // {isAdmin:true, title: "All Admin", path: "/", src: <MdAdminPanelSettings className='w-5 h-5' />, gap: true },
+   
     {isAdmin:false, title: "Send Money", path: "/dashboard/sendmoney", src: <FaMoneyCheck className='w-5 h-5' /> },
     {isAdmin:true, title: "Profile", path: "/dashboard/profile", src: <ImProfile className='w-5 h-5' /> },
-    // {isAdmin:true, title: "Setting", path: "/", src: <FiSettings className='w-5 h-5' />, setting: true },
+  
 
   ]
+  if(loadingAdmin){
+    return ;
+  }
+ if(!isUserExist){
+  return <AccountUnderVerication />
+ }
+
   return (
 
     <div className="drawer drawer-mobile rounded-3xl ">
