@@ -9,7 +9,7 @@ const initialState={
 }
 export const fetchTransection=createAsyncThunk('transection/fetchUsers',({accountNumber,page},{dispatch,getState})=>{    
 
-    return axios.get(`http://localhost:4000/transection/${accountNumber}?page=${page}`,{
+    return axios.get(`https://tranquil-lake-95777.herokuapp.com/transection/${accountNumber}?page=${page}`,{
         method:"GET",
         headers:{
             'authorization':`Bearer ${localStorage.getItem('accessToken')}`

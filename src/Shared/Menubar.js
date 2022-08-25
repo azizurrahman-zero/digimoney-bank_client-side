@@ -116,7 +116,7 @@ const Menubar = ({setDarkMood}) => {
           </label>
           <ul
             tabIndex="0"
-            className="p-2 mt-3 shadow menu menu-compact dropdown-content bg-primary text-accent rounded-box w-52"
+            className="p-2 mt-3 shadow menu menu-compact dropdown-content bg-primary text-white rounded-box w-52"
           >
             {menuItem}
           </ul>

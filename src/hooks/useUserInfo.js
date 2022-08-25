@@ -5,7 +5,7 @@ import auth from "../firebase.init"
 
 const useUserInfo=(user)=>{
   
-    const url=`http://localhost:4000/finduser?email=${user?.email}`
+    const url=`https://tranquil-lake-95777.herokuapp.com/finduser?email=${user?.email}`
     const {data:userInfo,isLoading,refetch}=useQuery([`singleuserdata${user?.email}`],()=>fetch(url,{
         method:"GET",
         headers:{
