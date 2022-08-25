@@ -18,6 +18,7 @@ const Menubar = ({setDarkMood}) => {
 
   const logout = () => {
     signOut(auth);
+    localStorage.removeItem('accessToken')
   };
 
 
@@ -28,7 +29,7 @@ const Menubar = ({setDarkMood}) => {
     <>
       <li className="mr-8 ">
         <Link to="/home">
-          <span className="text-4xl font-mono">DigiMoney</span>{" "}
+          <span className="font-mono text-4xl">DigiMoney</span>{" "}
         </Link>
       </li>
       <li className="mr-8">
@@ -39,7 +40,7 @@ const Menubar = ({setDarkMood}) => {
         <Link to="/blog">Blog</Link>
       </li>
 
-      <li className="mr-8 z-50" tabIndex="0">
+      <li className="z-50 mr-8" tabIndex="0">
         <a>
           Company
           <svg
@@ -97,7 +98,7 @@ const Menubar = ({setDarkMood}) => {
           <label tabIndex="0" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="w-5 h-5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -112,36 +113,40 @@ const Menubar = ({setDarkMood}) => {
           </label>
           <ul
             tabIndex="0"
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-primary text-accent rounded-box w-52"
+            className="p-2 mt-3 shadow menu menu-compact dropdown-content bg-primary text-accent rounded-box w-52"
           >
             {menuItem}
           </ul>
         </div>
 
-        <ul className="menu hidden lg:flex menu-horizontal p-0">{menuItem}</ul>
+        <ul className="hidden p-0 menu lg:flex menu-horizontal">{menuItem}</ul>
       </div>
 
       <div className="navbar-end ">
         <ul
           tabIndex="0"
-          className="menu menu-compact flex-row items-center dropdown-content mt-3 p-2 shadow  text-accent rounded-box md:w-52"
+
+          className="flex-row items-center p-2 mt-3 shadow menu menu-compact dropdown-content text-accent rounded-box w-52"
+
+
+         
         >
          
 
           
           
           
-          <li className="justify-center   items-center">
+          <li className="items-center justify-center">
             {user ? (
               <button
                 onClick={logout}
-                className="btn btn-secondary text-base-300 capitalize"
+                className="capitalize btn btn-secondary text-base-300"
               >
                 Sign Out
               </button>
             ) : (
               <Link
-                className="btn btn-secondary text-white px-14 font-bold"
+                className="font-bold text-white btn btn-secondary px-14"
                 to="/login"
               >
                 Login

@@ -21,16 +21,12 @@ import Camera from "./pages/Login/Camera";
 import Team from "./pages/Company/Team";
 import UserRequest from "./pages/Dashboard/Maneger/UserRequest";
 import AllUsers from "./pages/Dashboard/AllUsers";
-
 import Landingpage from "./pages/Landingpage/Landingpage";
-
 import SendMoney from "./pages/Dashboard/SendMoney";
 import Menubar from "./Shared/Menubar";
-
 import Transection from "./pages/Dashboard/Transection";
 import ScrollToTop from "./Shared/ScrollToTop";
 import Balance from "./pages/Dashboard/Balance";
-
 import UserInformation from "./pages/Dashboard/UserInformation/UserInformation";
 import PrivateRute from "./pages/Login/PrivateRute";
 import PrivateadminRoute from "./pages/Login/PrivateAdminRoute";
@@ -38,6 +34,7 @@ import { useState } from "react";
 function App() {
   const { pathname } = useLocation();
   const [darkMood,setDarkMood]=useState(false)
+
 
   return (
     <div data-theme={darkMood?"dark":"mytheme"} className={` ${pathname.includes("dashboard") && "py-2"} bg-base-100`}>
@@ -54,7 +51,6 @@ function App() {
         <Route path="/cards" element={<Cards />}></Route>
         <Route path="/about" element={<AboutUs />}></Route>
         <Route path="/team" element={<Team />}></Route>
-
         <Route path="review" element={<Review />} />
         <Route path="/dashboard" element={<PrivateRute><Dashboard /></PrivateRute>}>
           <Route index element={<WelcomePage />} />

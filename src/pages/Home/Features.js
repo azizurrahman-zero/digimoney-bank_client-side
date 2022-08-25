@@ -28,8 +28,8 @@ const Features = () => {
   return (
     <section className="py-20 px-4 lg:px-0">
       <div className="grid lg:grid-cols-3 gap-5">
-        {Features.map((feature) => (
-          <Feature feature={feature} />
+        {Features.map((feature,i) => (
+          <Feature key={i} feature={feature} />
         ))}
       </div>
     </section>

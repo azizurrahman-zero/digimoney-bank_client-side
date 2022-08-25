@@ -8,6 +8,8 @@ import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import Webcam from "react-webcam";
 
+import useToken from "../../hooks/useToken";
+
 import Loading from "../../Shared/Loading";
 
 const SignUp = () => {
@@ -19,7 +21,7 @@ const SignUp = () => {
 
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
-
+    const [token]= useToken(user)
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
   const navigate = useNavigate();
 
@@ -42,7 +44,7 @@ const SignUp = () => {
   if (loading || updating) {
     return <Loading></Loading>;
   }
-  if (user) {
+  if (token) {
     navigate("/");
   }
 

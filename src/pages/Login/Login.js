@@ -12,12 +12,16 @@ import loginBanner from "../../assets/images/login-banner.svg";
 import { GiCancel } from "react-icons/gi";
 import { toast } from "react-toastify";
 
+import "react-toastify/dist/ReactToastify.css";
+import useToken from "../../hooks/useToken";
+
+
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
   let from = location.state?.from?.pathname || "/";
-  const emailRef=useRef()
+  const emailRef = useRef();
 
   const {
     register,
@@ -27,15 +31,14 @@ const Login = () => {
 
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
- 
 
+  const [token] = useToken(user);
   const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
- 
 
   if (loading || sending) {
     return <Loading></Loading>;
   }
-  if (user) {
+  if (token) {
     navigate(from, { replace: true });
   }
 
@@ -44,31 +47,40 @@ const Login = () => {
     signInWithEmailAndPassword(email, password);
   };
 
-  // Reset Password
-  const handleReset=async ()=>{
-      const email=emailRef.current.value
-      if (email) {
-        await sendPasswordResetEmail(email)
-        toast.success(`Email Sent to ${email}!`);
-      }
-      else {
-        toast.error("Please, Enter a Email Address.");
-      }
-  }
+
+  const resetPassword = async (data) => {
+    const email = data.email;
+
+    if (email) {
+      await sendPasswordResetEmail(email);
+      toast.success(`Email Sent to ${email}!`);
+    } else {
+      toast.error("Please, Enter a Email Address.");
+    }
+  };
+
+  const handleReset = async () => {
+    const email = emailRef.current.value;
+    await sendPasswordResetEmail(email);
+    alert("Sent email");
+  };
+
 
   return (
     <div className="bg-[#E5CB83] flex md:gap-20 h-[calc(100vh-76px)] items-center justify-center">
-      <div className="w-5/12 hidden md:block">
+      <div className="hidden w-5/12 md:block">
         <img className="w-full" src={loginBanner} alt="login" />
       </div>
-      <div className="card flex-shrink-0 md:w-full max-w-sm shadow-2xl bg-base-100 md:mt-5 md:mb-16 lg:m-0">
+
+      <div className="flex-shrink-0 w-full max-w-sm mt-5 mb-16 shadow-2xl card bg-base-100 lg:m-0">
+
         <div className="card-body">
-          <h2 className="mb-1 font-bold text-info text-center text-3xl">
+          <h2 className="mb-1 text-3xl font-bold text-center text-info">
             Log In
           </h2>
-          <h3 className="text-center mb-4">
+          <h3 className="mb-4 text-center">
             Don't have an account?{" "}
-            <Link className="link link-primary font-semibold" to="/signUp">
+            <Link className="font-semibold link link-primary" to="/signUp">
               Sign Up
             </Link>
           </h3>
@@ -77,7 +89,7 @@ const Login = () => {
               <input
                 type="email"
                 placeholder=" &#xf0e0;  Email Address"
-                className="input input-bordered input-icon text-base mb-1"
+                className="mb-1 text-base input input-bordered input-icon"
                 {...register("email", {
                   required: {
                     value: true,
@@ -90,7 +102,7 @@ const Login = () => {
                 })}
               />
 
-              <label className="label pt-0">
+              <label className="pt-0 label">
                 {errors.email?.type === "required" && (
                   <span className="label-text-alt text-error">
                     {errors.email.message}
@@ -107,7 +119,7 @@ const Login = () => {
               <input
                 type="password"
                 placeholder=" &#xf070;  Password"
-                className="input input-bordered input-icon text-base"
+                className="text-base input input-bordered input-icon"
                 {...register("password", {
                   required: {
                     value: true,
@@ -115,7 +127,7 @@ const Login = () => {
                   },
                 })}
               />
-              <label className="label p-0">
+              <label className="p-0 label">
                 {errors.password?.type === "required" && (
                   <span className="label-text-alt text-error">
                     {errors.password.message}
@@ -126,14 +138,14 @@ const Login = () => {
             <div className="flex justify-end">
               <label
                 for="reset-pass-modal"
-                className="btn text-xs modal-button capitalize btn-link btn-xs p-0"
+                className="p-0 text-xs capitalize btn modal-button btn-link btn-xs"
               >
                 Reset Password
               </label>
             </div>
-            <div className="form-control mt-6">
+            <div className="mt-6 form-control">
               <input
-                className="btn btn-neutral text-white"
+                className="text-white btn btn-neutral"
                 type="submit"
                 value="Log In"
               />
@@ -161,22 +173,27 @@ const Login = () => {
       <>
         <input type="checkbox" id="reset-pass-modal" className="modal-toggle" />
         <div className="modal modal-bottom sm:modal-middle">
-          <div className="modal-box relative">
+          <div className="relative modal-box">
             <label for="reset-pass-modal" className="absolute right-4 top-4">
               <GiCancel className="text-2xl" />
             </label>
-            <h3 className="font-bold text-lg">Reset Password</h3>
+            <h3 className="text-lg font-bold">Reset Password</h3>
             <div className="form-control">
               <input
                 required
                 type="email"
                 ref={emailRef}
                 placeholder=" &#xf0e0;  Email Address"
-                className="input input-bordered input-icon text-base mb-1 focus:outline-none mt-4"
+                className="mt-4 mb-1 text-base input input-bordered input-icon focus:outline-none"
               />
             </div>
             <div className="form-control">
-              <button onClick={handleReset} className="btn btn-neutral text-white">Reset</button>
+              <button
+                onClick={handleReset}
+                className="text-white btn btn-neutral"
+              >
+                Reset
+              </button>
             </div>
           </div>
         </div>
