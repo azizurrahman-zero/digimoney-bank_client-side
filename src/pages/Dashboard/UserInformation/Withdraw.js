@@ -18,7 +18,7 @@ const Withdraw = ({ userInfo,refetch,setInformation }) => {
       if (userInfo.amount>withdrawAmount) {
          const newAmount = userInfo.amount-withdrawAmount;
          const updatedAmount={amount:newAmount}
-         const url=`http://localhost:4000/approvedUsers/${accountNumber}`;
+         const url=`https://tranquil-lake-95777.herokuapp.com/approvedUsers/${accountNumber}`;
         fetch(url,{ 
              method:'PATCH',
               headers:{

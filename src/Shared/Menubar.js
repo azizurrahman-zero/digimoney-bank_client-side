@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import auth from "../firebase.init";
 
 const Menubar = ({setDarkMood}) => {
-  const [user] = useAuthState(auth);
+  const [user,loading] = useAuthState(auth);
   const [show, setIsShow] = useState(false);
   const bgColorChange = () => {
     if (window.scrollY >= 5) {
@@ -86,6 +86,9 @@ const Menubar = ({setDarkMood}) => {
       
     </>
   );
+  if(loading){
+    return ;
+  }
 
   return (
     <div
@@ -113,7 +116,7 @@ const Menubar = ({setDarkMood}) => {
           </label>
           <ul
             tabIndex="0"
-            className="p-2 mt-3 shadow menu menu-compact dropdown-content bg-primary text-accent rounded-box w-52"
+            className="p-2 mt-3 shadow menu menu-compact dropdown-content bg-primary text-white rounded-box w-52"
           >
             {menuItem}
           </ul>

@@ -46,9 +46,9 @@ const Dashboard = () => {
     {isAdmin:false, title: "Review", path: "/dashboard/review", src: <MdRateReview className='w-5 h-5' /> },
     {isAdmin:false, title: "Transection", path: "/dashboard/transection", src: <FaMoneyCheck className='w-5 h-5' /> },
     {isAdmin:true, title: "All User", path: "/dashboard/allusers", src: <FaUsers className='w-5 h-5' /> },
-   
+  
     {isAdmin:false, title: "Send Money", path: "/dashboard/sendmoney", src: <FaMoneyCheck className='w-5 h-5' /> },
-    {isAdmin:true, title: "Profile", path: "/dashboard/profile", src: <ImProfile className='w-5 h-5' /> },
+    {isAdmin:true, dualUser:true, title: "Profile", path: "/dashboard/profile", src: <ImProfile className='w-5 h-5' /> },
   
 
   ]
@@ -73,7 +73,7 @@ const Dashboard = () => {
               w-8 h-8 text-black     rounded-full ${!open && 'rotate-180'}
              `} />
         </label>
-        <div className='min-h-screen pt-5 bg-white lg:px-5 lg:pl-16'>
+        <div className='min-h-screen lg:pt-5 bg-white lg:px-5 lg:pl-16'>
 
           {!pathname.includes("dashboard/") && <DashboardMenu />}
           <Outlet />

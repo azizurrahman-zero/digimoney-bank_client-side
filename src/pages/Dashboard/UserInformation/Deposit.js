@@ -17,7 +17,7 @@ const Deposit = ({ userInfo,setInformation,refetch }) => {
          const newAmount = userInfo.amount+depositeAmount;
     
          const updatedAmount={amount:newAmount}
-         const url=`http://localhost:4000/deposite/${accountNumber}`;
+         const url=`https://tranquil-lake-95777.herokuapp.com/deposite/${accountNumber}`;
         fetch(url,{ 
              method:'PATCH',
               headers:{
