@@ -1,7 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
+import { useForm } from 'react-hook-form';
 
-const Withdraw = ({ userInfo }) => {
+const Withdraw = ({ userInfo,refetch,setInformation }) => {
   const { amount, accountNumber } = userInfo;
+  const [error,setError]=useState("")
+
+  
+  const { register, handleSubmit,reset } = useForm();
+  const onSubmit = (data) => {
+    console.log(data)
+   
+      const withdrawAmount=parseFloat(data.withdrawAmount)
+      if(withdrawAmount<=0){
+          setError("Please provide a posetive number or bigger then zero")
+          return
+      }
+      if (userInfo.amount>withdrawAmount) {
+         const newAmount = userInfo.amount-withdrawAmount;
+         const updatedAmount={amount:newAmount}
+         const url=`http://localhost:4000/approvedUsers/${accountNumber}`;
+        fetch(url,{ 
+             method:'PATCH',
+              headers:{
+                  'content-type':'application/json'
+              },
+              body:JSON.stringify(updatedAmount)
+          })
+          .then(res=>res.json())
+          .then(result=>{
+              
+             refetch()
+             reset()
+             setInformation(null)
+          })
+      }
+      else{
+
+         setError('Withdraw balance should be smaller than amount');
+     
+      }
+  };
   return (
     <div>
       <input type="checkbox" id="withdraw" className="modal-toggle" />
@@ -13,7 +51,7 @@ const Withdraw = ({ userInfo }) => {
           >
             ✕
           </label>
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="px-12">
               <h3 className="font-bold text-2xl">Withdraw!</h3>
 
@@ -48,13 +86,14 @@ const Withdraw = ({ userInfo }) => {
                   className="px-5"
                   name=""
                   id=""
+                  {...register("withdrawAmount")}
                   placeholder="Enter Your Amount"
                 />
               </div>
               <div className="text-center">
-                <label for="withdraw" className="btn btn-secondary">
+                <button  className="btn btn-secondary">
                   Withdraw now
-                </label>
+                </button>
               </div>
             </div>
           </form>

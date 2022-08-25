@@ -69,7 +69,7 @@ const Piechart = ({transection}) => {
           <ResponsiveContainer width="100%" height="100%">
         <PieChart width={400} height={400}>
           <Pie
-            dataKey="amount"
+            dataKey="send_money"
             isAnimationActive={false}
             data={transection}
             cx="50%"
