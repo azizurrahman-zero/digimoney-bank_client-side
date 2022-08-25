@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Deposit from "./Deposit";
@@ -5,15 +6,22 @@ import FoundTransfer from "./FoundTransfer";
 import Withdraw from "./Withdraw";
 
 const UserInformation = () => {
-  const [userInfo, setUserInfo] = useState({});
+  //  const [userInfo, setUserInfo] = useState({});
+  const [isOpen,setIsopen]=useState(false)
   const [information, setInformation] = useState(null);
   const { id } = useParams();
-  useEffect(() => {
-    const url = `https://tranquil-lake-95777.herokuapp.com/approvedUser/${id}`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setUserInfo(data));
-  }, [id]);
+
+  const {isLoading,data:userInfo,refetch}=useQuery([`aprovedUserInfo${id}`],()=>fetch(`https://tranquil-lake-95777.herokuapp.com/approvedUser/${id}`).then(res=>res.json()))
+  // useEffect(() => {
+  //   const url = `https://tranquil-lake-95777.herokuapp.com/approvedUser/${id}`;
+  //   fetch(url)
+  //     .then((res) => res.json())
+  //     .then((data) => setUserInfo(data));
+  // }, [id]);
+  
+  if(isLoading){
+    return;
+  }
   return (
     <>
       <div className="hero main-h-screen bg-base-100">
@@ -99,21 +107,24 @@ const UserInformation = () => {
         </div>
       </div>
       {information && <Withdraw
+      refetch={refetch}
           information={information}
           userInfo={userInfo}
-          setUserInfo={setUserInfo}
+          // setUserInfo={setUserInfo}
           setInformation={setInformation}
         />}
       {information && <FoundTransfer
           information={information}
           userInfo={userInfo}
-          setUserInfo={setUserInfo}
+          refetch={refetch}
+          // setUserInfo={setUserInfo}
           setInformation={setInformation}
         />}
       {information && <Deposit
           information={information}
           userInfo={userInfo}
-          setUserInfo={setUserInfo}
+          refetch={refetch}
+          // setUserInfo={setUserInfo}
           setInformation={setInformation}
         />}
     </>

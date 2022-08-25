@@ -25,9 +25,10 @@ const Dashboard = () => {
   const { pathname } = useLocation()
   const [user]=useAuthState(auth)
   const {admin}=useAdmin(user)
-  console.log(admin,"check admin from dashboard")
+
   const [open, setOpen] = useState(true)
   const Menus = [
+
     {isAdmin:true,dualUser:true, title: "Go To Home", path: "/", src: <AiFillHome className='w-5 h-5' /> },
     {isAdmin:true,dualUser:true, title: "Dashboard", path: "/dashboard", src: <MdDashboard className='w-5 h-5' /> },
     {isAdmin:true, title: "User Request", path: "/dashboard/user-request", src: <AiOutlineUsergroupAdd className='w-5 h-5' />, gap: true },
@@ -35,10 +36,11 @@ const Dashboard = () => {
     {isAdmin:false, title: "Review", path: "/dashboard/review", src: <MdRateReview className='w-5 h-5' /> },
     {isAdmin:false, title: "Transection", path: "/dashboard/transection", src: <FaMoneyCheck className='w-5 h-5' /> },
     {isAdmin:true, title: "All User", path: "/dashboard/allusers", src: <FaUsers className='w-5 h-5' /> },
-    {isAdmin:true, title: "All Admin", path: "/", src: <MdAdminPanelSettings className='w-5 h-5' />, gap: true },
+    // {isAdmin:true, title: "All Admin", path: "/", src: <MdAdminPanelSettings className='w-5 h-5' />, gap: true },
     {isAdmin:false, title: "Send Money", path: "/dashboard/sendmoney", src: <FaMoneyCheck className='w-5 h-5' /> },
     {isAdmin:true, title: "Profile", path: "/dashboard/profile", src: <ImProfile className='w-5 h-5' /> },
-    {isAdmin:true, title: "Setting", path: "/", src: <FiSettings className='w-5 h-5' />, setting: true },
+    // {isAdmin:true, title: "Setting", path: "/", src: <FiSettings className='w-5 h-5' />, setting: true },
+
   ]
   return (
 
@@ -74,10 +76,10 @@ const Dashboard = () => {
           <div className='mt-8 duration-300'>
 
             {
-              Menus.map((menu, i) => (
+              Menus.map((menu,i) => (
                <>
                {(admin === menu?.isAdmin || menu.dualUser )&&
-                 <Link key={i} to={menu?.path}> <li className={`text-gray-300 ${!open && "justify-center"}    rounded-md text-sm flex items-center gap-x-4 p-2 cursor-pointer hover:bg-slate-500`} key={i}>
+                 <Link key={menu.id} to={menu?.path}> <li  className={`text-gray-300 ${!open && "justify-center"}    rounded-md text-sm flex items-center gap-x-4 p-2 cursor-pointer hover:bg-slate-500`} key={i}>
                  {menu.src} <span className={`${!open && "hidden"} origin-left  text-md font-bold`}>{menu.title}</span>
                </li>
                </Link>

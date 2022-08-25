@@ -11,8 +11,10 @@ import Loading from "../../Shared/Loading";
 import loginBanner from "../../assets/images/login-banner.svg";
 import { GiCancel } from "react-icons/gi";
 import { toast } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
 import useToken from "../../hooks/useToken";
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -45,6 +47,7 @@ const Login = () => {
     signInWithEmailAndPassword(email, password);
   };
 
+
   const resetPassword = async (data) => {
     const email = data.email;
 
@@ -62,12 +65,15 @@ const Login = () => {
     alert("Sent email");
   };
 
+
   return (
-    <div className="bg-[#E5CB83] flex gap-20 min-h-screen items-center justify-center">
-      <div className="w-5/12">
+    <div className="bg-[#E5CB83] flex md:gap-20 h-[calc(100vh-76px)] items-center justify-center">
+      <div className="hidden w-5/12 md:block">
         <img className="w-full" src={loginBanner} alt="login" />
       </div>
+
       <div className="flex-shrink-0 w-full max-w-sm mt-5 mb-16 shadow-2xl card bg-base-100 lg:m-0">
+
         <div className="card-body">
           <h2 className="mb-1 text-3xl font-bold text-center text-info">
             Log In
@@ -165,13 +171,13 @@ const Login = () => {
         </div>
       </div>
       <>
-        <input type="checkbox" id="reset-pass-modal" class="modal-toggle" />
-        <div class="modal modal-bottom sm:modal-middle">
-          <div class="modal-box relative">
-            <label for="reset-pass-modal" class="absolute right-4 top-4">
+        <input type="checkbox" id="reset-pass-modal" className="modal-toggle" />
+        <div className="modal modal-bottom sm:modal-middle">
+          <div className="relative modal-box">
+            <label for="reset-pass-modal" className="absolute right-4 top-4">
               <GiCancel className="text-2xl" />
             </label>
-            <h3 class="font-bold text-lg">Reset Password</h3>
+            <h3 className="text-lg font-bold">Reset Password</h3>
             <div className="form-control">
               <input
                 required

@@ -1,17 +1,15 @@
 import React from 'react';
 import {
-    LineChart,
     ResponsiveContainer,
-    Line,
-    BarChart,
-    Bar,
     PieChart,
     Pie,
-    CartesianGrid,
-    Tooltip,
+    Tooltip
   } from "recharts";
 
-const Piechart = () => {
+const Piechart = ({transection}) => {
+   
+
+  
     const data01 = [
         {
             "name": "Group A",
@@ -69,27 +67,21 @@ const Piechart = () => {
         <div className="h-[45vh]  shadow-2xl rounded-xl px-4  mt-2">
           <h1 className="text-3xl font-bold text-black">OutComes Categories</h1>
           <ResponsiveContainer width="100%" height="100%">
-            <PieChart width={600} height={600}>
-              <Pie
-                data={data01}
-                dataKey="value"
-                cx="50%"
-                cy="50%"
-                outerRadius={60}
-                fill="#8884d8"
-              />
-              <Pie
-                data={data02}
-                dataKey="value"
-                cx="50%"
-                cy="50%"
-                innerRadius={70}
-                outerRadius={90}
-                fill="#82ca9d"
-                label
-              />
-            </PieChart>
-          </ResponsiveContainer>
+        <PieChart width={400} height={400}>
+          <Pie
+            dataKey="send_money"
+            isAnimationActive={false}
+            data={transection}
+            cx="50%"
+            cy="50%"
+            outerRadius={80}
+            fill="#8884d8"
+            label
+          />
+        
+          <Tooltip />
+        </PieChart>
+      </ResponsiveContainer>
         </div>
     );
 };

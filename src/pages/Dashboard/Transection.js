@@ -6,15 +6,23 @@ import auth from "../../firebase.init";
 import useFindTransection from '../../hooks/useFindTransection';
 import { useEffect } from 'react';
 import useTransection from '../../hooks/useTransection';
+import {useSelector,useDispatch} from 'react-redux'
+import { fetchTransection } from '../../redux/reducers/TransectionReducer';
 
 const Transection = () => {
-    const [user]=useAuthState(auth)
-    const {userInfo,isLoading}=useUserInfo(user)
+  const [user]=useAuthState(auth)
+  const {userInfo}=useUserInfo(user)
+  const [page,setPage]=useState(1)
+    const {transection}=useSelector(state=>state.transection)
+    const dispatch=useDispatch()
+  
+    useEffect(()=>{
+    dispatch(fetchTransection({accountNumber:userInfo?.accountNumber,page:page}))
+    },[dispatch,page,userInfo])
    
-    const [page,setPage]=useState(1)
-    const {pageCount,setPageCount}=useFindTransection(userInfo)
+    const {pageCount}=useFindTransection(userInfo)
    
-    const {transection}=useTransection(userInfo,page)
+   
    
     
   
