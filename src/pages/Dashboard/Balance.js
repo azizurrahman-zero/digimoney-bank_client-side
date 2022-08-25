@@ -1,23 +1,32 @@
 import React from 'react';
+import { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import auth from '../../firebase.init';
 import useUserInfo from '../../hooks/useUserInfo';
 import BalanceCard from './BalanceCard';
+import { toast } from "react-toastify";
+
 
 const Balance = () => {
     const [user]=useAuthState(auth)
+    const [error,setError]=useState("")
     const {userInfo,refetch,isLoading}=useUserInfo(user)
+    console.log(userInfo)
     
 
     const { register, handleSubmit,reset } = useForm();
     const onSubmit = (data) => {
      
         const withdrawAmount=parseFloat(data.withdrawAmount)
+        if(withdrawAmount<=0){
+            setError("Please provide a posetive number or bigger then zero")
+            return
+        }
         if (userInfo.amount>withdrawAmount) {
            const newAmount = userInfo.amount-withdrawAmount;
            const updatedAmount={amount:newAmount}
-           const url=`https://tranquil-lake-95777.herokuapp.com/approvedUsers/${userInfo._id}`;
+           const url=`http://localhost:4000/approvedUsers/${userInfo.accountNumber}`;
           fetch(url,{ 
                method:'PATCH',
                 headers:{
@@ -27,13 +36,14 @@ const Balance = () => {
             })
             .then(res=>res.json())
             .then(result=>{
-                
                refetch()
                reset()
             })
         }
         else{
-            console.log('You cannot withdraw');
+
+            toast.error('Insufficient Balance');
+
         }
     };
  
@@ -56,7 +66,13 @@ const Balance = () => {
                       <span className="label-text">Amount to withdraw</span>
                   </label>
                   <input type="number" placeholder="Provide Amount" className="input input-bordered w-full max-w-xs" {...register("withdrawAmount")} />
+       
                   <input className="btn btn-primary ml-4"  type="submit" />
+                  <div className="">
+
+<label className="text-xs font-bold mx-auto block text-red-600">{error}</label>
+
+</div>
               </form>
 
           </div>

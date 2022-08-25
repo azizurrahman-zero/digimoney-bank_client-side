@@ -6,6 +6,7 @@ import {
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
+import useToken from "../../hooks/useToken";
 
 import Loading from "../../Shared/Loading";
 
@@ -18,21 +19,21 @@ const SignUp = () => {
 
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
-
+    const [token]= useToken(user)
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
   const navigate = useNavigate();
 
   if (loading || updating) {
     return <Loading></Loading>;
   }
-  if (user) {
+  if (token) {
     navigate("/");
   }
 
   const onSubmit = async (data, event) => {
     event.preventDefault();
 
-    const { name, email, password, phone, address, amount } = data;
+    const { name, email, password, phone, address, amount,fatherName,motherName } = data;
     await createUserWithEmailAndPassword(email, password);
     await updateProfile({ displayName: name });
 
@@ -53,6 +54,8 @@ const SignUp = () => {
 
           const currentUser = {
             displayName: name,
+            fatherName: fatherName,
+            motherName: motherName,
             email: email,
             contact: phone,
             accountType: event.target.accountType.value,
@@ -81,7 +84,7 @@ const SignUp = () => {
   return (
     <div>
       <div className="bg-[#f3f3fa] flex items-center justify-center lg:py-10">
-        <div className="flex-shrink-0 w-full max-w-2xl  shadow-2xl mmt-5 card bg-base-100 lg:m-0">
+        <div className="flex-shrink-0 w-full max-w-2xl shadow-2xl mmt-5 card bg-base-100 lg:m-0">
           <div className="card-body">
             <h2 className="mb-1 text-3xl font-bold text-center text-neutral">
               Sign Up
@@ -110,6 +113,46 @@ const SignUp = () => {
                     {errors.name?.type === "required" && (
                       <span className="label-text-alt text-error">
                         {errors.name.message}
+                      </span>
+                    )}
+                  </label>
+                </div>
+                <div className="w-full max-w-xs form-control">
+                  <input
+                    type="text"
+                    placeholder=" &#xf007;  Your Father's Name"
+                    className="mb-1 text-base input input-bordered input-icon"
+                    {...register("fatherName", {
+                      required: {
+                        value: true,
+                        message: "*Enter your father's name",
+                      },
+                    })}
+                  />
+                  <label className="pt-0 label">
+                    {errors.name?.type === "required" && (
+                      <span className="label-text-alt text-error">
+                        {errors.fatherName.message}
+                      </span>
+                    )}
+                  </label>
+                </div>
+                <div className="w-full max-w-xs form-control">
+                  <input
+                    type="text"
+                    placeholder=" &#xf007;  Your Mother's Name"
+                    className="mb-1 text-base input input-bordered input-icon"
+                    {...register("motherName", {
+                      required: {
+                        value: true,
+                        message: "*Enter your mother's name",
+                      },
+                    })}
+                  />
+                  <label className="pt-0 label">
+                    {errors.name?.type === "required" && (
+                      <span className="label-text-alt text-error">
+                        {errors.motherName.message}
                       </span>
                     )}
                   </label>
@@ -154,7 +197,7 @@ const SignUp = () => {
                     )}
                   </label>
                 </div>
-                <div className="form-control">
+                <div className="w-full max-w-xs form-control">
                   <select
                     name="accountType"
                     className=" input input-bordered"
@@ -191,12 +234,12 @@ const SignUp = () => {
                   </label>
                 </div>
 
-                <div className="flex-row gap-12 mt-3 form-control">
-                  <label for="male" className="gap-2">
+                <div className="flex-row gap-12 form-control">
+                  <label for="male" className="flex items-center justify-center gap-2">
                     <input type="radio" name="gender" value="Male" id="male" />
                     <span className="mx-2">Male</span>
                   </label>
-                  <label for="female">
+                  <label for="female" className="flex items-center justify-center gap-2">
                     <input
                       type="radio"
                       name="gender"

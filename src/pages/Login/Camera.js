@@ -58,22 +58,22 @@ const Camera = () => {
         <div>
 
             <div className='flex justify-center mt-16'>
-                <div class="card card-side bg-base-100 shadow-xl">
-                    <div class="card-body">
+                <div className="card card-side bg-base-100 shadow-xl">
+                    <div className="card-body">
                         <video ref={videoRef}></video>
-                        <div class="card-actions justify-end">
-                            <button onClick={takePicture} class="btn btn-primary">Snap</button>
+                        <div className="card-actions justify-end">
+                            <button onClick={takePicture} className="btn btn-primary">Snap</button>
                         </div>
                     </div>
                 </div>
             </div>
             {/* captured photo */}
             <div className='flex justify-center my-16'>
-                <div class="card card-side bg-base-100 shadow-xl">
-                    <div class="card-body">
+                <div className="card card-side bg-base-100 shadow-xl">
+                    <div className="card-body">
                         <canvas ref={photoRef}></canvas>
-                        <div class="card-actions justify-end">
-                            <button onClick={clearImage} class="btn btn-primary">clear</button>
+                        <div className="card-actions justify-end">
+                            <button onClick={clearImage} className="btn btn-primary">clear</button>
                         </div>
                     </div>
                 </div>

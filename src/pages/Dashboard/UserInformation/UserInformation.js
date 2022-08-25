@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Deposit from "./Deposit";
@@ -5,22 +6,29 @@ import FoundTransfer from "./FoundTransfer";
 import Withdraw from "./Withdraw";
 
 const UserInformation = () => {
-  const [userInfo, setUserInfo] = useState({});
+  //  const [userInfo, setUserInfo] = useState({});
+  const [isOpen,setIsopen]=useState(false)
   const [information, setInformation] = useState(null);
   const { id } = useParams();
-  useEffect(() => {
-    const url = `https://tranquil-lake-95777.herokuapp.com/approvedUser/${id}`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setUserInfo(data));
-  }, [id]);
+
+  const {isLoading,data:userInfo,refetch}=useQuery([`aprovedUserInfo${id}`],()=>fetch(`https://tranquil-lake-95777.herokuapp.com/approvedUser/${id}`).then(res=>res.json()))
+  // useEffect(() => {
+  //   const url = `https://tranquil-lake-95777.herokuapp.com/approvedUser/${id}`;
+  //   fetch(url)
+  //     .then((res) => res.json())
+  //     .then((data) => setUserInfo(data));
+  // }, [id]);
+  
+  if(isLoading){
+    return;
+  }
   return (
     <>
       <div className="hero main-h-screen bg-base-100">
         <div>
           <div className="hero-content flex-col lg:flex-row">
             <img src={userInfo.img} className="lg:w-96 sm:w-72" alt="" />
-
+           
             <div>
               <table className="table">
                 <tbody>
@@ -31,6 +39,14 @@ const UserInformation = () => {
                   <tr>
                     <td>Name</td>
                     <td>{userInfo.displayName}</td>
+                  </tr>
+                  <tr>
+                    <td>Father's Name</td>
+                    <td>{userInfo.fatherName}</td>
+                  </tr>
+                  <tr>
+                    <td>Mother's Name</td>
+                    <td>{userInfo.motherName}</td>
                   </tr>
 
                   <tr>
@@ -91,21 +107,24 @@ const UserInformation = () => {
         </div>
       </div>
       {information && <Withdraw
+      refetch={refetch}
           information={information}
           userInfo={userInfo}
-          setUserInfo={setUserInfo}
+          // setUserInfo={setUserInfo}
           setInformation={setInformation}
         />}
       {information && <FoundTransfer
           information={information}
           userInfo={userInfo}
-          setUserInfo={setUserInfo}
+          refetch={refetch}
+          // setUserInfo={setUserInfo}
           setInformation={setInformation}
         />}
       {information && <Deposit
           information={information}
           userInfo={userInfo}
-          setUserInfo={setUserInfo}
+          refetch={refetch}
+          // setUserInfo={setUserInfo}
           setInformation={setInformation}
         />}
     </>
