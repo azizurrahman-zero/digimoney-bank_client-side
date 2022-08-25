@@ -48,7 +48,7 @@ const Dashboard = () => {
     {isAdmin:true, title: "All User", path: "/dashboard/allusers", src: <FaUsers className='w-5 h-5' /> },
   
     {isAdmin:false, title: "Send Money", path: "/dashboard/sendmoney", src: <FaMoneyCheck className='w-5 h-5' /> },
-    {isAdmin:true,dualUser:true, title: "Profile", path: "/dashboard/profile", src: <ImProfile className='w-5 h-5' /> },
+    {isAdmin:true, dualUser:true, title: "Profile", path: "/dashboard/profile", src: <ImProfile className='w-5 h-5' /> },
   
 
   ]
