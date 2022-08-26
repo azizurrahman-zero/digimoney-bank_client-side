@@ -29,7 +29,7 @@ const Menubar = ({setDarkMood}) => {
     <>
       <li className="mr-8 ">
         <Link to="/home">
-          <span className="font-mono text-4xl">DigiMoney</span>{" "}
+          <span className="font-mono lg:text-4xl text-2xl">DigiMoney</span>{" "}
         </Link>
       </li>
       <li className="mr-8">
