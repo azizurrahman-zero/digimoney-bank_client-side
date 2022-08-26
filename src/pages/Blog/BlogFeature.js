@@ -1,5 +1,5 @@
 import React from "react";
-import Natural from "../../assets/images/natural.jpg";
+
 
 const BlogFeature = () => {
   return (
@@ -7,8 +7,8 @@ const BlogFeature = () => {
       <div className="grid lg:grid-cols-2 bg-[#EDEAE7] pb-[50px] px-10 lg:px-20">
         <div>
           <img
-            className="w-[400px] lg:h-[500px] mt-[-40px] "
-            src={Natural}
+            className="w-[400px] lg:h-[500px] object-cover mt-[-40px] "
+            src="https://st.depositphotos.com/2325841/2528/i/600/depositphotos_25284107-stock-photo-successful-meeting.jpg"
             alt=""
           />
         </div>

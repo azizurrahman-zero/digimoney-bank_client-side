@@ -24,52 +24,20 @@ const WelcomePage = () => {
   transection.map(money=> totalSendMoney+=parseFloat(money.send_money))
   let totalReceiveMoney=0;
   transection.map(money=> totalReceiveMoney+=parseFloat(money.reveive_money))
-  let robin=[]
+  let transectionHistory=[]
 transection.forEach(element => {
- const kashem=  element.send_money
- const tashem=Number(kashem)
+ const getSendMoney=  element.send_money
+ const getNumber=Number(getSendMoney)
  
- const newArray={...element,send_money:tashem}
+ const newArray={...element,send_money:getNumber}
 
-robin.push(newArray)
+transectionHistory.push(newArray)
 
  });
- console.log(robin)
+ console.log(transectionHistory)
 
 
-  const data = [
-    {
-      name: "Page A",
-      uv: 22,
-      pv: 2400,
-      amt: 2400,
-    },
-    {
-      name: "Page B",
-      uv: 22,
-      pv: 1398,
-      amt: 2210,
-    },
-    {
-      name: "Page C",
-      uv: 1000,
-      pv: 9800,
-      amt: 2290,
-    },
-    {
-      name: "Page D",
-      uv: 250,
-      pv: 3908,
-      amt: 2000,
-    },
-    {
-      name: "Page E",
-      uv: 200,
-      pv: 4800,
-      amt: 2181,
-    }
-   
-  ];
+
 
 
 
@@ -107,7 +75,7 @@ robin.push(newArray)
             <div className="h-[120px]">
 
             <ResponsiveContainer width="100%" height="100%">
-        <LineChart width={500} height={300} data={robin}>
+        <LineChart width={500} height={300} data={transectionHistory}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="reveive_money" padding={{ left: 30, right: 30 }} />
           <YAxis />
@@ -131,7 +99,7 @@ robin.push(newArray)
               </span>
               <div>
                 <p className="text-gray-400">Send Money</p>
-                <h1 className="text-xl font-bold text-black">${totalSendMoney}</h1>
+                <h1 className="text-xl font-bold text-black">${totalSendMoney?totalSendMoney:0}</h1>
               </div>
               <div>
                 <p className="flex justify-end ">
@@ -148,7 +116,7 @@ robin.push(newArray)
             <div className="h-[120px]">
 
 <ResponsiveContainer width="100%" height="100%">
-<LineChart width={500} height={300} data={robin}>
+<LineChart width={500} height={300} data={transectionHistory}>
 <CartesianGrid strokeDasharray="3 3" />
 <XAxis dataKey="reveive_money" padding={{ left: 30, right: 30 }} />
 <YAxis />
@@ -174,11 +142,11 @@ robin.push(newArray)
 
       <div className="grid lg:grid-cols-2 gap-x-16 mt-12">
         {/* Bar Chart Start Start */}
-         <Barchart transection={robin} /> 
+         <Barchart transection={transectionHistory} /> 
         {/* Bar Chart end */}
         {/* Pie Chart Start */}
 
-         <Piechart transection={robin} /> 
+         <Piechart transection={transectionHistory} /> 
         {/* Pie chart end */}
       </div>
       {/* Transection table start  */}

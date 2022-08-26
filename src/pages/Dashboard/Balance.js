@@ -26,7 +26,7 @@ const Balance = () => {
         if (userInfo.amount>withdrawAmount) {
            const newAmount = userInfo.amount-withdrawAmount;
            const updatedAmount={amount:newAmount}
-           const url=`http://localhost:4000/approvedUsers/${userInfo.accountNumber}`;
+           const url=`https://tranquil-lake-95777.herokuapp.com/approvedUsers/${userInfo.accountNumber}`;
           fetch(url,{ 
                method:'PATCH',
                 headers:{
@@ -36,8 +36,11 @@ const Balance = () => {
             })
             .then(res=>res.json())
             .then(result=>{
-               refetch()
-               reset()
+                if(result){
+                    toast.success("withdraw money successfully")
+                    refetch()
+                    reset()
+                }
             })
         }
         else{
@@ -67,7 +70,7 @@ const Balance = () => {
                   </label>
                   <input type="number" placeholder="Provide Amount" className="input input-bordered w-full max-w-xs" {...register("withdrawAmount")} />
        
-                  <input className="btn btn-primary ml-4"  type="submit" />
+                  <input className="btn btn-primary mt-2 lg:mt-0 lg:ml-4"  type="submit" />
                   <div className="">
 
 <label className="text-xs font-bold mx-auto block text-red-600">{error}</label>

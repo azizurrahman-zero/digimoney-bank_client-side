@@ -7,7 +7,7 @@ const initialState={
 }
 export const fetchApprovedUser=createAsyncThunk('approveduser/fetchUsers',({email},{dispatch,getState})=>{    
 
-    return axios.get(`http://localhost:4000/checkuser${email}`).then(res=>res.data)
+    return axios.get(`https://tranquil-lake-95777.herokuapp.com/checkuser${email}`).then(res=>res.data)
  })
 
 const approvedUserSlice=createSlice({

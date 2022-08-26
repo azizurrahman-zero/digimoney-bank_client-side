@@ -63,7 +63,7 @@ const Service = () => {
       <h1 className="text-5xl text-center mt-20 mb-20 text-primary">Our Services</h1>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {services.map((service) => (
-          <div key={service.id} className="service-card text-white cursor-pointer">
+          <div key={service.id} className="service-card mx-auto text-white cursor-pointer">
             <div className="service-card-wraper ">
               <div className="  mx-auto   ">
                 <figure style={{width:"400px"}} className="px-10 pt-10">
