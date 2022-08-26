@@ -4,6 +4,7 @@ import BankAdvantage from './BankAdvantage';
 import {FiChevronRight} from 'react-icons/fi'
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     useEffect(() => {
@@ -28,7 +29,12 @@ const Header = () => {
                         <BankAdvantage advantage="Faster finance transaction" score="3M+" />
                     </div>
                     <div className='mt-16 flex relative z-50 items-center gap-x-3 lg:gap-x-10'>
-                    <button className='btn btn-secondary text-base-300 font-bold'>Download Now</button>
+                    <Link
+                className="font-bold text-white btn btn-secondary px-14"
+                to="/signup"
+              >
+                Join Us Now
+              </Link>
                     <div className='flex items-center gap-x-3 '>
                        <img className='h-14' src="https://cdn.picpng.com/icon/play-icon-free-wallpaper-vector-65968.png" alt="" />
                        <span className='text-white font-semibold text-lg'>How its work</span>
@@ -40,8 +46,8 @@ const Header = () => {
                         <div className='px-6'>
                         <p className='text-md'>Log in to Internet Banking</p>
                         <div className='flex gap-x-3 my-3'>
-                            <button className='btn btn-secondary text-base-300 font-bold px-8'>Personal</button>
-                            <button className='btn btn-secondary px-8 text-base-300 font-bold'>Business</button>
+                            <button  className='btn btn-secondary text-base-300 font-bold px-8'>Personal</button>
+                            <button  className='btn btn-secondary px-8 text-base-300 font-bold'>Business</button>
                         </div>
                         </div>
                    
