@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import image1 from "../../assets/images/bank-img-1.jpg";
-import Menubar from "../../Shared/Menubar";
+import sendmoney from "../../assets/images/service/sendmoney.jpg"
+import cashin from "../../assets/images/service/cashin.jpg"
+import billpay from "../../assets/images/service/billpay.jpg"
+import recharge from "../../assets/images/service/recharge.jpg"
+import gasbill from "../../assets/images/service/gasbill.jpg"
+import payment from "../../assets/images/service/payment.png"
 import "./service.css";
 
 const Service = () => {
@@ -10,37 +15,37 @@ const Service = () => {
       id: 1,
       title: "SEND MONEY",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
-      image: image1,
+      image: sendmoney,
     },
     {
       id:2,
       title: "CASH IN",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
-      image: image1,
+      image: cashin,
     },
     {
       id: 3,
       title: "BILL PAY",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
-      image: image1,
+      image: billpay,
     },
     {
       id: 4,
       title: "RECHARGE",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
-      image: image1,
+      image: recharge,
     },
     {
       id: 5,
       title: "GAS BILL",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
-      image: image1,
+      image: gasbill,
     },
     {
       id: 6,
       title: "PAYMENT",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
-      image: image1,
+      image: payment,
     },
     {
       id: 7,
@@ -61,9 +66,9 @@ const Service = () => {
           <div key={service.id} className="service-card text-white cursor-pointer">
             <div className="service-card-wraper ">
               <div className="  mx-auto   ">
-                <figure className="px-10 pt-10">
+                <figure style={{width:"400px"}} className="px-10 pt-10">
                   <img
-                    src="https://placeimg.com/400/225/arch"
+                    src={service.image}
                     alt="Shoes"
                     className="rounded-xl"
                   />
