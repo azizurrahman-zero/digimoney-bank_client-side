@@ -5,6 +5,7 @@ import {FiChevronRight} from 'react-icons/fi'
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from 'react-router-dom';
+import banking from "../../assets/images/banking-services.png"
 
 const Header = () => {
     useEffect(() => {
@@ -19,7 +20,7 @@ const Header = () => {
           
             </div>
           
-            <div className='grid md:grid-cols-2 relative z-50    pt-16 '>
+            <div className='grid md:grid-cols-2 relative z-50  gap-4  pt-16 '>
                  <div data-aos="zoom-in" className=' '>
                     <h1 className='text-white text-4xl lg:text-8xl font-bold'>Your Next <br /> Online Bank.</h1>
                     <hr className='h-[3px] w-[80%] my-10 bg-white' />
@@ -41,7 +42,10 @@ const Header = () => {
                     </div>
                     </div>
                  </div>
-                 <div data-aos="zoom-in" className='header-left my-20 lg:my-0'>
+                 <div className='lg:pl-36 '>
+                 <img src={banking} alt="" srcset="" />
+                 </div>
+                 {/* <div data-aos="zoom-in" className='header-left my-20 lg:my-0'>
                      <div className='bg-white banking text-black   w-[330px] py-6 mx-auto'>
                         <div className='px-6'>
                         <p className='text-md'>Log in to Internet Banking</p>
@@ -65,7 +69,7 @@ const Header = () => {
                         <div><span className='dot'></span> </div>
                         <div><span className='dot'></span> </div>
                        </div>
-                 </div>
+                 </div> */}
             </div>
 
 
