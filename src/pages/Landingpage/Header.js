@@ -4,6 +4,8 @@ import BankAdvantage from './BankAdvantage';
 import {FiChevronRight} from 'react-icons/fi'
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Link } from 'react-router-dom';
+import banking from "../../assets/images/banking-services.png"
 
 const Header = () => {
     useEffect(() => {
@@ -18,7 +20,7 @@ const Header = () => {
           
             </div>
           
-            <div className='grid md:grid-cols-2 relative z-50    pt-16 '>
+            <div className='grid md:grid-cols-2 relative z-50  gap-4  pt-16 '>
                  <div data-aos="zoom-in" className=' '>
                     <h1 className='text-white text-4xl lg:text-8xl font-bold'>Your Next <br /> Online Bank.</h1>
                     <hr className='h-[3px] w-[80%] my-10 bg-white' />
@@ -28,20 +30,28 @@ const Header = () => {
                         <BankAdvantage advantage="Faster finance transaction" score="3M+" />
                     </div>
                     <div className='mt-16 flex relative z-50 items-center gap-x-3 lg:gap-x-10'>
-                    <button className='btn btn-secondary text-base-300 font-bold'>Download Now</button>
+                    <Link
+                className="font-bold text-white btn btn-secondary px-14"
+                to="/signup"
+              >
+                Join Us Now
+              </Link>
                     <div className='flex items-center gap-x-3 '>
                        <img className='h-14' src="https://cdn.picpng.com/icon/play-icon-free-wallpaper-vector-65968.png" alt="" />
                        <span className='text-white font-semibold text-lg'>How its work</span>
                     </div>
                     </div>
                  </div>
-                 <div data-aos="zoom-in" className='header-left my-20 lg:my-0'>
+                 <div className='lg:pl-36 '>
+                 <img src={banking} alt="" srcset="" />
+                 </div>
+                 {/* <div data-aos="zoom-in" className='header-left my-20 lg:my-0'>
                      <div className='bg-white banking text-black   w-[330px] py-6 mx-auto'>
                         <div className='px-6'>
                         <p className='text-md'>Log in to Internet Banking</p>
                         <div className='flex gap-x-3 my-3'>
-                            <button className='btn btn-secondary text-base-300 font-bold px-8'>Personal</button>
-                            <button className='btn btn-secondary px-8 text-base-300 font-bold'>Business</button>
+                            <button  className='btn btn-secondary text-base-300 font-bold px-8'>Personal</button>
+                            <button  className='btn btn-secondary px-8 text-base-300 font-bold'>Business</button>
                         </div>
                         </div>
                    
@@ -59,7 +69,7 @@ const Header = () => {
                         <div><span className='dot'></span> </div>
                         <div><span className='dot'></span> </div>
                        </div>
-                 </div>
+                 </div> */}
             </div>
 
 
