@@ -80,7 +80,7 @@ const Profile = () => {
             />
           </div>
           <input
-            className="w-full  max-w-xs text-white form-control btn btn-accent"
+            className="btn btn-primary lg:w-[300px] bg-[#2366B5] border-none text-white font-bold  hover:bg-[#2366B5] block"
             type="submit"
             value="Upload"
           />

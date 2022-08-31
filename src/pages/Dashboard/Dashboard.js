@@ -107,9 +107,9 @@ const Dashboard = () => {
                </>
               ))
             }
-            <li className={` text-white font-bold ${!open && "justify-center"}   rounded-md text-sm flex items-center gap-x-4 p-2 cursor-pointer hover:bg-red-700`}>
+            <li onClick={logout} className={` text-white font-bold ${!open && "justify-center"}   rounded-md text-sm flex items-center gap-x-4 p-2 cursor-pointer hover:bg-red-700`}>
               <FiLogOut className='w-5 h-5' />
-              <span onClick={logout} className={`${!open && "hidden"} origin-left duration-200 text-md font-semibold`}>Logout</span>
+              <span className={`${!open && "hidden"} origin-left duration-200 text-md font-semibold`}>Logout</span>
             </li>
           </div>
         </ul>

@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import image1 from "../../assets/images/bank-img-1.jpg";
-import Menubar from "../../Shared/Menubar";
+import sendmoney from "../../assets/images/service/sendmoney.jpg"
+import cashin from "../../assets/images/service/cashin.jpg"
+import billpay from "../../assets/images/service/billpay.jpg"
+import recharge from "../../assets/images/service/recharge.jpg"
+import gasbill from "../../assets/images/service/gasbill.jpg"
+import payment from "../../assets/images/service/payment.png"
 import "./service.css";
 
 const Service = () => {
@@ -9,38 +14,38 @@ const Service = () => {
     {
       id: 1,
       title: "SEND MONEY",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
-      image: image1,
+      desc: "Send money from any where with our banking website. ",
+      image: sendmoney,
     },
     {
       id:2,
       title: "CASH IN",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
-      image: image1,
+      desc: "You can deposite your money from any branch of us",
+      image: cashin,
     },
     {
       id: 3,
       title: "BILL PAY",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
-      image: image1,
+      desc: "you can pay any kind of bill with our banking website",
+      image: billpay,
     },
     {
       id: 4,
       title: "RECHARGE",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
-      image: image1,
+      desc: "You can recharge your mobile balance with help of our banking website",
+      image: recharge,
     },
     {
       id: 5,
       title: "GAS BILL",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
-      image: image1,
+      desc: "You can pay gas bill, electricity bill and water bill with the help of our banking website",
+      image: gasbill,
     },
     {
       id: 6,
       title: "PAYMENT",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.",
-      image: image1,
+      desc: "Pay any kind of bill like shopping and food bill with the bill of our banking website",
+      image: payment,
     },
     {
       id: 7,
@@ -62,8 +67,8 @@ const Service = () => {
             <div className="service-card-wraper ">
               <div className="  mx-auto   ">
                 <figure className="px-10 pt-10">
-                  <img
-                    src="https://placeimg.com/400/225/arch"
+                  <img  style={{height:"25vh"}}
+                    src={service.image}
                     alt="Shoes"
                     className="rounded-xl"
                   />
