@@ -24,55 +24,55 @@ const UserInformation = () => {
   }
   return (
     <>
-      <div className="hero main-h-screen bg-base-100">
+      <div className="hero main-h-screen bg-white text-black">
         <div>
-          <div className="hero-content flex-col lg:flex-row">
+          <div className="hero-content b flex-col lg:flex-row">
             <img src={userInfo.img} className="lg:w-96 sm:w-72" alt="" />
            
-            <div>
+            <div >
               <table className="table">
                 <tbody>
                   <tr>
-                    <td className="active">Account Number</td>
-                    <td>{userInfo.accountNumber}</td>
+                    <td className="bg-white">Account Number</td>
+                    <td className="bg-white">{userInfo.accountNumber}</td>
                   </tr>
                   <tr>
-                    <td>Name</td>
-                    <td>{userInfo.displayName}</td>
+                    <td className="bg-white">Name</td>
+                    <td className="bg-white">{userInfo.displayName}</td>
                   </tr>
                   <tr>
-                    <td>Father's Name</td>
-                    <td>{userInfo.fatherName}</td>
+                    <td className="bg-white">Father's Name</td>
+                    <td className="bg-white">{userInfo.fatherName}</td>
                   </tr>
                   <tr>
-                    <td>Mother's Name</td>
-                    <td>{userInfo.motherName}</td>
-                  </tr>
-
-                  <tr>
-                    <td>Email</td>
-                    <td>{userInfo.email}</td>
+                    <td className="bg-white">Mother's Name</td>
+                    <td className="bg-white">{userInfo.motherName}</td>
                   </tr>
 
                   <tr>
-                    <td>Phone</td>
-                    <td>{userInfo.contact}</td>
+                    <td className="bg-white">Email</td>
+                    <td className="bg-white">{userInfo.email}</td>
+                  </tr>
+
+                  <tr>
+                    <td className="bg-white">Phone</td>
+                    <td className="bg-white">{userInfo.contact}</td>
                   </tr>
                   <tr>
-                    <td>Address</td>
-                    <td>{userInfo.address}</td>
+                    <td className="bg-white">Address</td>
+                    <td className="bg-white">{userInfo.address}</td>
                   </tr>
                   <tr>
-                    <td>Gender</td>
-                    <td>{userInfo.gender}</td>
+                    <td className="bg-white">Gender</td>
+                    <td className="bg-white">{userInfo.gender}</td>
                   </tr>
                   <tr>
-                    <td>Account Type</td>
-                    <td>{userInfo.accountType}</td>
+                    <td className="bg-white">Account Type</td>
+                    <td className="bg-white">{userInfo.accountType}</td>
                   </tr>
                   <tr>
-                    <td>Deposit Amount</td>
-                    <td>{userInfo.amount}</td>
+                    <td className="bg-white">Deposit Amount</td>
+                    <td className="bg-white">{userInfo.amount}</td>
                   </tr>
                 </tbody>
               </table>

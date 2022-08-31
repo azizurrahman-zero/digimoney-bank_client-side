@@ -10,7 +10,7 @@ module.exports = {
           primary: "rgb(7,58,66)",
           secondary: "#F8BF88",
           accent: "#010C27",
-           neutral: "#F8BF8A",       //bottom banner
+           neutral: "#E5CB83",       //bottom banner
           "base-100": "#ffffff",   //website background color 
           "base-300": "#010C28",   //heading color 
            "base-content":"#294b50"                       //backroung c

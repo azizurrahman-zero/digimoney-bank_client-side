@@ -15,11 +15,11 @@ const UserRequest = () => {
 
   return (
     <div>
-      <h2 className="text-2xl text-center">All Request: {users.length}</h2>
+      <h2 className="text-2xl text-center text-base-300">All Request: {users.length}</h2>
       <div className="mt-5 overflow-x-auto">
-        <table className="table w-full text-center">
+        <table className="table w-full bg-white text-center">
           <thead>
-            <tr>
+            <tr className="bg-white">
               <th></th>
               <th>Photo</th>
               <th>Name</th>

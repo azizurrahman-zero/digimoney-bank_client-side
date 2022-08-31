@@ -41,7 +41,7 @@ const Barchart = ({transection}) => {
     ]
 
     return (
-        <div className="h-[45vh]  shadow-2xl rounded-xl px-4  mt-2">
+        <div className="h-[45vh] bg-white  shadow-2xl rounded-xl px-4  mt-2">
           <h1 className="text-3xl font-bold text-black mt-2">Overview</h1>
 
           <ResponsiveContainer width="100%" height="100%">

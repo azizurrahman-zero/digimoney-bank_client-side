@@ -5,6 +5,7 @@ const useAdmin=(user)=>{
     const [admin,setAdmin]=useState(false)
     const [loadingAdmin,setLoadingAdmin]=useState(true)
     
+    
     useEffect(()=>{
          const email=user?.email
          if(email){

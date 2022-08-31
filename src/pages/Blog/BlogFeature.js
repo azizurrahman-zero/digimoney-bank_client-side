@@ -23,7 +23,7 @@ const BlogFeature = () => {
               Quae similitudo in genere etiam humano apparet. Quo plebiscito
               decreta a senatu est consuli [...]
             </p>
-            <button className=" px-10 py-2 hover:text-primary hover:border-primary font-semibold rounded-full border-2 border-black">Read More</button>
+            <button disabled className=" px-10 py-2 hover:text-white text-white bg-gray-600  font-semibold rounded-full border-2 ">Read More</button>
           </div>
         </div>
       </div>

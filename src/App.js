@@ -30,15 +30,24 @@ import Balance from "./pages/Dashboard/Balance";
 import UserInformation from "./pages/Dashboard/UserInformation/UserInformation";
 import PrivateRute from "./pages/Login/PrivateRute";
 import PrivateadminRoute from "./pages/Login/PrivateAdminRoute";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import FindTransection from "./pages/Dashboard/Maneger/FindTransection";
+const getFromLocalStorage=()=>{
+  const data= localStorage.getItem('darkmood')
+  let dark;
+  if(data){
+    dark= JSON.parse(data)
+  }
+  return dark
+}
 function App() {
   const { pathname } = useLocation();
-  const [darkMood,setDarkMood]=useState(false)
+  const [darkMood,setDarkMood]=useState(getFromLocalStorage())
 
 
   return (
-    <div data-theme={darkMood?"dark":"mytheme"} className={` ${pathname.includes("dashboard") && "py-2"} bg-base-100`}>
-      {!pathname.includes("dashboard")  && !pathname.includes("signUp") && <Menubar setDarkMood={setDarkMood}></Menubar>}
+    <div data-theme={darkMood?"dark":"mytheme"} className={` bg-base-100`}>
+      {!pathname.includes("dashboard")  && !pathname.includes("signUp") && <Menubar darkMood={darkMood} setDarkMood={setDarkMood}></Menubar>}
       <Routes>
         {/* <Route path="/" element={<Home></Home>}></Route> */}
         <Route path="/" element={<Landingpage />}></Route>
@@ -59,6 +68,7 @@ function App() {
           <Route path="balance" element={<Balance />} />
           <Route path="user-request" element={<UserRequest />} />
           <Route path="allusers" element={<PrivateadminRoute><AllUsers /></PrivateadminRoute>} />
+          <Route path="findtransection" element={<PrivateadminRoute><FindTransection /></PrivateadminRoute>} />
           <Route path="information/:id" element={<UserInformation />} />
           <Route path="sendmoney" element={<SendMoney />} />
           <Route path="review" element={<Review />} />

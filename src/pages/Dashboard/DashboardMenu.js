@@ -2,15 +2,19 @@ import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import {AiOutlineArrowDown} from 'react-icons/ai'
+import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useUserInfo from '../../hooks/useUserInfo';
 
 const DashboardMenu = () => {
   const [user]=useAuthState(auth)
+  const {userInfo}=useUserInfo(user)
+
     return (
         
-        <div className="navbar bg-base-100 m-0 p-0">
+        <div className="navbar bg-base-100 text-base-300 m-0 p-0">
   <div className="flex-1">
-  <input type="text" placeholder="Search..." className="input  outline-none border-b-4 focus:outline-none  border-[#2366B5] input-primary w-full max-w-xs" />
+  {/* <input type="text" placeholder="Search..." className="input  outline-none border-b-4 focus:outline-none  border-[#2366B5] input-primary w-full max-w-xs" /> */}
   </div>
   <div className="flex-none">
         
@@ -22,18 +26,18 @@ const DashboardMenu = () => {
         
         <div className="w-8 rounded-full">
        
-          <img src="https://placeimg.com/80/80/people" />
+          <img src={userInfo?.img} alt="" />
         </div>
       </label>
      </div>
       <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
         <li>
-          <a className="justify-between">
+          <Link to="/dashboard/profile" className="justify-between">
             Profile
             <span className="badge">New</span>
-          </a>
+          </Link>
         </li>
-        <li><a>Settings</a></li>
+      
         <li onClick={()=>signOut(auth)}><a>Logout</a></li>
       </ul>
     </div>

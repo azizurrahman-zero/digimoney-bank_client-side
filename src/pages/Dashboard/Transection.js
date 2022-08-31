@@ -13,7 +13,7 @@ const Transection = () => {
   const {userInfo}=useUserInfo(user)
   const [page,setPage]=useState(1)
     const {transection}=useSelector(state=>state.transection)
-    
+
 
     const dispatch=useDispatch()
     useEffect(()=>{
@@ -29,7 +29,7 @@ const Transection = () => {
  
     return (
         <div className='mx-4 lg:mx-0'>
-            <h1 className='text-3xl font-bold text-black'>Total Transection</h1>
+            <h1 className='text-3xl font-bold text-base-300'>Total Transection</h1>
             <section className="mt-12 shadow-2xl rounded-2xl">
         
         <div className="overflow-x-auto">

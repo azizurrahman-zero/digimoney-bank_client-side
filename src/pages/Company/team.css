@@ -18,7 +18,7 @@ z-index: -1;
 
 .team-card:hover{
    transform: scale(.9);
-  background-color: rgb(88, 22, 22);
+  /* background-color: black; */
   color: white;
 }
 .team-card:hover .team-icon{

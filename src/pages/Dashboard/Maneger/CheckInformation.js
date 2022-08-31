@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
-
 import { toast } from "react-toastify";
-import { useForm } from "react-hook-form";
+
 
 const CheckInformation = ({ information, users, setUsers }) => {
   const accountRef = useRef();
@@ -41,10 +40,10 @@ const CheckInformation = ({ information, users, setUsers }) => {
         console.log(result);
       });
   };
-  console.log({ information });
+
 
   const approved = (id, { information }, e) => {
-    console.log(information, "this is information ");
+
     information["accountNumber"] = accountRef.current.value;
 
     fetch("https://tranquil-lake-95777.herokuapp.com/approvedUsers", {
@@ -77,8 +76,8 @@ const CheckInformation = ({ information, users, setUsers }) => {
   return (
     <>
       <input type="checkbox" id="check-information" className="modal-toggle" />
-      <div className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box">
+      <div className="modal modal-bottom  sm:modal-middle">
+        <div className="modal-box bg-base-100 text-base-300">
           <label
             htmlFor="check-information"
             className="absolute btn btn-sm btn-circle right-2 top-2"
@@ -86,7 +85,7 @@ const CheckInformation = ({ information, users, setUsers }) => {
             ✕
           </label>
 
-          <div className="mt-10 overflow-x-auto">
+          <div className="mt-10  overflow-x-auto">
             <div className="flex items-center justify-center gap-4 mx-auto avatar">
               <div className="w-65">
                 <img src={img} alt="" />
@@ -110,7 +109,7 @@ const CheckInformation = ({ information, users, setUsers }) => {
                   <td>{motherName}</td>
                 </tr>
 
-                <tr className="active">
+                <tr className="">
                   <td>Email</td>
                   <td>{email}</td>
                 </tr>

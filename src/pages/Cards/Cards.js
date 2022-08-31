@@ -8,7 +8,7 @@ import Menubar from '../../Shared/Menubar';
 
 const Cards = () => {
     return (
-        <div className='container mx-auto'>
+        <div className='container mx-auto text-base-300'>
           
             <div className="carousel w-full p-4 space-x-4">
                 <div id="slide1" className="carousel-item relative w-full rounded-box shadow-xl">
@@ -26,7 +26,7 @@ const Cards = () => {
                             Discounts and privileges from Visa and MasterCard payment systems
                             Issue of additional bank cards
                             Card issue within a payroll card programme.</p>
-                        <button className="btn btn-primary ">Order Now</button>
+                        <button className="btn btn-secondary text-base-300 ">Order Now</button>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@ const Cards = () => {
                             Discounts and privileges from Visa and MasterCard payment systems
                             Issue of additional bank cards
                             Card issue within a payroll card programme</p>
-                        <button className="btn btn-primary ">Order Now</button>
+                        <button className="btn btn-secondary text-base-300 ">Order Now</button>
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@ const Cards = () => {
                     <h2 className="card-title">Buy with Apple Pay</h2>
                     <p>Download the DigiMonye Bank app and simplify your banking. Discover quick, simple and convenient way to take command of your bank account, on your mobile phone</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Buy with apple pay</button>
+                        <button className="btn btn-secondary text-base-300">Buy with apple pay</button>
                     </div>
                 </div>
             </div>
