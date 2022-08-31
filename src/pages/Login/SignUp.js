@@ -109,8 +109,8 @@ const SignUp = () => {
 
   return (
     <div>
-      <div className="bg-[#f3f3fa] flex items-center justify-center lg:py-10">
-        <div className="flex-shrink-0 w-full max-w-2xl shadow-2xl mmt-5 card bg-base-100 lg:m-0">
+      <div className="bg-base-100 flex items-center justify-center lg:py-10">
+        <div className="flex-shrink-0 w-full max-w-2xl shadow-2xl mmt-5 card bg-white lg:m-0">
           <div className="card-body">
             <h2 className="mb-1 text-3xl font-bold text-center text-natural">
               Create a New Account
@@ -127,7 +127,7 @@ const SignUp = () => {
                   <input
                     type="text"
                     placeholder=" &#xf007;  Your Name"
-                    className="mb-1 text-base input input-bordered input-icon"
+                    className="mb-1 text-base bg-white input input-bordered input-icon"
                     {...register("name", {
                       required: {
                         value: true,
@@ -147,7 +147,7 @@ const SignUp = () => {
                   <input
                     type="text"
                     placeholder=" &#xf007;  Your Father's Name"
-                    className="mb-1 text-base input input-bordered input-icon"
+                    className="mb-1 text-base bg-white input input-bordered input-icon"
                     {...register("fatherName", {
                       required: {
                         value: true,
@@ -167,7 +167,7 @@ const SignUp = () => {
                   <input
                     type="text"
                     placeholder=" &#xf007;  Your Mother's Name"
-                    className="mb-1 text-base input input-bordered input-icon"
+                    className="mb-1 bg-white text-base input input-bordered input-icon"
                     {...register("motherName", {
                       required: {
                         value: true,
@@ -187,7 +187,7 @@ const SignUp = () => {
                   <input
                     type="number"
                     placeholder=" &#xf095;  Phone Number"
-                    className="mb-1 text-base input input-bordered input-icon"
+                    className="mb-1 text-base bg-white input input-bordered input-icon"
                     {...register("phone", {
                       required: {
                         value: true,
@@ -207,7 +207,7 @@ const SignUp = () => {
                   <input
                     type="text"
                     placeholder=" &#xf041;  Your Address"
-                    className="mb-1 text-base input input-bordered input-icon"
+                    className="mb-1 text-base bg-white input input-bordered input-icon"
                     {...register("address", {
                       required: {
                         value: true,
@@ -226,7 +226,7 @@ const SignUp = () => {
                 <div className="w-full max-w-xs form-control">
                   <select
                     name="accountType"
-                    className=" input input-bordered"
+                    className=" input bg-white input-bordered"
                     {...register("accountType", {
                       required: {
                         value: true,
@@ -243,7 +243,7 @@ const SignUp = () => {
                   <input
                     type="text"
                     placeholder=" &#xf0d6;  Amount Deposited"
-                    className="w-full max-w-xs mb-1 text-base input input-bordered input-icon"
+                    className="w-full max-w-xs bg-white mb-1 text-base input input-bordered input-icon"
                     {...register("amount", {
                       required: {
                         value: true,
@@ -280,7 +280,7 @@ const SignUp = () => {
                   <input
                     type="email"
                     placeholder=" &#xf0e0;  Email Address"
-                    className="w-full max-w-xs mb-1 text-base input input-bordered input-icon"
+                    className="w-full max-w-xs bg-white mb-1 text-base input input-bordered input-icon"
                     {...register("email", {
                       required: {
                         value: true,
@@ -309,7 +309,7 @@ const SignUp = () => {
                   <input
                     type="password"
                     placeholder=" &#xf070;  Password"
-                    className="text-base input input-bordered input-icon"
+                    className="text-base bg-white input input-bordered input-icon"
                     {...register("password", {
                       required: {
                         value: true,
@@ -356,7 +356,7 @@ const SignUp = () => {
                   <input
                     type="file"
                     placeholder=" &#xf0e0; Upload Your NID"
-                    className="w-full max-w-xs mb-1 text-base input input-bordered input-icon pt-2"
+                    className="w-full max-w-xs bg-white mb-1 text-base input input-bordered input-icon pt-2"
                     {...register("image", {
                       required: {
                         value: true,
@@ -371,7 +371,7 @@ const SignUp = () => {
                 <input
                   type="button"
                   onClick={() => setDisplayCam('block')}
-                  className="w-full max-w-xs text-white form-control btn btn-accent"
+                  className="w-full  max-w-xs text-white form-control btn bg-[#01091E] hover:bg-[#01091E] border-none"
                   value="Capture Your Live Photo"
                 />
               </div>
@@ -415,7 +415,7 @@ const SignUp = () => {
 
               <div className="flex items-center justify-center mt-6">
                 <input
-                  className="w-full max-w-xs text-white form-control btn btn-accent"
+                  className="w-full  max-w-xs text-white form-control btn bg-[#01091E] hover:bg-[#01091E] border-none"
                   type="submit"
                   value="Sign Up"
                 />

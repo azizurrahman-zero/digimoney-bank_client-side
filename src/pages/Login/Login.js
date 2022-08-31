@@ -15,7 +15,6 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useToken from "../../hooks/useToken";
 
-
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -47,7 +46,6 @@ const Login = () => {
     signInWithEmailAndPassword(email, password);
   };
 
-
   const resetPassword = async (data) => {
     const email = data.email;
 
@@ -65,15 +63,13 @@ const Login = () => {
     alert("Sent email");
   };
 
-
   return (
-    <div className="bg-[#E5CB83] flex md:gap-20 h-[calc(100vh-76px)] items-center justify-center">
+    <div className="bg-neutral flex md:gap-20 h-[calc(100vh-76px)] items-center justify-center">
       <div className="hidden w-5/12 md:block">
         <img className="w-full" src={loginBanner} alt="login" />
       </div>
 
-      <div className="flex-shrink-0 w-full max-w-sm mt-5 mb-16 shadow-2xl card bg-base-100 lg:m-0">
-
+      <div className="flex-shrink-0 w-full max-w-sm mt-5 mb-16 shadow-2xl card bg-white lg:m-0">
         <div className="card-body">
           <h2 className="mb-1 text-3xl font-bold text-center text-info">
             Log In
@@ -89,7 +85,7 @@ const Login = () => {
               <input
                 type="email"
                 placeholder=" &#xf0e0;  Email Address"
-                className="mb-1 text-base input input-bordered input-icon"
+                className="mb-1  bg-white input input-bordered input-icon"
                 {...register("email", {
                   required: {
                     value: true,
@@ -119,7 +115,7 @@ const Login = () => {
               <input
                 type="password"
                 placeholder=" &#xf070;  Password"
-                className="text-base input input-bordered input-icon"
+                className=" bg-white input input-bordered input-icon"
                 {...register("password", {
                   required: {
                     value: true,
@@ -145,7 +141,7 @@ const Login = () => {
             </div>
             <div className="mt-6 form-control">
               <input
-                className="text-white btn btn-neutral"
+                className="text-white btn bg-[#E3C984] border-none hover:bg-[#E3C984]"
                 type="submit"
                 value="Log In"
               />

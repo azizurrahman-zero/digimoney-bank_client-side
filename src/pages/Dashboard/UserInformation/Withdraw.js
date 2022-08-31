@@ -17,7 +17,7 @@ const Withdraw = ({ userInfo,refetch,setInformation }) => {
       }
       if (userInfo.amount>withdrawAmount) {
          const newAmount = userInfo.amount-withdrawAmount;
-         const updatedAmount={amount:newAmount}
+         const updatedAmount={amount:newAmount,withdrawAmount}
          const url=`https://tranquil-lake-95777.herokuapp.com/approvedUsers/${accountNumber}`;
         fetch(url,{ 
              method:'PATCH',
@@ -44,7 +44,7 @@ const Withdraw = ({ userInfo,refetch,setInformation }) => {
     <div>
       <input type="checkbox" id="withdraw" className="modal-toggle" />
       <div className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box">
+        <div className="modal-box text-base-300">
           <label
             htmlFor="withdraw"
             className="absolute btn btn-sm btn-circle right-2 top-2"

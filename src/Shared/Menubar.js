@@ -4,8 +4,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "../firebase.init";
 
-const Menubar = ({setDarkMood}) => {
-  const [user,loading] = useAuthState(auth);
+const Menubar = ({ setDarkMood,darkMood }) => {
+  const [user, loading] = useAuthState(auth);
   const [show, setIsShow] = useState(false);
   const bgColorChange = () => {
     if (window.scrollY >= 5) {
@@ -18,11 +18,15 @@ const Menubar = ({setDarkMood}) => {
 
   const logout = () => {
     signOut(auth);
-    localStorage.removeItem('accessToken')
+    localStorage.removeItem("accessToken");
   };
 
-
   // =============================================darkmood====================================//
+  const handleDarkMood=(e)=>{
+     const darkMood=e.target.checked 
+     localStorage.setItem('darkmood',JSON.stringify(darkMood))
+     setDarkMood(darkMood)
+  }
 
 
   const menuItem = (
@@ -72,22 +76,23 @@ const Menubar = ({setDarkMood}) => {
 
       {user && (
         <li>
-          
-            <Link to="/dashboard">Dashboard</Link>
-          
+          <Link to="/dashboard">Dashboard</Link>
         </li>
       )}
-    
-        <li className="flex items-center justify-center ml-14">
-          
-        <input onChange={(e)=>setDarkMood(e.target.checked)} name="dark"  type="checkbox" className="toggle toggle-lg mr-14"  />
-          
-        </li>
-      
+
+      <li className="flex items-center justify-center ml-14">
+        <input
+          onChange={handleDarkMood}
+          name="dark"
+          type="checkbox"
+          checked={darkMood}
+          className="toggle toggle-lg mr-14"
+        />
+      </li>
     </>
   );
-  if(loading){
-    return ;
+  if (loading) {
+    return;
   }
 
   return (
@@ -128,17 +133,8 @@ const Menubar = ({setDarkMood}) => {
       <div className="navbar-end ">
         <ul
           tabIndex="0"
-
           className="flex-row items-center p-2 mt-3 shadow menu menu-compact dropdown-content text-accent rounded-box w-52"
-
-
-         
         >
-         
-
-          
-          
-          
           <li className="items-center justify-center">
             {user ? (
               <button

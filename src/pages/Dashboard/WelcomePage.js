@@ -1,5 +1,17 @@
-import React,{useEffect} from "react";
-import { LineChart, Line, ResponsiveContainer, AreaChart, CartesianGrid, XAxis, YAxis, Tooltip, Area, ComposedChart, Legend, Bar } from "recharts";
+import React, { useEffect } from "react";
+import {
+  LineChart,
+  Line,
+  ResponsiveContainer,
+ 
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+
+  Legend,
+ 
+} from "recharts";
 import { FaPlay } from "react-icons/fa";
 import { ImUpload, ImDownload } from "react-icons/im";
 import TransectionRow from "./TransectionRow";
@@ -9,38 +21,44 @@ import BalanceCard from "./BalanceCard";
 import useUserInfo from "../../hooks/useUserInfo";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
-import {useDispatch,useSelector} from 'react-redux'
+import { useDispatch, useSelector } from "react-redux";
 import { fetchTransection } from "../../redux/reducers/TransectionReducer";
+import useAdmin from "../../hooks/useAdmin";
+import AdminDashboard from "./AdminDashboard";
 
 const WelcomePage = () => {
   const [user] = useAuthState(auth);
+  const {admin,loadingAdmin}=useAdmin(user)
   const { userInfo } = useUserInfo(user);
-  const {transection}=useSelector(state=>state.transection)
-  const dispatch=useDispatch()
-  useEffect(()=>{
-  dispatch(fetchTransection({accountNumber:userInfo?.accountNumber,page:0}))
-  },[dispatch,userInfo])
-  let totalSendMoney=0;
-  transection.map(money=> totalSendMoney+=parseFloat(money.send_money))
-  let totalReceiveMoney=0;
-  transection.map(money=> totalReceiveMoney+=parseFloat(money.reveive_money))
-  let transectionHistory=[]
-transection.forEach(element => {
- const getSendMoney=  element.send_money
- const getNumber=Number(getSendMoney)
- 
- const newArray={...element,send_money:getNumber}
+  const { transection } = useSelector((state) => state.transection);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(
+      fetchTransection({ accountNumber: userInfo?.accountNumber, page: 0 })
+    );
+  }, [dispatch, userInfo]);
+  let totalSendMoney = 0;
+  transection.map((money) => (totalSendMoney += parseFloat(money.send_money)));
+  let totalReceiveMoney = 0;
+  transection.map(
+    (money) => (totalReceiveMoney += parseFloat(money.reveive_money))
+  );
+  let transectionHistory = [];
+  transection.forEach((element) => {
+    const getSendMoney = element.send_money;
+    const getNumber = Number(getSendMoney);
 
-transectionHistory.push(newArray)
+    const newArray = { ...element, send_money: getNumber };
 
- });
- console.log(transectionHistory)
+    transectionHistory.push(newArray);
+  });
 
-
-
-
-
-
+  if(loadingAdmin){
+    return;
+  }
+  if(admin){
+    return <AdminDashboard />
+  }
 
   return (
     <section className="mt-8">
@@ -50,7 +68,7 @@ transectionHistory.push(newArray)
         {/* Balance CArd End */}
 
         {/* Income Card Chart start */}
-        <div className="card   shadow-2xl  text-gray-200">
+        <div className="card bg-white  shadow-2xl  text-gray-200">
           <div className=" p-5">
             <div className="flex items-center justify-between mb-8 gap-x-8">
               <span>
@@ -58,7 +76,9 @@ transectionHistory.push(newArray)
               </span>
               <div>
                 <p className="text-gray-400">Reveive Money</p>
-                <h1 className="text-xl font-bold text-black">${totalReceiveMoney?totalReceiveMoney:0}</h1>
+                <h1 className="text-xl font-bold text-black">
+                  ${totalReceiveMoney ? totalReceiveMoney : 0}
+                </h1>
               </div>
               <div>
                 <p className="flex justify-end ">
@@ -73,25 +93,32 @@ transectionHistory.push(newArray)
               </div>
             </div>
             <div className="h-[120px]">
-
-            <ResponsiveContainer width="100%" height="100%">
-        <LineChart width={500} height={300} data={transectionHistory}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="reveive_money" padding={{ left: 30, right: 30 }} />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="receive_money" stroke="#8884d8" activeDot={{ r: 8 }} />
-          <Line type="monotone" dataKey="send_money" stroke="#82ca9d" />
-        </LineChart>
-      </ResponsiveContainer>
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart width={500} height={300} data={transectionHistory}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis
+                    dataKey="reveive_money"
+                    padding={{ left: 30, right: 30 }}
+                  />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Line
+                    type="monotone"
+                    dataKey="receive_money"
+                    stroke="#8884d8"
+                    activeDot={{ r: 8 }}
+                  />
+                  <Line type="monotone" dataKey="send_money" stroke="#82ca9d" />
+                </LineChart>
+              </ResponsiveContainer>
             </div>
           </div>
         </div>
         {/* Income Card Chart end */}
 
         {/* Expense Card Start */}
-        <div className="card   shadow-2xl  text-gray-200">
+        <div className="card bg-white  shadow-2xl  text-gray-200">
           <div className=" p-5">
             <div className="flex items-center justify-between mb-8 gap-x-8">
               <span>
@@ -99,7 +126,9 @@ transectionHistory.push(newArray)
               </span>
               <div>
                 <p className="text-gray-400">Send Money</p>
-                <h1 className="text-xl font-bold text-black">${totalSendMoney?totalSendMoney:0}</h1>
+                <h1 className="text-xl font-bold text-black">
+                  ${totalSendMoney ? totalSendMoney : 0}
+                </h1>
               </div>
               <div>
                 <p className="flex justify-end ">
@@ -114,46 +143,50 @@ transectionHistory.push(newArray)
               </div>
             </div>
             <div className="h-[120px]">
-
-<ResponsiveContainer width="100%" height="100%">
-<LineChart width={500} height={300} data={transectionHistory}>
-<CartesianGrid strokeDasharray="3 3" />
-<XAxis dataKey="reveive_money" padding={{ left: 30, right: 30 }} />
-<YAxis />
-<Tooltip />
-<Legend />
-<Line type="monotone" dataKey="send_money" stroke="#8884d8" activeDot={{ r: 8 }} />
-<Line type="monotone" dataKey="reveive_money" stroke="#82ca9d" />
-</LineChart>
-</ResponsiveContainer>
-</div>
-            {/* <LineChart
-              width={350}
-              height={60}
-              data={transection}
-              margin={{ top: 15, right: 30, left: 20, bottom: 0 }}
-            >
-              <Line type="monotone" dataKey="send_money" stroke="#8884d8" />
-            </LineChart> */}
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart width={500} height={300} data={transectionHistory}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis
+                    dataKey="reveive_money"
+                    padding={{ left: 30, right: 30 }}
+                  />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Line
+                    type="monotone"
+                    dataKey="send_money"
+                    stroke="#8884d8"
+                    activeDot={{ r: 8 }}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="reveive_money"
+                    stroke="#82ca9d"
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+          
           </div>
         </div>
         {/* Expense Card End */}
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-x-16 mt-12">
+      <div className="grid  lg:grid-cols-2 gap-x-16 mt-12">
         {/* Bar Chart Start Start */}
-         <Barchart transection={transectionHistory} /> 
+        <Barchart transection={transectionHistory} />
         {/* Bar Chart end */}
         {/* Pie Chart Start */}
 
-         <Piechart transection={transectionHistory} /> 
+        <Piechart transection={transectionHistory} />
         {/* Pie chart end */}
       </div>
       {/* Transection table start  */}
-      <section className="mt-12 shadow-2xl rounded-2xl">
+      <section className="mt-12 bg-white shadow-2xl rounded-2xl">
         <h1 className="text-3xl font-bold my-8 ml-2">Lastest Transaction</h1>
         <div className="overflow-x-auto">
-          <table className="table table-zebra w-full">
+          <table className="table table-zebra  w-full">
             <tbody>
               {transection.slice(0, 6).map((rowdata, i) => (
                 <TransectionRow key={i} userInfo={userInfo} rowdata={rowdata} />

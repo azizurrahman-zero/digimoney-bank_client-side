@@ -63,7 +63,7 @@ const [notMatch,setNotMatch]=useState("")
     <>
       <input type="checkbox" id="found-transfer" className="modal-toggle" />
       <div className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box">
+        <div className="modal-box text-base-300">
           <label
             htmlFor="found-transfer"
             className="absolute btn btn-sm btn-circle right-2 top-2"

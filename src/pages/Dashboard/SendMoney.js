@@ -66,7 +66,7 @@ const [notMatch,setNotMatch]=useState("")
     })
   };
   return (
-    <div className=" mx-6 lg:mx-0">
+    <div className=" mx-6 lg:mx-0 text-base-300">
       <h1 className="text-[#2366B5] text-3xl font-bold mb-5 underline">
         Send Money
       </h1>

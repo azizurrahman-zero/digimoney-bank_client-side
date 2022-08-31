@@ -4,14 +4,13 @@ import { Link, useLocation } from 'react-router-dom'
 import { BsArrowLeftCircle } from 'react-icons/bs'
 import { RiBarChartHorizontalLine } from 'react-icons/ri'
 import { AiOutlineUsergroupAdd, AiFillHome } from 'react-icons/ai'
-import { FiSettings, FiLogOut } from 'react-icons/fi'
+import {  FiLogOut } from 'react-icons/fi'
 import { FaMoneyCheck,FaMoneyBill, FaUsers } from 'react-icons/fa'
-import { MdRateReview, MdDashboard, MdAdminPanelSettings } from 'react-icons/md'
+import { MdRateReview, MdDashboard } from 'react-icons/md'
 import { ImProfile } from 'react-icons/im'
 import { Outlet } from 'react-router-dom'
 import DashboardMenu from './DashboardMenu';
 import './dashboard.css'
-
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import useAdmin from '../../hooks/useAdmin';
@@ -29,7 +28,8 @@ const Dashboard = () => {
   useEffect(()=>{
     dispatch(fetchApprovedUser({email:user?.email}))
     },[dispatch,user?.email])
- const isUserExist= check.checkUser.userexist
+ const {userexist,loading}= check?.checkUser
+
   const logout = () => {
     signOut(auth);
   };
@@ -45,6 +45,7 @@ const Dashboard = () => {
     {isAdmin:false, title: "Balance", path: "/dashboard/balance", src: <FaMoneyBill className='w-5 h-5' /> },
     {isAdmin:false, title: "Review", path: "/dashboard/review", src: <MdRateReview className='w-5 h-5' /> },
     {isAdmin:false, title: "Transection", path: "/dashboard/transection", src: <FaMoneyCheck className='w-5 h-5' /> },
+    {isAdmin:true, title: "Find Transection", path: "/dashboard/findtransection", src: <FaMoneyCheck className='w-5 h-5' /> },
     {isAdmin:true, title: "All User", path: "/dashboard/allusers", src: <FaUsers className='w-5 h-5' /> },
   
     {isAdmin:false, title: "Send Money", path: "/dashboard/sendmoney", src: <FaMoneyCheck className='w-5 h-5' /> },
@@ -52,16 +53,16 @@ const Dashboard = () => {
   
 
   ]
-  if(loadingAdmin){
+  if(loadingAdmin || loading){
     return ;
   }
- if(!isUserExist){
+ if(!userexist){
   return <AccountUnderVerication />
  }
 
   return (
 
-    <div className="drawer drawer-mobile rounded-3xl ">
+    <div className="drawer drawer-mobile  ">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content custom-scroll">
 
@@ -73,7 +74,7 @@ const Dashboard = () => {
               w-8 h-8 text-black     rounded-full ${!open && 'rotate-180'}
              `} />
         </label>
-        <div className='min-h-screen lg:pt-5 bg-white lg:px-5 lg:pl-16'>
+        <div className='min-h-screen lg:pt-5 bg-base-100 lg:px-5 lg:pl-16'>
 
           {!pathname.includes("dashboard/") && <DashboardMenu />}
           <Outlet />
@@ -84,13 +85,13 @@ const Dashboard = () => {
       <div className="duration-100 drawer-side custom-sidebar ">
         <label htmlFor="my-drawer-2" className="drawer-overlay "></label>
 
-        <ul className={`pt-6   ${!open ? "w-20" : "w-52"} duration-75    p-5 bg-[#6160DC] `}>
+        <ul className={`pt-6   ${!open ? "w-20" : "w-52"} duration-100    p-5 bg-[#6160DC] `}>
           < BsArrowLeftCircle
             onClick={() => setOpen(!open)}
             className={`absolute cursor-pointer
              -right-3  top-3 w-8 h-8 bg-black text-white    rounded-full ${!open && 'rotate-180'}
              `} />
-          <div className='mt-8 duration-300'>
+          <div className='mt-8'>
 
             {
               Menus.map((menu,i) => (
