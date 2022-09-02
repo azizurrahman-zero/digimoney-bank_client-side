@@ -14,7 +14,7 @@ const Profile = () => {
   } = useForm();
 
   const [user] = useAuthState(auth);
-  const {userInfo,isLoading} =useUserInfo(user)
+  const {userInfo,isLoading,refetch} =useUserInfo(user)
 
   const [password, setPassword] = useState('');
   const [updatePassword, updating, error] = useUpdatePassword(auth);
@@ -52,6 +52,7 @@ const Profile = () => {
             })
             .then(res=>res.json())
             .then(result=>{console.log(result);})
+            refetch()
         }
       })
 
@@ -70,7 +71,7 @@ const Profile = () => {
             <input
               type="file"
               placeholder=" &#xf0e0; Upload Your Profile picture"
-              className="w-full mt-4 mb-6 lg:mb-1 lg:my-0 border-1 border-gray-600 p-2 max-w-xs  text-base input input-icon"
+              className="w-full mt-4 mb-6 lg:mb-1 lg:my-0 p-2 max-w-xs  text-base input input-icon"
               {...register("image", {
                 required: {
                   value: true,
