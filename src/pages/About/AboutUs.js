@@ -4,6 +4,8 @@ import aboutbanner from '../../assets/images/aboutbanner.jpg'
 const AboutUs = () => {
     return (
         <div>
+            <div className=' lg:w-10/12 mx-auto'>
+
             {/* banner */}
             <div className="carousel w-full p-4 space-x-4">
                 <div id="slide1" className="carousel-item relative w-full rounded-box shadow-xl">
@@ -12,23 +14,24 @@ const AboutUs = () => {
             </div>
             <div className='my-24'>
                 <div className='pb-4'>
-                    <h4>
+                    <h4 className='text-base-300'>
                         The Company was incorporated as a Public Limited Company in 1999, under the Companies Act 1994, with an Authorized Share Capital of BDT 1,000,000,000 divided into 10,000,000 ordinary shares of BDT 100 each. At present, the Authorized Share Capital of the company is BDT 10,000,000,000 divided into 1,000,000,000 ordinary shares of BDT 10 each.
                     </h4>
                 </div>
 
                 <br />
                 <div>
-                    <h4>
+                    <h4 className='text-base-300'>
                         The Company was also issued Certificate for Commencement of Business on the same day and was granted license on October 05, 1999 by Bangladesh Bank under the Banking Companies Act 1991 and started its banking operation on October 24, 1999. As envisaged in the Memorandum of Association and as licensed by Bangladesh Bank under the provisions of the Banking Companies Act 1991, the Company started its banking operation and entitled to carry out the following types of banking business:
                     </h4>
                 </div>
+            </div>
             </div>
             {/* progress */}
             <div className='grid justify-center mb-16'>
                 <div className="stats shadow">
 
-                    <div className="stat">
+                    <div className="stat text-base-300">
                         <div className="stat-figure text-secondary">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
@@ -37,7 +40,7 @@ const AboutUs = () => {
                         <div className="stat-desc">Jan 1st - Feb 1st</div>
                     </div>
 
-                    <div className="stat">
+                    <div className="stat text-base-300">
                         <div className="stat-figure text-secondary">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
                         </div>
@@ -46,7 +49,7 @@ const AboutUs = () => {
                         <div className="stat-desc">↗︎ 400 (22%)</div>
                     </div>
 
-                    <div className="stat">
+                    <div className="stat text-base-300">
                         <div className="stat-figure text-secondary">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
                         </div>
@@ -60,7 +63,7 @@ const AboutUs = () => {
 
             {/* VISION, MISSION & VALUES  */}
             <div className='my-16'>
-                <h1 className='text-5xl font-extrabold text-center'>VISION, MISSION & GOAL</h1>
+                <h1 className='text-5xl font-extrabold text-center text-base-300'>VISION, MISSION & GOAL</h1>
             </div>
             {/* container */}
             <div>

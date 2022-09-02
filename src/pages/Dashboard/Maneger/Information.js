@@ -34,9 +34,9 @@ const Information = ({ user, index, users, setUsers, setInformation }) => {
     });
   };
   return (
-    <tr>
-      <th>{index + 1}</th>
-      <td>
+    <tr className="bg-white">
+      <th className="bg-white">{index + 1}</th>
+      <td className="bg-white">
         <div className="avatar">
           <div className="w-16 rounded-full">
             <img src={user.img} alt="" />
@@ -44,13 +44,13 @@ const Information = ({ user, index, users, setUsers, setInformation }) => {
         </div>
       </td>
 
-      <td>{user.displayName}</td>
+      <td className="bg-white">{user.displayName}</td>
      
-      <td>{user.email}</td>
-      <td>{user.contact}</td>
-      <td>{user.address}</td>
+      <td className="bg-white">{user.email}</td>
+      <td className="bg-white">{user.contact}</td>
+      <td className="bg-white">{user.address}</td>
 
-      <td>
+      <td className="bg-white">
         <label
           htmlFor="check-information"
           onClick={() => setInformation(user)}

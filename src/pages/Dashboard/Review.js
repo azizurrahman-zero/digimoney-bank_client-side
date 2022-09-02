@@ -52,7 +52,7 @@ const Review = () => {
       });
   };
   return (
-    <div className="">
+    <div className="text-base-300">
       <form onSubmit={handleSubmit(onSubmit)} className="lg:w-8/12 mx-4 lg:mx-0 " action="">
         <div className="mt-32 grid lg:grid-cols-2 gap-x-2">
           <div>

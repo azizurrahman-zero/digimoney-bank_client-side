@@ -60,10 +60,10 @@ const Service = () => {
     <>
  
     <main className="mb-32">
-      <h1 className="text-5xl text-center mt-20 mb-20 text-primary">Our Services</h1>
+      <h1 className="text-5xl text-center text-base-300 mt-20 mb-5 ">Our Services</h1>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {services.map((service) => (
-          <div key={service.id} className="service-card mx-auto text-white cursor-pointer">
+          <div key={service.id} className="service-card bg-primary mx-auto text-white cursor-pointer">
             <div className="service-card-wraper ">
               <div className="  mx-auto   ">
                 <figure className="px-10 pt-10">

@@ -59,8 +59,8 @@ const AllUser = ({ user, users, index,refetch }) => {
  
   return (
     <tr>
-      <th>{index + 1}</th>
-      <td>
+      <th className="bg-white">{index + 1}</th>
+      <td className="bg-white">
         <div className="avatar">
           <div className="w-16 rounded-full">
             <img src={user.img} alt="" />
@@ -68,11 +68,11 @@ const AllUser = ({ user, users, index,refetch }) => {
         </div>
       </td>
 
-      <td>{user.displayName}</td>
-      <td>{user.accountNumber}</td>
-      <td>{user.email}</td>
-      <td>{user.contact}</td>
-      <td>
+      <td className="bg-white">{user.displayName}</td>
+      <td className="bg-white">{user.accountNumber}</td>
+      <td className="bg-white">{user.email}</td>
+      <td className="bg-white">{user.contact}</td>
+      <td className="bg-white">
         <Link
           to={`/dashboard/information/${_id}`}
           className="btn btn-outline btn-primary btn-xs "
@@ -80,7 +80,7 @@ const AllUser = ({ user, users, index,refetch }) => {
           View
         </Link>
       </td>
-      <td>
+      <td className="bg-white">
         {role !== "admin" && (
           <button
             onClick={makeAdmin}
@@ -91,7 +91,7 @@ const AllUser = ({ user, users, index,refetch }) => {
         )}
         {role === "admin" && <span className="text-success">Admin</span>}
       </td>
-      <td>
+      <td className="bg-white">
         <button
           onClick={() => handleDelete(user._id)}
           className="btn btn-outline btn-error btn-xs"

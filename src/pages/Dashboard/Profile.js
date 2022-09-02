@@ -59,7 +59,7 @@ const Profile = () => {
   }
 
   return (
-    <div className='mx-4 mb-16'>
+    <div className='mx-4 mb-16 text-base-300'>
       <h1 className='text-[#2366B5] text-3xl font-bold mb-10 underline '>My Profile</h1>
       <div className='flex gap-x-10 flex-wrap justify-center lg:justify-start'>
 

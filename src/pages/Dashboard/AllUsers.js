@@ -30,14 +30,14 @@ const AllUsers = () => {
     return (
         <div>
             <div>
-                <h2 className="text-2xl text-center">Users: {users?.length}</h2>
+                <h2 className="text-2xl text-center text-base-300 ">Users: {users?.length}</h2>
                 <div className='grid justify-items-end mr-9'>
                     <input type="text" onChange={handleSearch} placeholder="Enter Email" className="input input-bordered w-full max-w-xs" />
                 </div>
-                <div className="mt-5 overflow-x-auto">
+                <div className="mt-5 overflow-x-auto bg-white">
                     <table className="table w-full text-center">
                         <thead>
-                            <tr>
+                            <tr className='bg-white'>
                                 <th></th>
                                 <th>Photo</th>
                                 <th>Name</th>

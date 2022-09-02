@@ -16,7 +16,7 @@ const Deposit = ({ userInfo,setInformation,refetch }) => {
       
          const newAmount = userInfo.amount+depositeAmount;
     
-         const updatedAmount={amount:newAmount}
+         const updatedAmount={amount:newAmount,depositeAmount}
          const url=`https://tranquil-lake-95777.herokuapp.com/deposite/${accountNumber}`;
         fetch(url,{ 
              method:'PATCH',
@@ -42,7 +42,7 @@ const Deposit = ({ userInfo,setInformation,refetch }) => {
     <>
       <input type="checkbox" id="deposit" className="modal-toggle" />
       <div className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box">
+        <div className="modal-box text-base-300">
           <label
             htmlFor="deposit"
             className="absolute btn btn-sm btn-circle right-2 top-2"
