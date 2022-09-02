@@ -26,7 +26,7 @@ const AdminDashboard = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    fetch("https://localhost:4000/users")
+    fetch("https://tranquil-lake-95777.herokuapp.com/users")
       .then((res) => res.json())
       .then((data) => setUsersRequest(data));
   }, []);
