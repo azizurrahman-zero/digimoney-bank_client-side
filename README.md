@@ -1,5 +1,5 @@
 # DigiMoney Bank
-This is a website of an **Online Bank**. This online banking system will help users transfer their money easily. With the help of this online banking method, users do not need to go to the bank physically, and our user-friendly features will help them track down their money and save money for the future. We have some future plans for this website, like QR code money transactions and one-tap sending money. Lastly, people will love the features of our website and it will help to reduce the users' suffering from having to attend the physical bank.
+This is a website of an **Online Bank**. This online banking system will help users transfer their money easily. With the help of this online banking method, users do not need to go to the bank physically, and our user-friendly features will help them track down their money and save money for the future. We have some future plans for this website, like QR code money transactions and one-tap sending money. Lastly, people will love the features of our website and it will help to reduce the users suffering from having to attend the physical bank.
 
 ##  Features
 
