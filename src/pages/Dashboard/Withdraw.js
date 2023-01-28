@@ -9,8 +9,8 @@
 //         if (amount>data.withdrawAmount) {
 //            const newAmount = amount-data.withdrawAmount;
 //            const updatedAmount={amount:newAmount,withdrawAmount:data.withdrawAmount}
-//            const url=`https://tranquil-lake-95777.herokuapp.com/approvedUsers/${_id}`;
-//           fetch(url,{ 
+//            const url=`https://digimoney-bank-0haz.onrender.com/approvedUsers/${_id}`;
+//           fetch(url,{
 //                method:'PATCH',
 //                 headers:{
 //                     'content-type':'application/json'

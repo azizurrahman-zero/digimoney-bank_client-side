@@ -1,41 +1,36 @@
-import {createSlice,createAsyncThunk} from '@reduxjs/toolkit'
-import axios from 'axios'
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
-const initialState={
-    loading:false,
-    blogs:[],
-    errors:""
-}
+const initialState = {
+  loading: false,
+  blogs: [],
+  errors: "",
+};
 
+export const fetchBlog = createAsyncThunk("blog/fetchblog", () => {
+  return axios
+    .get("https://digimoney-bank-0haz.onrender.com/blog")
+    .then((res) => res.data);
+});
 
-export const fetchBlog=createAsyncThunk("blog/fetchblog",()=>{
-    return axios.get('https://tranquil-lake-95777.herokuapp.com/blog')
-    .then(res=>res.data)
-})
+const blogSlice = createSlice({
+  name: "blog",
+  initialState,
+  extraReducers: (builder) => {
+    builder.addCase(fetchBlog.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(fetchBlog.fulfilled, (state, action) => {
+      state.loading = false;
+      state.blogs = action.payload;
+      state.errors = "";
+    });
+    builder.addCase(fetchBlog.rejected, (state, action) => {
+      state.loading = false;
+      state.blogs = [];
+      state.errors = action.error.message;
+    });
+  },
+});
 
-
-const blogSlice=createSlice({
-    name:"blog",
-    initialState,
-    extraReducers:(builder)=>{
-
-        builder.addCase(fetchBlog.pending,(state)=>{
-            state.loading=true
-        })
-        builder.addCase(fetchBlog.fulfilled,(state,action)=>{
-            state.loading=false 
-            state.blogs=action.payload 
-            state.errors=""
-        })
-        builder.addCase(fetchBlog.rejected,(state,action)=>{
-            state.loading=false 
-            state.blogs=[]
-            state.errors=action.error.message
-        }) 
-
-    }
-
-})
-
-
-export default blogSlice.reducer
+export default blogSlice.reducer;

@@ -4,20 +4,22 @@ import { Link } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
-const AllUser = ({ user, users, index,refetch }) => {
+const AllUser = ({ user, users, index, refetch }) => {
   const { email, role, _id } = user;
   const makeAdmin = () => {
-    fetch(`https://tranquil-lake-95777.herokuapp.com/approvedUser/admin/${email}`, {
-      method: "PUT",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-      
-    })
+    fetch(
+      `https://digimoney-bank-0haz.onrender.com/approvedUser/admin/${email}`,
+      {
+        method: "PUT",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
-          refetch()
+          refetch();
           toast.success(`Successfully made an admin`, {
             position: "top-center",
           });
@@ -34,17 +36,17 @@ const AllUser = ({ user, users, index,refetch }) => {
           label: "Yes",
           onClick: () => {
             // send updated data to server
-            const url = `https://tranquil-lake-95777.herokuapp.com/approvedUser/${id}`;
+            const url = `https://digimoney-bank-0haz.onrender.com/approvedUser/${id}`;
             fetch(url, {
-            method: "DELETE",
+              method: "DELETE",
             })
-            .then((res) => res.json())
-            .then((data) => {
-              if (data.deletedCount > 0) {
-              refetch()
-              toast.error("Removed user successfully")
-            }
-            });
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.deletedCount > 0) {
+                  refetch();
+                  toast.error("Removed user successfully");
+                }
+              });
           },
         },
         {
@@ -56,7 +58,7 @@ const AllUser = ({ user, users, index,refetch }) => {
       ],
     });
   };
- 
+
   return (
     <tr>
       <th className="bg-white">{index + 1}</th>
@@ -99,9 +101,6 @@ const AllUser = ({ user, users, index,refetch }) => {
           Remove
         </button>
       </td>
-      
-
-     
     </tr>
   );
 };

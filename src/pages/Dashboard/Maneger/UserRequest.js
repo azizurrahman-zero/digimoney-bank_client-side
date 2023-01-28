@@ -5,17 +5,18 @@ import Information from "./Information";
 const UserRequest = () => {
   const [users, setUsers] = useState([]);
   const [information, setInformation] = useState(null);
-  
+
   useEffect(() => {
-    fetch("https://tranquil-lake-95777.herokuapp.com/users")
+    fetch("https://digimoney-bank-0haz.onrender.com/users")
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);
 
-
   return (
     <div>
-      <h2 className="text-2xl text-center text-base-300">All Request: {users.length}</h2>
+      <h2 className="text-2xl text-center text-base-300">
+        All Request: {users.length}
+      </h2>
       <div className="mt-5 overflow-x-auto">
         <table className="table w-full bg-white text-center">
           <thead>
@@ -31,7 +32,6 @@ const UserRequest = () => {
           </thead>
           <tbody>
             {users.map((user, index) => (
-
               <Information
                 key={user._id}
                 user={user}
@@ -43,16 +43,15 @@ const UserRequest = () => {
             ))}
           </tbody>
         </table>
-        {information && <CheckInformation
-          information={information}
-          users={users}
-          setUsers={setUsers}
-        />}
+        {information && (
+          <CheckInformation
+            information={information}
+            users={users}
+            setUsers={setUsers}
+          />
+        )}
       </div>
     </div>
-
-
-
   );
 };
 

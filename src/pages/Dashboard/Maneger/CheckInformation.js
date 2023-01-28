@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import { toast } from "react-toastify";
 
-
 const CheckInformation = ({ information, users, setUsers }) => {
   const accountRef = useRef();
   const {
@@ -16,7 +15,7 @@ const CheckInformation = ({ information, users, setUsers }) => {
     gender,
     amount,
     accountType,
-    capturedPhoto
+    capturedPhoto,
   } = information;
 
   // const {
@@ -27,7 +26,7 @@ const CheckInformation = ({ information, users, setUsers }) => {
 
   const onSubmit = (data) => {
     console.log(data);
-    const url = `https://tranquil-lake-95777.herokuapp.com/accountNumber/${_id}`;
+    const url = `https://digimoney-bank-0haz.onrender.com/accountNumber/${_id}`;
     fetch(url, {
       method: "PATCH",
       headers: {
@@ -41,12 +40,10 @@ const CheckInformation = ({ information, users, setUsers }) => {
       });
   };
 
-
   const approved = (id, { information }, e) => {
-
     information["accountNumber"] = accountRef.current.value;
 
-    fetch("https://tranquil-lake-95777.herokuapp.com/approvedUsers", {
+    fetch("https://digimoney-bank-0haz.onrender.com/approvedUsers", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -56,7 +53,7 @@ const CheckInformation = ({ information, users, setUsers }) => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          const url = `https://tranquil-lake-95777.herokuapp.com/users/${id}`;
+          const url = `https://digimoney-bank-0haz.onrender.com/users/${id}`;
 
           fetch(url, {
             method: "DELETE",

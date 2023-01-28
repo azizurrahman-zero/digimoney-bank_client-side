@@ -1,44 +1,39 @@
 import React, { useState } from "react";
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 
-const Withdraw = ({ userInfo,refetch,setInformation }) => {
+const Withdraw = ({ userInfo, refetch, setInformation }) => {
   const { amount, accountNumber } = userInfo;
-  const [error,setError]=useState("")
+  const [error, setError] = useState("");
 
-  
-  const { register, handleSubmit,reset } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
-    console.log(data)
-   
-      const withdrawAmount=parseFloat(data.withdrawAmount)
-      if(withdrawAmount<=0){
-          setError("Please provide a posetive number or bigger then zero")
-          return
-      }
-      if (userInfo.amount>withdrawAmount) {
-         const newAmount = userInfo.amount-withdrawAmount;
-         const updatedAmount={amount:newAmount,withdrawAmount}
-         const url=`https://tranquil-lake-95777.herokuapp.com/approvedUsers/${accountNumber}`;
-        fetch(url,{ 
-             method:'PATCH',
-              headers:{
-                  'content-type':'application/json'
-              },
-              body:JSON.stringify(updatedAmount)
-          })
-          .then(res=>res.json())
-          .then(result=>{
-              
-             refetch()
-             reset()
-             setInformation(null)
-          })
-      }
-      else{
+    console.log(data);
 
-         setError('Withdraw balance should be smaller than amount');
-     
-      }
+    const withdrawAmount = parseFloat(data.withdrawAmount);
+    if (withdrawAmount <= 0) {
+      setError("Please provide a posetive number or bigger then zero");
+      return;
+    }
+    if (userInfo.amount > withdrawAmount) {
+      const newAmount = userInfo.amount - withdrawAmount;
+      const updatedAmount = { amount: newAmount, withdrawAmount };
+      const url = `https://digimoney-bank-0haz.onrender.com/approvedUsers/${accountNumber}`;
+      fetch(url, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updatedAmount),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          refetch();
+          reset();
+          setInformation(null);
+        });
+    } else {
+      setError("Withdraw balance should be smaller than amount");
+    }
   };
   return (
     <div>
@@ -91,9 +86,7 @@ const Withdraw = ({ userInfo,refetch,setInformation }) => {
                 />
               </div>
               <div className="text-center">
-                <button  className="btn btn-secondary">
-                  Withdraw now
-                </button>
+                <button className="btn btn-secondary">Withdraw now</button>
               </div>
             </div>
           </form>

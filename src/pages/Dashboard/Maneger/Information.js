@@ -11,7 +11,7 @@ const Information = ({ user, index, users, setUsers, setInformation }) => {
           label: "Yes",
           onClick: () => {
             // send updated data to server
-            const url = `https://tranquil-lake-95777.herokuapp.com/users/${id}`;
+            const url = `https://digimoney-bank-0haz.onrender.com/users/${id}`;
             fetch(url, {
               method: "DELETE",
             })
@@ -45,7 +45,7 @@ const Information = ({ user, index, users, setUsers, setInformation }) => {
       </td>
 
       <td className="bg-white">{user.displayName}</td>
-     
+
       <td className="bg-white">{user.email}</td>
       <td className="bg-white">{user.contact}</td>
       <td className="bg-white">{user.address}</td>

@@ -23,7 +23,7 @@ const FindTransection = () => {
     e.preventDefault();
     const accountNumber = e.target.accountNumber.value;
 
-    const url = `https://tranquil-lake-95777.herokuapp.com/findtransection${accountNumber}`;
+    const url = `https://digimoney-bank-0haz.onrender.com/findtransection${accountNumber}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {

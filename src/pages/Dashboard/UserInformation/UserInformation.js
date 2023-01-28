@@ -7,19 +7,27 @@ import Withdraw from "./Withdraw";
 
 const UserInformation = () => {
   //  const [userInfo, setUserInfo] = useState({});
-  const [isOpen,setIsopen]=useState(false)
+  const [isOpen, setIsopen] = useState(false);
   const [information, setInformation] = useState(null);
   const { id } = useParams();
 
-  const {isLoading,data:userInfo,refetch}=useQuery([`aprovedUserInfo${id}`],()=>fetch(`https://tranquil-lake-95777.herokuapp.com/approvedUser/${id}`).then(res=>res.json()))
+  const {
+    isLoading,
+    data: userInfo,
+    refetch,
+  } = useQuery([`aprovedUserInfo${id}`], () =>
+    fetch(`https://digimoney-bank-0haz.onrender.com/approvedUser/${id}`).then(
+      (res) => res.json()
+    )
+  );
   // useEffect(() => {
-  //   const url = `https://tranquil-lake-95777.herokuapp.com/approvedUser/${id}`;
+  //   const url = `https://digimoney-bank-0haz.onrender.com/approvedUser/${id}`;
   //   fetch(url)
   //     .then((res) => res.json())
   //     .then((data) => setUserInfo(data));
   // }, [id]);
-  
-  if(isLoading){
+
+  if (isLoading) {
     return;
   }
   return (
@@ -28,8 +36,8 @@ const UserInformation = () => {
         <div>
           <div className="hero-content b flex-col lg:flex-row">
             <img src={userInfo.img} className="lg:w-96 sm:w-72" alt="" />
-           
-            <div >
+
+            <div>
               <table className="table">
                 <tbody>
                   <tr>
@@ -79,54 +87,58 @@ const UserInformation = () => {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-5 my-10 mx-7 lg:grid-cols-4">
-          <label
-          htmlFor="withdraw"
-          onClick={() => setInformation(userInfo)}
-          className="btn btn-outline btn-secondary sm:btn-sm md:btn-md lg:btn-md"
-        >
-           Withdraw
-        </label>
-            
-        <label
-          htmlFor="found-transfer"
-          onClick={() => setInformation(userInfo)}
-          className="btn btn-outline btn-primary sm:btn-sm md:btn-md lg:btn-md"
-        >
-           Fund Transfer
-        </label>
-        <label
-          htmlFor="deposit"
-          onClick={() => setInformation(userInfo)}
-          className="btn btn-outline btn-accent sm:btn-sm md:btn-md lg:btn-md"
-        >
-           Deposit
-        </label>
-           
-           
+            <label
+              htmlFor="withdraw"
+              onClick={() => setInformation(userInfo)}
+              className="btn btn-outline btn-secondary sm:btn-sm md:btn-md lg:btn-md"
+            >
+              Withdraw
+            </label>
+
+            <label
+              htmlFor="found-transfer"
+              onClick={() => setInformation(userInfo)}
+              className="btn btn-outline btn-primary sm:btn-sm md:btn-md lg:btn-md"
+            >
+              Fund Transfer
+            </label>
+            <label
+              htmlFor="deposit"
+              onClick={() => setInformation(userInfo)}
+              className="btn btn-outline btn-accent sm:btn-sm md:btn-md lg:btn-md"
+            >
+              Deposit
+            </label>
           </div>
         </div>
       </div>
-      {information && <Withdraw
-      refetch={refetch}
+      {information && (
+        <Withdraw
+          refetch={refetch}
           information={information}
           userInfo={userInfo}
           // setUserInfo={setUserInfo}
           setInformation={setInformation}
-        />}
-      {information && <FoundTransfer
+        />
+      )}
+      {information && (
+        <FoundTransfer
           information={information}
           userInfo={userInfo}
           refetch={refetch}
           // setUserInfo={setUserInfo}
           setInformation={setInformation}
-        />}
-      {information && <Deposit
+        />
+      )}
+      {information && (
+        <Deposit
           information={information}
           userInfo={userInfo}
           refetch={refetch}
           // setUserInfo={setUserInfo}
           setInformation={setInformation}
-        />}
+        />
+      )}
     </>
   );
 };

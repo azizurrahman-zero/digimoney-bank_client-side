@@ -1,42 +1,39 @@
 import React, { useState } from "react";
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 
-const Deposit = ({ userInfo,setInformation,refetch }) => {
+const Deposit = ({ userInfo, setInformation, refetch }) => {
   const { amount, accountNumber } = userInfo;
-  const [error,setError]=useState("")
-  const { register, handleSubmit,reset } = useForm();
+  const [error, setError] = useState("");
+  const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
-    console.log(data)
-   
-       const depositeAmount=parseFloat(data.depositeamount)
-       if(depositeAmount<=0){
-           setError("Please provide a posetive number or bigger then zero")
-           return
-       }
-      
-         const newAmount = userInfo.amount+depositeAmount;
-    
-         const updatedAmount={amount:newAmount,depositeAmount}
-         const url=`https://tranquil-lake-95777.herokuapp.com/deposite/${accountNumber}`;
-        fetch(url,{ 
-             method:'PATCH',
-              headers:{
-                  'content-type':'application/json'
-              },
-              body:JSON.stringify(updatedAmount)
-          })
-          .then(res=>res.json())
-          .then(result=>{
-              if(result){
+    console.log(data);
 
-                refetch()
-                reset()
-                setInformation(null)
-              }
-          })
-      }
-     
-  
+    const depositeAmount = parseFloat(data.depositeamount);
+    if (depositeAmount <= 0) {
+      setError("Please provide a posetive number or bigger then zero");
+      return;
+    }
+
+    const newAmount = userInfo.amount + depositeAmount;
+
+    const updatedAmount = { amount: newAmount, depositeAmount };
+    const url = `https://digimoney-bank-0haz.onrender.com/deposite/${accountNumber}`;
+    fetch(url, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updatedAmount),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result) {
+          refetch();
+          reset();
+          setInformation(null);
+        }
+      });
+  };
 
   return (
     <>
@@ -89,9 +86,7 @@ const Deposit = ({ userInfo,setInformation,refetch }) => {
               </div>
             </div>
             <div className="text-center">
-              <button  className="btn btn-accent ">
-                Deposit now
-              </button>
+              <button className="btn btn-accent ">Deposit now</button>
             </div>
           </form>
         </div>

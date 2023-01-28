@@ -12,7 +12,6 @@ const Balance = () => {
   const [error, setError] = useState("");
   const { userInfo, refetch, isLoading } = useUserInfo(user);
 
-
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     const withdrawAmount = parseFloat(data.withdrawAmount);
@@ -22,8 +21,8 @@ const Balance = () => {
     }
     if (userInfo.amount > withdrawAmount) {
       const newAmount = userInfo.amount - withdrawAmount;
-      const updatedAmount = { amount: newAmount,withdrawAmount };
-      const url = `https://tranquil-lake-95777.herokuapp.com/approvedUsers/${userInfo.accountNumber}`;
+      const updatedAmount = { amount: newAmount, withdrawAmount };
+      const url = `https://digimoney-bank-0haz.onrender.com/approvedUsers/${userInfo.accountNumber}`;
       fetch(url, {
         method: "PATCH",
         headers: {

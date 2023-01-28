@@ -1,19 +1,17 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import {toast} from 'react-toastify'
+import { toast } from "react-toastify";
 
 const Review = () => {
   const {
     register,
     formState: { errors },
     handleSubmit,
-    reset
+    reset,
   } = useForm();
- 
+
   const onSubmit = async (data, event) => {
     event.preventDefault();
-
-
 
     // upload image
     const imageStorageKey = "6fe6eceade1c589e0923d835ad57b39d";
@@ -29,31 +27,33 @@ const Review = () => {
       .then((result) => {
         if (result.success) {
           const img = result.data.url;
-          data["src"]=img 
-          fetch("https://tranquil-lake-95777.herokuapp.com/review",{
-            method:"POST",
-            headers:{
-              "content-type":"application/json"
+          data["src"] = img;
+          fetch("https://digimoney-bank-0haz.onrender.com/review", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
             },
-            body:JSON.stringify(data)
+            body: JSON.stringify(data),
           })
-          .then(res=>res.json())
-          .then(data=>{
-            if(data.insertedId){
-              toast.success("Review successfully...",{
-                position:"top-center"
-              })
-              reset()
-            }
-          })
-      
-            
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                toast.success("Review successfully...", {
+                  position: "top-center",
+                });
+                reset();
+              }
+            });
         }
       });
   };
   return (
     <div className="text-base-300">
-      <form onSubmit={handleSubmit(onSubmit)} className="lg:w-8/12 mx-4 lg:mx-0 " action="">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="lg:w-8/12 mx-4 lg:mx-0 "
+        action=""
+      >
         <div className="mt-32 grid lg:grid-cols-2 gap-x-2">
           <div>
             <input
@@ -141,28 +141,24 @@ const Review = () => {
           </div>
         </div>
         <div className="mt-5">
-        
-        
-            <input
-              className="input input-primary w-full lg:w-5/12  focus:outline-none  border-[#2366B5]"
-              type="file"
-              placeholder="Title"
-              {...register("image", {
-                required: {
-                  value: true,
-                  message: "*Please upload a image",
-                },
-              })}
-            />
-            <label className="label pt-0">
-              {errors.image?.type === "required" && (
-                <span className="label-text-alt text-error">
-                  {errors.image.message}
-                </span>
-              )}
-            </label>
-          
-       
+          <input
+            className="input input-primary w-full lg:w-5/12  focus:outline-none  border-[#2366B5]"
+            type="file"
+            placeholder="Title"
+            {...register("image", {
+              required: {
+                value: true,
+                message: "*Please upload a image",
+              },
+            })}
+          />
+          <label className="label pt-0">
+            {errors.image?.type === "required" && (
+              <span className="label-text-alt text-error">
+                {errors.image.message}
+              </span>
+            )}
+          </label>
         </div>
         <button className="block ml-auto btn btn-primary w-full lg:w-5/12 mt-5 bg-[#2366B5] hover:bg-[#0e2e54] border-none text-white">
           Submit

@@ -21,23 +21,21 @@ const SignUp = () => {
 
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
-    const [token]= useToken(user)
+  const [token] = useToken(user);
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
   const navigate = useNavigate();
 
-  const [displayCam, setDisplayCam] = useState('hidden');
-  const [displayPhoto, setDisplayPhoto] = useState('hidden');
+  const [displayCam, setDisplayCam] = useState("hidden");
+  const [displayPhoto, setDisplayPhoto] = useState("hidden");
 
   // live capture -->
   const [imageSource, setImageSource] = useState();
   const webcamRef = useRef(null);
-  const capture = useCallback(
-      () => {
-          const imageSrc = webcamRef.current.getScreenshot();
-          setImageSource(imageSrc)
-          setDisplayPhoto('block')
-      }, [webcamRef]
-  );
+  const capture = useCallback(() => {
+    const imageSrc = webcamRef.current.getScreenshot();
+    setImageSource(imageSrc);
+    setDisplayPhoto("block");
+  }, [webcamRef]);
 
   // <---------------
 
@@ -51,7 +49,16 @@ const SignUp = () => {
   const onSubmit = async (data, event) => {
     event.preventDefault();
 
-    const { name, email, password, phone, address, amount,fatherName,motherName } = data;
+    const {
+      name,
+      email,
+      password,
+      phone,
+      address,
+      amount,
+      fatherName,
+      motherName,
+    } = data;
     await createUserWithEmailAndPassword(email, password);
     await updateProfile({ displayName: name });
 
@@ -81,11 +88,10 @@ const SignUp = () => {
             amount: amount,
             gender: event.target.gender.value,
             img: img,
-            capturedPhoto: imageSource
+            capturedPhoto: imageSource,
           };
-        
 
-          fetch(`https://tranquil-lake-95777.herokuapp.com/adduser`, {
+          fetch(`https://digimoney-bank-0haz.onrender.com/adduser`, {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -104,7 +110,7 @@ const SignUp = () => {
   const videoConstraints = {
     width: 1280,
     height: 720,
-    facingMode: "user"
+    facingMode: "user",
   };
 
   return (
@@ -261,11 +267,17 @@ const SignUp = () => {
                 </div>
 
                 <div className="flex-row gap-12 form-control">
-                  <label for="male" className="flex items-center justify-center gap-2">
+                  <label
+                    for="male"
+                    className="flex items-center justify-center gap-2"
+                  >
                     <input type="radio" name="gender" value="Male" id="male" />
                     <span className="mx-2">Male</span>
                   </label>
-                  <label for="female" className="flex items-center justify-center gap-2">
+                  <label
+                    for="female"
+                    className="flex items-center justify-center gap-2"
+                  >
                     <input
                       type="radio"
                       name="gender"
@@ -365,53 +377,54 @@ const SignUp = () => {
                     })}
                   />
                 </div>
-
               </div>
               <div className="flex items-center justify-center mt-6">
                 <input
                   type="button"
-                  onClick={() => setDisplayCam('block')}
+                  onClick={() => setDisplayCam("block")}
                   className="w-full  max-w-xs text-white form-control btn bg-[#01091E] hover:bg-[#01091E] border-none"
                   value="Capture Your Live Photo"
                 />
               </div>
 
               <div className={displayCam}>
-
-              {/* live capture --> */}
-              <div className='flex justify-center'>
-                <div className="card card-side bg-base-100 shadow-xl">
+                {/* live capture --> */}
+                <div className="flex justify-center">
+                  <div className="card card-side bg-base-100 shadow-xl">
                     <div className="card-body">
-                        <Webcam
-                            audio={false}
-                            height={720}
-                            ref={webcamRef}
-                            screenshotFormat="image/jpeg"
-                            width={1280}
-                            videoConstraints={videoConstraints}
+                      <Webcam
+                        audio={false}
+                        height={720}
+                        ref={webcamRef}
+                        screenshotFormat="image/jpeg"
+                        width={1280}
+                        videoConstraints={videoConstraints}
+                      />
+                      <div className="card-actions justify-end">
+                        <input
+                          type="button"
+                          onClick={capture}
+                          className="btn btn-primary"
+                          value="Snap"
                         />
-                        <div className="card-actions justify-end">
-                            <input type="button" onClick={capture} className="btn btn-primary" value="Snap"/>
-                        </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
-              </div>
 
-            {/* captured photo */}
-            <div className={displayPhoto}>
-            <div className="flex justify-center mt-5">
-                <div className="card card-side bg-base-100 shadow-xl">
-                    <div className="card-body">
+                {/* captured photo */}
+                <div className={displayPhoto}>
+                  <div className="flex justify-center mt-5">
+                    <div className="card card-side bg-base-100 shadow-xl">
+                      <div className="card-body">
                         <img src={imageSource} alt="captured" />
+                      </div>
                     </div>
+                  </div>
                 </div>
-            </div>
-            </div>
 
-            {/* <--------------------- */}
-
+                {/* <--------------------- */}
               </div>
-
 
               <div className="flex items-center justify-center mt-6">
                 <input
